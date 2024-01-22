@@ -2,18 +2,12 @@
   <nz-header>
     <div class="searchInput">
       <div nz-row>
-        <div nz-col nzSpan="2">
-          <a
-            class="header-trigger"
-            (click)="sideDrawerVisible = !sideDrawerVisible"
-          >
-            <span
-              nz-icon
-              [nzType]="sideDrawerVisible ? 'menu' : 'menu'"
-            ></span>
+        <div nz-col nzSpan="3">
+          <a class="header-trigger" (click)="sideDrawerVisible = !sideDrawerVisible">
+            <span nz-icon [nzType]="sideDrawerVisible ? 'menu' : 'menu'"></span>
           </a>
         </div>
-        <div nz-col nzSpan="22" >
+        <div nz-col nzSpan="21">
           <nz-input-group [nzSuffix]="suffixIconSearch" class="input-search">
             <input type="text" nz-input placeholder="Tìm kiếm" class="inputSearch-header" />
           </nz-input-group>
@@ -26,25 +20,11 @@
   </nz-header>
 
   <nz-layout>
-    <nz-drawer
-      [nzClosable]="false"
-      [nzVisible]="sideDrawerVisible"
-      nzPlacement="left"
-      nzTitle="Basic Drawer"
-      [nzWidth]="'60%'"
-      (nzOnClose)="sideDrawerClose()"
-    >
+    <nz-drawer [nzClosable]="false" [nzVisible]="sideDrawerVisible" nzPlacement="left" nzTitle="Basic Drawer"
+      [nzWidth]="'60%'" (nzOnClose)="sideDrawerClose()">
       <ng-container *nzDrawerContent>
-        <a
-          [routerLink]="['/welcome']"
-          [class.active]="activeRoute === 'welcome'"
-          >Welcome</a
-        >
-        <a
-          [routerLink]="['/exportProduct']"
-          [class.active]="activeRoute === 'page2'"
-          >Monitor</a
-        >
+        <a [routerLink]="['/welcome']"  routerLinkActive="router-link-active">Welcome</a>
+        <a [routerLink]="['/exportProduct']"  routerLinkActive="router-link-active">Monitor</a>
       </ng-container>
     </nz-drawer>
     <nz-layout>
