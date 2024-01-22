@@ -33,6 +33,8 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import {NzDrawerModule} from 'ng-zorro-antd/drawer';
+import { WarehouseListComponent } from './components/warehouse-list/warehouse-list.component';
+import { ImportWarehoseComponent } from './components/import-warehose/import-warehose.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {NzDrawerModule} from 'ng-zorro-antd/drawer';
     WelcomeComponent,
     SideBarComponent,
     ExportProductComponent,
-    RequestListComponent
+    RequestListComponent,
+    WarehouseListComponent,
+    ImportWarehoseComponent
   ],
   imports: [
     BrowserModule,
