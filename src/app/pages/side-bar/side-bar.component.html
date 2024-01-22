@@ -4,7 +4,7 @@
       <div nz-row>
         <div nz-col nzSpan="3">
           <a class="header-trigger" (click)="sideDrawerVisible = !sideDrawerVisible">
-            <span nz-icon [nzType]="sideDrawerVisible ? 'menu' : 'menu'"></span>
+            <span nz-icon [nzType]="'menu'"></span>
           </a>
         </div>
         <div nz-col nzSpan="21">
@@ -19,10 +19,33 @@
     </div>
   </nz-header>
 
-  <nz-layout>
-    <nz-drawer [nzClosable]="false" [nzVisible]="sideDrawerVisible" nzPlacement="left" nzTitle="Basic Drawer"
-      [nzWidth]="'60%'" (nzOnClose)="sideDrawerClose()">
-      <ng-container *nzDrawerContent>
+  <nz-layout >
+    <nz-drawer [nzClosable]="false" [nzVisible]="sideDrawerVisible" nzPlacement="left"
+      [nzWidth]="'60%'" (nzOnClose)="sideDrawerClose()" >
+      <ng-container *nzDrawerContent >
+        <div class="header-sideBar">
+          <div class="information-Avatar">
+            <nz-avatar [nzSize]="64" nzSrc="https://genk.mediacdn.vn/thumb_w/640/2019/7/8/1-15625474669018688730.jpg"></nz-avatar>
+          </div>
+          <div class="information-User">
+            <span class="name-User"><strong>{{nameUser}}</strong></span>
+            <span class="role-Phone">{{role}}-{{phone}}</span>
+          </div>
+        </div>
+        <ul nz-menu nzTheme="light" nzMode="inline">
+          <li nz-submenu nzTitle="Hàng xuất" nzIcon="user">
+            <ul>
+              <li nz-menu-item>Tom</li>
+              <li nz-menu-item>Bill</li>
+            </ul>
+          </li>
+          <li nz-submenu nzTitle="Quản lý kho" nzIcon="team">
+            <ul>
+              <li nz-menu-item>Team 1</li>
+              <li nz-menu-item>Team 2</li>
+            </ul>
+          </li>
+        </ul>
         <a [routerLink]="['/welcome']"  routerLinkActive="router-link-active">Welcome</a>
         <a [routerLink]="['/exportProduct']"  routerLinkActive="router-link-active">Monitor</a>
       </ng-container>
