@@ -1,0 +1,58 @@
+<nz-layout class="app-layout">
+  <nz-header>
+    <div class="searchInput">
+      <div nz-row>
+        <div nz-col nzSpan="2">
+          <a
+            class="header-trigger"
+            (click)="sideDrawerVisible = !sideDrawerVisible"
+          >
+            <span
+              nz-icon
+              [nzType]="sideDrawerVisible ? 'edit' : 'menu-fold'"
+            ></span>
+          </a>
+        </div>
+        <div nz-col nzSpan="22">
+          <nz-input-group [nzSuffix]="suffixIconSearch">
+            <input type="text" nz-input placeholder="input search text" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <span nz-icon nzType="search"></span>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </nz-header>
+
+  <nz-layout>
+    <nz-drawer
+      [nzClosable]="false"
+      [nzVisible]="sideDrawerVisible"
+      nzPlacement="left"
+      nzTitle="Basic Drawer"
+      [nzWidth]="'60%'"
+      (nzOnClose)="sideDrawerClose()"
+    >
+      <ng-container *nzDrawerContent>
+        <a
+          [routerLink]="['/welcome']"
+          [class.active]="activeRoute === 'welcome'"
+          >Welcome</a
+        >
+        <a
+          [routerLink]="['/exportProduct']"
+          [class.active]="activeRoute === 'page2'"
+          >Monitor</a
+        >
+      </ng-container>
+    </nz-drawer>
+    <nz-layout>
+      <nz-content>
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
