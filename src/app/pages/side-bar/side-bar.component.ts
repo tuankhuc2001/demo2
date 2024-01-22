@@ -7,8 +7,7 @@ import { filter } from 'rxjs/operators';
   styleUrl: './side-bar.component.css',
 })
 export class SideBarComponent {
-  activeRoute: string = '';
-  constructor(private router: Router) {}
+  constructor() {}
 
   sideDrawerVisible = false;
 
@@ -21,14 +20,6 @@ export class SideBarComponent {
   }
 
   ngOnInit(): void {
-    this.router.events
-      .pipe(
-        filter(
-          (event): event is NavigationEnd => event instanceof NavigationEnd
-        )
-      )
-      .subscribe((event) => {
-        this.activeRoute = event.urlAfterRedirects.slice(1);
-      });
+
   }
 }
