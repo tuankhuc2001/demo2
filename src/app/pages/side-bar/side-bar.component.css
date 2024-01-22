@@ -1,109 +1,115 @@
 :host {
-    display: flex;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  .app-layout {
-    height: 100vh;
-  }
+  display: flex;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  
-  .menu-sidebar {
-    position: relative;
-    z-index: 10;
-    min-height: 100vh;
-    box-shadow: 2px 0 6px rgba(0,21,41,.35);
-  }
-  
-  .header-trigger {
-    height: 64px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all .3s,padding 0s;
-    color: #fff;
-    margin-right: 15px;
-  }
-  
-  .trigger:hover {
-    color: #1890ff;
-  }
-  
-  .sidebar-logo {
-    position: relative;
-    height: 64px;
-    padding-left: 24px;
-    overflow: hidden;
-    line-height: 64px;
-    background: #001529;
-    transition: all .3s;
-  }
-  
-  .sidebar-logo img {
-    display: inline-block;
-    height: 32px;
-    width: 32px;
-    vertical-align: middle;
-  }
-  
-  .sidebar-logo h1 {
-    display: inline-block;
-    margin: 0 0 0 20px;
-    color: #fff;
-    font-weight: 600;
-    font-size: 14px;
-    font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
-    vertical-align: middle;
-  }
-  
-  nz-header {
-    padding: 0;
-    width: 100%;
-    z-index: 2;
-    background-color: #3c7265
-  }
-  
-  .app-header {
-    position: relative;
-    height: 64px;
-    padding: 0;
-    background: #fff;
-    box-shadow: 0 1px 4px rgba(0,21,41,.08);
-  }
-  
-  .searchInput{
-      text-align: center;
-      margin-left: 10px;
-      margin-right: 10px;
-  }
-  .input-search {
-    border-radius: 25px !important;
-  }
-  
-  nz-content {
-    margin: 24px;
-  }
-  
-  .inner-content {
-      padding: 24px;
-      background: #fff;
-      min-height: 360px;
-    }
-  
-    a {
-      color: #000; /* default color */
-      text-decoration: none;
-      padding: 5px; /* add some padding for better hover effect */
-      transition: color 0.3s ease; /* smooth transition effect */
-    }
-    
-    a:hover {
-      color: #007bff; /* color on hover */
-    }
-    
-    a.router-link-active {
-      font-weight: bold; /* indicate active link with bold text, you can customize this as needed */
-      color: #ff0000; /* color for the active link */
-    }
-  
+.app-layout {
+  height: 100vh;
+}
+
+.menu-sidebar {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+}
+
+.header-trigger {
+  height: 64px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s, padding 0s;
+  color: #fff;
+  margin-right: 15px;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.sidebar-logo {
+  position: relative;
+  height: 64px;
+  padding-left: 24px;
+  overflow: hidden;
+  line-height: 64px;
+  background: #001529;
+  transition: all 0.3s;
+}
+
+.sidebar-logo img {
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  vertical-align: middle;
+}
+
+.sidebar-logo h1 {
+  display: inline-block;
+  margin: 0 0 0 20px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+  vertical-align: middle;
+}
+
+nz-header {
+  padding: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: #3c7265;
+}
+
+.app-header {
+  position: relative;
+  height: 64px;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+}
+
+.searchInput {
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.input-search {
+  border-radius: 25px !important;
+  background-color: #25403b;
+  border: none;
+}
+.icon-search {
+    color: #fff !important;
+}
+.inputSearch-header {
+  background-color: #25403b;
+  color:#fff;
+}
+nz-content {
+  margin: 24px;
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  min-height: 360px;
+}
+
+a {
+  color: #000; /* default color */
+  text-decoration: none;
+  padding: 5px; /* add some padding for better hover effect */
+  transition: color 0.3s ease; /* smooth transition effect */
+}
+
+a:hover {
+  color: #007bff; /* color on hover */
+}
+
+a.router-link-active {
+  font-weight: bold; /* indicate active link with bold text, you can customize this as needed */
+  color: #ff0000; /* color for the active link */
+}
