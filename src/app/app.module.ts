@@ -16,7 +16,8 @@ import { ExportProductComponent } from './components/export-product/export-produ
 import { RequestListComponent } from './components/request-list/request-list.component';
 
 registerLocaleData(en);
-
+import { WarehouseListComponent } from './components/warehouse-list/warehouse-list.component';
+import { ImportWarehoseComponent } from './components/import-warehose/import-warehose.component';
 
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -33,8 +34,8 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import {NzDrawerModule} from 'ng-zorro-antd/drawer';
-import { WarehouseListComponent } from './components/warehouse-list/warehouse-list.component';
-import { ImportWarehoseComponent } from './components/import-warehose/import-warehose.component';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,9 @@ import { ImportWarehoseComponent } from './components/import-warehose/import-war
     NzNotificationModule,
     NzImageModule,
     NzAlertModule,
-    NzDrawerModule
+    NzDrawerModule,
+    NzAvatarModule,
+    NzCardModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

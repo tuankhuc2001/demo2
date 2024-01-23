@@ -10,6 +10,9 @@ export class SideBarComponent {
   constructor() {}
 
   sideDrawerVisible = false;
+  nameUser:string = "Cường"
+  role:string = "Admin"
+  phone:string = "0987654321"
 
   sideDrawerOpen(): void {
     this.sideDrawerVisible = true;
