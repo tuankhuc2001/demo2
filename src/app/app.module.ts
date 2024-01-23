@@ -34,7 +34,7 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import {NzDrawerModule} from 'ng-zorro-antd/drawer';
-
+import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 @NgModule({
@@ -67,7 +67,8 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
     NzImageModule,
     NzAlertModule,
     NzDrawerModule,
-    NzAvatarModule
+    NzAvatarModule,
+    NzCardModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
