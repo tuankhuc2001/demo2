@@ -32,9 +32,12 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
-import {NzDrawerModule} from 'ng-zorro-antd/drawer';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { WarehouseListComponent } from './components/warehouse-list/warehouse-list.component';
 import { ImportWarehoseComponent } from './components/import-warehose/import-warehose.component';
+import { CardComponent } from './common/card/card.component';
+import { ButtonComponent } from './common/button/button.component';
+import { ModalComponent } from './common/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { ImportWarehoseComponent } from './components/import-warehose/import-war
     ExportProductComponent,
     RequestListComponent,
     WarehouseListComponent,
-    ImportWarehoseComponent
+    ImportWarehoseComponent,
+    CardComponent,
+    ButtonComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
