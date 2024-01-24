@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class ExportProductComponent {
 
+  isVisible: boolean = false
+
+  handleOpenModal() {
+    this.isVisible = true
+  }
+
+  handleCloseModal() {
+    this.isVisible = false
+  }
+
 }
