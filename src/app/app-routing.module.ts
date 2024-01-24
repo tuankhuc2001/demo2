@@ -5,9 +5,10 @@ import { ExportProductComponent } from './components/export-product/export-produ
 import { ImportWarehoseComponent } from './components/import-warehose/import-warehose.component';
 import { RequestListComponent } from './components/request-list/request-list.component';
 import { WarehouseListComponent } from './components/warehouse-list/warehouse-list.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/exportProduct' },
+  { path: '', pathMatch: 'full', redirectTo: '/signIn' },
   {
     path: 'exportProduct',
     component: ExportProductComponent,
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'waterhouseList',
     component: WarehouseListComponent,
+  },
+  {
+    path: 'signIn',
+    component: SignInComponent,
   },
 ];
 

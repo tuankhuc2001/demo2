@@ -40,6 +40,7 @@ import { CardComponent } from './common/card/card.component';
 import { ButtonComponent } from './common/button/button.component';
 import { ModalComponent } from './common/modal/modal.component';
 import { NotificationComponent } from './common/notification/notification.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { NotificationComponent } from './common/notification/notification.compon
     ButtonComponent,
     ModalComponent,
     NotificationComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
