@@ -1,3 +1,6 @@
+* {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
 :host {
   display: flex;
   text-rendering: optimizeLegibility;
@@ -29,33 +32,6 @@
   color: #1890ff;
 }
 
-.sidebar-logo {
-  position: relative;
-  height: 64px;
-  padding-left: 24px;
-  overflow: hidden;
-  line-height: 64px;
-  background: #001529;
-  transition: all 0.3s;
-}
-
-.sidebar-logo img {
-  display: inline-block;
-  height: 32px;
-  width: 32px;
-  vertical-align: middle;
-}
-
-.sidebar-logo h1 {
-  display: inline-block;
-  margin: 0 0 0 20px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
-  vertical-align: middle;
-}
-
 nz-header {
   padding: 0;
   width: 100%;
@@ -82,11 +58,11 @@ nz-header {
   border: none;
 }
 .icon-search {
-    color: #fff !important;
+  color: #fff !important;
 }
 .inputSearch-header {
   background-color: #25403b;
-  color:#fff;
+  color: #fff;
 }
 nz-content {
   margin: 24px;
@@ -112,4 +88,79 @@ a:hover {
 a.router-link-active {
   font-weight: bold; /* indicate active link with bold text, you can customize this as needed */
   color: #ff0000; /* color for the active link */
+}
+
+nz-drawer {
+  padding: 0px !important;
+}
+.information-Avatar {
+  margin-left: 20px;
+}
+
+.header-sideBar {
+  display: flex;
+}
+.information-User {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2%;
+}
+.name-User {
+  color: #3d7165;
+  font-size: 1.8em;
+  font-weight: 600px;
+}
+.role-Phone {
+  color: #3d7165;
+}
+
+.ul-sideBar {
+  border: none !important;
+  padding: 0px !important;
+  color: #A5A5A5 !important;
+}
+.ul-sideBar li {
+  font-size: 16px !important;
+  font-weight: 700;
+}
+.title-menuItem {
+  font-size: 10px !important;
+  font-weight: 300 !important;
+  color: #A5A5A5 !important;
+}
+
+.title-menuItem.router-link-active {
+  background-color: #007bff;
+  font-size: 10px !important;
+  font-weight: 300 !important;
+  color: #fa0000 !important;
+}
+
+.li-sideBar{
+    background-color: #fff !important;
+}
+.ant-menu-sub.ant-menu-inline {
+  background-color: #fff !important;
+}
+.logout{
+  color: #ff0000;
+}
+
+@media only screen and (max-width: 400px) {
+  .name-User {
+    color: #3d7165;
+    font-size: 1.3em;
+    font-weight: 600px;
+  }
+  .role-Phone {
+    color: #3d7165;
+    font-size: 0.9em;
+    font-weight: 600px;
+  }
+  .ul-sideBar li {
+    font-size: 13px !important;
+    font-weight: 700;
+    color: #A5A5A5 !important;
+  }
 }
