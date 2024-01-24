@@ -7,7 +7,7 @@ import { RequestListComponent } from './components/request-list/request-list.com
 import { WarehouseListComponent } from './components/warehouse-list/warehouse-list.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
+  { path: '', pathMatch: 'full', redirectTo: '/exportProduct' },
   {
     path: 'exportProduct',
     component: ExportProductComponent,

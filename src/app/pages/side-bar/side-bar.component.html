@@ -1,13 +1,13 @@
 <nz-layout class="app-layout">
-  <nz-header>
+  <nz-header class="header-menu">
     <div class="searchInput">
-      <div nz-row>
-        <div nz-col nzSpan="3">
+      <div nz-row class="col-menu">
+        <div nz-col nzSpan="3" >
           <a
             class="header-trigger"
             (click)="sideDrawerVisible = !sideDrawerVisible"
           >
-            <span nz-icon [nzType]="'menu'"></span>
+            <span nz-icon [nzType]="'menu'" class="icon-menu"></span>
           </a>
         </div>
         <div nz-col nzSpan="21">
@@ -111,10 +111,11 @@
             <span nz-icon nzType="info-circle"></span>
             <span>Câu hỏi thường gặp</span>
           </li>
-          <li nz-menu-item>
+          <li nz-menu-item >
             <span nz-icon nzType="logout" class="logout"></span>
             <span class="logout">Đăng xuất</span>
           </li>
+          
         </ul>
         <a [routerLink]="['/welcome']" routerLinkActive="router-link-active"
           >Welcome</a
@@ -127,10 +128,8 @@
       </ng-container>
     </nz-drawer>
     <nz-layout>
-      <nz-content>
-        <div class="inner-content">
+      <nz-content class="content">
           <router-outlet></router-outlet>
-        </div>
       </nz-content>
     </nz-layout>
   </nz-layout>
