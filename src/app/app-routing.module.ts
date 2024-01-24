@@ -11,37 +11,36 @@ import { SideBarComponent } from './pages/side-bar/side-bar.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/signIn' },
   {
-    path: 'exportProduct',
-    component: ExportProductComponent,
-  },
-  {
-    path: 'welcome',
-    component: WelcomeComponent,
-  },
-  {
-    path: 'importWarehouse',
-    component: ImportWarehoseComponent,
-  },
-  {
-    path: 'requestList',
-    component: RequestListComponent,
-  },
-  {
-    path: 'waterhouseList',
-    component: WarehouseListComponent,
-  },
-  {
     path: 'signIn',
     component: SignInComponent,
   },
   {
-    path: 'sideBar',
+    path: 'home',
     component: SideBarComponent,
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'home/exportProduct' },
+      {
+        path: 'home/exportProduct',
+        component: ExportProductComponent,
+      },
+      {
+        path: 'home/importWarehouse',
+        component: ImportWarehoseComponent,
+      },
+      {
+        path: 'home/requestList',
+        component: RequestListComponent,
+      },
+      {
+        path: 'home/waterhouseList',
+        component: WarehouseListComponent,
+      },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -20,7 +20,7 @@ export class SignInComponent {
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value); 
-      this.router.navigate(['/sideBar']);
+      this.router.navigate(['/home']);
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
