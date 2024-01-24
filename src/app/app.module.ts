@@ -7,7 +7,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
@@ -18,7 +18,11 @@ import { RequestListComponent } from './components/request-list/request-list.com
 registerLocaleData(en);
 import { WarehouseListComponent } from './components/warehouse-list/warehouse-list.component';
 import { ImportWarehoseComponent } from './components/import-warehose/import-warehose.component';
-
+import { CardComponent } from './common/card/card.component';
+import { ButtonComponent } from './common/button/button.component';
+import { ModalComponent } from './common/modal/modal.component';
+import { NotificationComponent } from './common/notification/notification.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -36,11 +40,8 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { CardComponent } from './common/card/card.component';
-import { ButtonComponent } from './common/button/button.component';
-import { ModalComponent } from './common/modal/modal.component';
-import { NotificationComponent } from './common/notification/notification.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
+
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 @NgModule({
   declarations: [
@@ -56,11 +57,13 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
     ModalComponent,
     NotificationComponent,
     SignInComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NzButtonModule,
@@ -78,7 +81,8 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
     NzAlertModule,
     NzDrawerModule,
     NzAvatarModule,
-    NzCardModule
+    NzCardModule,
+    NzCheckboxModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

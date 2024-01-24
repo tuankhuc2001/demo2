@@ -6,6 +6,7 @@ import { ImportWarehoseComponent } from './components/import-warehose/import-war
 import { RequestListComponent } from './components/request-list/request-list.component';
 import { WarehouseListComponent } from './components/warehouse-list/warehouse-list.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { SideBarComponent } from './pages/side-bar/side-bar.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/signIn' },
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'signIn',
     component: SignInComponent,
+  },
+  {
+    path: 'sideBar',
+    component: SideBarComponent,
   },
 ];
 
