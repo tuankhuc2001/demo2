@@ -9,8 +9,17 @@
 }
 
 .app-layout {
-  height: 100vh;
+  height: 100vh; 
 }
+/* .header-menu {
+  height: 100px !important;
+}
+.col-menu {
+  height: 100vw;
+}
+.icon-menu {
+  font-size: 50px;
+} */
 
 .menu-sidebar {
   position: relative;
@@ -149,7 +158,6 @@ nz-drawer {
 .logout{
   color: #ff0000;
 }
-
 @media only screen and (max-width: 400px) {
   .name-User {
     color: #3d7165;
