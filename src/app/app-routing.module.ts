@@ -18,21 +18,21 @@ const routes: Routes = [
     path: 'home',
     component: SideBarComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'home/exportProduct' },
+      { path: '', pathMatch: 'full', redirectTo: 'exportProduct' },
       {
-        path: 'home/exportProduct',
+        path: 'exportProduct',
         component: ExportProductComponent,
       },
       {
-        path: 'home/importWarehouse',
+        path: 'importWarehouse',
         component: ImportWarehoseComponent,
       },
       {
-        path: 'home/requestList',
+        path: 'requestList',
         component: RequestListComponent,
       },
       {
-        path: 'home/waterhouseList',
+        path: 'waterhouseList',
         component: WarehouseListComponent,
       },
     ],
