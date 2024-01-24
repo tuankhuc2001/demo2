@@ -139,6 +139,14 @@ nz-drawer {
   font-weight: 300 !important;
   color: #A5A5A5 !important;
 }
+
+.title-menuItem.router-link-active {
+  background-color: #007bff;
+  font-size: 10px !important;
+  font-weight: 300 !important;
+  color: #fa0000 !important;
+}
+
 .li-sideBar{
     background-color: #fff !important;
 }
@@ -147,9 +155,6 @@ nz-drawer {
 }
 .logout{
   color: #ff0000;
-}
-.content {
-  margin: 0px !important  ;
 }
 @media only screen and (max-width: 400px) {
   .name-User {
