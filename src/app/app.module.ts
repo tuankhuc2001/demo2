@@ -39,6 +39,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { CardComponent } from './common/card/card.component';
 import { ButtonComponent } from './common/button/button.component';
 import { ModalComponent } from './common/modal/modal.component';
+import { NotificationComponent } from './common/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ModalComponent } from './common/modal/modal.component';
     ImportWarehoseComponent,
     CardComponent,
     ButtonComponent,
-    ModalComponent
+    ModalComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
