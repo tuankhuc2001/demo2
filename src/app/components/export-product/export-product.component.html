@@ -1,11 +1,20 @@
 <p>export-product works!</p>
 
-<button (click)="handleOpenModal()" >Open Modal</button>
-<cModal (closeModal)="handleCloseModal()" [isVisible]="isVisible" [title]="'TestModal'">
-    <Content> Content </Content>
-    <Footer> Footer </Footer>
+<button (click)="handleOpenModal()">Open Modal</button>
+<cModal (closeModal)="handleCloseModal()" [isVisible]="isVisible" [title]="'ADD MODAL'">
+    <Content>
+        HELLO CONTENT
+    </Content>
+    <Footer>
+        AAAAAAAAAAAA
+    </Footer>
 </cModal>
 
-<cCard>
-    Hrllo
+<cCard [isLoading]="true">
+    <Content>EEEEEEEEEEEEE</Content>
+    <div extraTemplate>
+        GAAAAAA
+    </div>
 </cCard>
+
+<cNotification></cNotification>

@@ -130,10 +130,12 @@ nz-drawer {
   padding: 0px !important;
   color: #A5A5A5 !important;
 }
+
 .ul-sideBar li {
   font-size: 16px !important;
   font-weight: 700;
 }
+
 .title-menuItem {
   font-size: 10px !important;
   font-weight: 300 !important;
@@ -150,6 +152,7 @@ nz-drawer {
 .li-sideBar{
     background-color: #fff !important;
 }
+
 .ant-menu-sub.ant-menu-inline {
   background-color: #fff !important;
 }
