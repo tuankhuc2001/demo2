@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
+
+  isLoading:boolean = false
+
   validateForm: FormGroup<{
     userName: FormControl<string>;
     password: FormControl<string>;
@@ -17,10 +20,12 @@ export class SignInComponent {
     remember: [true]
   });
 
+  
+
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value); 
-      this.router.navigate(['/home']);
+      this.handleTimeOut();
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -29,6 +34,16 @@ export class SignInComponent {
         }
       });
     }
+  }
+
+  handleTimeOut():void {
+    this.isLoading = true
+    setTimeout(()=> this.handleNavigate(),2000)
+
+  }
+  handleNavigate():void {
+    this.isLoading = false
+    this.router.navigate(['/home']);
   }
 
   constructor(private fb: NonNullableFormBuilder,private router: Router) {}

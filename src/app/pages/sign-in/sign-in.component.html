@@ -1,30 +1,64 @@
-<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your username!">
-        <nz-input-group nzPrefixIcon="user">
-          <input type="text" nz-input formControlName="userName" placeholder="Username" />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your Password!">
-        <nz-input-group nzPrefixIcon="lock">
-          <input type="password" nz-input formControlName="password" placeholder="Password" />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <div nz-row class="login-form-margin">
-      <div nz-col [nzSpan]="12">
-        <label nz-checkbox formControlName="remember">
-          <span>Remember me</span>
-        </label>
+<nz-spin [nzSpinning]="isLoading">  
+  <div class="main">
+    <div class="main-signIn">
+      <div class="img">
+        <img
+          nz-image
+          nzSrc="../../../assets/images/logoBonbon.jpg"
+          alt="golo"
+        />
       </div>
-      <div nz-col [nzSpan]="12">
-        <a class="login-form-forgot">Forgot password</a>
+      <div class="title-logo">
+        <span class="title-bonbon">BONBON</span>
+        <span class="title-slogen">Trao niềm tin, nhận giá trị</span>
       </div>
+      <div class="form">
+        <form
+          nz-form
+          [formGroup]="validateForm"
+          class="login-form"
+          (ngSubmit)="submitForm()"
+        >
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your username!">
+              <nz-input-group nzPrefixIcon="user">
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="userName"
+                  placeholder="Username"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+              <nz-input-group nzPrefixIcon="lock">
+                <input
+                  type="password"
+                  nz-input
+                  formControlName="password"
+                  placeholder="Password"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <button
+            nz-button
+            class="login-form-button login-form-margin"
+            [nzType]="'primary'"
+          >
+            Log in
+          </button>
+        </form>
+      </div>
+      <span class="note">
+        Lưu ý: Ứng dụng này chỉ dành cho các CBNV nghành y dược và mang tính
+        tham khảo, bạn cần cân nhắc, tự hoàn thiện thủ tục pháp lý trước khi
+        đăng nhập. Xin cảm ơn!
+      </span>
     </div>
-    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
-    Or
-    <a>register now!</a>
-  </form>
-  <router-outlet></router-outlet>
+  </div>
+</nz-spin>
+
+<router-outlet></router-outlet>

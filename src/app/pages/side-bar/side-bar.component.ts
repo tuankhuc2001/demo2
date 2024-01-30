@@ -7,7 +7,7 @@ import { filter } from 'rxjs/operators';
   styleUrl: './side-bar.component.css',
 })
 export class SideBarComponent {
-  constructor() {}
+  constructor(private router: Router) {}
 
   sideDrawerVisible = false;
   nameUser:string = "Cường"
@@ -20,6 +20,9 @@ export class SideBarComponent {
 
   sideDrawerClose(): void {
     this.sideDrawerVisible = false;
+  }
+  handleLogOut():void {
+    this.router.navigate(['/signIn']);
   }
 
   ngOnInit(): void {

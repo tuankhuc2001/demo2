@@ -73,6 +73,16 @@ nz-header {
   background-color: #25403b;
   color: #fff;
 }
+::ng-deep .ant-drawer-body {
+  padding: 0px;
+}
+
+::ng-deep.ant-menu-sub.ant-menu-inline {
+  background-color: #fff;
+}
+/* ::ng-deep .ant-menu-submenu-selected {
+  background-color: #25403b;
+} */
 nz-content {
   margin: 24px;
 }
@@ -142,7 +152,7 @@ nz-drawer {
 }
 
 .title-menuItem.router-link-active {
-  background-color: #007bff;
+  background-color: #ccc;
   font-size: 10px !important;
   font-weight: 300 !important;
   color: #fa0000 !important;

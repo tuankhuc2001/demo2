@@ -40,7 +40,7 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 @NgModule({
@@ -82,7 +82,8 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
     NzDrawerModule,
     NzAvatarModule,
     NzCardModule,
-    NzCheckboxModule
+    NzCheckboxModule,
+    NzSpinModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
