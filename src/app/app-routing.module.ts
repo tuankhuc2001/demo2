@@ -9,10 +9,14 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SideBarComponent } from './pages/side-bar/side-bar.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/signIn' },
+  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
   {
     path: 'signIn',
     component: SignInComponent,
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent,
   },
   {
     path: 'home',

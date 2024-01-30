@@ -29,11 +29,13 @@
 
   <nz-layout>
     <nz-drawer
+    class="nz-drawer"
       [nzClosable]="false"
       [nzVisible]="sideDrawerVisible"
       nzPlacement="left"
       [nzWidth]="'60%'"
       (nzOnClose)="sideDrawerClose()"
+    
     >
       <ng-container *nzDrawerContent>
         <div class="header-sideBar">
@@ -111,20 +113,12 @@
             <span nz-icon nzType="info-circle"></span>
             <span>Câu hỏi thường gặp</span>
           </li>
-          <li nz-menu-item >
+          <li nz-menu-item (click)="handleLogOut()">
             <span nz-icon nzType="logout" class="logout"></span>
             <span class="logout">Đăng xuất</span>
           </li>
           
         </ul>
-        <a [routerLink]="['/welcome']" routerLinkActive="router-link-active"
-          >Welcome</a
-        >
-        <a
-          [routerLink]="['/exportProduct']"
-          routerLinkActive="router-link-active"
-          >Monitor</a
-        >
       </ng-container>
     </nz-drawer>
     <nz-layout>
