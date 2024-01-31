@@ -37,7 +37,7 @@
           </nz-form-item>
           <nz-form-item>
             <nz-form-control nzErrorTip="Please input your Password!">
-              <nz-input-group [nzSuffix]="suffixTemplate" nzErrorTip="Please input your Password!">
+              <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate" nzErrorTip="Please input your Password!">
                 <input
                   [type]="passwordVisible ? 'text' : 'password'"
                   formControlName="password"
