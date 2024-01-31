@@ -6,31 +6,34 @@ import { SideBarComponent } from './pages/side-bar/side-bar.component';
 import { ProductSaleComponent } from './components/product-sale/product-sale.component';
 import { OrderComponent } from './components/order/order.component';
 import { WarehouseComponent } from './components/warehouse/warehouse.component';
+
+import { routerNames } from './constant/router';
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/signIn' },
   {
-    path: 'signIn',
+    path: `${routerNames.signInPage}`,
     component: SignInComponent,
   },
   {
-    path: 'home',
+    path: `${routerNames.homePage}`,
     component: SideBarComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'productSale' },
+      { path: '', pathMatch: 'full', redirectTo: `${routerNames.productSalePage}` },
       {
-        path: 'productSale',
+        path: `${routerNames.productSalePage}`,
         component: ProductSaleComponent,
       },
       {
-        path: 'importWarehouse',
+        path: `${routerNames.importWarehousePage}`,
         component: ImportWarehoseComponent,
       },
       {
-        path: 'oder',
+        path: `${routerNames.orderPage}`,
         component: OrderComponent,
       },
       {
-        path: 'warehouse',
+        path: `${routerNames.warehousePage}`,
         component: WarehouseComponent,
       },
     ],

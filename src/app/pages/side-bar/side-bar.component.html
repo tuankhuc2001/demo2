@@ -35,7 +35,6 @@
       nzPlacement="left"
       [nzWidth]="'60%'"
       (nzOnClose)="sideDrawerClose()"
-    
     >
       <ng-container *nzDrawerContent>
         <div class="header-sideBar">
@@ -57,7 +56,7 @@
             <ul>
               <li
                 nz-menu-item
-                [routerLink]="['productSale']"
+                [routerLink]="routerNames.productSalePage"
                 routerLinkActive="router-link-active"
                 class="title-menuItem"
               >
@@ -65,7 +64,7 @@
               </li>
               <li
                 nz-menu-item
-                [routerLink]="['oder']"
+                [routerLink]="routerNames.orderPage"
                 routerLinkActive="router-link-active"
                 class="title-menuItem"
               >
@@ -77,7 +76,7 @@
             <ul>
               <li
                 nz-menu-item
-                [routerLink]="['warehouse']"
+                [routerLink]="routerNames.warehousePage"
                 routerLinkActive="router-link-active"
                 class="title-menuItem"
               >
@@ -85,7 +84,7 @@
               </li>
               <li
                 nz-menu-item
-                [routerLink]="['importWarehouse']"
+                [routerLink]="routerNames.importWarehousePage"
                 routerLinkActive="router-link-active"
                 class="title-menuItem"
               >
