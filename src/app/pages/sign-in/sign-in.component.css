@@ -25,6 +25,7 @@
 .form {
   display: flex;
   flex-direction: column;
+  margin-top: 5%;
 }
 .input-login {
   height: 40px;
