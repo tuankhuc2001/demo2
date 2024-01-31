@@ -3,6 +3,7 @@
     <div class="main-signIn">
       <div class="img">
         <img
+          width="20%"
           nz-image
           nzSrc="../../../assets/images/logoBonbon.jpg"
           alt="golo"
@@ -33,14 +34,21 @@
           </nz-form-item>
           <nz-form-item>
             <nz-form-control nzErrorTip="Please input your Password!">
-              <nz-input-group nzPrefixIcon="lock">
+              <nz-input-group [nzSuffix]="suffixTemplate" nzErrorTip="Please input your Password!">
                 <input
-                  type="password"
-                  nz-input
+                  [type]="passwordVisible ? 'text' : 'password'"
                   formControlName="password"
+                  nz-input
                   placeholder="Password"
                 />
               </nz-input-group>
+              <ng-template #suffixTemplate>
+                <span
+                  nz-icon
+                  [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                  (click)="passwordVisible = !passwordVisible"
+                ></span>
+              </ng-template>
             </nz-form-control>
           </nz-form-item>
           <button
