@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+
+import { routerNames } from '../../constant/router';
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
@@ -8,6 +9,8 @@ import { filter } from 'rxjs/operators';
 })
 export class SideBarComponent {
   constructor(private router: Router) {}
+
+  routerNames = routerNames
 
   sideDrawerVisible = false;
   nameUser:string = "Cường"
