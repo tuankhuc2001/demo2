@@ -1,13 +1,13 @@
 .main {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .main-signIn {
-  width: 100vw;
-  height: 80vh;
+  width: 1024px;
+  height: 1366px;
   display: flex;
   flex-direction: column;
 }
