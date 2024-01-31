@@ -1,43 +1,37 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { ExportProductComponent } from './components/export-product/export-product.component';
 import { ImportWarehoseComponent } from './components/import-warehose/import-warehose.component';
-import { RequestListComponent } from './components/request-list/request-list.component';
-import { WarehouseListComponent } from './components/warehouse-list/warehouse-list.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SideBarComponent } from './pages/side-bar/side-bar.component';
-
+import { ProductSaleComponent } from './components/product-sale/product-sale.component';
+import { OrderComponent } from './components/order/order.component';
+import { WarehouseComponent } from './components/warehouse/warehouse.component';
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
+  { path: '', pathMatch: 'full', redirectTo: '/signIn' },
   {
     path: 'signIn',
     component: SignInComponent,
   },
   {
-    path: 'welcome',
-    component: WelcomeComponent,
-  },
-  {
     path: 'home',
     component: SideBarComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'exportProduct' },
+      { path: '', pathMatch: 'full', redirectTo: 'productSale' },
       {
-        path: 'exportProduct',
-        component: ExportProductComponent,
+        path: 'productSale',
+        component: ProductSaleComponent,
       },
       {
         path: 'importWarehouse',
         component: ImportWarehoseComponent,
       },
       {
-        path: 'requestList',
-        component: RequestListComponent,
+        path: 'oder',
+        component: OrderComponent,
       },
       {
-        path: 'waterhouseList',
-        component: WarehouseListComponent,
+        path: 'warehouse',
+        component: WarehouseComponent,
       },
     ],
   },
