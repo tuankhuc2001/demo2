@@ -1,35 +1,7 @@
 <nz-layout class="app-layout">
-  <nz-header class="header-menu">
-    <div class="searchInput">
-      <div nz-row class="col-menu">
-        <div nz-col nzSpan="3" >
-          <a
-            class="header-trigger"
-            (click)="sideDrawerVisible = !sideDrawerVisible"
-          >
-            <span nz-icon [nzType]="'menu'" class="icon-menu"></span>
-          </a>
-        </div>
-        <div nz-col nzSpan="21">
-          <nz-input-group [nzSuffix]="suffixIconSearch" class="input-search">
-            <input
-              type="text"
-              nz-input
-              placeholder="Tìm kiếm"
-              class="inputSearch-header"
-            />
-          </nz-input-group>
-          <ng-template #suffixIconSearch>
-            <span nz-icon nzType="search" class="icon-search"></span>
-          </ng-template>
-        </div>
-      </div>
-    </div>
-  </nz-header>
-
   <nz-layout>
     <nz-drawer
-    class="nz-drawer"
+      class="nz-drawer"
       [nzClosable]="false"
       [nzVisible]="sideDrawerVisible"
       nzPlacement="left"
@@ -43,7 +15,7 @@
               [nzSize]="64"
               nzSrc="https://genk.mediacdn.vn/thumb_w/640/2019/7/8/1-15625474669018688730.jpg"
             ></nz-avatar>
-          </div>  
+          </div>
           <div class="information-User">
             <span class="name-User"
               ><strong>{{ nameUser }}</strong></span
@@ -51,7 +23,7 @@
             <span class="role-Phone">{{ role }}-{{ phone }}</span>
           </div>
         </div>
-        <ul nz-menu nzTheme="light" nzMode="inline" class="ul-sideBar" >
+        <ul nz-menu nzTheme="light" nzMode="inline" class="ul-sideBar">
           <li nz-submenu nzTitle="Hàng xuất" nzIcon="export" class="li-sideBar">
             <ul>
               <li
@@ -121,9 +93,8 @@
     </nz-drawer>
     <nz-layout>
       <nz-content class="content">
-          <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
       </nz-content>
     </nz-layout>
   </nz-layout>
 </nz-layout>
-
