@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { DrawerService } from '../../services/drawer.service';
 
 import { routerNames } from '../../constant/router';
 @Component({
@@ -8,24 +10,51 @@ import { routerNames } from '../../constant/router';
   styleUrl: './side-bar.component.css',
 })
 export class SideBarComponent {
-  constructor(private router: Router) {}
+  // constructor(private router: Router) {}
 
   routerNames = routerNames
 
-  sideDrawerVisible = false;
-  nameUser:string = "Cường"
-  role:string = "Admin"
-  phone:string = "0987654321"
+  textSearch: string = ""
 
-  sideDrawerOpen(): void {
-    this.sideDrawerVisible = true;
+  sideDrawerVisible: boolean = false;
+
+  private drawerSub: Subscription;
+
+  constructor(private drawerService: DrawerService,private router: Router) {
+    this.drawerSub = this.drawerService.getDrawerState().subscribe(visible => {
+      this.sideDrawerVisible = visible;
+    });
   }
 
   sideDrawerClose(): void {
-    this.sideDrawerVisible = false;
+    this.drawerService.setDrawerState(false);
   }
+
+  ngOnDestroy(): void {
+    if (this.drawerSub) {
+      this.drawerSub.unsubscribe();
+    }
+  }
+
+  nameUser:string = "Cường"
+  role:string = "Admin"
+  phone:string = "0987654321"
+  
+  // sideDrawerVisible = false;
+  // sideDrawerOpen(): void {
+  //   this.sideDrawerVisible = true;
+  // }
+
+  // sideDrawerClose(): void {
+  //   this.sideDrawerVisible = false;
+  // }
   handleLogOut():void {
     this.router.navigate(['/signIn']);
+  }
+  handleChaneSearch(event:any):void {
+    const newValue = event.target.value;
+    console.log("data:", newValue);
+    
   }
 
   ngOnInit(): void {
