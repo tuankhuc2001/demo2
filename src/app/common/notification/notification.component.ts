@@ -8,14 +8,17 @@ import { NzNotificationPlacement, NzNotificationService } from 'ng-zorro-antd/no
 
 export class NotificationComponent implements OnInit {
 
+    @Input() title: string = 'Title'
+    @Input() context: string = 'Context'
+
     constructor(private notification: NzNotificationService) { }
 
     windowSize = window.innerWidth;
 
     createBasicNotification(position: NzNotificationPlacement): void {
         this.notification.blank(
-          `${typeof(this.windowSize)}`,
-          `${this.windowSize}`,
+          `${this.title}`,
+          `${this.context}`,
           { nzPlacement: position }
         );
       }

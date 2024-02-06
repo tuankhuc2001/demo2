@@ -208,6 +208,14 @@ menu-light .ant-menu-item-active, .ant-menu-light .ant-menu-item:hover, .ant-men
   color: #A5A5A5 !important;
 }
 
+::ng-deep .ant-menu-light .ant-menu-submenu-title:hover {
+  color: #A5A5A5 !important;
+}
+
+.ant-menu-submenu-selected {
+  color: #A5A5A5 !important;
+}
+
 .ant-menu-inline .ant-menu-item::after, .ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after {
   position: absolute;
   top: 0;
