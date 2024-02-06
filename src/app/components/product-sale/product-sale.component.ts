@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './product-sale.component.css'
 })
 export class ProductSaleComponent {
+  
+  handledmm(){
+    console.log("nguuuuuu");
+  }
 
 }
