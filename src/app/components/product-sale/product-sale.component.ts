@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ProductService } from '../../service/product.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { SearchService } from '../../service/search.service';
 
 @Component({
@@ -16,11 +16,12 @@ export class ProductSaleComponent implements OnDestroy,OnInit {
   }
 
   handleSearch(value: string) {
-    console.log(value)
+    
+    console.log(value, " HELs")
   }
 
   ngOnInit(): void {
-    this.productService.getSearchInput().pipe(takeUntil(this.destroyed$)).subscribe({
+    this.productService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
       next: value => {
         this.handleSearch(value)
       }

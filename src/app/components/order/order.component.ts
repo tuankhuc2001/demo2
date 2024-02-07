@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SearchService } from '../../service/search.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, debounceTime, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-order',
@@ -13,7 +13,7 @@ export class OrderComponent implements OnInit, OnDestroy{
   private $destroy = new Subject()
 
   ngOnInit(): void {
-      this.searchService.getSearchInput().pipe(takeUntil(this.$destroy)).subscribe({next: value => {
+      this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({next: value => {
         this.handleSearch(value)
       }})
   }

@@ -21,7 +21,8 @@ export class SideBarComponent {
   textSearch: string = ""
 
   handleSearch(e: any) {
-    this.searchService.setSearchInput(e)
+    this.textSearch = e
+    this.searchService.setSearchInput(this.textSearch)
   }
 
   handleSideDrawerClose(): void {
