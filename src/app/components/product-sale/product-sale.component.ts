@@ -8,6 +8,8 @@ import { DrawerService} from '../../services/drawer.service';
 export class ProductSaleComponent {
   constructor(private drawerService: DrawerService) {}
 
+  listCard: any = [{},{},{}]
+
   toggleDrawer(): void {
     this.drawerService.toggleDrawer();
   }

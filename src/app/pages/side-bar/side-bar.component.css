@@ -34,7 +34,7 @@
   cursor: pointer;
   transition: all 0.3s, padding 0s;
   color: #fff;
-  margin-right: 15px;
+  /* margin-right: 15px; */
 }
 
 .trigger:hover {
@@ -51,8 +51,8 @@
 
 .searchInput {
   text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
+  /* margin-left: 10px;
+  margin-right: 10px; */
 }
 .input-search {
   border-radius: 25px !important;
@@ -73,12 +73,6 @@
 ::ng-deep.ant-menu-sub.ant-menu-inline {
   background-color: #fff;
 }
-/* ::ng-deep .ant-menu-submenu-selected {
-  background-color: #25403b;
-} */
-/* nz-content {
-  margin: 24px;
-} */
 
 .inner-content {
   padding: 24px;
