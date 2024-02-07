@@ -1,65 +1,60 @@
 <nz-layout class="app-layout">
+  <nz-header class="header-menu">
+    <div class="searchInput">
+      <div nz-row class="col-menu">
+        <div nz-col nzSpan="3">
+          <a class="header-trigger" (click)="sideDrawerVisible = !sideDrawerVisible">
+            <span nz-icon [nzType]="'menu'" class="icon-menu"></span>
+          </a>
+        </div>
+        <div nz-col nzSpan="21">
+          <nz-input-group [nzSuffix]="suffixIconSearch" class="input-search">
+            <input nz-input type="text" placeholder="Tìm kiếm" class="inputSearch-header" [(ngModel)]="textSearch"
+              (ngModelChange)="handleSearch($event)" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <span nz-icon nzType="search" class="icon-search"></span>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </nz-header>
+
   <nz-layout>
-    <nz-drawer
-      class="nz-drawer"
-      [nzClosable]="false"
-      [nzVisible]="sideDrawerVisible"
-      nzPlacement="left"
-      [nzWidth]="'60%'"
-      (nzOnClose)="sideDrawerClose()"
-    >
+    <nz-drawer class="nz-drawer" [nzClosable]="false" [nzVisible]="sideDrawerVisible" nzPlacement="left"
+      [nzWidth]="'60%'" (nzOnClose)="handleSideDrawerClose()">
       <ng-container *nzDrawerContent>
         <div class="header-sideBar">
           <div class="information-Avatar">
-            <nz-avatar
-              [nzSize]="64"
-              nzSrc="https://genk.mediacdn.vn/thumb_w/640/2019/7/8/1-15625474669018688730.jpg"
-            ></nz-avatar>
+            <nz-avatar [nzSize]="64"
+              nzSrc="https://genk.mediacdn.vn/thumb_w/640/2019/7/8/1-15625474669018688730.jpg"></nz-avatar>
           </div>
           <div class="information-User">
-            <span class="name-User"
-              ><strong>{{ nameUser }}</strong></span
-            >
+            <span class="name-User"><strong>{{ nameUser }}</strong></span>
             <span class="role-Phone">{{ role }}-{{ phone }}</span>
           </div>
         </div>
         <ul nz-menu nzTheme="light" nzMode="inline" class="ul-sideBar">
           <li nz-submenu nzTitle="Hàng xuất" nzIcon="export" class="li-sideBar">
             <ul>
-              <li
-                nz-menu-item
-                [routerLink]="routerNames.productSalePage"
-                routerLinkActive="router-link-active"
-                class="title-menuItem"
-              >
+              <li nz-menu-item [routerLink]="routerNames.productSalePage" routerLinkActive="router-link-active"
+                class="title-menuItem" (click)="handleSideDrawerClose()">
                 - Sản phẩm xuất
               </li>
-              <li
-                nz-menu-item
-                [routerLink]="routerNames.orderPage"
-                routerLinkActive="router-link-active"
-                class="title-menuItem"
-              >
+              <li nz-menu-item [routerLink]="routerNames.orderPage" routerLinkActive="router-link-active"
+                class="title-menuItem" (click)="handleSideDrawerClose()">
                 - Danh sách yêu cầu
               </li>
             </ul>
           </li>
           <li nz-submenu nzTitle="Quản lý kho" nzIcon="shop">
             <ul>
-              <li
-                nz-menu-item
-                [routerLink]="routerNames.warehousePage"
-                routerLinkActive="router-link-active"
-                class="title-menuItem"
-              >
+              <li nz-menu-item [routerLink]="routerNames.warehousePage" routerLinkActive="router-link-active"
+                class="title-menuItem" (click)="handleSideDrawerClose()">
                 - Danh sách kho
               </li>
-              <li
-                nz-menu-item
-                [routerLink]="routerNames.importWarehousePage"
-                routerLinkActive="router-link-active"
-                class="title-menuItem"
-              >
+              <li nz-menu-item [routerLink]="routerNames.importWarehousePage" routerLinkActive="router-link-active"
+                class="title-menuItem" (click)="handleSideDrawerClose()">
                 - Nhập kho
               </li>
             </ul>
