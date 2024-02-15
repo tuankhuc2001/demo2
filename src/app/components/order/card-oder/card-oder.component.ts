@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { IProduct } from '../../../types/product';
 import { IOder } from '../../../types/order';
 @Component({
   selector: 'app-card-oder',

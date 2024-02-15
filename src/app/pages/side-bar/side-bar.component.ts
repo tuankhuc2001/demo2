@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { DrawerService } from '../../services/drawer.service';
 
 import { routerNames } from '../../constant/router';
 import { SearchService } from '../../service/search.service';

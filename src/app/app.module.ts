@@ -52,7 +52,8 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { CardProductSaleComponent } from './components/product-sale/card-product-sale/card-product-sale.component';
 import { CardOderComponent } from './components/order/card-oder/card-oder.component';
-import { CardCustomerComponent } from './components/cart/modal-add-customer/card-customer/card-customer.component';
+import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
+import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { CardCustomerComponent } from './components/cart/modal-add-customer/card
     CardProductSaleComponent,
     CardOderComponent,
     CardCustomerComponent,
+    CardCartComponent,
     
   ],
   imports: [

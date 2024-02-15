@@ -1,5 +1,6 @@
 * {
   font-family: Arial, Helvetica, sans-serif !important;
+  width: 100%;
 }
 :host {
   display: flex;
@@ -27,7 +28,6 @@
   color: #fff;
 }
 
-
 .header-menu {
   width: 100vw;
   position: absolute;
@@ -37,7 +37,7 @@
 }
 .on-top {
   width: 100vw;
-  margin-top: 10vh
+  margin-top: 10vh;
 }
 
 .searchInput {
