@@ -31,6 +31,10 @@ import { ModalAddCustomerComponent } from './components/cart/modal-add-customer/
 import { ModalAddOrderComponent } from './components/cart/modal-add-order/modal-add-order.component';
 import { ModalDeleteSingleComponent } from './components/cart/modal-delete-single/modal-delete-single.component';
 import { ModalDeleteAllComponent } from './components/cart/modal-delete-all/modal-delete-all.component';
+import { CardProductSaleComponent } from './components/product-sale/card-product-sale/card-product-sale.component';
+import { CardOderComponent } from './components/order/card-oder/card-oder.component';
+import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
+import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -50,11 +54,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { CardProductSaleComponent } from './components/product-sale/card-product-sale/card-product-sale.component';
-import { CardOderComponent } from './components/order/card-oder/card-oder.component';
-import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
-import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
-
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,7 +108,8 @@ import { CardCartComponent } from './components/cart/card-cart/card-cart.compone
     NzAvatarModule,
     NzCardModule,
     NzCheckboxModule,
-    NzSpinModule
+    NzSpinModule,
+    NzUploadModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

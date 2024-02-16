@@ -6,6 +6,7 @@ import { SideBarComponent } from './pages/side-bar/side-bar.component';
 import { ProductSaleComponent } from './components/product-sale/product-sale.component';
 import { OrderComponent } from './components/order/order.component';
 import { WarehouseComponent } from './components/warehouse/warehouse.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 import { routerNames } from './constant/router';
 
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: `${routerNames.signInPage}`,
     component: SignInComponent,
+  },
+  {
+    path: `${routerNames.addProduct}`,
+    component: AddProductComponent,
   },
   {
     path: `${routerNames.homePage}`,
