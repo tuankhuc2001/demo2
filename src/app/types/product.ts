@@ -1,8 +1,8 @@
 export interface IProduct {
   id: number;
-  nameProduct: string;
+  nameProduct: String;
   quantityProduct: number;
-  expiredDate: Date;
+  expiredDate: String;
   provider: string;
   unit: string;
   origin: string;

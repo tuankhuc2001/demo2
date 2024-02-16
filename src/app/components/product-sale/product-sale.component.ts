@@ -9,7 +9,7 @@ import { SearchService } from '../../service/search.service';
   styleUrl: './product-sale.component.css'
 })
 export class ProductSaleComponent implements OnDestroy,OnInit {
-
+  listCard: any = [{},{},{}]
   private destroyed$ = new Subject()
 
   constructor(private productService: SearchService) {
