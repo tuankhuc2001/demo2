@@ -18,6 +18,19 @@ import { ButtonComponent } from './common/button/button.component';
 import { ModalComponent } from './common/modal/modal.component';
 import { NotificationComponent } from './common/notification/notification.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { CartComponent } from './components/cart/cart.component';
+import { OrderComponent } from './components/order/order.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { WarehouseComponent } from './components/warehouse/warehouse.component';
+import { ModalUpdateQuantityComponent } from './components/modal-update-quantity/modal-update-quantity.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import { ProductSaleComponent } from './components/product-sale/product-sale.component';
+import { ModalAddCartItemComponent } from './components/product-sale/modal-add-cart-item/modal-add-cart-item.component';
+import { ModalCustomerComponent } from './components/cart/modal-customer/modal-customer.component';
+import { ModalAddCustomerComponent } from './components/cart/modal-add-customer/modal-add-customer.component';
+import { ModalAddOrderComponent } from './components/cart/modal-add-order/modal-add-order.component';
+import { ModalDeleteSingleComponent } from './components/cart/modal-delete-single/modal-delete-single.component';
+import { ModalDeleteAllComponent } from './components/cart/modal-delete-all/modal-delete-all.component';
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -37,19 +50,6 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { CartComponent } from './components/cart/cart.component';
-import { OrderComponent } from './components/order/order.component';
-import { OrderDetailComponent } from './components/order-detail/order-detail.component';
-import { WarehouseComponent } from './components/warehouse/warehouse.component';
-import { ModalUpdateQuantityComponent } from './components/modal-update-quantity/modal-update-quantity.component';
-import { AddProductComponent } from './components/add-product/add-product.component';
-import { ProductSaleComponent } from './components/product-sale/product-sale.component';
-import { ModalAddCartItemComponent } from './components/product-sale/modal-add-cart-item/modal-add-cart-item.component';
-import { ModalCustomerComponent } from './components/cart/modal-customer/modal-customer.component';
-import { ModalAddCustomerComponent } from './components/cart/modal-add-customer/modal-add-customer.component';
-import { ModalAddOrderComponent } from './components/cart/modal-add-order/modal-add-order.component';
-import { ModalDeleteSingleComponent } from './components/cart/modal-delete-single/modal-delete-single.component';
-import { ModalDeleteAllComponent } from './components/cart/modal-delete-all/modal-delete-all.component';
 
 @NgModule({
   declarations: [
