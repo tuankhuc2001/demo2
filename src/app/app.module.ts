@@ -54,6 +54,7 @@ import { CardProductSaleComponent } from './components/product-sale/card-product
 import { CardOderComponent } from './components/order/card-oder/card-oder.component';
 import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
 import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
+import { CardWarehouseComponent } from './components/warehouse/card-warehouse/card-warehouse.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { CardCartComponent } from './components/cart/card-cart/card-cart.compone
     CardOderComponent,
     CardCustomerComponent,
     CardCartComponent,
+    CardWarehouseComponent,
     
   ],
   imports: [

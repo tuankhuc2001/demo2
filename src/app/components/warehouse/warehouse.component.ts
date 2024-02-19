@@ -11,6 +11,7 @@ export class WarehouseComponent implements OnInit, OnDestroy{
 
   constructor(private searchService: SearchService){}
 
+  listCard: any = [{},{},{}]
   private $destroy = new Subject()
 
   ngOnInit(): void {
