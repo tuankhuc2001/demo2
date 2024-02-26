@@ -41,6 +41,13 @@
   background-color: rgb(224, 244, 242) !important; 
 }
 
+nz-header {
+  padding: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: #3c7265;
+}
+
 .app-header {
   position: relative;
   height: 64px;
@@ -76,9 +83,9 @@
 /* ::ng-deep .ant-menu-submenu-selected {
   background-color: #25403b;
 } */
-/* nz-content {
+nz-content {
   margin: 24px;
-} */
+}
 
 .inner-content {
   padding: 24px;

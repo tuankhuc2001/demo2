@@ -28,8 +28,4 @@ export class WarehouseComponent implements OnInit, OnDestroy{
   handleSearch(textSearch: string){
     console.log(textSearch)
   }
-
-  toggleDrawer(): void {
-    this.drawerService.toggleDrawer();
-  }
 }

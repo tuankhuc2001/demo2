@@ -18,5 +18,9 @@ export class ButtonComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        if(this.type === buttonType.default){
+            
+        }
+    }
 }
