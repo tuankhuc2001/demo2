@@ -14,6 +14,4 @@ export class ProductService {
   getProductWareHouse(): Observable<IProduct> {
     return this.response.asObservable()
   }
-
-
 }
