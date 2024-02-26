@@ -2,21 +2,27 @@ import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
+import { getISOWeek } from 'date-fns';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrl: './add-product.component.css'
+  styleUrl: './add-product.component.css',
 })
 export class AddProductComponent {
-  loading = false;
-  avatarUrl?: string;
-
   constructor(private msg: NzMessageService) {}
 
-  beforeUpload = (file: NzUploadFile, _fileList: NzUploadFile[]): Observable<boolean> =>
+  loading = false;
+  avatarUrl?: string;
+  date = null;
+  isEnglish = false;
+  beforeUpload = (
+    file: NzUploadFile,
+    _fileList: NzUploadFile[]
+  ): Observable<boolean> =>
     new Observable((observer: Observer<boolean>) => {
-      const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+      const isJpgOrPng =
+        file.type === 'image/jpeg' || file.type === 'image/png';
       if (!isJpgOrPng) {
         this.msg.error('You can only upload JPG file!');
         observer.complete();

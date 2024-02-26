@@ -35,6 +35,7 @@ import { CardProductSaleComponent } from './components/product-sale/card-product
 import { CardOderComponent } from './components/order/card-oder/card-oder.component';
 import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
 import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
+import { InputComponent } from './common/inputValidate/input.component';
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -55,6 +56,8 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +85,8 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
     CardOderComponent,
     CardCustomerComponent,
     CardCartComponent,
+    InputComponent,
+    
     
   ],
   imports: [
@@ -109,7 +114,8 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
     NzCardModule,
     NzCheckboxModule,
     NzSpinModule,
-    NzUploadModule
+    NzUploadModule,
+    NzDatePickerModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
