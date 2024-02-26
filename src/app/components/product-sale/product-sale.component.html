@@ -1,4 +1,6 @@
+<cButton (click)="handleOpenModalAddCartItem()" [customStyle]="{backgroundColor:'red', color: 'white'}">Open Modal</cButton>
+<cButton (click)="handleOpenModalAddCartItem()" [type]="buttonType.green">Open Modal</cButton>
 
-<div>
-    
-</div>
+Hello
+
+<app-modal-add-cart-item [isVisible]="isVisibleModalAddCartItem" (closeModal)="handleCloseModalAddCartItem()" [ProductDetail]="productDetail"></app-modal-add-cart-item>
