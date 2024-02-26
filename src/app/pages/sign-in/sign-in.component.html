@@ -1,12 +1,14 @@
-<nz-spin [nzSpinning]="isLoading">  
+<nz-spin [nzSpinning]="isLoading">
   <div class="main">
     <div class="main-signIn">
       <div class="img">
         <img
           width="20%"
           nz-image
-          nzSrc="../../../assets/images/logoBonbon.jpg"
-          alt="golo"
+          nzSrc="../../../assets/images/logoBonbonSizeLon.jpg"
+          alt="logo"
+          class="img-logo"
+          nzDisablePreview="true"
         />
       </div>
       <div class="title-logo">
@@ -20,19 +22,20 @@
           class="login-form"
           (ngSubmit)="submitForm()"
         >
-          <nz-form-item>
-            <nz-form-control nzErrorTip="Please input your username!">
-              <nz-input-group nzPrefixIcon="user">
+          <nz-form-item class="form-item">
+            <nz-form-control nzErrorTip="Tài khoản hoặc mật khẩu không đúng!">
+              <nz-input-group nzPrefixIcon="user" >
                 <input
-                  type="text"
-                  nz-input
-                  formControlName="userName"
-                  placeholder="Username"
+                nz-input
+                type="text"
+                formControlName="userName"
+                placeholder="Username"
+                class="input-login"
                 />
               </nz-input-group>
             </nz-form-control>
           </nz-form-item>
-          <nz-form-item>
+          <nz-form-item class="form-item">
             <nz-form-control nzErrorTip="Please input your Password!">
               <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate" nzErrorTip="Please input your Password!">
                 <input
@@ -40,6 +43,7 @@
                   formControlName="password"
                   nz-input
                   placeholder="Password"
+                  class="input-login"
                 />
               </nz-input-group>
               <ng-template #suffixTemplate>
@@ -56,7 +60,7 @@
             class="login-form-button login-form-margin"
             [nzType]="'primary'"
           >
-            Log in
+            Đăng Nhập
           </button>
         </form>
       </div>

@@ -1,1 +1,27 @@
-<p>import-warehose works!</p>
+<div class="main">
+  <div class="header-menu">
+    <div class="searchInput">
+      <div nz-row class="col-menu">
+        <div nz-col nzSpan="3">
+          <a class="header-trigger" (click)="toggleDrawer()">
+            <span nz-icon [nzType]="'menu'" class="icon-menu"></span>
+          </a>
+        </div>
+        <div nz-col nzSpan="21">
+          <nz-input-group [nzSuffix]="suffixIconSearch" class="input-search">
+            <input
+              type="text"
+              nz-input
+              placeholder="Tìm kiếm"
+              class="inputSearch-header"
+            />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <span nz-icon nzType="search" class="icon-search"></span>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1>importWarehousePage</h1>
+</div>

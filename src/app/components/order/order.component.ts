@@ -5,7 +5,7 @@ import { Subject, debounceTime, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrl: './order.component.css'
+  styleUrl: './order.component.css',
 })
 export class OrderComponent implements OnInit, OnDestroy{
 
