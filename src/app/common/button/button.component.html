@@ -1,1 +1,3 @@
-<button nz-button nzType="primary">{{nameButtonCommon}}</button>
+<button nz-button [style]="customStyle" [class]="classNameOnType">
+    <ng-content></ng-content>
+</button>

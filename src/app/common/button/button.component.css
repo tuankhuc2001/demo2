@@ -1,18 +1,4 @@
-.btn-common {
-    border-radius: 25px;
-    padding: 10px 25px;
-    border: solid 1px;
-    font-weight: bold;
-}
-
-.btn-common:hover{
-    border: none;
-    background-color:rgb(75, 165, 196);
-    color: aliceblue;
-}
-
-.btn-common:focus{
-    border: none;
-    background-color:rgb(75, 165, 196);
-    color: aliceblue;
+.greenButton{
+    background-color: '#3c726';
+    color: white;
 }
