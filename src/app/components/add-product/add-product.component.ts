@@ -12,6 +12,7 @@ import { getISOWeek } from 'date-fns';
 export class AddProductComponent {
   constructor(private msg: NzMessageService) {}
 
+  listCard: any = [{},{},{}]
   loading = false;
   avatarUrl?: string;
   date = null;
