@@ -4,5 +4,6 @@ export enum routerNames {
     productSalePage = "productSale",
     importWarehousePage = "importWarehouse",
     orderPage = "order",
-    warehousePage = "warehouse"
+    warehousePage = "warehouse",
+    addProductPage = "addProduct",
 }

@@ -55,6 +55,9 @@ import { CardOderComponent } from './components/order/card-oder/card-oder.compon
 import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
 import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
 import { CardWarehouseComponent } from './components/warehouse/card-warehouse/card-warehouse.component';
+import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse/card-import-warehouse.component';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -84,6 +87,7 @@ import { CardWarehouseComponent } from './components/warehouse/card-warehouse/ca
     CardCustomerComponent,
     CardCartComponent,
     CardWarehouseComponent,
+    CardImportWarehouseComponent,
     
   ],
   imports: [
@@ -110,7 +114,8 @@ import { CardWarehouseComponent } from './components/warehouse/card-warehouse/ca
     NzAvatarModule,
     NzCardModule,
     NzCheckboxModule,
-    NzSpinModule
+    NzSpinModule,
+    NzBadgeModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

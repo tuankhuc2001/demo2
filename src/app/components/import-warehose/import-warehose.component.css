@@ -3,6 +3,24 @@
   width: 100%;
 }
 
-@media only screen and (max-width: 400px) {
 
+.btn-addProduct {
+  position:absolute;
+  border: none;
+  background-color: green;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  right: 10px;
+  bottom: 20px;
 }
+
+.btn-addProduct:focus{
+  background-color: aqua;
+}
+
+.btn-addProduct:hover{
+  background-color: blue;
+}
+
+@media only screen and (max-width: 768px) {}
