@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { ProductService } from '../../service/product.service';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
-import { SearchService } from '../../service/search.service';
+import { SearchService } from '../../services/search.service';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-sale',

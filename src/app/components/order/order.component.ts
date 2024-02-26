@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SearchService } from '../../service/search.service';
+import { SearchService } from '../../services/search.service';
+import {OrderService} from '../../services/order.service';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -10,7 +12,7 @@ import { Subject, debounceTime, takeUntil } from 'rxjs';
 export class OrderComponent implements OnInit, OnDestroy{
 
   
-  constructor( private searchService: SearchService){}
+  constructor( private searchService: SearchService, private orderService: OrderService, private router: Router){}
   private $destroy = new Subject()
   listCard: any = [{},{},{}]
 
@@ -29,5 +31,11 @@ export class OrderComponent implements OnInit, OnDestroy{
 
   handleSearch(textSearch: string){
     console.log(textSearch)
+  }
+
+  handleGetOrderDetail(idOrder: number){
+    this.orderService.setOrderDetailId(idOrder)
+    console.log(idOrder)
+    this.router.navigate(['/home']);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SearchService } from '../../service/search.service';
+import { SearchService } from '../../services/search.service';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 
 @Component({
