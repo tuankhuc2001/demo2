@@ -1,1 +1,18 @@
-<p>add-product works!</p>
+<!-- <app-card-customer [listCard]="listCard"></app-card-customer> -->
+<nz-upload
+class="avatar-uploader"
+nzName="avatar"
+nzListType="picture-card"
+[nzShowUploadList]="false"
+(nzChange)="handleChange($event)"
+[nzFileList]="fileListInfo"
+>
+<ng-container *ngIf="!avatarUrl">
+  <span class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></span>
+  <div class="ant-upload-text">Upload</div>
+</ng-container>
+<img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+</nz-upload> 
+<input type="file" (change)="test($event)"/>
+
+<button (click)="handleCallAIP()">check</button>

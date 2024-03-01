@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { ProductService } from '../../service/product.service';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { SearchService } from '../../service/search.service';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';

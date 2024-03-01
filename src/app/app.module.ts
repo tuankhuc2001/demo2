@@ -31,6 +31,11 @@ import { ModalAddCustomerComponent } from './components/cart/modal-add-customer/
 import { ModalAddOrderComponent } from './components/cart/modal-add-order/modal-add-order.component';
 import { ModalDeleteSingleComponent } from './components/cart/modal-delete-single/modal-delete-single.component';
 import { ModalDeleteAllComponent } from './components/cart/modal-delete-all/modal-delete-all.component';
+import { CardProductSaleComponent } from './components/product-sale/card-product-sale/card-product-sale.component';
+import { CardOderComponent } from './components/order/card-oder/card-oder.component';
+import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
+import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
+import { InputComponent } from './common/inputValidate/input.component';
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -50,14 +55,8 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { CardProductSaleComponent } from './components/product-sale/card-product-sale/card-product-sale.component';
-import { CardOderComponent } from './components/order/card-oder/card-oder.component';
-import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
-import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
-import { CardWarehouseComponent } from './components/warehouse/card-warehouse/card-warehouse.component';
-import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse/card-import-warehouse.component';
-import { NzBadgeModule } from 'ng-zorro-antd/badge';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 @NgModule({
   declarations: [
@@ -86,8 +85,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     CardOderComponent,
     CardCustomerComponent,
     CardCartComponent,
-    CardWarehouseComponent,
-    CardImportWarehouseComponent,
+    InputComponent,
+    
     
   ],
   imports: [
@@ -115,7 +114,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     NzCardModule,
     NzCheckboxModule,
     NzSpinModule,
-    NzBadgeModule,
+    NzUploadModule,
+    NzDatePickerModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
