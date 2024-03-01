@@ -11,7 +11,46 @@ export class WarehouseComponent implements OnInit, OnDestroy{
 
   constructor(private searchService: SearchService){}
 
-  listCard: any = [{},{},{}]
+  listCard: any = [{
+    id: 1,
+    nameProduct: "abc",
+    quantityProduct: 0,
+    expiredDate: "abc",
+    provider: "abc",
+    unit: "abc",
+    origin: "abc",
+    avatar: "abc",
+    codeProduct: "abc",
+    description: "abc",
+    providePrice: 0,
+    floorPrice: 0,
+  },{
+    id: 2,
+    nameProduct: "abc",
+    quantityProduct: 0,
+    expiredDate: "abc",
+    provider: "abc",
+    unit: "abc",
+    origin: "abc",
+    avatar: "abc",
+    codeProduct: "abc",
+    description: "abc",
+    providePrice: 0,
+    floorPrice: 0,
+  },{
+    id: 3,
+    nameProduct: "abc",
+    quantityProduct: 0,
+    expiredDate: "abc",
+    provider: "abc",
+    unit: "abc",
+    origin: "abc",
+    avatar: "abc",
+    codeProduct: "abc",
+    description: "abc",
+    providePrice: 0,
+    floorPrice: 0,
+  }]
   private $destroy = new Subject()
 
   ngOnInit(): void {
@@ -28,5 +67,9 @@ export class WarehouseComponent implements OnInit, OnDestroy{
 
   handleSearch(textSearch: string){
     console.log(textSearch)
+  }
+
+  handleOpenModal(id: number){
+    console.log(id,"id");
   }
 }

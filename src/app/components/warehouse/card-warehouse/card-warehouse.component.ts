@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from '../../../types/product';
 
 @Component({
@@ -23,5 +23,10 @@ export class CardWarehouseComponent {
     providePrice: 0,
     floorPrice: 0,
   }
+  
+  @Output() productIdEmit: EventEmitter<number> = new EventEmitter();
 
+  handleProductIdEmit(productId: number){
+    this.productIdEmit.emit(productId)
+  }
 }
