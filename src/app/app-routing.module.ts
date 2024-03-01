@@ -17,7 +17,7 @@ const routes: Routes = [
     component: SignInComponent,
   },
   {
-    path: `${routerNames.addProduct}`,
+    path: `${routerNames.addProductPage}`,
     component: AddProductComponent,
   },
   {
