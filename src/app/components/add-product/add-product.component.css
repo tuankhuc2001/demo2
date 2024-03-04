@@ -54,8 +54,15 @@
 } */
 
 .handle_add{
-  width: 20%;
-  height: 15%;
+  width: 15%;
+  height: 10%;
   border-radius: 15px;
   border: 1px solid;
+}
+
+.input_add{
+  border: 1px solid;
+  height: 30px;
+  width: 100%;
+  background-color: aqua;
 }

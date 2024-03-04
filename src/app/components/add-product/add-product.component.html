@@ -8,7 +8,11 @@
   </ng-container>
   <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
 </nz-upload>
-<InputValidate></InputValidate>
-<InputValidate></InputValidate>
-<InputValidate></InputValidate>
-<button class="handle_add" (click)="handleAddProduct()">Tải ảnh lên</button>
+<input class="input_add" (onclick)="handleCallAPIAdd()">
+<input class="input_add" (onclick)="handleCallAPIAdd()">
+<input class="input_add" (onclick)="handleCallAPIAdd()">
+<input class="input_add" (onclick)="handleCallAPIAdd()">
+<input class="input_add" (onclick)="handleCallAPIAdd()">
+<input class="input_add" (onclick)="handleCallAPIAdd()">
+<input class="input_add" (onclick)="handleCallAPIAdd()">
+<button class="handle_add" (click)="handleAddProduct()" (onclick)="handleCallAPIAdd()">Xác nhận</button>
