@@ -1,3 +1,4 @@
-<cButton (click)="handleOpenModalAddCartItem()">Open Modal</cButton>
-
-<app-modal-add-cart-item [isVisible]="isVisibleModalAddCartItem" (closeModal)="handleCloseModalAddCartItem()" [ProductDetail]="productDetail"></app-modal-add-cart-item>
+<div>
+    <app-card-product-sale [listCard]="listProduct" (click)="handleOpenModalAddCartItem()"></app-card-product-sale>
+    <app-modal-add-cart-item [isVisible]="isVisibleModalAddCartItem" (closeModal)="handleCloseModalAddCartItem()" [ProductDetail]="productDetail"></app-modal-add-cart-item>
+</div>
