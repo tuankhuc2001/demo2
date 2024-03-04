@@ -12,6 +12,7 @@ export class ModalComponent implements OnInit {
     @Input() isLoading: boolean = false
     @Input() title: string = "Default title"
     @Input() isVisible: boolean = false
+    @Input() width: string | number = ''
     @Output() closeModal: EventEmitter<void> = new EventEmitter<void>()
 
     ngOnInit() { }

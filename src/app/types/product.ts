@@ -12,3 +12,12 @@ export interface IProduct {
   providePrice: number;
   floorPrice: number;
 }
+
+export interface IResponseProduct {
+  message: string,
+  status: boolean,
+  content: {
+    list: IProduct[],
+    totalCartItem: number,
+  }
+}

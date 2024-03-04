@@ -1,8 +1,11 @@
-import { Component, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
-import { SearchService } from '../../services/search.service';
 import { __values } from 'tslib';
+
 import { IProduct } from '../../types/product';
+import { ProductService } from '../../services/product.service';
+import { SearchService } from '../../services/search.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-product-sale',
@@ -10,30 +13,50 @@ import { IProduct } from '../../types/product';
   styleUrl: './product-sale.component.css'
 })
 export class ProductSaleComponent implements OnDestroy, OnInit {
-  listCard: any = [{},{},{}]
+  listProduct: IProduct[] = []
+  totalCartItem: number = 0
   private destroyed$ = new Subject()
 
-  constructor(private searchService: SearchService) {
+  constructor( private notification: NzNotificationService,
+    private searchService: SearchService, 
+    private productService: ProductService) {
   }
 
   isVisibleModalAddCartItem: boolean = false
   productDetail: IProduct = {
-    id: 1,
-    nameProduct: 'mockProduct',
-    quantityProduct: 200,
+    id: 0,
+    nameProduct: "undefined",
+    quantityProduct: 0,
     expiredDate: new Date,
-    provider: 'Factory ABC',
-    unit: 'Box(es)',
-    origin: 'Ha Noi',
-    avatar: 'AAAAAAAAAAAAAAAAAAAAAAAAA',
-    codeProduct: 'XM2304',
-    description: 'Avoid drinking more than 1 gauge',
-    providePrice: 500000,
-    floorPrice: 550000,
+    provider: '',
+    unit: '',
+    origin: '',
+    avatar: undefined,
+    codeProduct: '',
+    description: '',
+    providePrice: 0,
+    floorPrice: 0
   }
 
   handleSearch(value: string) {
-    console.log(value, "Search222")
+    this.productService.getProductSale(1, value).subscribe({
+      next: (res) => {
+        this.listProduct = res.content.list
+        this.totalCartItem = res.content.totalCartItem
+        console.log(res, "Search222")
+      },
+      error: (error) => {
+        this.createNotification('error', error)
+      }
+    })
+  }
+
+  createNotification(type: string, content: string): void {
+    this.notification.create(
+      type,
+      `${content}`,
+      ''
+    );
   }
 
   handleOpenModalAddCartItem() {
