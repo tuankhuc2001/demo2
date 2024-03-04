@@ -89,6 +89,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     CardCartComponent,
     InputComponent,
     CardOrderDetailComponent,
+    CardWarehouseComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
-import { SearchService } from '../../service/search.service';
+import { SearchService } from '../../services/search.service';
 import { Router } from '@angular/router';
 import { routerNames } from '../../constant/router';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';

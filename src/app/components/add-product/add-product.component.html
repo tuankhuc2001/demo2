@@ -1,18 +1,14 @@
 <!-- <app-card-customer [listCard]="listCard"></app-card-customer> -->
-<nz-upload
-class="avatar-uploader"
-nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-nzName="avatar"
-nzListType="picture-card"
-[nzShowUploadList]="false"
-[nzBeforeUpload]="beforeUpload"
-(nzChange)="handleChange($event)"
-[nzShowButton]="fileList.length < 8"
->
-<ng-container *ngIf="!avatarUrl">
-  <span class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></span>
-  <div class="ant-upload-text">Upload</div>
-</ng-container>
-<img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+<nz-upload class="avatar-uploader" nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+  nzName="avatar" nzListType="picture-card" [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload"
+  (nzChange)="handleChange($event)" [nzShowButton]="fileList.length < 8">
+  <ng-container *ngIf="!avatarUrl">
+    <span class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></span>
+    <div class="ant-upload-text">Chọn ảnh</div>
+  </ng-container>
+  <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
 </nz-upload>
-<button (click)="handleCallAIP()">check</button>
+<InputValidate></InputValidate>
+<InputValidate></InputValidate>
+<InputValidate></InputValidate>
+<button class="handle_add" (click)="handleAddProduct()">Tải ảnh lên</button>
