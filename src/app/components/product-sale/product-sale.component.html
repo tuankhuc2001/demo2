@@ -1,5 +1,3 @@
-<div>
-  <div>
-    hello oder
-  </div>
-</div>
+<cButton (click)="handleOpenModalAddCartItem()">Open Modal</cButton>
+
+<app-modal-add-cart-item [isVisible]="isVisibleModalAddCartItem" (closeModal)="handleCloseModalAddCartItem()" [ProductDetail]="productDetail"></app-modal-add-cart-item>

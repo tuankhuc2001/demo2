@@ -1,27 +1,89 @@
-import { Component, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
-import { SearchService } from '../../services/search.service';
+import { __values } from 'tslib';
+
+import { IProduct } from '../../types/product';
 import { ProductService } from '../../services/product.service';
+import { SearchService } from '../../services/search.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-product-sale',
   templateUrl: './product-sale.component.html',
   styleUrl: './product-sale.component.css'
 })
-export class ProductSaleComponent implements OnDestroy,OnInit {
-  listCard: any = [{},{},{}]
+export class ProductSaleComponent implements OnDestroy, OnInit {
+  listProduct: IProduct[] = []
+  totalCartItem: number = 0
   private destroyed$ = new Subject()
 
-  constructor(private productService: SearchService) {
+  constructor( private notification: NzNotificationService,
+    private searchService: SearchService, 
+    private productService: ProductService) {
+  }
+
+  isVisibleModalAddCartItem: boolean = false
+  productDetail: IProduct = {
+    id: 0,
+    nameProduct: "undefined",
+    quantityProduct: 0,
+    expiredDate: new Date,
+    provider: '',
+    unit: '',
+    origin: '',
+    avatar: undefined,
+    codeProduct: '',
+    description: '',
+    providePrice: 0,
+    floorPrice: 0
   }
 
   handleSearch(value: string) {
-    
-    console.log(value, " HELs")
+    this.productService.getProductSale(1, value).subscribe({
+      next: (res) => {
+        this.listProduct = res.content.list
+        this.totalCartItem = res.content.totalCartItem
+        console.log(res, "Search222")
+      },
+      error: (error) => {
+        this.createNotification('error', error)
+      }
+    })
+  }
+
+  createNotification(type: string, content: string): void {
+    this.notification.create(
+      type,
+      `${content}`,
+      ''
+    );
+  }
+
+  handleOpenModalAddCartItem() {
+    this.isVisibleModalAddCartItem = true
+    this.productDetail = {
+      id: 4,
+      nameProduct: 'NextProduct',
+      quantityProduct: 422,
+      expiredDate: new Date,
+      provider: 'Factory FGD',
+      unit: 'Box(es)',
+      origin: 'HCM',
+      avatar: 'BBBBBBBBBBBBBBBB',
+      codeProduct: 'Xaaaaaas',
+      description: 'Avoid drinking more than 4 gauges',
+      providePrice: 200000,
+      floorPrice: 750000,
+
+    }
+  }
+
+  handleCloseModalAddCartItem() {
+    this.isVisibleModalAddCartItem = false
   }
 
   ngOnInit(): void {
-    this.productService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
+    this.searchService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
       next: value => {
         this.handleSearch(value)
       }
@@ -31,7 +93,5 @@ export class ProductSaleComponent implements OnDestroy,OnInit {
   ngOnDestroy(): void {
     this.destroyed$.next(true)
     this.destroyed$.complete()
-
-    console.log("destroyed")
   }
 }
