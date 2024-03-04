@@ -2,7 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
     selector: 'cButton',
-    templateUrl: 'button.component.html'
+    templateUrl: 'button.component.html',
+    styleUrl: 'button.component.css',
 })
 
 export class ButtonComponent implements OnInit {

@@ -178,56 +178,5 @@ nz-drawer {
   color: #ff0000;
 }
 @media only screen and (max-width: 400px) {
-  .name-User {
-    color: #3d7165;
-    font-size: 1.3em;
-    font-weight: 600px;
-  }
-  .role-Phone {
-    color: #3d7165;
-    font-size: 0.9em;
-    font-weight: 600px;
-  }
-  .ul-sideBar li {
-    font-size: 13px !important;
-    font-weight: 700;
-    color: #A5A5A5 !important;
-  }
-}
 
-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open {
-  background-color: rgb(224, 244, 242) !important; 
-  color: #A5A5A5 !important;
 }
-
-.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-  background-color: rgb(224, 244, 242) !important; 
-}
-
-.ant-menu-item-selected, .ant-menu-item-selected a, .ant-menu-item-selected a:hover, .ant-menu-item > .ant-badge a:hover {
-  color: #A5A5A5 !important;
-}
-
-::ng-deep .ant-menu-light .ant-menu-submenu-title:hover {
-  color: #A5A5A5 !important;
-}
-
-.ant-menu-submenu-selected {
-  color: #A5A5A5 !important;
-}
-
-.ant-menu-inline .ant-menu-item::after, .ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  border-right: 3px solid #A5A5A5 !important;
-  transform: scaleY(.0001);
-  opacity: 0;
-  transition: transform .15s cubic-bezier(.215, .61, .355, 1), opacity .15s cubic-bezier(.215, .61, .355, 1);
-  content: "";
-}
-
-/* menu-light .ant-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open {
-  color: #A5A5A5 !important;
-} */

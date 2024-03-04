@@ -9,8 +9,11 @@ import { Subject, debounceTime, takeUntil } from 'rxjs';
 })
 export class OrderComponent implements OnInit, OnDestroy{
 
+  
   constructor( private searchService: SearchService){}
   private $destroy = new Subject()
+  listCard: any = [{},{},{}]
+
 
   ngOnInit(): void {
       this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({next: value => {

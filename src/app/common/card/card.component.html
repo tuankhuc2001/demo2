@@ -1,6 +1,6 @@
-<nz-card style="width:300px;" nzTitle="Card title" [nzExtra]="extraTemplate"  [nzLoading]="isLoading">
+<nz-card
+  class="main"
+  [nzLoading]="isLoading"
+>
   <ng-content select="Content"></ng-content>
 </nz-card>
-<ng-template #extraTemplate>
-  <ng-content select="[extraTemplate]"></ng-content>
-</ng-template>

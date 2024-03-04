@@ -10,7 +10,7 @@ import { IProduct } from '../../types/product';
   styleUrl: './product-sale.component.css'
 })
 export class ProductSaleComponent implements OnDestroy, OnInit {
-
+  listCard: any = [{},{},{}]
   private destroyed$ = new Subject()
 
   constructor(private searchService: SearchService) {

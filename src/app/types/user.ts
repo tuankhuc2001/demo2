@@ -1,4 +1,4 @@
-export interface IProduct {
+export interface IUser {
   id: number;
   phone: string;
   password: string;

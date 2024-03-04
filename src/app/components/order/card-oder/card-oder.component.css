@@ -1,0 +1,41 @@
+.main-card {
+  display: flex;
+}
+::ng-deep.ant-card-body {
+  padding: 0px !important;
+}
+
+.card-status {
+  background-color: #b31312;
+  width: 2vw;
+  height: 20vw;
+}
+.codeOder-card {
+  font-size: 3vw;
+  font-weight: 700;
+  color: #b31312;
+}
+.nameCustomer-card {
+  font-size: 2.5vw;
+  font-weight: 700;
+  color: #3d7165;
+}
+.textOder-card {
+  font-size: 2.5vw;
+  color: #3d7165;
+}
+.IconOder-card {
+    color: #3d7165;
+    font-size: 2.5vw;
+    display: flex;
+    align-items: center;
+}
+.totalPrice-card {
+  font-size: 3vw;
+  font-weight: 700;
+  color: #b31312;
+}
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}

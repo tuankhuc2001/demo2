@@ -1,6 +1,6 @@
 export interface IProduct {
   id: number;
-  nameProduct: string;
+  nameProduct: String;
   quantityProduct: number;
   expiredDate: Date;
   provider: string;
