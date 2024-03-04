@@ -36,7 +36,9 @@ import { CardOderComponent } from './components/order/card-oder/card-oder.compon
 import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
 import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
 import { InputComponent } from './common/inputValidate/input.component';
-import {CardOrderDetailComponent} from './components/order-detail/card-order-detail/card-order-detail.component'
+import {CardOrderDetailComponent} from './components/order-detail/card-order-detail/card-order-detail.component';
+import {CardWarehouseComponent} from './components/warehouse/card-warehouse/card-warehouse.component';
+
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -58,6 +60,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { ModalUpdatePriceComponent } from './components/warehouse/modal-update-price/modal-update-price.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +91,9 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     CardCartComponent,
     InputComponent,
     CardOrderDetailComponent,
+    WarehouseComponent,
+    CardWarehouseComponent,
+    ModalUpdatePriceComponent,
   ],
   imports: [
     BrowserModule,

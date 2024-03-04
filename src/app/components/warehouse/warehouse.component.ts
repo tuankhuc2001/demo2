@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { IProduct } from '../../types/product';
 
 @Component({
   selector: 'app-warehouse',
@@ -27,5 +28,17 @@ export class WarehouseComponent implements OnInit, OnDestroy{
 
   handleSearch(textSearch: string){
     console.log(textSearch)
+  }
+
+  listCard:any = [{}, {}, {}]
+
+
+  isVisibleModalUpdatePrice: boolean= false;
+  handleOpenModalUpdatePrice(){
+    this.isVisibleModalUpdatePrice = true;
+  }
+
+  handleCloseModalUpdatePrice() {
+    this.isVisibleModalUpdatePrice = false;
   }
 }

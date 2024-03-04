@@ -1,0 +1,41 @@
+<div *ngIf="listCard.length == 0">ko co du</div>
+<cCard *ngFor="let item of listCard" (click)="handleOpenModalUpdatePrice()">
+  <Content> 
+    <div class="main-card">
+      <div nz-col nzSpan="6" class="card-img">
+        <img
+          nz-image
+          width="80%"
+          nzSrc="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+          alt="songay"
+          nzDisablePreview="true"
+        />
+      </div>
+      <div nz-col nzSpan="12" style="display: flex; flex-direction: column;justify-content: space-between;">
+        <div nz-row>
+            <span class="nameProduct-card">{{listProduct.nameProduct}}</span>
+        </div>
+        <div nz-row>
+            <span class="textProduct-card">{{listProduct.unit}}</span>
+        </div>
+        <div nz-row>
+            <span class="textProduct-card">{{listProduct.origin}}</span>
+        </div> 
+        <div nz-row>
+            <span class="textProduct-card">{{listProduct.codeProduct}}</span>
+        </div>  
+      </div>
+      <div nz-col nzSpan="6">
+        <div nz-row class="flex-end">
+            <span class="floorPrice-card">{{listProduct.floorPrice}}</span>
+        </div>
+        <div nz-row class="flex-end">
+            <span class="textProduct-card">{{listProduct.expiredDate}}</span>
+        </div>
+        <div nz-row class="flex-end">
+            <span class="textProduct-card">{{listProduct.quantityProduct}}</span>
+        </div>
+      </div>
+    </div>
+  </Content>
+</cCard>
