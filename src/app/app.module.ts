@@ -36,6 +36,7 @@ import { CardOderComponent } from './components/order/card-oder/card-oder.compon
 import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
 import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
 import { InputComponent } from './common/inputValidate/input.component';
+import {CardOrderDetailComponent} from './components/order-detail/card-order-detail/card-order-detail.component'
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -86,8 +87,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     CardCustomerComponent,
     CardCartComponent,
     InputComponent,
-    
-    
+    CardOrderDetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SearchService } from '../../services/search.service';
-import {OrderService} from '../../services/order.service';
-import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
+import { Subject, debounceTime, takeUntil } from 'rxjs';
+
+import { SearchService } from '../../services/search.service';
+import { routerNames } from '../../constant/router';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-order',
@@ -36,6 +38,6 @@ export class OrderComponent implements OnInit, OnDestroy{
   handleGetOrderDetail(idOrder: number){
     this.orderService.setOrderDetailId(idOrder)
     console.log(idOrder)
-    this.router.navigate(['/home']);
+    this.router.navigate([routerNames.orderDetailPage]);
   }
 }
