@@ -1,1 +1,9 @@
 <p>order-detail works!</p>
+<div class="header__OrderDetail">
+    <span (click)="handleBackOrder()">
+        <span nz-icon nzType="left" nzTheme="outline"></span>
+    </span>
+</div>
+<div>
+    <app-card-order-detail [listCardOrderDetail]="listCardOrderDetail"></app-card-order-detail>
+</div>

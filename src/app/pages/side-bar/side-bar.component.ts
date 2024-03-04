@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-<<<<<<< HEAD
-=======
 import { Subscription } from 'rxjs';
->>>>>>> 17dad58e557ed872fdbde6a7a144499c8ec2fd78
 
 import { routerNames } from '../../constant/router';
-import { SearchService } from '../../service/search.service';
+import { SearchService } from '../../services/search.service';
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
