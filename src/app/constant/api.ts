@@ -8,3 +8,7 @@ export const objectApi = {
     orderDetail: Url+`orderDetail/`,
     customer: Url+`customer/`,
 }
+
+export const apiProduct = {
+    getProductWarehouse: Url+`getProductWarehouse/`
+}

@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { IProduct } from '../../../types/product';
+import { NotificationComponent } from '../../../common/notification/notification.component';
 
 @Component({
   selector: 'app-modal-add-cart-item',
   templateUrl: './modal-add-cart-item.component.html',
   styleUrl: './modal-add-cart-item.component.css'
 })
-export class ModalAddCartItemComponent implements OnChanges{
+export class ModalAddCartItemComponent implements OnChanges {
 
   constructor(private fb: NonNullableFormBuilder) { }
 
@@ -32,7 +33,7 @@ export class ModalAddCartItemComponent implements OnChanges{
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ProductDetail'] && !changes['ProductDetail'].firstChange) {
       console.log('ProductDetail changed:', changes['ProductDetail'].currentValue);
-      this.validateAddCartForm.setValue({quantity: 0, editPrice: this.ProductDetail.floorPrice})
+      this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice })
     }
   }
 
@@ -60,7 +61,7 @@ export class ModalAddCartItemComponent implements OnChanges{
     quantity: FormControl<number>;
     editPrice: FormControl<number>;
   }> = this.fb.group({
-    quantity: [0, [Validators.required, this.quantityValidator]],
+    quantity: [1, [Validators.required, this.quantityValidator]],
     editPrice: [this.ProductDetail.floorPrice, [Validators.required, this.editPriceValidator]],
   });
 
@@ -79,7 +80,7 @@ export class ModalAddCartItemComponent implements OnChanges{
   //////////////////////// 
 
   handleCloseModal() {
+    
     this.closeModal.emit()
   }
-
 }

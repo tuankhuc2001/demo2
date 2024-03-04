@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { DrawerService } from '../../services/drawer.service';
 
 import { routerNames } from '../../constant/router';
 import { SearchService } from '../../service/search.service';
@@ -36,11 +34,6 @@ export class SideBarComponent {
 
   handleLogOut(): void {
     this.router.navigate(['/signIn']);
-  }
-  handleChaneSearch(event:any):void {
-    const newValue = event.target.value;
-    console.log("data:", newValue);
-    
   }
 
   ngOnInit(): void {

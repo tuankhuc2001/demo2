@@ -1,11 +1,8 @@
 import { Component, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { ProductService } from '../../service/product.service';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { SearchService } from '../../service/search.service';
-import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { __values } from 'tslib';
 import { IProduct } from '../../types/product';
-import { buttonType } from '../../constant/button';
 
 @Component({
   selector: 'app-product-sale',
@@ -13,7 +10,6 @@ import { buttonType } from '../../constant/button';
   styleUrl: './product-sale.component.css'
 })
 export class ProductSaleComponent implements OnDestroy, OnInit {
-  buttonType = buttonType
 
   private destroyed$ = new Subject()
 
@@ -37,7 +33,7 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
   }
 
   handleSearch(value: string) {
-    console.log(value, "Search")
+    console.log(value, "Search222")
   }
 
   handleOpenModalAddCartItem() {
