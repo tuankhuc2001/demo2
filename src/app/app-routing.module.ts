@@ -9,6 +9,7 @@ import { WarehouseComponent } from './components/warehouse/warehouse.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 
 import { routerNames } from './constant/router';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/signIn' },
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: `${routerNames.addProductPage}`,
     component: AddProductComponent,
+  },
+  {
+    path: `${routerNames.orderDetailPage}`,
+    component: OrderDetailComponent,
   },
   {
     path: `${routerNames.homePage}`,

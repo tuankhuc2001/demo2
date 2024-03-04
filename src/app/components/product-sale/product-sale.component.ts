@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
-import { SearchService } from '../../service/search.service';
+import { SearchService } from '../../services/search.service';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { __values } from 'tslib';
 import { IProduct } from '../../types/product';
 import { buttonType } from '../../constant/button';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-sale',

@@ -10,15 +10,17 @@ import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@ang
   styleUrl: './import-warehose.component.css'
 })
 export class ImportWarehoseComponent {
-  constructor(private searchService: SearchService, private router: Router){}
+  constructor(private searchService: SearchService, private router: Router) { }
 
-  listCard: any = [{},{},{}]
+  listCard: any = [{}, {}, {}]
   private $destroy = new Subject()
 
   ngOnInit(): void {
-      this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({next: value => {
+    this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({
+      next: value => {
         this.handleSearch(value)
-      }})
+      }
+    })
   }
 
   ngOnDestroy(): void {
@@ -27,12 +29,12 @@ export class ImportWarehoseComponent {
     console.log("Destroyed")
   }
 
-  handleSearch(textSearch: string){
+  handleSearch(textSearch: string) {
     console.log(textSearch)
   }
 
-  handleAddProduct(){
-    this.router.navigate([routerNames.homePage+"/"+routerNames.addProductPage])
+  handleAddProduct() {
+    this.router.navigate([routerNames.homePage + "/" + routerNames.addProductPage])
   }
 
 }

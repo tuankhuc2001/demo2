@@ -3,7 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { routerNames } from '../../constant/router';
-import { SearchService } from '../../service/search.service';
+import { SearchService } from '../../services/search.service';
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
