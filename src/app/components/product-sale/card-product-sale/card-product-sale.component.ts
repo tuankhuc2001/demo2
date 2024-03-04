@@ -11,7 +11,7 @@ export class CardProductSaleComponent {
     id: 0,
     nameProduct: "abc",
     quantityProduct: 0,
-    expiredDate: "",
+    expiredDate: new Date,
     provider: "abc",
     unit: "abc",
     origin: "abc",

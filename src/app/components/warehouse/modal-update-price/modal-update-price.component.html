@@ -1,10 +1,18 @@
 <cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()">
    <Content nz-row>
-    <div nz-col nzSpan="12">
+    <div nz-col nzSpan="12" class="content-img">
         <img nz-image nzSrc="../../../assets/images/gai.jpg" class="img__modal-price" nzDisablePreview="true" width="100%">
     </div>
-    <div nz-col nzSpan="12">
-
+    <div nz-col nzSpan="12" class="content-modal">
+        <p>Vitamin gái</p>
+        <span>Giá sàn:</span>
+        <span>{{productItem.floorPrice}}</span>
+        <span>Giá sàn mới:</span>
+        <input type="number" ngModel = "foorPriceNew">
+        <div>
+            <button class="btn--error"></button>
+            <button class="btn-success"></button>
+        </div>
     </div>
    </Content>
 </cModal>

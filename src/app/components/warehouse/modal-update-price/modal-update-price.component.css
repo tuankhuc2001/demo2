@@ -7,4 +7,12 @@
 
 .img__modal-price{
     height: 150px;
+    object-fit: cover;
+}
+
+.content-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }

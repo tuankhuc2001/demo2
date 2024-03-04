@@ -19,7 +19,7 @@ export class CardWarehouseComponent implements OnInit {
     id: 0,
     nameProduct: "abc",
     quantityProduct: 0,
-    expiredDate: "abc",
+    expiredDate: new Date,
     provider: "abc",
     unit: "abc",
     origin: "abc",

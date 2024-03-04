@@ -2,16 +2,17 @@
 <cCard *ngFor="let item of listCard" (click)="handleOpenModalUpdatePrice()">
   <Content> 
     <div class="main-card">
-      <div nz-col nzSpan="6" class="card-img">
+      <div nz-col nzSpan="8" class="card-img">
         <img
           nz-image
-          width="80%"
+          width="100%"
           nzSrc="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
           alt="songay"
           nzDisablePreview="true"
+          class="img-card-warehouse"
         />
       </div>
-      <div nz-col nzSpan="12" style="display: flex; flex-direction: column;justify-content: space-between;">
+      <div nz-col nzSpan="10" style="display: flex; flex-direction: column;justify-content: space-between;" class="pd-tb10-lr20">
         <div nz-row>
             <span class="nameProduct-card">{{listProduct.nameProduct}}</span>
         </div>
@@ -25,7 +26,7 @@
             <span class="textProduct-card">{{listProduct.codeProduct}}</span>
         </div>  
       </div>
-      <div nz-col nzSpan="6">
+      <div nz-col nzSpan="6" class="pd-tb10-lr20" style="display: flex; flex-direction: column;justify-content: space-between;">
         <div nz-row class="flex-end">
             <span class="floorPrice-card">{{listProduct.floorPrice}}</span>
         </div>
