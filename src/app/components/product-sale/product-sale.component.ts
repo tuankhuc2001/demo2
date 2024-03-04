@@ -43,7 +43,7 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
       next: (res) => {
         this.listProduct = res.content.list
         this.totalCartItem = res.content.totalCartItem
-        console.log(res, "Search222")
+        console.log(res)
       },
       error: (error) => {
         this.createNotification('error', error)
