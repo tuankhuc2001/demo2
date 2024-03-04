@@ -31,6 +31,6 @@
             </nz-form-item>
         </form>
 
-        <cButton (click)="handleSubmit()">Submit</cButton>
+        <cButton [isDisabled]="validateAddCartForm.invalid" (click)="handleSubmit()">Submit</cButton>
     </Content>
 </cModal>

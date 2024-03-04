@@ -1,11 +1,11 @@
-import { Component, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
-import { SearchService } from '../../services/search.service';
-import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { __values } from 'tslib';
+
 import { IProduct } from '../../types/product';
-import { buttonType } from '../../constant/button';
 import { ProductService } from '../../services/product.service';
+import { SearchService } from '../../services/search.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-product-sale',
@@ -13,31 +13,50 @@ import { ProductService } from '../../services/product.service';
   styleUrl: './product-sale.component.css'
 })
 export class ProductSaleComponent implements OnDestroy, OnInit {
-  buttonType = buttonType
-
+  listProduct: IProduct[] = []
+  totalCartItem: number = 0
   private destroyed$ = new Subject()
 
-  constructor(private searchService: SearchService) {
+  constructor( private notification: NzNotificationService,
+    private searchService: SearchService, 
+    private productService: ProductService) {
   }
 
   isVisibleModalAddCartItem: boolean = false
   productDetail: IProduct = {
-    id: 1,
-    nameProduct: 'mockProduct',
-    quantityProduct: 200,
-    expiredDate: "ngu",
-    provider: 'Factory ABC',
-    unit: 'Box(es)',
-    origin: 'Ha Noi',
-    avatar: 'AAAAAAAAAAAAAAAAAAAAAAAAA',
-    codeProduct: 'XM2304',
-    description: 'Avoid drinking more than 1 gauge',
-    providePrice: 500000,
-    floorPrice: 550000,
+    id: 0,
+    nameProduct: "undefined",
+    quantityProduct: 0,
+    expiredDate: new Date,
+    provider: '',
+    unit: '',
+    origin: '',
+    avatar: undefined,
+    codeProduct: '',
+    description: '',
+    providePrice: 0,
+    floorPrice: 0
   }
 
   handleSearch(value: string) {
-    console.log(value, "Search")
+    this.productService.getProductSale(1, value).subscribe({
+      next: (res) => {
+        this.listProduct = res.content.list
+        this.totalCartItem = res.content.totalCartItem
+        console.log(res, "Search222")
+      },
+      error: (error) => {
+        this.createNotification('error', error)
+      }
+    })
+  }
+
+  createNotification(type: string, content: string): void {
+    this.notification.create(
+      type,
+      `${content}`,
+      ''
+    );
   }
 
   handleOpenModalAddCartItem() {
@@ -46,7 +65,7 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
       id: 4,
       nameProduct: 'NextProduct',
       quantityProduct: 422,
-      expiredDate: "ngu",
+      expiredDate: new Date(),
       provider: 'Factory FGD',
       unit: 'Box(es)',
       origin: 'HCM',

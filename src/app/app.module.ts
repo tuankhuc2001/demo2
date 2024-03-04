@@ -38,6 +38,7 @@ import { CardCartComponent } from './components/cart/card-cart/card-cart.compone
 import { CardWarehouseComponent } from './components/warehouse/card-warehouse/card-warehouse.component';
 import { InputComponent } from './common/inputValidate/input.component';
 import {CardOrderDetailComponent} from './components/order-detail/card-order-detail/card-order-detail.component'
+import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse/card-import-warehouse.component';
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -89,7 +90,8 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     CardCartComponent,
     InputComponent,
     CardOrderDetailComponent,
-    CardWarehouseComponent
+    CardWarehouseComponent,
+    CardImportWarehouseComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ export class CardImportWarehouseComponent {
     id: 0,
     nameProduct: "chim",
     quantityProduct: 0,
-    expiredDate: "abc",
+    expiredDate: new Date(),
     provider: "abc",
     unit: "abc",
     origin: "abc",

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { buttonType } from '../../constant/button';
 
 @Component({
     selector: 'cButton',
@@ -8,18 +7,15 @@ import { buttonType } from '../../constant/button';
 })
 
 export class ButtonComponent implements OnInit {
-    buttonType = buttonType
-    classNameOnType: string = buttonType.green 
 
     @Input() customStyle: {[key: string]: string} = {}
-    @Input() type: buttonType = buttonType.green
+    @Input() isDisabled: boolean = false
 
     @Output() handleClick: EventEmitter<any> = new EventEmitter()
 
     constructor() { }
 
-    @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
+    ngOnInit() { 
 
-    ngOnInit() { }
-
+    }
 }
