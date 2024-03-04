@@ -25,5 +25,9 @@ export class CardImportWarehouseComponent {
 
   isVisibleQuantity: boolean = false;
 
+  handleCloseModalUpdateQuantity() {
+    this.isVisibleQuantity = false
+  }
+
 
 }

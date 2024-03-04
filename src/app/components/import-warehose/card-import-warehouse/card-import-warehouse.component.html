@@ -17,7 +17,7 @@
         </div>
         <div nz-row>
             <span class="textProduct-card">{{listProduct.unit}}</span>
-        </div>
+        </div> 
         <div nz-row>
             <span class="textProduct-card">{{listProduct.origin}}</span>
         </div> 
@@ -39,3 +39,4 @@
     </div>
   </Content>
 </cCard>
+<app-modal-update-quantity [isVisible]="isVisibleQuantity" (closeModal)="handleCloseModalUpdateQuantity()"></app-modal-update-quantity>
