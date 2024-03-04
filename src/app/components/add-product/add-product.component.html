@@ -1,4 +1,3 @@
-<!-- <app-card-customer [listCard]="listCard"></app-card-customer> -->
 <nz-upload
 class="avatar-uploader"
 nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
@@ -7,7 +6,6 @@ nzListType="picture-card"
 [nzShowUploadList]="false"
 [nzBeforeUpload]="beforeUpload"
 (nzChange)="handleChange($event)"
-[nzShowButton]="fileList.length < 8"
 >
 <ng-container *ngIf="!avatarUrl">
   <span class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></span>
