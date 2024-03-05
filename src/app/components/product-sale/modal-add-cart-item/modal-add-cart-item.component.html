@@ -1,36 +1,74 @@
 <cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" title="Thêm sản phẩm vào giỏ hàng" width="80%">
     <Content>
         <div class="content">
-            <form nz-form [formGroup]="validateAddCartForm">
-                <nz-form-item>
-                    <nz-form-label nzRequired nzFor="quantity" [nzSpan]="5">Số lượng</nz-form-label>
-                    <nz-form-control [nzSpan]="12" [nzErrorTip]="quantityValidate">
-                        <input type="number" nz-input formControlName="quantity" />
-                        <ng-template #quantityValidate let-control>
-                            @if (control.errors?.['required']) {
-                            Vui lòng nhập số lượng!
-                            }
-                            @if (control.errors?.['confirm']) {
-                            Vui lòng nhập số lượng lớn hơn hoặc bằng 1!
-                            }
-                        </ng-template>
-                    </nz-form-control>
-                </nz-form-item>
-                <nz-form-item>
-                    <nz-form-label nzRequired nzFor="editPrice" [nzSpan]="5">Giá tiền</nz-form-label>
-                    <nz-form-control [nzSpan]="12" [nzErrorTip]="editPriceValidate">
-                        <input type="number" nz-input formControlName="editPrice" />
-                        <ng-template #editPriceValidate let-control>
-                            @if (control.errors?.['required']) {
-                            Vui lòng nhập giá tiền!
-                            }
-                            @if (control.errors?.['confirm']) {
-                            Giá tiền không được nhỏ hơn hoặc lớn hơn giá gốc 10%
-                            }
-                        </ng-template>
-                    </nz-form-control>
-                </nz-form-item>
-            </form>
+            <div nz-row>
+                <div nz-col nzSpan="12" class="image-container">
+                    <img nz-image width="100%" height="100%" 
+                    nzSrc="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" alt=""/>
+                </div>
+                <div nz-col nzSpan="12">
+
+                    <form nz-form [formGroup]="validateAddCartForm">
+                        <nz-form-item>
+                            <nz-form-control [nzSpan]="12" [nzErrorTip]="editPriceValidate">
+                                <nz-input-group [nzPrefix]="prefixTemplate">
+                                    <input type="number" nz-input formControlName="editPrice" width="100px"/>
+                                </nz-input-group>
+                                <ng-template #prefixTemplate>Sửa giá:</ng-template>
+                                <ng-template #editPriceValidate let-control>
+                                    @if (control.errors?.['required']) {
+                                    Vui lòng nhập giá tiền!
+                                    }
+                                    @if (control.errors?.['confirm']) {
+                                    Giá tiền không được nhỏ hơn hoặc lớn hơn giá gốc 10%
+                                    }
+                                </ng-template>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                            <nz-form-control [nzSpan]="12" [nzErrorTip]="quantityValidate">
+                                <nz-input-group [nzPrefix]="prefixTemplateRate">
+                                    <input type="number" nz-input formControlName="rate" />
+                                </nz-input-group>
+
+                                <ng-template #prefixTemplateRate>
+                                    <button nz-button>
+                                        <span nz-icon nzType="plus"></span>
+                                    </button>
+                                </ng-template>
+
+                                <ng-template #quantityValidate let-control>
+                                    @if (control.errors?.['required']) {
+                                    Vui lòng nhập giá chênh lệch!
+                                    }
+                                    @if (control.errors?.['confirm']) {
+                                    Vui lòng nhập giá chênh lệch không được nhỏ hơn hoặc lớn hơn 10%
+                                    }
+                                </ng-template>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                            <nz-form-control [nzSpan]="12" [nzErrorTip]="quantityValidate">
+                                <nz-input-group [nzPrefix]="prefixTemplateQuantity">
+                                    <input type="number" nz-input formControlName="quantity" />
+                                </nz-input-group>
+                                <ng-template #prefixTemplateQuantity>
+                                    Số lượng:
+                                </ng-template>
+                                <ng-template #quantityValidate let-control>
+                                    @if (control.errors?.['required']) {
+                                    Vui lòng nhập số lượng!
+                                    }
+                                    @if (control.errors?.['confirm']) {
+                                    Vui lòng nhập số lượng lớn hơn hoặc bằng 1!
+                                    }
+                                </ng-template>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </form>
+                </div>
+            </div>
+            
             <cButton [isDisabled]="validateAddCartForm.invalid" (click)="handleSubmit()">Submit</cButton>
         </div>
     </Content>
