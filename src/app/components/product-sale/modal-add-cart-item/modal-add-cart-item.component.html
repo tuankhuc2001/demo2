@@ -1,36 +1,37 @@
-<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" title="Thêm sản phẩm vào giỏ hàng">
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" title="Thêm sản phẩm vào giỏ hàng" width="80%">
     <Content>
-        <form nz-form [formGroup]="validateAddCartForm">
-            <nz-form-item>
-                <nz-form-label nzRequired nzFor="quantity" [nzSpan]="5">Số lượng</nz-form-label>
-                <nz-form-control [nzSpan]="12" [nzErrorTip]="quantityValidate">
-                    <input type="number" nz-input formControlName="quantity" />
-                    <ng-template #quantityValidate let-control>
-                        @if (control.errors?.['required']) {
-                        Vui lòng nhập số lượng!
-                        }
-                        @if (control.errors?.['confirm']) {
-                        Vui lòng nhập số lượng lớn hơn hoặc bằng 1!
-                        }
-                    </ng-template>
-                </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-                <nz-form-label nzRequired nzFor="editPrice" [nzSpan]="5">Giá tiền</nz-form-label>
-                <nz-form-control [nzSpan]="12" [nzErrorTip]="editPriceValidate">
-                    <input type="number" nz-input formControlName="editPrice" />
-                    <ng-template #editPriceValidate let-control>
-                        @if (control.errors?.['required']) {
-                        Vui lòng nhập giá tiền!
-                        }
-                        @if (control.errors?.['confirm']) {
-                        Giá tiền không được nhỏ hơn hoặc lớn hơn giá gốc 10%
-                        }
-                    </ng-template>
-                </nz-form-control>
-            </nz-form-item>
-        </form>
-
-        <cButton [isDisabled]="validateAddCartForm.invalid" (click)="handleSubmit()">Submit</cButton>
+        <div class="content">
+            <form nz-form [formGroup]="validateAddCartForm">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzFor="quantity" [nzSpan]="5">Số lượng</nz-form-label>
+                    <nz-form-control [nzSpan]="12" [nzErrorTip]="quantityValidate">
+                        <input type="number" nz-input formControlName="quantity" />
+                        <ng-template #quantityValidate let-control>
+                            @if (control.errors?.['required']) {
+                            Vui lòng nhập số lượng!
+                            }
+                            @if (control.errors?.['confirm']) {
+                            Vui lòng nhập số lượng lớn hơn hoặc bằng 1!
+                            }
+                        </ng-template>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label nzRequired nzFor="editPrice" [nzSpan]="5">Giá tiền</nz-form-label>
+                    <nz-form-control [nzSpan]="12" [nzErrorTip]="editPriceValidate">
+                        <input type="number" nz-input formControlName="editPrice" />
+                        <ng-template #editPriceValidate let-control>
+                            @if (control.errors?.['required']) {
+                            Vui lòng nhập giá tiền!
+                            }
+                            @if (control.errors?.['confirm']) {
+                            Giá tiền không được nhỏ hơn hoặc lớn hơn giá gốc 10%
+                            }
+                        </ng-template>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+            <cButton [isDisabled]="validateAddCartForm.invalid" (click)="handleSubmit()">Submit</cButton>
+        </div>
     </Content>
 </cModal>

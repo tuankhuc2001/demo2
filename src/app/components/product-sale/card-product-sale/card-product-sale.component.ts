@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,EventEmitter,Input, Output } from '@angular/core';
 import { IProduct } from '../../../types/product';
 @Component({
   selector: 'app-card-product-sale',
@@ -7,21 +7,10 @@ import { IProduct } from '../../../types/product';
 })
 export class CardProductSaleComponent {
   @Input() listCard: any;
-  @Input() listProduct: IProduct = {
-    id: 0,
-    nameProduct: "abc",
-    quantityProduct: 0,
-    expiredDate: new Date,
-    provider: "abc",
-    unit: "abc",
-    origin: "abc",
-    avatar: "abc",
-    codeProduct: "abc",
-    description: "abc",
-    providePrice: 0,
-    floorPrice: 0,
+
+  @Output() onClickCard: EventEmitter<IProduct> = new EventEmitter()
+
+  handleOnClickDetail(item: IProduct){
+    this.onClickCard.emit(item)
   }
-
-  
-
 }
