@@ -1,18 +1,94 @@
-<!-- <app-card-customer [listCard]="listCard"></app-card-customer> -->
-<nz-upload class="avatar-uploader" nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-  nzName="avatar" nzListType="picture-card" [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload"
-  (nzChange)="handleChange($event)" [nzShowButton]="fileList.length < 8">
-  <ng-container *ngIf="!avatarUrl">
-    <span class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></span>
-    <div class="ant-upload-text">Chọn ảnh</div>
-  </ng-container>
-  <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
-</nz-upload>
-<input class="input_add" (onclick)="handleCallAPIAdd()">
-<input class="input_add" (onclick)="handleCallAPIAdd()">
-<input class="input_add" (onclick)="handleCallAPIAdd()">
-<input class="input_add" (onclick)="handleCallAPIAdd()">
-<input class="input_add" (onclick)="handleCallAPIAdd()">
-<input class="input_add" (onclick)="handleCallAPIAdd()">
-<input class="input_add" (onclick)="handleCallAPIAdd()">
-<button class="handle_add" (click)="handleAddProduct()" (onclick)="handleCallAPIAdd()">Xác nhận</button>
+<section class="container">
+  <div class="header">
+    <div style="width: 45%;"><span routerLink="" nz-icon nzType="left" nzTheme="outline"></span></div>
+    <div><span>Thêm sản phẩm</span></div>
+  </div>
+  <div class="content" nz-row>
+    <div class="dflex">
+      <div nz-col nzSpan="10" class="center">
+        <img class="img-upload"
+          src="https://inkythuatso.com/uploads/thumbnails/800/2022/05/a2e3ed96ecce31f2bb2d37cb712b0bed-08-23-57-27.jpg"
+          alt="Mèo ngu">
+      </div>
+      <div nz-col nzSpan="14" class="center">
+        <input class="input-add-header" placeholder="Giá bán...">
+        <input class="input-add-header" placeholder="Số lượng tồn kho...(*)">
+        <button class="button-upload">Thêm ảnh</button>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div nz-col nzSpan="24">
+      <form nz-form>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="24">
+            <input nz-input placeholder="Tên Sản Phẩm...(*)">
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+  <div class="content-input dflex">
+    <div nz-col nzSpan="10">
+      <form nz-form>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="24">
+            <input nz-input placeholder="Đơn vị tính...(*)">
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+    <div nz-col nzSpan="8">
+      <form nz-form>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="24">
+            <input nz-input placeholder="HSD:">
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+    <div nz-col nzSpan="6">
+      <form nz-form>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="24">
+            <input nz-input placeholder="0">
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+  <div class="content-input">
+    <div nz-col nzSpan="24">
+      <form nz-form>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="24">
+            <input nz-input placeholder="Xuất xứ...">
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+  <div>
+    <div class="content-input dflex">
+      <div nz-col nzSpan="14">
+        <form nz-form>
+          <nz-form-item>
+            <nz-form-control [nzSpan]="24">
+              <input nz-input placeholder="Nguồn cung...">
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+      <div nz-col nzSpan="10">
+        <form nz-form>
+          <nz-form-item>
+            <nz-form-control [nzSpan]="24">
+              <input nz-input placeholder="SĐT:">
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+    </div>
+  </div>
+  <input class="description" placeholder="Mô tả...">
+</section>
