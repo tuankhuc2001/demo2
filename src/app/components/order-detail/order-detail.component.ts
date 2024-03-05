@@ -14,10 +14,11 @@ export class OrderDetailComponent {
 
   constructor(private orderDetailService: OrderDetailService, private router: Router){}
   private $destroy = new Subject()
-  listCardOrderDetail: any = [{},{}]
+  listCardOrderDetail: any = [{},{},{},{},{},{},{},{},{}]
 
 
   handleBackOrder(){
     this.router.navigate([routerNames.homePage+"/"+routerNames.orderPage]);
   }
+
 }

@@ -1,35 +1,18 @@
-<div *ngIf="listCardOrderDetail.length == 0">ko co du</div>
+<div *ngIf="listCardOrderDetail.length == 0">Không có dữ liệu</div>
 <cCard *ngFor="let item of listCardOrderDetail">
   <Content>
     <div class="main-card">
-      <div nz-col nzSpan="1">
-        <div class="card-status"></div>
-      </div>
-      <div nz-col nzSpan="15" style="display: flex; flex-direction: column;justify-content: space-between;">
-        <div nz-row nzSpan="6">
-            <span class="codeOder-card">{{listOderDetail.codeOder}}</span>
-        </div>
-        <div nz-row nzSpan="6">
-            <span class="nameCustomer-card">{{listOderDetail.Customer.nameCustomer}}</span>
-        </div>
-        <div nz-row nzSpan="6">
-            <span class="textOder-card">{{listOderDetail.Customer.adderss}}</span>
-        </div>
-        <div nz-row nzSpan="6" >
-            <span nz-icon nzType="calendar" nzTheme="outline" class="IconOder-card"></span>
-            <span class="textOder-card">{{listOderDetail.createdAt}}</span>
+      <div nz-col nzSpan="6">
+        <div class="image">
+          <img src="" alt="picture">
         </div>
       </div>
-      <div nz-col nzSpan="8" style="display: flex; flex-direction: column;justify-content: space-between;">
-        <div nz-row class="flex-end">
-            <span class="totalPrice-card">{{listOderDetail.totalPrice}}</span>
+      <div nz-col nzSpan="18">
+        <div nz-row nzSpan="24">
+          <span class="nameProduct"></span>
         </div>
-        <div nz-row class="flex-end">
-            <span class="textOder-card">({{listOderDetail.totalCartItem}})</span>
-        </div>
-        <div nz-row class="flex-end">
-            <span class="textOder-card">{{listOderDetail.status}}</span>
-        </div>
+        <div></div>
+        <div></div>
       </div>
     </div>
   </Content>

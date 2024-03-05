@@ -12,15 +12,15 @@ export class CardOderComponent {
     idUser: 0,
     Customer: {
       id: 0,
-      nameCustomer: "abc",
+      nameCustomer: "Nguyễn Công Phượng",
       phoneCustomer: "abc",
-      adderss: "abc",
+      adderss: "Diễn Châu - Nghệ An",
     },
-    totalPrice: 0,
-    status: "abc",
+    totalPrice: 31150000,
+    status: "Thành công",
     createdAt: new Date(),
-    totalCartItem: 0,
+    totalCartItem: 3,
     color: "abc",
-    codeOder: "abc",
+    codeOder: "11.676485.001",
   };
 }

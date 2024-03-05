@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-
 import { IOder } from '../../../types/order';
 
 @Component({

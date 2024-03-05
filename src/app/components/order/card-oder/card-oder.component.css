@@ -1,3 +1,6 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .main-card {
   display: flex;
 }
@@ -11,29 +14,39 @@
   height: 100%;
 }
 .codeOder-card {
-  font-size: 3vw;
+  font-size: 4vw;
   font-weight: 700;
-  color: #b31312;
+  color: #3d7165;
 }
 .nameCustomer-card {
-  font-size: 2.5vw;
+  font-size: 4vw;
   font-weight: 700;
-  color: #3d7165;
 }
 .textOder-card {
-  font-size: 2.5vw;
-  color: #3d7165;
+  font-size: 3.5vw;
+  color: #afafaf;
 }
 .IconOder-card {
-    color: #3d7165;
-    font-size: 2.5vw;
+    color: #afafaf;
+    font-size: 3vw;
     display: flex;
     align-items: center;
+    margin-right: 2vw;
 }
 .totalPrice-card {
-  font-size: 3vw;
+  font-size: 4vw;
   font-weight: 700;
   color: #b31312;
+  margin-bottom: 1.5vw;
+}
+.totalDetail-card {
+  font-size: 3.5vw;
+  font-weight: 700;
+  margin-bottom: 1.5vw;
+}
+.status-card {
+  font-size: 3vw;
+  color: #158c37; 
 }
 .flex-end {
   display: flex;
