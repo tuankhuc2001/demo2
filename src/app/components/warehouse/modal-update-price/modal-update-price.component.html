@@ -1,18 +1,19 @@
-<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()">
-   <Content nz-row>
-    <div nz-col nzSpan="12" class="content-img">
-        <img nz-image nzSrc="../../../assets/images/gai.jpg" class="img__modal-price" nzDisablePreview="true" width="100%">
-    </div>
-    <div nz-col nzSpan="12" class="content-modal">
-        <p>Vitamin gái</p>
-        <span>Giá sàn:</span>
-        <span>{{productItem.floorPrice}}</span>
-        <span>Giá sàn mới:</span>
-        <input type="number" ngModel = "foorPriceNew">
-        <div>
-            <button class="btn--error"></button>
-            <button class="btn-success"></button>
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" [buttonX]="false">
+    <Content>
+        <div style="padding: 12px;" nz-row>
+            <div nz-col nzSpan="12" class="content-img">
+                <img nz-image nzSrc="../../../assets/images/gai.jpg" class="img__modal-price" nzDisablePreview="true"
+                    width="100%">
+            </div>
+            <div nz-col nzSpan="12" class="content-modal">
+                <p class="text--bold text--size-16">{{productItem.nameProduct}}</p>
+                <span class="text--grey text--size-16">Giá sàn:</span>
+                <span class="text--red text--bold text--size-16">{{productItem.floorPrice}}</span>
+                <span class="text--grey text--size-16">Giá sàn mới:</span>
+                <form nz-form>
+                    
+                </form>                
+            </div>
         </div>
-    </div>
-   </Content>
+    </Content>
 </cModal>

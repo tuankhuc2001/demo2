@@ -16,3 +16,32 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.text--grey{
+    opacity: 0.6;
+}
+
+.text--red{
+    color: red;
+    
+}
+
+.text--bold{
+    font-weight: bold;
+}
+
+.text--size-16{
+    font-size: 16px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.jct-bw{
+    justify-content: space-between;
+}
+
+.width-100{
+    width: 100%;
+}

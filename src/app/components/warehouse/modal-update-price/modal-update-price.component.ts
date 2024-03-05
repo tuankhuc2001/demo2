@@ -22,7 +22,7 @@ export class ModalUpdatePriceComponent {
 
   @Input() productItem:IProduct = {
     id: 0,
-    nameProduct: "",
+    nameProduct: "Vitamin gái",
     quantityProduct: 0,
     expiredDate: new Date,
     provider: "string",
