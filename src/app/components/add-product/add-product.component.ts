@@ -65,7 +65,7 @@ export class AddProductComponent {
       const isJpgOrPng =
         file.type === 'image/jpeg' || file.type === 'image/png';
       if (!isJpgOrPng) {
-        this.msg.error('You can only upload JPG Or  file!');
+        this.msg.error('You can only upload JPG Or PNG file!');
         observer.complete();
         return;
       }
@@ -110,7 +110,7 @@ export class AddProductComponent {
     });
     formData.forEach((value, key) => {
       console.log(key, value);
-    });
+    }); 
 
     this.loading = true;
     const req = new HttpRequest(  

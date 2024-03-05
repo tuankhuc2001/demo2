@@ -22,4 +22,6 @@ export class CardProductSaleComponent {
     floorPrice: 0,
   }
 
+  
+
 }

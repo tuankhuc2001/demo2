@@ -1,15 +1,86 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { __values } from 'tslib';
+
+import { IProduct } from '../../types/product';
+import { ProductService } from '../../services/product.service';
+import { SearchService } from '../../services/search.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-import-warehose',
   templateUrl: './import-warehose.component.html',
-  styleUrl: './import-warehose.component.css'
+  styleUrl: './import-warehose.component.css',
 })
-export class ImportWarehoseComponent {
-  constructor(private router: Router) {}
-
-  handlenavigate() : void {
+export class ImportWarehoseComponent implements OnDestroy, OnInit {
+  handlenavigate(): void {
     this.router.navigate(['/addProduct']);
   }
 
+  listProduct: IProduct[] = [];
+  totalCartItem: number = 0;
+  private destroyed$ = new Subject();
+
+  constructor(
+    private notification: NzNotificationService,
+    private searchService: SearchService,
+    private productService: ProductService,
+    private router: Router
+  ) {}
+
+  isVisibleModalupdateProductQuantity: boolean = false;
+  productDetail: IProduct = {
+    id: 0,
+    nameProduct: 'undefined',
+    quantityProduct: 0,
+    expiredDate: new Date(),
+    provider: '',
+    unit: '',
+    origin: '',
+    avatar: undefined,
+    codeProduct: '',
+    description: '',
+    providePrice: 0,
+    floorPrice: 0,
+  };
+
+  handleSearch(value: string) {
+    this.productService.getProductWareHouse(1, value).subscribe({
+      next: (res) => {
+        this.listProduct = res.content.list;
+        console.log(res); 
+      },
+      error: (error) => {
+        this.createNotification('error', error);
+      },
+    });
+  }
+
+  createNotification(type: string, content: string): void {
+    this.notification.create(type, `${content}`, '');
+  }
+
+  handleOpenModalupdateProductQuantity() {
+    this.isVisibleModalupdateProductQuantity = true;
+  }
+
+  handleCloseModalupdateProductQuantity() {
+    this.isVisibleModalupdateProductQuantity = false;
+  }
+
+  ngOnInit(): void {
+    this.searchService
+      .getSearchInput()
+      .pipe(takeUntil(this.destroyed$), debounceTime(1000))
+      .subscribe({
+        next: (value) => {
+          this.handleSearch(value);
+        },
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
+  }
 }
