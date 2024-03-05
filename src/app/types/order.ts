@@ -1,12 +1,21 @@
 import { ICustomer } from './customer';
-export interface IOder {
+import { IUser } from './user';
+export interface IOrder {
   id: number;
-  idUser: number;
-  Customer: ICustomer;
   totalPrice: number;
   status: string;
   createdAt?: Date;
   totalCartItem: number;
   color: string;
-  codeOder: string;
+  codeOrder: string;
+  User: IUser;
+  Customer: ICustomer;
+}
+
+export interface IResponseOrder {
+  message: string,
+  status: boolean,
+  content: {
+    list: IOrder[],
+  }
 }

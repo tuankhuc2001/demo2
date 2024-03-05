@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IOder } from '../../../types/order';
+import { IOrder } from '../../../types/order';
 
 @Component({
   selector: 'app-card-order-detail',
@@ -9,9 +9,17 @@ import { IOder } from '../../../types/order';
 export class CardOrderDetailComponent implements OnInit {
 
   @Input() listCardOrderDetail: any;
-  @Input() listOderDetail: IOder = {
+  @Input() listOderDetail: IOrder = {
     id: 0,
-    idUser: 0,
+    User: {
+      id: 1,
+      phone: 'abc',
+      password:'abc',
+      email: 'abc',
+      fullname: 'Nguyễn Quang Hải',
+      avatar: 'abc',
+      type: 'sale'
+    },
     Customer: {
       id: 0,
       nameCustomer: "abc",
@@ -23,7 +31,7 @@ export class CardOrderDetailComponent implements OnInit {
     createdAt: new Date(),
     totalCartItem: 0,
     color: "abc",
-    codeOder: "abc",
+    codeOrder: "abc",
   };
   constructor() { }
 

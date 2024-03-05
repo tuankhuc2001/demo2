@@ -5,10 +5,14 @@
 .header_direction {
     display: flex;
     align-items: center;
+    padding: 7vw 2vw 2vw;
+    border-bottom: 0.5px #afafaf solid;
 }
+
 .icon_back {
     font-size: 4vw;
 }
+
 .header_title {
     display: flex;
     justify-content: center;
@@ -16,11 +20,13 @@
     font-weight: 700;
     color: #3d7165;
 }
+
 .header_tab {
     width: 100%;
     display: flex;
     justify-content: center;
 }
+
 .tabset {
     width: 100%;
     margin: 0;

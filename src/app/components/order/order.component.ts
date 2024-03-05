@@ -5,6 +5,7 @@ import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { SearchService } from '../../services/search.service';
 import { routerNames } from '../../constant/router';
 import { OrderService } from '../../services/order.service';
+import { IOrder } from '../../types/order';
 
 @Component({
   selector: 'app-order',
@@ -12,27 +13,35 @@ import { OrderService } from '../../services/order.service';
   styleUrl: './order.component.css',
 })
 export class OrderComponent implements OnInit, OnDestroy{
+  constructor( 
+    private searchService: SearchService, 
+    private orderService: OrderService, 
+    private router: Router){}
 
-  
-  constructor( private searchService: SearchService, private orderService: OrderService, private router: Router){}
   private $destroy = new Subject()
-  listCard: any = [{},{},{}]
+  listOrder: IOrder[] = []
+  isLoading: boolean = false
 
 
   ngOnInit(): void {
       this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({next: value => {
         this.handleSearch(value)
       }})
+      
   }
 
   ngOnDestroy(): void {
     this.$destroy.next(true)
     this.$destroy.complete()
-    console.log("Destoryed")
   }
 
-  handleSearch(textSearch: string){
-    console.log(textSearch)
+  handleSearch(value: string){
+    this.orderService.getOrder(1, value).subscribe({
+      next: (res) => {
+        this.listOrder = res.content.list
+        console.log(res)
+      }
+    })
   }
 
   handleGetOrderDetail(idOrder: number){

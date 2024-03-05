@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { IOder } from '../../../types/order';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IOrder } from '../../../types/order';
 @Component({
   selector: 'app-card-oder',
   templateUrl: './card-oder.component.html',
@@ -7,20 +7,18 @@ import { IOder } from '../../../types/order';
 })
 export class CardOderComponent {
   @Input() listCard: any;
-  @Input() listOder: IOder = {
-    id: 0,
-    idUser: 0,
-    Customer: {
-      id: 0,
-      nameCustomer: "Nguyễn Công Phượng",
-      phoneCustomer: "abc",
-      adderss: "Diễn Châu - Nghệ An",
-    },
-    totalPrice: 31150000,
-    status: "Thành công",
-    createdAt: new Date(),
-    totalCartItem: 3,
-    color: "abc",
-    codeOder: "11.676485.001",
-  };
+  @Output() onClickCard: EventEmitter<IOrder> = new EventEmitter()
+
+  handleClickCard(item: IOrder){
+    this.onClickCard.emit(item)
+    console.log();
+    
+  }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    console.log(this.listCard, "listCard");
+    //Add 'implements OnInit' to the class.
+    
+  } 
 }
