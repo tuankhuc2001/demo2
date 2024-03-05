@@ -2,7 +2,7 @@ export interface IProduct {
   id: number;
   nameProduct: String;
   quantityProduct: number;
-  expiredDate: String;
+  expiredDate: Date;
   provider: string;
   unit: string;
   origin: string;
@@ -11,4 +11,13 @@ export interface IProduct {
   description: string;
   providePrice: number;
   floorPrice: number;
+}
+
+export interface IResponseProduct {
+  message: string,
+  status: boolean,
+  content: {
+    list: IProduct[],
+    totalCartItem: number,
+  }
 }

@@ -83,9 +83,9 @@ nz-header {
 /* ::ng-deep .ant-menu-submenu-selected {
   background-color: #25403b;
 } */
-/* nz-content {
-  margin: 24px;
-} */
+nz-content {
+  margin: 12px;
+}
 
 .inner-content {
   padding: 24px;

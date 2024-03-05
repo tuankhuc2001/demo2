@@ -1,5 +1,4 @@
-<div>
-  <div>
-    hello oder
-  </div>
+<div *ngIf="isLoading === false">
+    <app-card-product-sale [listCard]="listProduct" (onClickCard)="handleOpenModalAddCartItem($event)"></app-card-product-sale>
+    <app-modal-add-cart-item [isVisible]="isVisibleModalAddCartItem" (closeModal)="handleCloseModalAddCartItem()" [ProductDetail]="productDetail"></app-modal-add-cart-item>
 </div>
