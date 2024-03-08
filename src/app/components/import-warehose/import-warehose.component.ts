@@ -7,6 +7,7 @@ import { ProductService } from '../../services/product.service';
 import { SearchService } from '../../services/search.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 @Component({
   selector: 'app-import-warehose',
   templateUrl: './import-warehose.component.html',
@@ -43,6 +44,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     providePrice: 0,
     floorPrice: 0,
   };
+  size: NzButtonSize = 'large';
 
   handleSearch(value: string) {
     this.productService.getProductWareHouse(1, value).subscribe({

@@ -1,5 +1,5 @@
 <div *ngIf="listCard.length == 0">ko co du</div>
-<cCard *ngFor="let item of listCard">
+<cCard *ngFor="let item of listCard" (click)="handleOnClickDetail(item)">
   <Content> 
     <div class="main-card">
       <div nz-col nzSpan="6" class="card-img">
