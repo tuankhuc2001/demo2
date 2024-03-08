@@ -9,7 +9,7 @@ nzListType="picture-card"
 >
 <ng-container *ngIf="!avatarUrl">
   <span class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></span>
-  <div class="ant-upload-text">Upload</div>
+  <div class="ant-upload-text"> </div>
 </ng-container>
 <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
 </nz-upload>

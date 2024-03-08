@@ -22,7 +22,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { OrderComponent } from './components/order/order.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { WarehouseComponent } from './components/warehouse/warehouse.component';
-import { ModalUpdateQuantityComponent } from './components/modal-update-quantity/modal-update-quantity.component';
+import { ModalUpdateQuantityComponent } from './components/import-warehose/modal-update-quantity/modal-update-quantity.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { ProductSaleComponent } from './components/product-sale/product-sale.component';
 import { ModalAddCartItemComponent } from './components/product-sale/modal-add-cart-item/modal-add-cart-item.component';

@@ -1,33 +1,20 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IProduct } from '../../../types/product';
+
 @Component({
   selector: 'app-card-import-warehouse',
   templateUrl: './card-import-warehouse.component.html',
-  styleUrls: ['./card-import-warehouse.component.css'],
+  styleUrls: ['./card-import-warehouse.component.css']
 })
-export class CardImportWarehouseComponent {
-
+export class CardImportWarehouseComponent implements OnInit {
   @Input() listCard: any;
-  @Input() listProduct: IProduct = {
-    id: 0,
-    nameProduct: 'abc',
-    quantityProduct: 0,
-    expiredDate: 'abc',
-    provider: 'abc',
-    unit: 'abc',
-    origin: 'abc',
-    avatar: 'abc',
-    codeProduct: 'abc',
-    description: 'abc',
-    providePrice: 0,
-    floorPrice: 0,
-  };
-
-  isVisibleQuantity: boolean = false;
-
-  handleCloseModalUpdateQuantity() {
-    this.isVisibleQuantity = false
+  @Output() onClickCard: EventEmitter<IProduct> = new EventEmitter()
+  handleOnClickDetail(item: IProduct){
+    this.onClickCard.emit(item)
   }
+  constructor() { }
 
+  ngOnInit() {
+  }
 
 }

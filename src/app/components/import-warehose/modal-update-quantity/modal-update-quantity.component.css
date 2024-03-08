@@ -1,0 +1,12 @@
+.main{
+    width: 70vw;
+    height: 100vw;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+.text-nameProduct{
+    font-size: 5vw;
+    font-weight: 700;
+
+}
