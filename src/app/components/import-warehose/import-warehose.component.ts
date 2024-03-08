@@ -34,7 +34,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     id: 0,
     nameProduct: 'undefined',
     quantityProduct: 0,
-    expiredDate: new Date(),
+    expiredDate: "d",
     provider: '',
     unit: '',
     origin: '',
