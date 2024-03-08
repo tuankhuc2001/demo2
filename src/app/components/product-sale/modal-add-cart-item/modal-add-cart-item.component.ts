@@ -33,7 +33,7 @@ export class ModalAddCartItemComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ProductDetail'] && !changes['ProductDetail'].firstChange) {
       console.log('ProductDetail changed:', changes['ProductDetail'].currentValue);
-      this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice })
+      this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: 0 })
     }
   }
 
@@ -57,12 +57,23 @@ export class ModalAddCartItemComponent implements OnChanges {
     return {};
   }
 
+  rateValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    const editPrice = this.validateAddCartForm ? this.validateAddCartForm.value.editPrice : null;
+    if (control.value === null) {
+      return { required: true };
+    } else if (editPrice && (control.value > editPrice * 1.1 || control.value < editPrice * 0.9)) {
+      return { confirm: true, error: true };
+    }
+    return null;
+  }
   validateAddCartForm: FormGroup<{
     quantity: FormControl<number>;
     editPrice: FormControl<number>;
+    rate: FormControl<number>
   }> = this.fb.group({
     quantity: [1, [Validators.required, this.quantityValidator]],
     editPrice: [this.ProductDetail.floorPrice, [Validators.required, this.editPriceValidator]],
+    rate: [0, [Validators.required, this.rateValidator]]
   });
 
   handleSubmit() {
