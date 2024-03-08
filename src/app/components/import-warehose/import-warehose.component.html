@@ -1,4 +1,11 @@
-<div>
-  <h1>importWarehousePage</h1>
-  <Button (click)="handlenavigate()">+</Button>
+<div class="main">
+  <app-card-import-warehouse
+    [listCard]="listProduct"
+    (onClickCard)="handleOpenModalupdateProductQuantity()"
+  ></app-card-import-warehouse>
+  <app-modal-update-quantity
+    [isVisible]="isVisibleModalupdateProductQuantity"
+    (closeModal)="handleCloseModalupdateProductQuantity()"
+  ></app-modal-update-quantity>
+  <button nz-button class="btn-Add" nzShape="circle" (click)="handlenavigate()" ><span nz-icon nzType="plus" class="icon"></span></button>
 </div>

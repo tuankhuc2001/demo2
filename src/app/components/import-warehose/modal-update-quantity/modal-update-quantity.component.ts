@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IProduct } from '../../types/product';
+
 @Component({
   selector: 'app-modal-update-quantity',
   templateUrl: './modal-update-quantity.component.html',
@@ -7,13 +7,13 @@ import { IProduct } from '../../types/product';
 })
 export class ModalUpdateQuantityComponent {
   @Input() isVisible: boolean = false;
-  @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
-  title: string = 'hello';
-  @Input() ProductDetail: IProduct = {
+  @Output() closeModal: EventEmitter<void> = new EventEmitter();
+
+  formProduct: any = {
     id: 1,
     nameProduct: 'mockProduct',
     quantityProduct: 200,
-    expiredDate: 'abc',
+    expiredDate: new Date(),
     provider: 'Factory ABC',
     unit: 'Box(es)',
     origin: 'Ha Noi',
@@ -23,7 +23,6 @@ export class ModalUpdateQuantityComponent {
     providePrice: 500000,
     floorPrice: 550000,
   };
-
   handleCloseModal() {
     this.closeModal.emit();
   }
