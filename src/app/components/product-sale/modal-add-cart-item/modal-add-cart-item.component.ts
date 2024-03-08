@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { IProduct } from '../../../types/product';
-import { NotificationComponent } from '../../../common/notification/notification.component';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-modal-add-cart-item',
@@ -10,7 +10,9 @@ import { NotificationComponent } from '../../../common/notification/notification
 })
 export class ModalAddCartItemComponent implements OnChanges {
 
-  constructor(private fb: NonNullableFormBuilder) { }
+  constructor(private fb: NonNullableFormBuilder, private notification: NzNotificationService) { }
+
+  isLoading : boolean = false
 
   @Input() isVisible: boolean = false
   @Input() ProductDetail: IProduct = {
@@ -21,7 +23,7 @@ export class ModalAddCartItemComponent implements OnChanges {
     provider: 'Factory ABC',
     unit: 'Box(es)',
     origin: 'Ha Noi',
-    avatar: 'AAAAAAAAAAAAAAAAAAAAAAAAA',
+    avatar: undefined,
     codeProduct: 'XM2304',
     description: 'Avoid drinking more than 1 gauge',
     providePrice: 500000,
@@ -78,7 +80,10 @@ export class ModalAddCartItemComponent implements OnChanges {
 
   handleSubmit() {
     if (this.validateAddCartForm.valid) {
-      console.log('submit:', this.validateAddCartForm.value);
+      this.isLoading = true
+      console.log('submit:', this.validateAddCartForm.value)
+      this.isLoading = false
+      this.handleCloseModal()
     } else {
       Object.values(this.validateAddCartForm.controls).forEach(control => {
         if (control.invalid) {
@@ -90,8 +95,16 @@ export class ModalAddCartItemComponent implements OnChanges {
   }
   //////////////////////// 
 
+  
+  createNotification(type: string, content: string): void {
+    this.notification.create(
+      type,
+      `${content}`,
+      ''
+    );
+  }
+
   handleCloseModal() {
-    
     this.closeModal.emit()
   }
 }

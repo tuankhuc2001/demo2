@@ -7,7 +7,6 @@
                     nzSrc="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" alt=""/>
                 </div>
                 <div nz-col nzSpan="12">
-
                     <form nz-form [formGroup]="validateAddCartForm">
                         <nz-form-item>
                             <nz-form-control [nzSpan]="12" [nzErrorTip]="editPriceValidate">
@@ -27,8 +26,8 @@
                         </nz-form-item>
                         <nz-form-item>
                             <nz-form-control [nzSpan]="12" [nzErrorTip]="quantityValidate">
-                                <nz-input-group [nzPrefix]="prefixTemplateRate">
-                                    <input type="number" nz-input formControlName="rate" />
+                                <nz-input-group [nzPrefix]="prefixTemplateRate" style="width: 100%;">
+                                    <input type="number" nz-input formControlName="rate"/>
                                 </nz-input-group>
 
                                 <ng-template #prefixTemplateRate>

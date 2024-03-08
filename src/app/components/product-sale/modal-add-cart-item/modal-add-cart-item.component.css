@@ -7,3 +7,7 @@
     padding-right: 5px;
     padding-bottom: 5px;
 }
+
+::ng-deep .ant-form-item{
+    
+}
