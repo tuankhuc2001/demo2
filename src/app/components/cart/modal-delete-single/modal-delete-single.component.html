@@ -1,1 +1,13 @@
-<p>modal-delete-single works!</p>
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" title="Xóa sản phẩm" >
+    <Content>
+        <div class="delete_text" >
+            Bạn có chắc chắn muốn xóa sản phẩm này?
+        </div>
+    </Content>
+    <Footer>
+        <div>
+            <button class="delete_submit">Xác nhận</button>
+            <button class="delete_cancel" (click)="handleCloseModal()">Hủy</button>
+        </div>
+    </Footer>
+</cModal>

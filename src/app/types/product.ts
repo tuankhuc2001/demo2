@@ -1,3 +1,5 @@
+import { ICartItem } from "./cart-item";
+
 export interface IProduct {
   id: number;
   nameProduct: String;

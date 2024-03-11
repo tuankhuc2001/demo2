@@ -1,4 +1,60 @@
-<p>cart works!</p>
-<div>
-    
+<div class="cart_container" >
+    <div [class]="'header__cart'" nz-row>
+        <div nz-col nzSpan="8">
+            <span class="tag__back" nz-icon nzType="left" nzTheme="outline"></span>
+        </div>
+        <div class="tag__title" nz-col nzSpan="8">
+            <p class="">Giỏ hàng</p>
+        </div>
+        <div class="tag__delete" nz-col nzSpan="8">
+            <p *ngIf="listCard.length>0" (click)="handleOpenModalDeleteAll()">Xóa tất cả</p>
+            <app-modal-delete-all [isVisible]="isVisibleDeleteAll" (closeModal)="handleCloseModalDeleteAll()"></app-modal-delete-all>
+        </div>
+    </div>
+    <app-card-cart [listCard]="listCard" (onClickDeleteSingle)="handleOpenModalDeleteSingle()" ></app-card-cart>
+    <app-modal-delete-single [isVisible]="isVisibleDeleteSingle" (closeModal)="handleCloseModalDeleteSingle()"></app-modal-delete-single>
+
+
+    <div class="footer__cart">
+        <div nz-row>
+            <div nz-col nzSpan="3" class="customer_img">
+                <img
+                nz-image
+                width="80%"
+                nzSrc="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt="songay"
+                nzDisablePreview="true"
+              />
+            </div>
+            <div nz-col nzSpan="13" class="customer_info">
+                <p>{{listCustomer[0]?.customerResponse?.nameCustomer}}</p>
+                <span class="info_phone">
+                    {{listCustomer[0]?.customerResponse?.phoneCustomer}}
+                </span>
+                <span class="info_address">
+                    {{listCustomer[0]?.customerResponse?.address}}
+                </span>
+            </div>
+            <div nz-col nzSpan="8" class="customer_click">
+                <button>Thay đổi</button>
+            </div>
+
+        </div>
+        <div nz-row class="below_price">
+            <div nz-col nzSpan="16">
+                <div class="shipPrice">
+                    <span class="shipPrice_text">Phí ship: </span>
+                    <span class="shipPrice_number"> 50.000</span>
+                </div>
+                <div class="totalPrice" >
+                    <span class="totalPrice_text">Tổng tạm tính:</span>
+                    <span class="totalPrice_number">10.000.000</span>
+                </div>
+            </div>
+            <div nz-col nzSpan="8" class="customer_submit">
+                <button>Tạo đơn</button>
+            </div>
+
+        </div>
+    </div>
 </div>

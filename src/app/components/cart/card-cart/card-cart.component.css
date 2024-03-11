@@ -1,3 +1,125 @@
 ::ng-deep.ant-card-body {
     padding: 6px !important;
 }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main_card {
+    padding: 1vw 0vw;
+}
+
+.card_img {
+    aspect-ratio: 1/1;
+    padding: 1vw 0;
+}
+
+.card_img>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5%;
+}
+
+.card_content {
+    padding: 0 1.5vw;
+    /* border: 1px #c7393c solid; */
+}
+
+.content_title {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2vw;
+    align-items: center;
+}
+
+.content_nameProduct {
+    font-size: 4vw;
+    font-weight: bold;
+}
+
+.content_delete {
+    font-size: 3vw;
+    font-weight: 500;
+    padding: 1vw 2vw;
+    color: #afafaf;
+}
+
+.content_quantity {
+    border: 1px #c7393c solid;
+    height: 40%;
+}
+
+.content_main {
+    display: flex;
+    flex-direction: column;
+}
+
+.editPrice {
+    font-size: 3.5vw;
+    color: #1E5993;
+
+}
+
+.unit {
+    font-size: 3.3vw;
+    color: #afafaf;
+}
+
+.multiply {
+    font-size: 3.5vw;
+    color: #1E5993;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+
+.quantity {
+    font-size: 3.5vw;
+    padding: 0.5vw 0;
+}
+
+.isPlus > span {
+    padding: 1.5vw 2.5vw;
+    border: 1px #afafaf solid;
+    border-radius: 1vw;
+    color:#0E6F64;
+    font-size: 3.5vw;
+}
+
+.rate {
+    font-size: 3.5vw;
+    padding: 0.5vw 0;
+}
+
+.finalPrice {
+    text-align: center;
+    align-self: center;
+    font-size: 3.5vw;
+    color: #c7393c;
+}
+
+.content_editQuantity {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+}
+
+.editQuantity_up {
+    border: 1px gray solid;
+    padding: 1.5vw 2.5vw;
+    font-size: 3.5vw;
+    border-radius: 1vw;
+    margin-bottom: 4vw;
+}
+
+.editQuantity_down {
+    border: 1px gray solid;
+    padding: 1.5vw 2.5vw;
+    font-size: 3.5vw;
+    border-radius: 1vw;
+}

@@ -17,6 +17,7 @@ export class OrderComponent implements OnInit, OnDestroy{
   constructor( private searchService: SearchService, private orderService: OrderService, private router: Router){}
   private $destroy = new Subject()
   listCard: any = [{},{},{}]
+  
 
 
   ngOnInit(): void {
@@ -37,7 +38,7 @@ export class OrderComponent implements OnInit, OnDestroy{
 
   handleGetOrderDetail(idOrder: number){
     this.orderService.setOrderDetailId(idOrder)
-    console.log(idOrder)
+
     this.router.navigate([routerNames.orderDetailPage]);
   }
 }

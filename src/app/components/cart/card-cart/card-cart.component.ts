@@ -1,33 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { Component,EventEmitter,Input, Output } from '@angular/core';
+import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+
+import { ICart } from '../../../types/cart';
 import { ICartItem } from '../../../types/cart-item';
+import {IProduct} from '../../../types/product'
 @Component({
   selector: 'app-card-cart',
   templateUrl: './card-cart.component.html',
   styleUrl: './card-cart.component.css',
 })
 export class CardCartComponent {
-  @Input() listCard: any;
-  @Input() listProduct: ICartItem = {
-    id: 0,
-    Product: {
-      id: 0,
-      nameProduct: "abc",
-      quantityProduct: 0,
-      expiredDate: "abc",
-      provider: "abc",
-      unit: "abc",
-      origin: "abc",
-      avatar: "abc",
-      codeProduct: "abc",
-      description: "abc",
-      providePrice: 0,
-      floorPrice: 0,
-    },
-    idCart: 0,
-    quantity: 0,
-    rate: 0,
-    isPlus: true,
-    editPrice: 0,
-    isDisable: true,
-  };
+  @Input() listCard :any;
+  @Output() onClickDeleteSingle: EventEmitter<void> = new EventEmitter();
+
+  handleOpenDeleteSingle(){
+    this.onClickDeleteSingle.emit()
+  }
 }
