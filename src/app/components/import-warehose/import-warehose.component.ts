@@ -34,7 +34,7 @@ export class ImportWarehoseComponent {
   }
 
   handleAddProduct() {
-    this.router.navigate([routerNames.homePage + "/" + routerNames.addProductPage])
+    this.router.navigate(["/" + routerNames.addProductPage])
   }
 
 }

@@ -7,6 +7,7 @@ import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
 import { filter } from 'rxjs/operators';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { routerNames } from '../../constant/router';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -25,7 +26,7 @@ export class AddProductComponent {
     private productService: ProductService,
     private msg: NzMessageService,
     private http: HttpClient,
-    private fb: NonNullableFormBuilder,private router: Router
+    private fb: NonNullableFormBuilder, private router: Router
   ) { }
 
   formProduct: {
@@ -57,61 +58,21 @@ export class AddProductComponent {
   fileList: NzUploadFile[] = [];
 
   loading = false;
-  avatarUrl?: string;
 
-  beforeUpload = (
-    file: NzUploadFile,
-    _fileList: NzUploadFile[]
-  ): Observable<boolean> =>
-    new Observable((observer: Observer<boolean>) => {
-      const isJpgOrPng =
-        file.type === 'image/jpeg' || file.type === 'image/png';
-      if (!isJpgOrPng) {
-        this.msg.error('You can only upload JPG Or  file!');
-        observer.complete();
-        return;
-      }
-      const isLt2M = file.size! / 1024 / 1024 < 200;
-      if (!isLt2M) {
-        this.msg.error('Image must smaller than 200MB!');
-        observer.complete();
-        return;
-      }
-      this.fileList = this.fileList.concat(file);
-      observer.next(isJpgOrPng && isLt2M);
-      observer.complete();
-    });
-  private getBase64(img: File, callback: (img: string) => void): void {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result!.toString()));
-    reader.readAsDataURL(img);
-  }
+  previewImage: string | undefined = '';
+  previewVisible = false;
 
-  handleChange(info: { file: NzUploadFile }): void {
-    switch (info.file.status) {
-      case 'uploading':
-        this.loading = true;
-        break;
-      case 'done':
-        this.getBase64(info.file!.originFileObj!, (img: string) => {
-          this.loading = false;
-          this.avatarUrl = img;
-        });
-        break;
-      case 'error':
-        this.msg.error('Network error');
-        this.loading = false;
-        break;
+  handlePreview = async (file: NzUploadFile): Promise<void> => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj!);
     }
-  }
-
-  handleCallAIP(): void {
+    this.previewImage = file.url || file.preview;
+    this.previewVisible = true;
+  };
+  handleCallAPI(): void {
     const formData = new FormData();
     this.fileList.forEach((file: any) => {
-      formData.append('file', file);
-    });
-    formData.forEach((value, key) => {
-      console.log(key, value);
+      formData.append('file', file.originFileObj!);
     });
 
     this.loading = true;
@@ -139,12 +100,12 @@ export class AddProductComponent {
       );
   }
   handleAddProduct() {
-    this.handleCallAIP();
-    this.handleCallAPIAdd();
+    this.handleCallAPI();
+    // this.handleCallAPIAdd();
   }
   handleCallAPIAdd() {
     console.log("1111111111111");
-    this.router.navigate(['/products']);
+    this.router.navigate([routerNames.homePage + "/" + routerNames.importWarehousePage])
   }
 
 }
