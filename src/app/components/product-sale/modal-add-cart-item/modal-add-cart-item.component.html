@@ -1,4 +1,4 @@
-<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" title="Thêm sản phẩm vào giỏ hàng" width="80%">
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" width="100%" [isCentered]="false">
     <Content>
         <div class="content">
             <div nz-row>
@@ -10,8 +10,8 @@
                     <form nz-form [formGroup]="validateAddCartForm">
                         <nz-form-item>
                             <nz-form-control [nzSpan]="12" [nzErrorTip]="editPriceValidate">
-                                <nz-input-group [nzPrefix]="prefixTemplate">
-                                    <input type="number" nz-input formControlName="editPrice" width="100px"/>
+                                <nz-input-group [nzPrefix]="prefixTemplate" style="width: 100%;">
+                                    <input type="number" nz-input formControlName="editPrice"/>
                                 </nz-input-group>
                                 <ng-template #prefixTemplate>Sửa giá:</ng-template>
                                 <ng-template #editPriceValidate let-control>
