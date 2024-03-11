@@ -12,22 +12,24 @@ import { IOrder } from '../../types/order';
   templateUrl: './order.component.html',
   styleUrl: './order.component.css',
 })
-export class OrderComponent implements OnInit, OnDestroy{
-  constructor( 
-    private searchService: SearchService, 
-    private orderService: OrderService, 
-    private router: Router){}
+export class OrderComponent implements OnInit, OnDestroy {
+  constructor(
+    private searchService: SearchService,
+    private orderService: OrderService,
+    private router: Router) { }
 
   private $destroy = new Subject()
+
   listOrder: IOrder[] = []
   isLoading: boolean = false
-
+  idOrder: number = 0
 
   ngOnInit(): void {
-      this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({next: value => {
+    this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({
+      next: value => {
         this.handleSearch(value)
-      }})
-      
+      }
+    })
   }
 
   ngOnDestroy(): void {
@@ -35,7 +37,7 @@ export class OrderComponent implements OnInit, OnDestroy{
     this.$destroy.complete()
   }
 
-  handleSearch(value: string){
+  handleSearch(value: string) {
     this.orderService.getOrder(1, value).subscribe({
       next: (res) => {
         this.listOrder = res.content.list
@@ -44,7 +46,7 @@ export class OrderComponent implements OnInit, OnDestroy{
     })
   }
 
-  handleGetOrderDetail(idOrder: number){
+  handleGetOrderDetail(idOrder: number) {
     this.orderService.setOrderDetailId(idOrder)
     console.log(idOrder)
     this.router.navigate([routerNames.orderDetailPage]);

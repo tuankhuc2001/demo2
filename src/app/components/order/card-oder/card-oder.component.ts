@@ -12,13 +12,8 @@ export class CardOderComponent {
   handleClickCard(item: IOrder){
     this.onClickCard.emit(item)
     console.log();
-    
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    console.log(this.listCard, "listCard");
-    //Add 'implements OnInit' to the class.
-    
   } 
 }

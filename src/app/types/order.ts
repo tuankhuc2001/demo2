@@ -1,15 +1,29 @@
 import { ICustomer } from './customer';
 import { IUser } from './user';
+import { IOrderDetail } from './order-detail';
+
 export interface IOrder {
-  id: number;
-  totalPrice: number;
-  status: string;
-  createdAt?: Date;
-  totalCartItem: number;
-  color: string;
-  codeOrder: string;
-  User: IUser;
-  Customer: ICustomer;
+  id: number
+  totalPrice: number
+  status: string
+  createdAt?: Date
+  totalCartItem: number
+  codeOrder: string
+  User: IUser
+  Customer: ICustomer
+}
+
+export interface IOrderAndOrderDetail {
+  id: number
+  totalPrice: number
+  status: string
+  createdAt?: Date
+  totalCartItem: number
+  codeOrder: string
+  userResponse: IUser
+  customerResponse: ICustomer
+  orderDetailResponseList: IOrderDetail[],
+
 }
 
 export interface IResponseOrder {
@@ -17,5 +31,13 @@ export interface IResponseOrder {
   status: boolean,
   content: {
     list: IOrder[],
+  }
+}
+
+export interface IResponseOrderAndOrderDetails {
+  message: string,
+  status: boolean,
+  content: {
+    list: IOrderAndOrderDetail[],
   }
 }
