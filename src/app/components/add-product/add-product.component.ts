@@ -14,6 +14,7 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
     reader.onload = () => resolve(reader.result);
     reader.onerror = (error) => reject(error);
   });
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -55,65 +56,25 @@ export class AddProductComponent {
   fileList: NzUploadFile[] = [];
 
   loading = false;
-  avatarUrl?: string;
 
-  beforeUpload = (
-    file: NzUploadFile,
-    _fileList: NzUploadFile[]
-  ): Observable<boolean> =>
-    new Observable((observer: Observer<boolean>) => {
-      const isJpgOrPng =
-        file.type === 'image/jpeg' || file.type === 'image/png';
-      if (!isJpgOrPng) {
-        this.msg.error('You can only upload JPG Or PNG file!');
-        observer.complete();
-        return;
-      }
-      const isLt2M = file.size! / 1024 / 1024 < 2;
-      if (!isLt2M) {
-        this.msg.error('Image must smaller than 2MB!');
-        observer.complete();
-        return;
-      }
-      this.fileList = this.fileList.concat(file);
-      observer.next(isJpgOrPng && isLt2M);
-      observer.complete();
-    });
-  private getBase64(img: File, callback: (img: string) => void): void {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result!.toString()));
-    reader.readAsDataURL(img);
-  }
+  previewImage: string | undefined = '';
+  previewVisible = false;
 
-  handleChange(info: { file: NzUploadFile }): void {
-    switch (info.file.status) {
-      case 'uploading':
-        this.loading = true;
-        break;
-      case 'done':
-        this.getBase64(info.file!.originFileObj!, (img: string) => {
-          this.loading = false;
-          this.avatarUrl = img;
-        });
-        break;
-      case 'error':
-        this.msg.error('Network error');
-        this.loading = false;
-        break;
+  handlePreview = async (file: NzUploadFile): Promise<void> => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj!);
     }
-  }
-
-  handleCallAIP(): void {   
+    this.previewImage = file.url || file.preview;
+    this.previewVisible = true;
+  };
+  handleCallAIP(): void {
     const formData = new FormData();
     this.fileList.forEach((file: any) => {
-      formData.append('file', file);
+      formData.append('file', file.originFileObj!);
     });
-    formData.forEach((value, key) => {
-      console.log(key, value);
-    }); 
 
     this.loading = true;
-    const req = new HttpRequest(  
+    const req = new HttpRequest(
       'POST',
       'http://localhost:8080/upload',
       formData,

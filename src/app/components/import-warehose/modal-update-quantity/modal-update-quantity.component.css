@@ -1,12 +1,72 @@
 .main{
     width: 70vw;
-    height: 100vw;
     display: flex;
     flex-direction: column;
     padding: 5%;
-}
+    font-family: Arial, Helvetica, sans-serif;
+} 
 .text-nameProduct{
     font-size: 5vw;
     font-weight: 700;
-
+} 
+.text-lable {
+    font-size: 4vw;
+    margin-top: 5%;
+}
+.mf1 {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 5%;
+}
+.mf-left {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    font-size: 4vw;
+}
+.mf-right{
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    font-size: 4vw;
+}
+.mf2 {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 5%;
+}
+.mf3 {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 5%;
+}
+.mfc-1{
+    text-align: center;
+    margin-top: 7%;
+}
+.mfc-text{
+    font-size: 4vw;
+    
+}
+.mfc-textStrong{
+    font-size: 4vw;
+    font-weight: 700;
+}
+.mfc-textStrongRed {
+    font-size: 4vw;
+    font-weight: 700;
+    color: red;
+}
+.mbtn-submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 7%;
+}
+.btn-submit {
+    width: 55%;
+    height: 5vh;
+    font-size: 3vw;
+    background-color: #0F6F64;
+    color: #fff;
+    border-radius: 50px;
 }

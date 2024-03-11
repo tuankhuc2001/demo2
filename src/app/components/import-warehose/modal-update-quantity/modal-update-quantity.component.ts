@@ -20,9 +20,10 @@ export class ModalUpdateQuantityComponent {
     avatar: 'AAAAAAAAAAAAAAAAAAAAAAAAA',
     codeProduct: 'XM2304',
     description: 'Avoid drinking more than 1 gauge',
-    providePrice: 500000,
-    floorPrice: 550000,
+    providePrice: 5000000000,
+    floorPrice: 550000, 
   };
+  newValueQuantity:string = ""
   handleCloseModal() {
     this.closeModal.emit();
   }

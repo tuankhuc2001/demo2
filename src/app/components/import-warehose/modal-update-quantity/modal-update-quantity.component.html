@@ -1,8 +1,62 @@
-<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" [buttonX]="true">
+<cModal
+  [isVisible]="isVisible"
+  (closeModal)="handleCloseModal()"
+  [buttonX]="true"
+>
   <Content>
     <div class="main">
-      <span class="text-nameProduct">{{formProduct.nameProduct}}</span>
+      <span class="text-nameProduct">{{ formProduct.nameProduct }}</span>
+      <span class="text-lable">Tồn kho: {{ formProduct.quantityProduct }}</span>
+      <div class="mf1">
+        <div class="mf-left">
+          <span >Giá đang bán:</span>
+          <span style="color: red;">{{ formProduct.floorPrice }}</span>
+        </div> 
+        <div class="mf-right">
+          <span>Số lượng nhập:</span>
+          <input />
+        </div>
+      </div>
+      <div class="mf2">
+        <div class="mf-left">
+          <span>Nguồn cung:</span>
+          <input [disabled]="true"/>
+        </div>
+        <div class="mf-right">
+          <span>Giá nhập:</span>
+          <input [disabled]="true"/>
+        </div>
+      </div>
+      <div class="mf3">
+        <div class="mf-left">
+          <span>SĐT:</span>
+          <input [disabled]="true"/>
+        </div>
+        <div class="mf-right">
+          <span>HSD:</span>
+          <input [disabled]="true"/>
+        </div>
+      </div>
+
+      <div class="mfc-1">
+        <span class="mfc-text">
+            Tồn kho sau nhập hàng:
+        </span>
+        <span class="mfc-textStrong">
+          880
+      </span>
+      </div>
+      <div class="mfc-1">
+        <span class="mfc-text">
+            Tổng số tiền nhập:
+        </span>
+        <span class="mfc-textStrongRed">
+          {{formProduct.providePrice |number }}
+      </span>
+      </div>
+      <div class="mbtn-submit">
+        <button nz-button class="btn-submit">Nhập kho</button>
+      </div>
     </div>
   </Content>
 </cModal>
- 
