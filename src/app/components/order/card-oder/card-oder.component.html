@@ -7,29 +7,29 @@
       </div>
       <div nz-col nzSpan="15" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div nz-row nzSpan="6">
-            <span class="codeOder-card">{{item.codeOrder}}</span>
+          <span class="codeOder-card">{{item.codeOrder}}</span>
         </div>
-        <div nz-row nzSpan="6">
-            <span class="nameCustomer-card">{{item.customerResponse.nameCustomer}}</span>
+        <div nz-row nzSpan="6">add
+          <span class="nameCustomer-card">{{item.customerResponse.nameCustomer}}</span>
         </div>
         <div nz-row nzSpan="6">
           <span nz-icon nzType="environment" nzTheme="outline" class="IconOder-card"></span>
-            <span class="textOder-card">{{item.customerResponse.address}}</span>
+          <span class="textOder-card">{{item.customerResponse.address}}</span>
         </div>
-        <div nz-row nzSpan="6" >
-            <span nz-icon nzType="calendar" nzTheme="outline" class="IconOder-card"></span>
-            <span class="textOder-card">{{item.createdAt | date: "dd/MM/yyyy HH:mm"}}</span>
+        <div nz-row nzSpan="6">
+          <span nz-icon nzType="calendar" nzTheme="outline" class="IconOder-card"></span>
+          <span class="textOder-card">{{item.createdAt | date: "dd/MM/yyyy HH:mm"}}</span>
         </div>
       </div>
       <div nz-col nzSpan="8" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div nz-row class="flex-end">
-            <span class="totalPrice-card">{{item.totalPrice}}</span>
+          <span class="totalPrice-card">{{item.totalPrice}}</span>
         </div>
         <div nz-row class="flex-end">
-            <span class="totalDetail-card">({{item.totalCartItem}})</span>
+          <span class="totalDetail-card">({{item.totalCartItem}})</span>
         </div>
         <div nz-row class="flex-end">
-            <span class="status-card">{{item.status}}</span>
+          <span class="status-card">{{item.status}}</span>
         </div>
       </div>
     </div>

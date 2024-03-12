@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IOrder, IOrderAndOrderDetail } from '../../../types/order';
+import { IOrderAndOrderDetail } from '../../../types/order';
 
 @Component({
   selector: 'app-card-order-detail',
@@ -8,7 +8,7 @@ import { IOrder, IOrderAndOrderDetail } from '../../../types/order';
 })
 export class CardOrderDetailComponent implements OnInit {
 
-  @Input() listCardOrderDetail: IOrderAndOrderDetail[] = [];;
+  @Input() listCardOrderDetail: IOrderAndOrderDetail[] = [];
   constructor() { }
 
   ngOnInit() {
