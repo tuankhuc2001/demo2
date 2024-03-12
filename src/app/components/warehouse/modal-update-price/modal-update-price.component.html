@@ -1,18 +1,29 @@
-<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" [buttonX]="false">
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" [buttonX]="false" [width]="'100%'">
     <Content>
-        <div style="padding: 12px;" nz-row>
+        <div style="padding: 12px;" nz-row =>
             <div nz-col nzSpan="12" class="content-img">
                 <img nz-image nzSrc="../../../assets/images/gai.jpg" class="img__modal-price" nzDisablePreview="true"
                     width="100%">
             </div>
             <div nz-col nzSpan="12" class="content-modal">
-                <p class="text--bold text--size-16">{{productItem.nameProduct}}</p>
-                <span class="text--grey text--size-16">Giá sàn:</span>
-                <span class="text--red text--bold text--size-16">{{productItem.floorPrice}}</span>
-                <span class="text--grey text--size-16">Giá sàn mới:</span>
-                <form nz-form>
+                <p class="text--bold text--size-3">{{productItem.nameProduct}}</p>
+                <span class="text--grey text--size-3">Giá sàn:</span>
+                <span class="text--red text--bold text--size-3">{{productItem.floorPrice}}</span>
+                <span class="text--grey text--size-3">Giá sàn mới:</span>
+                <form nz-form [formGroup]="validateForm" class="width-100">
+                    <nz-form-item>
+                        <nz-form-control nzErrorTip="Làm ơn hãy nhập giá sàn!">
+                          <nz-input-group class="d-flex jct-ct">
+                            <input class="text-ct input-control text--size-3" formControlName="priceFloor" nz-input placeholder="Nhập giá sàn!" />
+                          </nz-input-group>
+                        </nz-form-control>
+                      </nz-form-item>  
+                </form>
+                <div class="d-flex jct-ct width-100 text--size-3">
+                    <button  class="btn-control btn-cancel bg-cl-red text--size-3" (click)="handleCancel()">Hủy</button>
+                    <button  class="btn-control bg-cl-green text--size-3" (click)="handleUpdatePrice()">Xác nhận</button>
+                </div>
                     
-                </form>                
             </div>
         </div>
     </Content>

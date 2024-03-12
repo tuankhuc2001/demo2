@@ -1,7 +1,10 @@
 <div>
-    <app-card-warehouse [listCard]="listCard" (openModalUpdatePrice) = "handleOpenModalUpdatePrice()"></app-card-warehouse>
+    <app-card-warehouse [listProduct]="listProduct" (openModalUpdatePrice) = "handleOpenModalUpdatePrice($event)"></app-card-warehouse>
     <div>
-        <app-modal-update-price [isVisible]="isVisibleModalUpdatePrice" (closeModal)="handleCloseModalUpdatePrice()">
+        <app-modal-update-price
+         [isVisible]="isVisibleModalUpdatePrice"
+         (closeModal)="handleCloseModalUpdatePrice()"
+          [productItem]="productItem">
     </app-modal-update-price>
     </div>
 </div>

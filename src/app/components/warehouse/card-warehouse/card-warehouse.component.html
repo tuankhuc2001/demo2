@@ -1,5 +1,5 @@
-<div *ngIf="listCard.length == 0">ko co du</div>
-<cCard *ngFor="let item of listCard" (click)="handleOpenModalUpdatePrice()">
+<div *ngIf="listProduct.length == 0">ko co du</div>
+<cCard *ngFor="let item of listProduct" (click)="handleOpenModalUpdatePrice(item)">
   <Content> 
     <div class="main-card">
       <div nz-col nzSpan="8" class="card-img">
@@ -14,27 +14,27 @@
       </div>
       <div nz-col nzSpan="10" style="display: flex; flex-direction: column;justify-content: space-between;" class="pd-tb10-lr20">
         <div nz-row>
-            <span class="nameProduct-card">{{listProduct.nameProduct}}</span>
+            <span class="nameProduct-card">{{item.nameProduct}}</span>
         </div>
         <div nz-row>
-            <span class="textProduct-card">{{listProduct.unit}}</span>
+            <span class="textProduct-card">{{item.unit}}</span>
         </div>
         <div nz-row>
-            <span class="textProduct-card">{{listProduct.origin}}</span>
+            <span class="textProduct-card">{{item.origin}}</span>
         </div> 
         <div nz-row>
-            <span class="textProduct-card">{{listProduct.codeProduct}}</span>
+            <span class="textProduct-card">{{item.codeProduct}}</span>
         </div>  
       </div>
       <div nz-col nzSpan="6" class="pd-tb10-lr20" style="display: flex; flex-direction: column;justify-content: space-between;">
         <div nz-row class="flex-end">
-            <span class="floorPrice-card">{{listProduct.floorPrice}}</span>
+            <span class="floorPrice-card">{{item.floorPrice}}</span>
         </div>
         <div nz-row class="flex-end">
-            <span class="textProduct-card">{{listProduct.expiredDate}}</span>
+            <span class="textProduct-card">{{item.expiredDate}}</span>
         </div>
         <div nz-row class="flex-end">
-            <span class="textProduct-card">{{listProduct.quantityProduct}}</span>
+            <span class="textProduct-card">{{item.quantityProduct}}</span>
         </div>
       </div>
     </div>

@@ -14,25 +14,12 @@ export class CardWarehouseComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Input() listCard: any;
-  @Input() listProduct: IProduct = {
-    id: 0,
-    nameProduct: "abc",
-    quantityProduct: 0,
-    expiredDate: new Date,
-    provider: "abc",
-    unit: "abc",
-    origin: "abc",
-    avatar: "abc",
-    codeProduct: "abc",
-    description: "abc",
-    providePrice: 0,
-    floorPrice: 0,
-  }
+  @Input() listProduct : IProduct [] = []
 
-  @Output() openModalUpdatePrice : EventEmitter<void> = new EventEmitter;
-  handleOpenModalUpdatePrice(){
-    this.openModalUpdatePrice.emit();
+
+  @Output() openModalUpdatePrice : EventEmitter<IProduct> = new EventEmitter;
+  handleOpenModalUpdatePrice(productItem: IProduct){
+    this.openModalUpdatePrice.emit(productItem);
   }
 
 }
