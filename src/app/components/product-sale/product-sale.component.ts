@@ -15,6 +15,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 export class ProductSaleComponent implements OnDestroy, OnInit {
   listProduct: IProduct[] = []
   totalCartItem: number = 0
+  isLoading: boolean = false
   private destroyed$ = new Subject()
 
   constructor( private notification: NzNotificationService,
@@ -43,7 +44,7 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
       next: (res) => {
         this.listProduct = res.content.list
         this.totalCartItem = res.content.totalCartItem
-        console.log(res, "Search222")
+        console.log(res)
       },
       error: (error) => {
         this.createNotification('error', error)
@@ -59,23 +60,9 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
     );
   }
 
-  handleOpenModalAddCartItem() {
+  handleOpenModalAddCartItem(item: IProduct) {
     this.isVisibleModalAddCartItem = true
-    this.productDetail = {
-      id: 4,
-      nameProduct: 'NextProduct',
-      quantityProduct: 422,
-      expiredDate: new Date(),
-      provider: 'Factory FGD',
-      unit: 'Box(es)',
-      origin: 'HCM',
-      avatar: 'BBBBBBBBBBBBBBBB',
-      codeProduct: 'Xaaaaaas',
-      description: 'Avoid drinking more than 4 gauges',
-      providePrice: 200000,
-      floorPrice: 750000,
-
-    }
+    this.productDetail = item
   }
 
   handleCloseModalAddCartItem() {

@@ -1,7 +1,13 @@
-<link rel="stylesheet"
-  href="C:\Users\CUONG\Desktop\FE-BonBon\bonbon-angular\src\app\components\import-warehose\import-warehose.component.css">
-<div>
-  <h1>importWarehousePage</h1>
+<div class="main">
+  <app-card-import-warehouse
+    [listCard]="listProduct"
+    (onClickCard)="handleOpenModalupdateProductQuantity()"
+  ></app-card-import-warehouse>
+  <app-modal-update-quantity
+    [isVisible]="isVisibleModalupdateProductQuantity"
+    (closeModal)="handleCloseModalupdateProductQuantity()"
+  ></app-modal-update-quantity>
+  <button nz-button class="btn-Add" nzShape="circle" (click)="handlenavigate()" ><span nz-icon nzType="plus" class="icon"></span></button>
 </div>
 <button class="btn-addProduct" (click)="handleAddProduct()">
   <span nz-icon nzType="plus" nzTheme="outline"></span>

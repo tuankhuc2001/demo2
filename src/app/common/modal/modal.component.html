@@ -1,5 +1,7 @@
 <nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" 
-[nzFooter]="modalFooter"
+nzCentered
+[nzFooter]="null"
+[nzClosable]="buttonX"
 [nzWidth]="width"
 >
     <ng-container *nzModalContent>

@@ -1,5 +1,4 @@
-<cButton (click)="handleOpenModalAddCartItem()" [customStyle]="{backgroundColor:'red', color: 'white'}">Open Modal</cButton>
-
-Hello
-
-<app-modal-add-cart-item [isVisible]="isVisibleModalAddCartItem" (closeModal)="handleCloseModalAddCartItem()" [ProductDetail]="productDetail"></app-modal-add-cart-item>
+<div *ngIf="isLoading === false">
+    <app-card-product-sale [listCard]="listProduct" (onClickCard)="handleOpenModalAddCartItem($event)"></app-card-product-sale>
+    <app-modal-add-cart-item [isVisible]="isVisibleModalAddCartItem" (closeModal)="handleCloseModalAddCartItem()" [ProductDetail]="productDetail"></app-modal-add-cart-item>
+</div>
