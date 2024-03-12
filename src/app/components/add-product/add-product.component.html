@@ -1,12 +1,12 @@
 <section class="container">
   <div class="header">
-    <div style="width: 45%;"><span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
+    <div style="width: 40%;"><span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
     </div>
-    <div><span>Thêm sản phẩm</span></div>
+    <div><span style="font-weight: bold;">Thêm sản phẩm</span></div>
   </div>
   <div class="content" nz-row>
-    <div class="dflex">
-      <div nz-col nzSpan="10" class="center">
+    <div class="dflex full-width">
+      <div nz-col class="edit-upload" nzSpan="10">
         <nz-upload nzName="avatar" nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
           nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1"
           [nzPreview]="handlePreview" style="margin-top: 40px;">
@@ -22,10 +22,10 @@
           </ng-template>
         </nz-modal>
       </div>
-      <div nz-col nzSpan="14" class="center">
+      <div nz-col nzSpan="14" class="center padding-all">
         <input class="input-add-header" placeholder="Giá bán...">
         <input class="input-add-header" placeholder="Số lượng tồn kho...(*)">
-        <button (click)="handleAddProduct()" class="button-upload">Thêm ảnh</button>
+        <button (click)="handleCallAPIImage()" class="button-upload">Thêm ảnh</button>
       </div>
     </div>
   </div>
@@ -103,4 +103,7 @@
     </div>
   </div>
   <input class="description" placeholder="Mô tả...">
+  <div class="center">
+    <button (click)="handleAddProduct()" class="button-add-product">Thêm sản phẩm</button>
+  </div>
 </section>

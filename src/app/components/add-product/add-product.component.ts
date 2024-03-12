@@ -8,6 +8,7 @@ import { filter } from 'rxjs/operators';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { routerNames } from '../../constant/router';
+import { IProduct } from '../../types/product';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -29,31 +30,20 @@ export class AddProductComponent {
     private fb: NonNullableFormBuilder, private router: Router
   ) { }
 
-  formProduct: {
-    nameProduct: String;
-    quantityProduct: Number;
-    expiredDate: String;
-    provider: String;
-    unit: String;
-    origin: String;
-    avatar: NzUploadFile[];
-    codeProduct: String;
-    description: String;
-    providePrice: Number;
-    floorPrice: Number;
-  } = {
-      nameProduct: 'abc',
-      quantityProduct: 1,
-      expiredDate: 'abc',
-      provider: 'abc',
-      unit: 'abc',
-      origin: 'abc',
-      avatar: [],
-      codeProduct: 'abc',
-      description: 'abc',
-      providePrice: 1,
-      floorPrice: 1,
-    };
+  product: IProduct = {
+    id: 0,
+    nameProduct: "",
+    quantityProduct: 0,
+    expiredDate: new Date(),
+    provider: "",
+    unit: "",
+    origin: "",
+    avatar: "",
+    codeProduct: "",
+    description: "",
+    providePrice: 0,
+    floorPrice: 0
+  };
 
   fileList: NzUploadFile[] = [];
 
@@ -68,13 +58,13 @@ export class AddProductComponent {
     }
     this.previewImage = file.url || file.preview;
     this.previewVisible = true;
+    console.log("AAAAAAAAAAAAAAAAAA" + file.url);
   };
-  handleCallAPI(): void {
+  handleCallAPIImage(): void {
     const formData = new FormData();
     this.fileList.forEach((file: any) => {
       formData.append('file', file.originFileObj!);
     });
-
     this.loading = true;
     const req = new HttpRequest(
       'POST',
@@ -100,10 +90,10 @@ export class AddProductComponent {
       );
   }
   handleAddProduct() {
-    this.handleCallAPI();
-    // this.handleCallAPIAdd();
+    console.log("Test hàm add product");
+    this.productService.addProduct(this.product)
   }
-  handleCallAPIAdd() {
+  handleBack() {
     console.log("1111111111111");
     this.router.navigate([routerNames.homePage + "/" + routerNames.importWarehousePage])
   }

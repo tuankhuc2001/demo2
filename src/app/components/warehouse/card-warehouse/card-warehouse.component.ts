@@ -23,10 +23,10 @@ export class CardWarehouseComponent {
     providePrice: 0,
     floorPrice: 0,
   }
-  
+
   @Output() productIdEmit: EventEmitter<number> = new EventEmitter();
 
-  handleProductIdEmit(productId: number){
+  handleProductIdEmit(productId: number) {
     this.productIdEmit.emit(productId)
   }
 }

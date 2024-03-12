@@ -68,7 +68,30 @@
   color: white;
 }
 
+.button-add-product{
+  margin-top: 25px;
+  border: none;
+  border-radius: 40px;
+  width: 50%;
+  height: 20%;
+  background-color: green;
+  color: white;
+}
+
 .description{
   height: 60px;
   width: 100%;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.edit-upload{
+  left: 9%;
+  bottom: 10%;
+}
+
+.padding-all{
+  padding: 15px;
 }
