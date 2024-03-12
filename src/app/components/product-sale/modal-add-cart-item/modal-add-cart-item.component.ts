@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, Valida
 import { IProduct } from '../../../types/product';
 import { NotificationComponent } from '../../../common/notification/notification.component';
 
-@Component({
+@Component({ 
   selector: 'app-modal-add-cart-item',
   templateUrl: './modal-add-cart-item.component.html',
   styleUrl: './modal-add-cart-item.component.css'

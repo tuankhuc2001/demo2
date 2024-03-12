@@ -2,6 +2,7 @@
   [isVisible]="isVisible"
   (closeModal)="handleCloseModal()"
   [buttonX]="true"
+  [width]="'80%'"
 >
   <Content>
     <div class="main">
@@ -9,53 +10,59 @@
       <span class="text-lable">Tồn kho: {{ formProduct.quantityProduct }}</span>
       <div class="mf1">
         <div class="mf-left">
-          <span >Giá đang bán:</span>
-          <span style="color: red;">{{ formProduct.floorPrice }}</span>
-        </div> 
+          <span>Giá đang bán:</span>
+          <span style="color: red">{{ formProduct.floorPrice }}</span>
+        </div>
         <div class="mf-right">
-          <span>Số lượng nhập:</span>
-          <input />
+          <span>*Số lượng nhập:</span>
+          <form nz-form [formGroup]="validateAddCartForm">
+            <nz-form-item>
+              <nz-form-control [nzErrorTip]="quantityValidate">
+                <nz-input-group>
+                  <input type="number" nz-input formControlName="quantity" />
+                </nz-input-group>
+
+                <ng-template #quantityValidate let-control>
+                  @if (control.errors?.['required']) { Vui lòng nhập số lượng } @if (control.errors?.['confirm']) { Vui lòng nhập số lượng phải lớn hơn 0 }
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </form>
         </div>
       </div>
       <div class="mf2">
         <div class="mf-left">
           <span>Nguồn cung:</span>
-          <input [disabled]="true"/>
+          <input [disabled]="true" />
         </div>
         <div class="mf-right">
           <span>Giá nhập:</span>
-          <input [disabled]="true"/>
+          <input [disabled]="true" />
         </div>
       </div>
       <div class="mf3">
         <div class="mf-left">
           <span>SĐT:</span>
-          <input [disabled]="true"/>
+          <input [disabled]="true" />
         </div>
         <div class="mf-right">
           <span>HSD:</span>
-          <input [disabled]="true"/>
+          <input [disabled]="true" />
         </div>
       </div>
 
       <div class="mfc-1">
-        <span class="mfc-text">
-            Tồn kho sau nhập hàng:
-        </span>
-        <span class="mfc-textStrong">
-          880
-      </span>
+        <span class="mfc-text"> Tồn kho sau nhập hàng: </span>
+        <span class="mfc-textStrong"> 880 </span>
       </div>
       <div class="mfc-1">
-        <span class="mfc-text">
-            Tổng số tiền nhập:
-        </span>
+        <span class="mfc-text"> Tổng số tiền nhập: </span>
         <span class="mfc-textStrongRed">
-          {{formProduct.providePrice |number }}
-      </span>
+          {{ formProduct.providePrice | number }}
+        </span>
       </div>
       <div class="mbtn-submit">
-        <button nz-button class="btn-submit">Nhập kho</button>
+        <button nz-button class="btn-submit" (click)="handleSubmit()">Nhập kho</button>
       </div>
     </div>
   </Content>

@@ -10,7 +10,7 @@ import { filter } from 'rxjs/operators';
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file);8
     reader.onload = () => resolve(reader.result);
     reader.onerror = (error) => reject(error);
   });
@@ -55,12 +55,14 @@ export class AddProductComponent {
 
   fileList: NzUploadFile[] = [];
 
-  loading = false;
+  isloading = false;
 
   previewImage: string | undefined = '';
   previewVisible = false;
 
   handlePreview = async (file: NzUploadFile): Promise<void> => {
+    console.log(this.fileList,"dddđ");
+    
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj!);
     }
@@ -73,7 +75,7 @@ export class AddProductComponent {
       formData.append('file', file.originFileObj!);
     });
 
-    this.loading = true;
+
     const req = new HttpRequest(
       'POST',
       'http://localhost:8080/upload',
@@ -87,11 +89,9 @@ export class AddProductComponent {
       .pipe(filter((e) => e instanceof HttpResponse))
       .subscribe(
         () => {
-          this.loading = false;
           this.msg.error('upload failed.');
         },
         () => {
-          this.loading = false;
           this.fileList = [];
           this.msg.success('upload successfully');
         }
