@@ -18,6 +18,9 @@ export class ProductService {
   }
 
   addProduct(product: IProduct): Observable<IResponseProduct> {
-    return this.http.post<IResponseProduct>(`${apiProduct.addProduct}`, product)
+    return this.http.post<IResponseProduct>(`${apiProduct.addProduct}`,product)
+  }
+  getProductWareHouse(idUser: number, textSearch: string): Observable<IResponseProduct> {
+    return this.http.get<IResponseProduct>(`${apiProduct.getProductWarehouse}${idUser}?textSearch=${textSearch}`)
   }
 }

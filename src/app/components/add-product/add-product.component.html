@@ -1,8 +1,8 @@
 <section class="container">
   <div class="header">
-    <div style="width: 40%;"><span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
+    <div class="icon-back"><span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
     </div>
-    <div><span style="font-weight: bold;">Thêm sản phẩm</span></div>
+    <div class="title"><span style="font-weight: bold;">Thêm sản phẩm</span></div>
   </div>
   <div class="content" nz-row>
     <div class="dflex full-width">
@@ -18,14 +18,18 @@
         <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
           (nzOnCancel)="previewVisible = false">
           <ng-template #modalContent>
-            <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+            <img [src]="previewImage" [ngStyle]="{ width: '100%' }"/>
           </ng-template>
         </nz-modal>
       </div>
       <div nz-col nzSpan="14" class="center padding-all">
-        <input class="input-add-header" placeholder="Giá bán...">
-        <input class="input-add-header" placeholder="Số lượng tồn kho...(*)">
-        <button (click)="handleCallAPIImage()" class="button-upload">Thêm ảnh</button>
+        <input type="number" nz-input [(ngModel)]="product.floorPrice" (input)="onInputFloorPrice()"
+          class="input-add-header" placeholder="Giá bán...">
+        <span *ngIf="showValidateFloorPrice" class="validateInput">Giá bán phải lớn hơn 0</span>
+        <input type="number" nz-input [(ngModel)]="product.quantityProduct" (input)="onInputQuantity()"
+          class="input-add-header" placeholder="Số lượng nhập kho...(*)">
+        <span *ngIf="showValidateQuantity" class="validateInput">Nhập kho phải lớn hơn 0</span>
+        <button (click)="handleCallApiImage()" class="button-upload">Thêm ảnh</button>
       </div>
     </div>
   </div>
@@ -34,7 +38,7 @@
       <form nz-form>
         <nz-form-item>
           <nz-form-control [nzSpan]="24">
-            <input nz-input placeholder="Tên Sản Phẩm...(*)">
+            <input [(ngModel)]="product.nameProduct" nz-input placeholder="Tên Sản Phẩm...(*)">
           </nz-form-control>
         </nz-form-item>
       </form>
@@ -45,7 +49,7 @@
       <form nz-form>
         <nz-form-item>
           <nz-form-control [nzSpan]="24">
-            <input nz-input placeholder="Đơn vị tính...(*)">
+            <input [(ngModel)]="product.unit" nz-input placeholder="Đơn vị tính...(*)">
           </nz-form-control>
         </nz-form-item>
       </form>
@@ -54,7 +58,7 @@
       <form nz-form>
         <nz-form-item>
           <nz-form-control [nzSpan]="24">
-            <input nz-input placeholder="HSD:">
+            <input [(ngModel)]="product.expiredDate" nz-input placeholder="HSD:">
           </nz-form-control>
         </nz-form-item>
       </form>
@@ -63,7 +67,7 @@
       <form nz-form>
         <nz-form-item>
           <nz-form-control [nzSpan]="24">
-            <input nz-input placeholder="0">
+            <input type="number" [(ngModel)]="product.providePrice" nz-input placeholder="Giá cung...">
           </nz-form-control>
         </nz-form-item>
       </form>
@@ -74,7 +78,7 @@
       <form nz-form>
         <nz-form-item>
           <nz-form-control [nzSpan]="24">
-            <input nz-input placeholder="Xuất xứ...">
+            <input [(ngModel)]="product.origin" nz-input placeholder="Xuất xứ...">
           </nz-form-control>
         </nz-form-item>
       </form>
@@ -86,7 +90,7 @@
         <form nz-form>
           <nz-form-item>
             <nz-form-control [nzSpan]="24">
-              <input nz-input placeholder="Nguồn cung...">
+              <input [(ngModel)]="product.provider" nz-input placeholder="Nguồn cung...">
             </nz-form-control>
           </nz-form-item>
         </form>
@@ -95,14 +99,14 @@
         <form nz-form>
           <nz-form-item>
             <nz-form-control [nzSpan]="24">
-              <input nz-input placeholder="SĐT:">
+              <input [(ngModel)]="product.codeProduct" nz-input placeholder="SĐT:">
             </nz-form-control>
           </nz-form-item>
         </form>
       </div>
     </div>
   </div>
-  <input class="description" placeholder="Mô tả...">
+  <input class="description" [(ngModel)]="product.description" placeholder="Mô tả...">
   <div class="center">
     <button (click)="handleAddProduct()" class="button-add-product">Thêm sản phẩm</button>
   </div>

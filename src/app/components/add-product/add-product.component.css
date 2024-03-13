@@ -1,64 +1,66 @@
 ::ng-deep .ant-upload-picture-card-wrapper {
   width: 0%;
 }
-::ng-deep .avatar-uploader > .ant-upload {
+
+::ng-deep .avatar-uploader>.ant-upload {
   width: 25vw;
   height: 15vh;
   margin-left: 7vw;
 }
 
-.container{
+.container {
   padding: 3px;
 }
 
-.header{
+.header {
   display: flex;
+  padding: 5px;
 }
 
-.content{
+.content {
   width: 100%;
   height: 100%;
   margin-bottom: 20px;
 }
 
-.content-input{
+.content-input {
   width: 100%;
   height: 100%;
 }
 
-.img-upload{
+.img-upload {
   width: 65%;
   height: 100%;
   border-radius: 10%;
 }
 
-.dflex{
+.dflex {
   display: flex;
 }
 
-.center{
+.center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.input-add-header{
+.input-add-header {
   margin: 5px;
   border: 1px solid;
   padding: 5px;
   width: 100%;
 }
 
-.title-text{
+.title-text {
   font-size: 14x;
 }
 
-.input-add-content{
+.input-add-content {
   border: 1px solid;
 }
 
-.button-upload{
+.button-upload {
   margin-top: 10px;
   border: none;
   border-radius: 40px;
@@ -68,7 +70,7 @@
   color: white;
 }
 
-.button-add-product{
+.button-add-product {
   margin-top: 25px;
   border: none;
   border-radius: 40px;
@@ -78,20 +80,47 @@
   color: white;
 }
 
-.description{
+.description {
   height: 60px;
   width: 100%;
 }
 
-.full-width{
+.full-width {
   width: 100%;
 }
 
-.edit-upload{
+.edit-upload {
   left: 9%;
   bottom: 10%;
 }
 
-.padding-all{
+.padding-all {
   padding: 15px;
+}
+
+.validateInput {
+  color: red;
+}
+
+.icon-back {
+  width: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-back:hover {
+  background-color: aqua;
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursor{
+  cursor: pointer;
 }

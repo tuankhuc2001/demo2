@@ -30,6 +30,9 @@ export class AddProductComponent {
     private fb: NonNullableFormBuilder, private router: Router
   ) { }
 
+  showValidateFloorPrice: boolean = false;
+  showValidateQuantity: boolean = false;
+
   product: IProduct = {
     id: 0,
     nameProduct: "",
@@ -42,7 +45,7 @@ export class AddProductComponent {
     codeProduct: "",
     description: "",
     providePrice: 0,
-    floorPrice: 0
+    floorPrice: 0 
   };
 
   fileList: NzUploadFile[] = [];
@@ -58,9 +61,8 @@ export class AddProductComponent {
     }
     this.previewImage = file.url || file.preview;
     this.previewVisible = true;
-    console.log("AAAAAAAAAAAAAAAAAA" + file.url);
   };
-  handleCallAPIImage(): void {
+  handleCallApiImage(): void {
     const formData = new FormData();
     this.fileList.forEach((file: any) => {
       formData.append('file', file.originFileObj!);
@@ -92,10 +94,14 @@ export class AddProductComponent {
   handleAddProduct() {
     console.log("Test hàm add product");
     this.productService.addProduct(this.product)
-  }
-  handleBack() {
-    console.log("1111111111111");
-    this.router.navigate([routerNames.homePage + "/" + routerNames.importWarehousePage])
+    this.handleCallApiImage();
   }
 
+  onInputFloorPrice() {
+    this.showValidateFloorPrice = this.product.floorPrice.valueOf() <= 0;
+  }
+
+  onInputQuantity() {
+    this.showValidateQuantity = this.product.quantityProduct.valueOf() <= 0;
+  }
 }
