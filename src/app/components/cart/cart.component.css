@@ -134,12 +134,17 @@
     align-items: center;
 }
 
-.customer_submit > button {
+.customer_submit > .btn_submit {
     background-color: #ff4e00;
+    width: 80%;
+    height: 80%;
     color: white;
-    padding: 2.2vw 5vw;
     border-radius: 1vw;
     font-size: 4.5vw;
     font-weight: 500;
     border: none;
+}
+
+.customer_submit >.btn_submit:disabled {
+    background-color: rgb(120, 114, 106);
 }

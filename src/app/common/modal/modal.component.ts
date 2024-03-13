@@ -9,9 +9,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ModalComponent implements OnInit {
     constructor() { }
 
+    @Input() footer: boolean = true
+    @Input() buttonX : boolean = false
     @Input() isLoading: boolean = false
-    @Input() title: string = "Default title"
+    @Input() title: string = ""
     @Input() isVisible: boolean = false
+    @Input() width: string | number = ''
     @Output() closeModal: EventEmitter<void> = new EventEmitter<void>()
 
     ngOnInit() { }

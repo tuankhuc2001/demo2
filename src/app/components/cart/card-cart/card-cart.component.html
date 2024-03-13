@@ -2,7 +2,7 @@
 <cCard *ngFor="let item of listCard[0]?.cartItemResponseSet">
   <Content>
     <div class="main_card" nz-row>
-      <div nz-col nzSpan="6" class="card_img">
+      <div nz-col nzSpan="8" class="card_img">
         <img
           nz-image
           width="80%"
@@ -11,35 +11,35 @@
           nzDisablePreview="true"
         />
       </div>
-      <div nz-col nzSpan="18" class="card_content">
+      <div nz-col nzSpan="16" class="card_content">
         <div class="content_title">
           <p class="content_nameProduct">{{ item?.productResponse?.nameProduct }}</p>
-          <p class="content_delete"><span nz-icon nzType="close" nzTheme="outline" (click)="handleOpenDeleteSingle()"></span></p>
+          <p class="content_delete"><span nz-icon nzType="close" nzTheme="outline" (click)="handleOpenDeleteSingle(item)"></span></p>
         </div>
           <div nz-row >
           <div class="content_main" nz-col nzSpan="20">
             <div nz-row >
-              <div nz-col nzSpan="8">
+              <div nz-col nzSpan="9">
                 <p class="editPrice">{{ item?.editPrice }}</p>
                 <p class="unit">{{ item?.productResponse?.unit }}</p>
               </div>
-              <div nz-col nzSpan="8" class="multiply" >
+              <div nz-col nzSpan="5" class="multiply" >
               X
               </div>
-              <div nz-col nzSpan="8" >
+              <div nz-col nzSpan="9" >
                 <input nz-input type="number"class="quantity" [ngModel] = "item?.quantity" />
               </div>
             </div>
             <div nz-row >
-              <div nz-col nzSpan="8" class="isPlus">
-                <span nz-icon nzType="plus" nzTheme="outline"></span>
-                <!-- <span nz-icon nzType="minus" nzTheme="outline"></span> -->
+              <div nz-col nzSpan="5" class="isPlus">
+                <span nz-icon nzType="plus" nzTheme="outline" *ngIf="item.plus == true" ></span>
+                <span nz-icon nzType="minus" nzTheme="outline" *ngIf="item.plus == false" style="color: red;"></span>
               </div>
-              <div nz-col nzSpan="8">
+              <div nz-col nzSpan="9">
                 <input nz-input type="number" class="rate" [ngModel] = "item?.rate" />
               </div>
-              <div nz-col nzSpan="8" class="finalPrice">
-                <p>10.000.000</p>
+              <div nz-col nzSpan="10" class="finalPrice">
+                <p>{{item.plus ? (item.editPrice + item.rate) * item.quantity : (item.editPrice - item.rate) * item.quantity}}</p>
               </div>
             </div>
           </div>

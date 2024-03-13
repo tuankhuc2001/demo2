@@ -79,7 +79,7 @@
 
 .quantity {
     font-size: 3.5vw;
-    padding: 0.5vw 0;
+    padding: 0.5vw 1vw;
 }
 
 .isPlus > span {
@@ -92,7 +92,7 @@
 
 .rate {
     font-size: 3.5vw;
-    padding: 0.5vw 0;
+    padding: 0.5vw 1vw;
 }
 
 .finalPrice {

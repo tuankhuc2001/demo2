@@ -10,3 +10,14 @@ export interface IOder {
   color: string;
   codeOder: string;
 }
+
+export interface IAddOder {
+  totalPrice: number;
+}
+
+export interface IOrderResponse {
+  message: string,
+  status: boolean,
+  content: {
+  }
+}

@@ -15,3 +15,7 @@ export interface IResponseCart {
     totalCartItem: number,
   }
 }
+
+export interface ICartCustomer {
+  Customer: ICustomer;
+}

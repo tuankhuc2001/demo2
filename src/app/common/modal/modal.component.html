@@ -1,4 +1,6 @@
-<nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzFooter]="modalFooter">
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+    [nzClosable]=" buttonX "
+    [nzFooter]="footer === true ? modalFooter : null">
     <ng-container *nzModalContent>
         <ng-content select="Content"></ng-content>
     </ng-container>
