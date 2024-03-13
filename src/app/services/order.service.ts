@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IResponseOrder, IResponseOrderAndOrderDetails } from '../types/order';
+import { IOrderAndOrderDetail, IResponseOrder, IResponseOrderAndOrderDetails } from '../types/order';
 import { HttpClient } from '@angular/common/http';
 import { apiOrder, apiOrderDetail } from '../constant/api';
 
@@ -8,10 +8,14 @@ import { apiOrder, apiOrderDetail } from '../constant/api';
 export class OrderService {
     constructor(private http: HttpClient) { }
 
-    idOrderDetail = new BehaviorSubject<number>(0);
+    idOrderDetail = new BehaviorSubject<number>(1);
 
-    setOrderDetailId(value: number): void {
+    setOrderDetail(value: number): void {
         this.idOrderDetail.next(value);
+    }
+
+    getOrderDetails(){
+        return this.idOrderDetail
     }
 
     getOrder(idUser: number, textSearch: string): Observable<IResponseOrder> {

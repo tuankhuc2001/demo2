@@ -1,5 +1,5 @@
-* {
-    margin: 0;
+::ng-deep .ant-tabs-nav {
+    margin: 0 !important;
 }
 
 .header_direction {

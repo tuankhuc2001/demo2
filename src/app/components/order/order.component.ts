@@ -22,7 +22,6 @@ export class OrderComponent implements OnInit, OnDestroy {
 
   listOrder: IOrder[] = []
   isLoading: boolean = false
-  idOrder: number = 0
 
   ngOnInit(): void {
     this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({
@@ -46,9 +45,9 @@ export class OrderComponent implements OnInit, OnDestroy {
     })
   }
 
-  handleGetOrderDetail(idOrder: number) {
-    this.orderService.setOrderDetailId(idOrder)
-    console.log(idOrder)
+  handleGetOrderDetail(id: number) {
+    this.orderService.setOrderDetail(id)
+    console.log("idOrder", id),
     this.router.navigate([routerNames.orderDetailPage]);
   }
 }

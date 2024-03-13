@@ -1,5 +1,5 @@
 <div *ngIf="listCard.length == 0">Không có dữ liệu</div>
-<cCard *ngFor="let item of listCard" (click)="handleClickCard(item)">
+<cCard *ngFor="let item of listCard" (click)="handleClickCard(item.id)">
   <Content>
     <div class="main-card">
       <div nz-col nzSpan="1">
@@ -9,7 +9,7 @@
         <div nz-row nzSpan="6">
           <span class="codeOder-card">{{item.codeOrder}}</span>
         </div>
-        <div nz-row nzSpan="6">add
+        <div nz-row nzSpan="6">
           <span class="nameCustomer-card">{{item.customerResponse.nameCustomer}}</span>
         </div>
         <div nz-row nzSpan="6">

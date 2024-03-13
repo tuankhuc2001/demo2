@@ -1,17 +1,28 @@
-<div class="header__OrderDetail">
-    <div class="header_direction" nz-row>
-        <div nz-col nzSpan="3" class="header_backButton" (click)="handleBackOrder()">
-            <span nz-icon nzType="left" nzTheme="outline" class="icon_back"></span>
+<div class="content__OrderDetail">
+    <div class="header__OrderDetail">
+        <div class="header_direction" nz-row>
+            <div nz-col nzSpan="3" class="header_backButton" (click)="handleBackOrder()">
+                <span nz-icon nzType="left" nzTheme="outline" class="icon_back"></span>
+            </div>
+            <div nz-col nzSpan="18" class="header_title">ahihi</div>
         </div>
-        <div nz-col nzSpan="18" class="header_title">ahihi</div>
+        <div class="header_tab">
+            <nz-tabset nzCentered class="tabset" nzSize="large" [nzSelectedIndex]="1">
+                <nz-tab nzTitle="Liên biến động"></nz-tab>
+                <nz-tab nzTitle="Liên giao">
+                    <app-card-order-detail [listCardOrderDetail]="listCardOrderDetail"></app-card-order-detail>
+                </nz-tab>
+                <nz-tab nzTitle="Liên nhận"></nz-tab>
+            </nz-tabset>
+        </div>
     </div>
-    <div class="header_tab">
-        <nz-tabset nzCentered class="tabset" nzSize="large">
-            <nz-tab nzTitle="Liên biến động"></nz-tab>
-            <nz-tab nzTitle="Liên giao">
-                <app-card-order-detail [listCardOrderDetail]="listOrderDetail"></app-card-order-detail>
-            </nz-tab>
-            <nz-tab nzTitle="Liên nhận"></nz-tab>
-        </nz-tabset>
+    <div class="footer__OrderDetail">
+        <div nz-row>
+            <div nz-col nzSpan="3">
+                <img src="https://hoanghamobile.com/tin-tuc/wp-content/webp-express/webp-images/uploads/2023/09/hinh-nen-may-tinh-4k-cong-nghe-4.jpg.webp" alt="picture">>
+            </div>
+            <div nz-col nzSpan="21"></div>
+        </div>
+        <div nz-row></div>
     </div>
 </div>

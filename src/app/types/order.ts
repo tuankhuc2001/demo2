@@ -20,10 +20,9 @@ export interface IOrderAndOrderDetail {
   createdAt?: Date
   totalCartItem: number
   codeOrder: string
-  userResponse: IUser
+  user: IUser
   customerResponse: ICustomer
   orderDetailResponseList: IOrderDetail[],
-
 }
 
 export interface IResponseOrder {
