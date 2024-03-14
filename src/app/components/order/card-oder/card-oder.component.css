@@ -1,37 +1,45 @@
-* {
-  font-family: Arial, Helvetica, sans-serif;
+.success .codeOder-card {
+  color: #158c37
 }
-
+.fail .codeOder-card {
+  color: red
+}
+.pending .codeOder-card {
+  color: #1E5993
+}
+.flex-column-btw {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+}
+.padding-top-bot-1vw {
+  padding: 1vw 0;
+}
 .main-card {
   display: flex;
+  padding-right: 3vw;
 }
-
 ::ng-deep.ant-card-body {
   padding: 0px !important;
 }
-
 .card-status {
   background-color: #158c37;
-  width: 2vw;
+  width: 3vw;
   height: 100%;
 }
-
 .codeOder-card {
   font-size: 4vw;
   font-weight: 700;
   color: #3d7165;
 }
-
 .nameCustomer-card {
   font-size: 4vw;
   font-weight: 700;
 }
-
 .textOder-card {
   font-size: 3.5vw;
   color: #afafaf;
 }
-
 .IconOder-card {
   color: #afafaf;
   font-size: 3vw;
@@ -39,25 +47,19 @@
   align-items: center;
   margin-right: 2vw;
 }
-
 .totalPrice-card {
   font-size: 4vw;
   font-weight: 700;
-  color: #b31312;
   margin-bottom: 1.5vw;
 }
-
 .totalDetail-card {
   font-size: 3.5vw;
   font-weight: 700;
   margin-bottom: 1.5vw;
 }
-
 .status-card {
   font-size: 3vw;
-  color: #158c37;
 }
-
 .flex-end {
   display: flex;
   justify-content: flex-end;

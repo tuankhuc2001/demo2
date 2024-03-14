@@ -16,7 +16,7 @@ export class CardOrderDetailComponent implements OnInit {
       createdAt: new Date(),
       totalCartItem: 0,
       codeOrder: '',
-      user: {
+      userResponse: {
         id: 0,
         phone: '',
         password: '',
@@ -29,7 +29,7 @@ export class CardOrderDetailComponent implements OnInit {
         id: 0,
         nameCustomer: '',
         phoneCustomer: '',
-        adderss: ''
+        address: ''
       },
       orderDetailResponseList: []
   };

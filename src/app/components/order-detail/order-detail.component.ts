@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Location } from '@angular/common';
 
-import { routerNames } from '../../constant/router';
 import { IOrderAndOrderDetail } from '../../types/order';
 import { OrderService } from '../../services/order.service';
-
 
 @Component({
   selector: 'app-order-detail',
@@ -16,7 +14,7 @@ export class OrderDetailComponent {
 
   constructor(
     private orderService: OrderService,
-    private router: Router) { }
+    private location: Location) { }
 
   private $destroy = new Subject()
 
@@ -28,7 +26,7 @@ export class OrderDetailComponent {
     createdAt: new Date(),
     totalCartItem: 0,
     codeOrder: '',
-    user: {
+    userResponse: {
       id: 0,
       phone: '',
       password: '',
@@ -41,7 +39,7 @@ export class OrderDetailComponent {
       id: 0,
       nameCustomer: '',
       phoneCustomer: '',
-      adderss: ''
+      address: ''
     },
     orderDetailResponseList: []
   };
@@ -67,7 +65,7 @@ export class OrderDetailComponent {
   }
 
   handleBackOrder() {
-    this.router.navigate([routerNames.homePage + "/" + routerNames.orderPage]);
+    this.location.back()
   }
 
   ngOnDestroy(): void {

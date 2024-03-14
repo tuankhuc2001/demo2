@@ -2,15 +2,34 @@
     margin: 0 !important;
 }
 
+.font_size_3vw { font-size: 3vw }
+
+.font_size_4vw { font-size: 4vw }
+
+.font_size_5vw { font-size: 5vw }
+
+.red { color: red }
+
+.blue { color: #1E5993 }
+
+.green { color: #158c37 }
+
+.bold { font-weight: bold }
+
+.content__OrderDetail {
+    position: relative;
+}
+
+::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #158c37;
+    font-weight: 600;
+}
+
 .header_direction {
     display: flex;
     align-items: center;
-    padding: 7vw 2vw 2vw;
-    border-bottom: 0.5px #afafaf solid;
-}
-
-.icon_back {
-    font-size: 4vw;
+    padding: 7vw 4vw 2vw;
+    border-bottom: 1px #afafaf solid;
 }
 
 .header_title {
@@ -21,13 +40,34 @@
     color: #3d7165;
 }
 
-.header_tab {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.footer__OrderDetail {
+    position: fixed;
+    bottom: 0;
+    padding: 5vw;
 }
 
-.tabset {
+.customer {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1vw;
+    border-bottom: 1px #afafaf solid;
+}
+
+.customer_avatar {
+    border-radius: 100%;
+}
+
+.customer_avatar img {
     width: 100%;
-    margin: 0;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+}
+
+.customer_infor {
+    padding-left: 4vw;
+}
+
+.ship_price {
+    display: flex;
+    justify-content: space-between;
 }

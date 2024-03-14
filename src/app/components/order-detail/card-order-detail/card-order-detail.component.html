@@ -1,4 +1,8 @@
-<div *ngIf="listCardOrderDetail.orderDetailResponseList.length == 0">Không có dữ liệu</div>
+<div *ngIf="listCardOrderDetail.orderDetailResponseList.length == 0">
+  <div style="text-align: flex">
+    <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+  </div>
+</div>
 <cCard *ngFor="let item of listCardOrderDetail.orderDetailResponseList">
   <Content>
     <div class="main-card" nz-row>
@@ -13,7 +17,7 @@
         </div>
         <div nz-row style="margin-bottom: 3vw;">
           <div nz-col nzSpan="16">
-            <span class="editPrice">{{ (item.editPrice) | number:'1.0-0'}}</span>
+            <span class="editPrice">{{item.editPrice | number}}</span>
           </div>
           <div nz-col nzSpan="8">
             <span class="quantity">x {{item.quantity}}</span>
@@ -24,12 +28,10 @@
             <span class="unit">{{item.productResponse.unit}}</span>
           </div>
           <div nz-col nzSpan="16">
-            <span class="totalPriceProduct">{{item.totalPriceProduct}}</span>
+            <span class="totalPriceProduct">{{item.totalPriceProduct | number}}</span>
           </div>
         </div>
       </div>
     </div>
   </Content>
 </cCard>
-
-<!-- {{listCardOrderDetail.customerResponse.nameCustomer}} -->
