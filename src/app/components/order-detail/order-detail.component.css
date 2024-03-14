@@ -1,38 +1,27 @@
 ::ng-deep .ant-tabs-nav {
     margin: 0 !important;
 }
-
 .font_size_3vw { font-size: 3vw }
-
 .font_size_4vw { font-size: 4vw }
-
 .font_size_5vw { font-size: 5vw }
-
 .red { color: #b31312 }
-
 .blue { color: #1E5993 }
-
 .green { color: #158c37 }
-
 .bold { font-weight: bold }
-
 .content__OrderDetail {
     position: relative;
 }
-
 ::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: #158c37;
     font-weight: 600;
     font-size: 4vw;
 }
-
 .header_direction {
     display: flex;
     align-items: center;
     padding: 7vw 4vw 2vw;
     border-bottom: 1px #afafaf solid;
 }
-
 .header_title {
     display: flex;
     justify-content: center;
@@ -40,35 +29,29 @@
     font-weight: 700;
     color: #3d7165;
 }
-
 .footer__OrderDetail {
     position: fixed;
     bottom: 0;
     padding: 5vw;
     background-color: white;
 }
-
 .customer {
     display: flex;
     align-items: center;
     padding-bottom: 1vw;
     border-bottom: 1px #afafaf solid;
 }
-
 .customer_avatar {
     border-radius: 100%;
 }
-
 .customer_avatar img {
     width: 100%;
     aspect-ratio: 1/1;
     border-radius: 100%;
 }
-
 .customer_infor {
     padding-left: 4vw;
 }
-
 .ship_price {
     display: flex;
     justify-content: space-between;
