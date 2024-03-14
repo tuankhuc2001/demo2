@@ -9,7 +9,7 @@
 }
 
 .container {
-  padding: 3px;
+  padding: 10px;
 }
 
 .header {
@@ -17,89 +17,12 @@
   padding: 5px;
 }
 
-.content {
-  width: 100%;
-  height: 100%;
-  margin-bottom: 20px;
-}
-
-.content-input {
-  width: 100%;
-  height: 100%;
-}
-
-.img-upload {
-  width: 65%;
-  height: 100%;
-  border-radius: 10%;
-}
-
 .dflex {
   display: flex;
 }
 
-.center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.input-add-header {
-  margin: 5px;
-  border: 1px solid;
-  padding: 5px;
-  width: 100%;
-}
-
 .title-text {
   font-size: 14x;
-}
-
-.input-add-content {
-  border: 1px solid;
-}
-
-.button-upload {
-  margin-top: 10px;
-  border: none;
-  border-radius: 40px;
-  width: 100%;
-  height: 20%;
-  background-color: blue;
-  color: white;
-}
-
-.button-add-product {
-  margin-top: 25px;
-  border: none;
-  border-radius: 40px;
-  width: 50%;
-  height: 20%;
-  background-color: green;
-  color: white;
-}
-
-.description {
-  height: 60px;
-  width: 100%;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.edit-upload {
-  left: 9%;
-  bottom: 10%;
-}
-
-.padding-all {
-  padding: 15px;
-}
-
-.validateInput {
-  color: red;
 }
 
 .icon-back {
@@ -121,6 +44,46 @@
   justify-content: center;
 }
 
-.cursor{
-  cursor: pointer;
+.button-upload {
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 40px;
+  width: 70%;
+  height: 30px;
+  background-color: blue;
+  color: white;
+}
+
+.button-upload:hover{
+  background-color: orange;
+  color: black;
+  font-weight: bold;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  height: 60px;
+  width: 100%;
+}
+
+.button-add-product {
+  margin-top: 25px;
+  border: none;
+  border-radius: 40px;
+  width: 50%;
+  height: 30px;
+  background-color: green;
+  color: white;
+}
+
+.button-add-product:hover{
+  background-color: orange;
+  color: black;
+  font-weight: bold;
 }

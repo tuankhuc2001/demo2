@@ -1,7 +1,7 @@
 export const Url = "http://localhost:8080"
 
 export const objectApi = {
-    product: Url + `product/`,
+    product: Url + `/product/`,
     cart: Url + `cart/`,
     cartItem: Url + `cartItem/`,
     order: Url + `order/`,

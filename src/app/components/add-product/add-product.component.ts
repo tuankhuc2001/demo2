@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer, defer } from 'rxjs';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
 import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
 import { filter } from 'rxjs/operators';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { routerNames } from '../../constant/router';
 import { IProduct } from '../../types/product';
@@ -30,9 +30,6 @@ export class AddProductComponent {
     private fb: NonNullableFormBuilder, private router: Router
   ) { }
 
-  showValidateFloorPrice: boolean = false;
-  showValidateQuantity: boolean = false;
-
   product: IProduct = {
     id: 0,
     nameProduct: "",
@@ -45,7 +42,7 @@ export class AddProductComponent {
     codeProduct: "",
     description: "",
     providePrice: 0,
-    floorPrice: 0 
+    floorPrice: 0
   };
 
   fileList: NzUploadFile[] = [];
@@ -93,15 +90,124 @@ export class AddProductComponent {
   }
   handleAddProduct() {
     console.log("Test hàm add product");
-    this.productService.addProduct(this.product)
+    this.productService.addProduct(this.product).subscribe(() => { });
     this.handleCallApiImage();
+    console.log(this.product);
   }
 
-  onInputFloorPrice() {
-    this.showValidateFloorPrice = this.product.floorPrice.valueOf() <= 0;
+  quantityValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
+    if (control.value === null) {
+      return { required: true };
+    } else if (control.value <= 0) {
+      return { confirm: true, error: true };
+    }
+    return {};
   }
 
-  onInputQuantity() {
-    this.showValidateQuantity = this.product.quantityProduct.valueOf() <= 0;
+  floorPriceValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
+    if (control.value === null) {
+      return { required: true };
+    } else if (control.value <= 0) {
+      return { confirm: true, error: true };
+    }
+    return {};
+  }
+
+  providePriceValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
+    if (control.value === null) {
+      return { required: true };
+    } else if (control.value <= 0) {
+      return { confirm: true, error: true };
+    }
+    return {};
+  }
+
+  nameProductValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
+      return { confirm: true, error: true };
+    } else if (control.value === null) {
+      return { required: true };
+    }
+    else {
+      return {}
+    }
+  }
+
+  originValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
+      return { confirm: true, error: true };
+    } else if (control.value === null) {
+      return { required: true };
+    }
+    else {
+      return {}
+    }
+  }
+
+  unitValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
+      return { confirm: true, error: true };
+    } else if (control.value === null) {
+      return { required: true };
+    }
+    else {
+      return {}
+    }
+  }
+
+  providerValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
+      return { confirm: true, error: true };
+    } else if (control.value === null) {
+      return { required: true };
+    }
+    else {
+      return {}
+    }
+  }
+
+  expireDateValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
+      return { confirm: true, error: true };
+    } else if (control.value === null) {
+      return { required: true };
+    }
+    else {
+      return {}
+    }
+  }
+
+  validateAddProductForm: FormGroup<{
+    nameProduct: FormControl<string>;
+    floorPrice: FormControl<number>;
+    quantityProduct: FormControl<number>;
+    providePrice: FormControl<number>
+    provider: FormControl<string>;
+    origin: FormControl<string>;
+    unit: FormControl<string>;
+    expiredDate: FormControl<string>;
+  }> = this.fb.group({
+    nameProduct: ["", [Validators.required, this.nameProductValidator]],
+    floorPrice: [0, [Validators.required, this.floorPriceValidator]],
+    quantityProduct: [0, [Validators.required, this.quantityValidator]],
+    providePrice: [0, [Validators.required, this.providePriceValidator]],
+    provider: ["", [Validators.required, this.providerValidator]],
+    origin: ["", [Validators.required, this.originValidator]],
+    unit: ["", [Validators.required, this.unitValidator]],
+    expiredDate: ["", [Validators.required, this.expireDateValidator]],
+  });
+
+  handleSubmit() {
+    if (this.validateAddProductForm.valid) {
+      this.handleAddProduct();
+      console.log('submit:', this.validateAddProductForm.value);
+    } else {
+      Object.values(this.validateAddProductForm.controls).forEach(control => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    }
   }
 }
