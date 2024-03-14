@@ -59,6 +59,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 @NgModule({
   declarations: [
@@ -117,7 +118,8 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     NzCheckboxModule,
     NzSpinModule,
     NzUploadModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzBadgeModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
