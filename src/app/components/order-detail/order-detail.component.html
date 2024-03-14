@@ -10,7 +10,7 @@
                     [class.red]="listCardOrderDetail.status === 'fail'"
                     [class.blue]="listCardOrderDetail.status === 'pending'">{{listCardOrderDetail.codeOrder}} - </span>
                 <span *ngIf="listCardOrderDetail.status === 'success'" style="margin-left: 2vw; color: #158c37">Thành công</span>
-                <span *ngIf="listCardOrderDetail.status === 'fail'" style="margin-left: 2vw; color: red">Đang giao</span>
+                <span *ngIf="listCardOrderDetail.status === 'fail'" style="margin-left: 2vw; color: #b31312">Đang giao</span>
                 <span *ngIf="listCardOrderDetail.status === 'pending'" style="margin-left: 2vw; color: #1E5993">Đang xử lý</span>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div nz-col nzSpan="21" class="customer_infor">
                 <div class="font_size_4vw bold">{{listCardOrderDetail.customerResponse.nameCustomer}}</div>
                 <div class="font_size_4vw red">{{listCardOrderDetail.customerResponse.phoneCustomer}}</div>
-                <div class="address">{{listCardOrderDetail.customerResponse.address}}</div>
+                <div class="font_size_3vw address">{{listCardOrderDetail.customerResponse.address}}</div>
             </div>
         </div>
         <div nz-row>

@@ -8,7 +8,7 @@
 
 .font_size_5vw { font-size: 5vw }
 
-.red { color: red }
+.red { color: #b31312 }
 
 .blue { color: #1E5993 }
 
@@ -23,6 +23,7 @@
 ::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: #158c37;
     font-weight: 600;
+    font-size: 4vw;
 }
 
 .header_direction {
@@ -44,6 +45,7 @@
     position: fixed;
     bottom: 0;
     padding: 5vw;
+    background-color: white;
 }
 
 .customer {
