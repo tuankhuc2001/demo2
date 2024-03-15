@@ -1,34 +1,37 @@
 <div class="content__OrderDetail">
-    <div class="header__OrderDetail">
-        <div class="header_direction" nz-row>
-            <div nz-col nzSpan="3" class="header_backButton" (click)="handleBackOrder()">
-                <span nz-icon nzType="left" nzTheme="outline" class="font_size_4vw"></span>
-            </div>
-            <div nz-col nzSpan="18" class="header_title">
-                <span class="codeOrder" 
-                    [class.green]="listCardOrderDetail.status === 'success'"
-                    [class.red]="listCardOrderDetail.status === 'fail'"
-                    [class.blue]="listCardOrderDetail.status === 'pending'">{{listCardOrderDetail.codeOrder}} - </span>
-                <span *ngIf="listCardOrderDetail.status === 'success'" style="margin-left: 2vw; color: #158c37">Thành công</span>
-                <span *ngIf="listCardOrderDetail.status === 'fail'" style="margin-left: 2vw; color: #b31312">Đang giao</span>
-                <span *ngIf="listCardOrderDetail.status === 'pending'" style="margin-left: 2vw; color: #1E5993">Đang xử lý</span>
-            </div>
+
+    <div class="header_direction" nz-row>
+        <div nz-col nzSpan="3" class="header_backButton" (click)="handleBackOrder()">
+            <span nz-icon nzType="left" nzTheme="outline" class="font_size_4vw"></span>
         </div>
-        <div class="header_tab">
-            <nz-tabset nzCentered class="tabset" nzSize="large" [nzSelectedIndex]="1">
-                <nz-tab nzTitle="Liên biến động"></nz-tab>
-                <nz-tab nzTitle="Liên giao">
-                    <app-card-order-detail [listCardOrderDetail]="listCardOrderDetail"></app-card-order-detail>
-                </nz-tab>
-                <nz-tab nzTitle="Liên nhận"></nz-tab>
-            </nz-tabset>
+        <div nz-col nzSpan="18" class="header_title">
+            <span class="codeOrder" [class.green]="listCardOrderDetail.status === 'success'"
+                [class.red]="listCardOrderDetail.status === 'fail'"
+                [class.blue]="listCardOrderDetail.status === 'pending'">{{listCardOrderDetail.codeOrder}} - </span>
+            <span *ngIf="listCardOrderDetail.status === 'success'" style="margin-left: 2vw; color: #158c37">Thành công</span>
+            <span *ngIf="listCardOrderDetail.status === 'fail'" style="margin-left: 2vw; color: #b31312">Đang giao</span>
+            <span *ngIf="listCardOrderDetail.status === 'pending'" style="margin-left: 2vw; color: #1E5993">Đang xử lý</span>
         </div>
     </div>
+
+    <div style="height: 17vw;"></div>
+
+    <div class="header_tab">
+        <nz-tabset nzCentered nzSize="large" [nzSelectedIndex]="1">
+            <nz-tab nzTitle="Liên biến động"></nz-tab>
+            <nz-tab nzTitle="Liên giao">
+                <div style="height: 14vw;"></div>
+                <app-card-order-detail [listCardOrderDetail]="listCardOrderDetail"></app-card-order-detail>
+                <div style="height: 50vw;"></div>
+            </nz-tab>
+            <nz-tab nzTitle="Liên nhận"></nz-tab>
+        </nz-tabset>
+    </div>
+
     <div class="footer__OrderDetail">
         <div nz-row class="customer">
             <div nz-col nzSpan="3" class="customer_avatar">
-                <img src="https://hoanghamobile.com/tin-tuc/wp-content/webp-express/webp-images/uploads/2023/09/hinh-nen-may-tinh-4k-cong-nghe-4.jpg.webp"
-                    alt="picture">
+                <img src="https://hoanghamobile.com/tin-tuc/wp-content/webp-express/webp-images/uploads/2023/09/hinh-nen-may-tinh-4k-cong-nghe-4.jpg.webp" alt="picture">
             </div>
             <div nz-col nzSpan="21" class="customer_infor">
                 <div class="font_size_4vw bold">{{listCardOrderDetail.customerResponse.nameCustomer}}</div>

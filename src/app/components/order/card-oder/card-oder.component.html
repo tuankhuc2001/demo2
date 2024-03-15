@@ -6,7 +6,10 @@
 <cCard *ngFor="let item of listCard" (click)="handleClickCard(item.id)">
   <Content>
     <div class="main-card">
-      <div nz-col nzSpan="1">
+      <div nz-col nzSpan="1" [ngClass]="{
+        'success': item.status === 'success', 
+        'fail': item.status === 'fail', 
+        'pending': item.status === 'pending'}">
         <div class="card-status"></div>
       </div>
       <div nz-col nzSpan="15" class="flex-column-btw padding-top-bot-1vw">

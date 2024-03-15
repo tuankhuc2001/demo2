@@ -7,6 +7,15 @@
 .pending .codeOder-card {
   color: #1E5993
 }
+.success .card-status {
+  background-color: #158c37
+}
+.fail .card-status {
+  background-color: #b31312
+}
+.pending .card-status {
+  background-color: #1E5993
+}
 .flex-column-btw {
   display: flex; 
   flex-direction: column; 
@@ -23,7 +32,6 @@
   padding: 0px !important;
 }
 .card-status {
-  background-color: #158c37;
   width: 3vw;
   height: 100%;
 }
