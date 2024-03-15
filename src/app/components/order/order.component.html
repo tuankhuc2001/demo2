@@ -1,3 +1,1 @@
-<div>
-  <app-card-oder (click) = "handleGetOrderDetail(1)" [listCard]="listCard"></app-card-oder>
-</div>
+<app-card-oder [listCard]="listOrder" (onClickCard)="handleGetOrderDetail($event)"></app-card-oder>

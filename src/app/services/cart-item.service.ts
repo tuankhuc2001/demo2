@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { apiCartItem } from '../constant/api';
-import { CartItemRequest, ICartItem, IResponseCartIem } from '../types/cart-item';
+import { CartItemRequest, ICartItem, ICartItemRequest, IResponseCartIem } from '../types/cart-item';
+import { IResponseProduct } from '../types/product';
 
 @Injectable({ providedIn: 'root' })
 export class CartItemService {
@@ -26,5 +27,9 @@ export class CartItemService {
   updateIsPlus(idCartItem: any, cartItemRequest: ICartItem): Observable<IResponseCartIem>{
     return this.http.put<IResponseCartIem>(`${apiCartItem.updateIsPlus}${idCartItem }`, cartItemRequest)
   }
+
+  addCartItem(idProduct: number, productDetails: ICartItemRequest ,idUser : number): Observable<IResponseProduct> {
+    return this.http.post<IResponseProduct>(`${apiCartItem.addCartItem}?idProduct=${idProduct}&idUser=${idUser}`,productDetails)
+}
   
 }

@@ -19,8 +19,26 @@ export interface IResponseCartIem {
     totalCartItem: number,
   }
 }
+  
+export interface ICartResponse {
+  message: string,
+  status: boolean,
+  content: {
+    list: IProduct[],
+    totalCartItem: number,
+  }
+}
 
 export interface CartItemRequest {
+  quantity: number,
+  rate: number,
+  plus: boolean,
+  editPrice: number,
+  floorPrice: number,
+  idCart: ICart,
+}
+
+export interface ICartItemRequest {
   quantity: number,
   rate: number,
   plus: boolean,

@@ -36,11 +36,6 @@ export class SideBarComponent {
   handleLogOut(): void {
     this.router.navigate(['/signIn']);
   }
-  handleChaneSearch(event:any):void {
-    const newValue = event.target.value;
-    console.log("data:", newValue);
-    
-  }
 
   ngOnInit(): void {
 

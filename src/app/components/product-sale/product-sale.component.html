@@ -1,5 +1,10 @@
-<div>
-  <div>
-    hello oder
-  </div>
+<div *ngIf="isLoading === false">
+    <app-card-product-sale [listCard]="listProduct" (onClickCard)="handleOpenModalAddCartItem($event)"></app-card-product-sale>
+    <app-modal-add-cart-item [isVisible]="isVisibleModalAddCartItem" (closeModal)="handleCloseModalAddCartItem()" [ProductDetail]="productDetail"></app-modal-add-cart-item>
+    <div class="cart-button">
+        <button nz-button class="cart-icon" (click)="handleNavigate()">
+            <span class="icon-image" nz-icon style="margin: 0;" nzType="shopping-cart" nzTheme="outline">Giỏ hàng </span>
+        </button>
+        <div class="item-count">{{totalCartItem}}</div>
+    </div>
 </div>

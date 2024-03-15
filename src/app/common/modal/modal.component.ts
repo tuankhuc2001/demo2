@@ -10,6 +10,7 @@ export class ModalComponent implements OnInit {
     constructor() { }
 
     @Input() footer: boolean = true
+    @Input() isCentered: boolean = true
     @Input() buttonX : boolean = false
     @Input() isLoading: boolean = false
     @Input() title: string = ""
