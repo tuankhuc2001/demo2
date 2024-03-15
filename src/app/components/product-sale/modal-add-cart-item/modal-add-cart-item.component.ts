@@ -1,16 +1,31 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { IProduct } from '../../../types/product';
-import { NotificationComponent } from '../../../common/notification/notification.component';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { CartItemService } from '../../../services/cart-item.service';
+import { UserService } from '../../../services/user.service';
+import { ICartItemRequest } from '../../../types/cart-item';
+import { notificationEnum } from '../../../utils/notificationEnum';
 
 @Component({ 
   selector: 'app-modal-add-cart-item',
   templateUrl: './modal-add-cart-item.component.html',
   styleUrl: './modal-add-cart-item.component.css'
 })
+
 export class ModalAddCartItemComponent implements OnChanges {
 
-  constructor(private fb: NonNullableFormBuilder) { }
+  constructor(private fb: NonNullableFormBuilder
+    , private notification: NzNotificationService
+    , private cartItemService: CartItemService
+    , private userService: UserService
+    , private changeDetection: ChangeDetectorRef
+    ) { }
+
+  isLoading: boolean = false
+  userId: number = 1;
+  enableDescription: boolean = false
+  plus: boolean = true
 
   @Input() isVisible: boolean = false
   @Input() ProductDetail: IProduct = {
@@ -21,7 +36,7 @@ export class ModalAddCartItemComponent implements OnChanges {
     provider: 'Factory ABC',
     unit: 'Box(es)',
     origin: 'Ha Noi',
-    avatar: 'AAAAAAAAAAAAAAAAAAAAAAAAA',
+    avatar: 'undefined',
     codeProduct: 'XM2304',
     description: 'Avoid drinking more than 1 gauge',
     providePrice: 500000,
@@ -34,8 +49,10 @@ export class ModalAddCartItemComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ProductDetail'] && !changes['ProductDetail'].firstChange) {
       console.log('ProductDetail changed:', changes['ProductDetail'].currentValue);
-      this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: 0 })
-    }
+      this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: this.ProductDetail.floorPrice / 10})
+      this.enableDescription = false
+      this.plus = true
+}
   }
 
   /////////////// Form Handling
@@ -62,7 +79,7 @@ export class ModalAddCartItemComponent implements OnChanges {
     const editPrice = this.validateAddCartForm ? this.validateAddCartForm.value.editPrice : null;
     if (control.value === null) {
       return { required: true };
-    } else if (editPrice && (control.value > editPrice * 1.1 || control.value < editPrice * 0.9)) {
+    } else if (editPrice && (control.value > editPrice/10)) {
       return { confirm: true, error: true };
     }
     return null;
@@ -70,16 +87,40 @@ export class ModalAddCartItemComponent implements OnChanges {
   validateAddCartForm: FormGroup<{
     quantity: FormControl<number>;
     editPrice: FormControl<number>;
-    rate: FormControl<number>
+    rate: FormControl<number>;
   }> = this.fb.group({
     quantity: [1, [Validators.required, this.quantityValidator]],
     editPrice: [this.ProductDetail.floorPrice, [Validators.required, this.editPriceValidator]],
-    rate: [0, [Validators.required, this.rateValidator]]
+    rate: [0, [Validators.required, this.rateValidator]],
   });
 
   handleSubmit() {
     if (this.validateAddCartForm.valid) {
-      console.log('submit:', this.validateAddCartForm.value);
+      this.isLoading = true
+      this.userService.getUserId().subscribe({
+        next: (res: number) => {
+          this.userId = res
+        }
+      })
+      console.log('submit:', this.validateAddCartForm.value)
+      const requestdObject: ICartItemRequest = {
+        quantity: this.validateAddCartForm.value.quantity ? this.validateAddCartForm.value.quantity : 1,
+        rate: this.validateAddCartForm.value.rate ? this.validateAddCartForm.value.rate : 1,
+        plus: this.plus,
+        editPrice: this.validateAddCartForm.value.editPrice ? this.validateAddCartForm.value.editPrice : 1,
+        floorPrice: this.ProductDetail.floorPrice
+      }
+      this.cartItemService.addCartItem(this.ProductDetail.id, requestdObject, this.userId).subscribe({
+        next: (res) => {
+          this.isLoading = false
+          this.createNotification(notificationEnum.success, res.message)
+          this.handleCloseModal()
+        },
+        error: (error) => {
+          this.isLoading = false
+          this.createNotification(notificationEnum.error, error.message)
+        }
+      })
     } else {
       Object.values(this.validateAddCartForm.controls).forEach(control => {
         if (control.invalid) {
@@ -91,8 +132,25 @@ export class ModalAddCartItemComponent implements OnChanges {
   }
   //////////////////////// 
 
+
+  createNotification(type: notificationEnum, content: string): void {
+    this.notification.create(
+      type,
+      `${content}`,
+      ''
+    );
+  }
+
+  handleEnableDescription() {
+    this.enableDescription = !this.enableDescription
+  }
+
+  handlePlusRate() {
+    this.plus = !this.plus
+    this.changeDetection.detectChanges()
+  }
+
   handleCloseModal() {
-    
     this.closeModal.emit()
   }
 }

@@ -6,7 +6,7 @@ export interface IProduct {
   provider: string;
   unit: string;
   origin: string;
-  avatar: any;
+  avatar: string;
   codeProduct: string;
   description: string;
   providePrice: number;

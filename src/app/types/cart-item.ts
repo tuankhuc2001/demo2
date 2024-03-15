@@ -9,3 +9,20 @@ export interface ICartItem {
   editPrice: number;
   isDisable: boolean;
 }
+
+export interface ICartResponse {
+  message: string,
+  status: boolean,
+  content: {
+    list: IProduct[],
+    totalCartItem: number,
+  }
+}
+
+export interface ICartItemRequest {
+  quantity: number,
+  rate: number,
+  plus: boolean,
+  editPrice: number,
+  floorPrice: number,
+}

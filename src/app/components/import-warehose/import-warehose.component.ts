@@ -36,7 +36,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     provider: '',
     unit: '', 
     origin: '',
-    avatar: undefined,
+    avatar: 'undefined',
     codeProduct: '',
     description: '',
     providePrice: 0,
