@@ -1,17 +1,28 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { IOrderAndOrderDetail, IResponseOrder, IResponseOrderAndOrderDetails } from '../types/order';
+import { HttpClient } from '@angular/common/http';
+import { apiOrder, apiOrderDetail } from '../constant/api';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
-    constructor() { }
+    constructor(private http: HttpClient) { }
 
-    orderDetailId = new BehaviorSubject<number>(0);
+    idOrderDetail = new BehaviorSubject<number>(1);
 
-    setOrderDetailId(value: number): void {
-        this.orderDetailId.next(value);
+    setOrderDetail(value: number): void {
+        this.idOrderDetail.next(value);
     }
 
-    getOrderDetail(): BehaviorSubject<number> {
-        return this.orderDetailId;
+    getOrderDetails(){
+        return this.idOrderDetail
+    }
+
+    getOrder(idUser: number, textSearch: string): Observable<IResponseOrder> {
+        return this.http.get<IResponseOrder>(`${apiOrder.getOrder}${idUser}?textSearch=${textSearch}`)
+      }
+
+    getOrderDetail(idOrder: number): Observable<IResponseOrderAndOrderDetails> {
+        return this.http.get<IResponseOrderAndOrderDetails>(`${apiOrderDetail.getOrderDetail}${idOrder}`)
     }
 }
