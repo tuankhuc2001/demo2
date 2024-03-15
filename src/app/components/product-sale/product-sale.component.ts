@@ -38,7 +38,8 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
     codeProduct: '',
     description: '',
     providePrice: 0,
-    floorPrice: 0
+    floorPrice: 0,
+    phoneProvider: "0123456"
   }
 
   handleSearch(value: string) {

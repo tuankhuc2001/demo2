@@ -1,13 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { __values } from 'tslib';
-
 import { IProduct } from '../../types/product';
 import { ProductService } from '../../services/product.service';
 import { SearchService } from '../../services/search.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
-import { NzButtonSize } from 'ng-zorro-antd/button';
 @Component({
   selector: 'app-import-warehose',
   templateUrl: './import-warehose.component.html',
@@ -32,27 +30,27 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
   isVisibleModalupdateProductQuantity: boolean = false;
   productDetail: IProduct = {
     id: 0,
-    nameProduct: 'undefined',
+    nameProduct: "undefined",
     quantityProduct: 0,
     expiredDate: new Date,
     provider: '',
-    unit: '',
+    unit: '', 
     origin: '',
     avatar: 'undefined',
     codeProduct: '',
     description: '',
     providePrice: 0,
     floorPrice: 0,
-  };
-  size: NzButtonSize = 'large';
+    phoneProvider: "01234567"
+  }
+  textSearch :string = ""
 
   handleSearch(value: string) {
     this.productService.getProductWareHouse(1, value).subscribe({
       next: (res) => {
         this.listProduct = res.content.list;
-        console.log(res); 
       },
-      error: (error) => {
+      error: (error) => { 
         this.createNotification('error', error);
       },
     });
@@ -62,8 +60,9 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     this.notification.create(type, `${content}`, '');
   }
 
-  handleOpenModalupdateProductQuantity() {
+  handleOpenModalupdateProductQuantity(ItemProduct :IProduct) {
     this.isVisibleModalupdateProductQuantity = true;
+    this.productDetail = ItemProduct;
   }
 
   handleCloseModalupdateProductQuantity() {
@@ -76,6 +75,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
       .pipe(takeUntil(this.destroyed$), debounceTime(1000))
       .subscribe({
         next: (value) => {
+          this.textSearch = value
           this.handleSearch(value);
         },
       });

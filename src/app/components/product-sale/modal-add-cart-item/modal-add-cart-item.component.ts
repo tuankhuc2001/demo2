@@ -7,7 +7,7 @@ import { UserService } from '../../../services/user.service';
 import { ICartItemRequest } from '../../../types/cart-item';
 import { notificationEnum } from '../../../utils/notificationEnum';
 
-@Component({
+@Component({ 
   selector: 'app-modal-add-cart-item',
   templateUrl: './modal-add-cart-item.component.html',
   styleUrl: './modal-add-cart-item.component.css'
@@ -41,6 +41,7 @@ export class ModalAddCartItemComponent implements OnChanges {
     description: 'Avoid drinking more than 1 gauge',
     providePrice: 500000,
     floorPrice: 550000,
+    phoneProvider: "012345678"
   }
 
   @Output() closeModal: EventEmitter<void> = new EventEmitter()

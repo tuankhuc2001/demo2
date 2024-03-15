@@ -7,13 +7,12 @@ import { IProduct } from '../../../types/product';
   styleUrls: ['./card-import-warehouse.component.css']
 })
 export class CardImportWarehouseComponent implements OnInit {
-  @Input() listCard: any;
+  @Input() listCard: IProduct[] = [];
   @Output() onClickCard: EventEmitter<IProduct> = new EventEmitter()
-  handleOnClickDetail(item: IProduct){
+  handleOnClickDetail(item: IProduct){ 
     this.onClickCard.emit(item)
   }
   constructor() { }
-
   ngOnInit() {
   }
 
