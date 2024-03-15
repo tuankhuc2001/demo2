@@ -1,1 +1,41 @@
-<p>modal-add-customer works!</p>
+<cModal [isVisible]="isVisible" [width]="'90%'">
+    <Content>
+        <div style="height: 50vh; min-height: 410px;">
+            <div>
+                    <div style="padding: 20px;">
+                        <div class="title-add-customer d-flex jct-bw">
+                            <p class="font-size-4vw">Thêm mới khách hàng</p>
+                            <span
+                                nz-icon nzType="close"
+                                nzTheme="outline"
+                                class=""
+                                style="cursor: pointer;" 
+                                (click)="handleCloseAddCustomer()">
+                            </span>
+                        </div>
+                        <div class="d-flex jct-bw container-input">
+                            <div class="add-phone mg-t-8">
+                                <p class="font-size-14px">Số điện thoại</p>
+                                <input type="text" nz-input placeholder="Số điện thoại..." class="font-size-14px input-control" [(ngModel)] = "customerRequest.phoneCustomer">
+                            </div>
+                            <div class="add-name mg-t-8">
+                                <p class="font-size-14px">Họ và tên</p>
+                                <input type="text" nz-input placeholder="Họ và tên..." class="font-size-14px input-control" [(ngModel)] = "customerRequest.nameCustomer">
+                            </div>
+        
+                            <div class="add-address mg-t-8">
+                                <p class="font-size-14px">Địa chỉ</p>
+                                <input type="text" nz-input placeholder="Địa chỉ..." class="font-size-14px input-control" [(ngModel)] = "customerRequest.address">
+                            </div>
+                        </div>
+
+                        <div class="btn-container">
+                            <button class="btn-add-customer" (click)="handleAddCustomer()">
+                                <span nz-icon nzType="user-add" nzTheme="outline"></span>
+                                Lưu khách hàng mới</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </Content>
+</cModal>

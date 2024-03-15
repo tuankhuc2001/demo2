@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { IProduct } from '../../../types/product';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
@@ -21,11 +21,18 @@ export class ModalUpdatePriceComponent {
 
 
   @Input() isVisible: boolean = false;
+  @Output() isVisibleChange :EventEmitter<void> = new EventEmitter<void>();
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
 
   handleCloseModal() {
     this.closeModal.emit();
   }
+
+  handleSetIsVisisble(){
+    this.isVisibleChange.emit();
+    this.validateForm.setValue({ priceFloor: this.productItem.floorPrice})
+  }
+  
 
   @Input() productItem:IProduct = {
     id: 0,
@@ -39,9 +46,15 @@ export class ModalUpdatePriceComponent {
     codeProduct: "",
     description: "",
     providePrice: 0,
-    floorPrice: 100000000,
+    floorPrice: 1
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['productItem'] && !changes['productItem'].firstChange) {
+      console.log('productItem changed:', changes['productItem'].currentValue);
+      this.validateForm.setValue({priceFloor: this.productItem.floorPrice })
+    }
+  }
 
     validateForm: FormGroup<{
       priceFloor: FormControl<number>;
@@ -49,30 +62,26 @@ export class ModalUpdatePriceComponent {
       priceFloor: [this.productItem.floorPrice, [Validators.required]],
     });
 
-    handleResetState(){
-      
-    }
-
-    handleCancel(){
-        this.handleCloseModal();
-        this.handleResetState();
-    }
-
 
     handleUpdatePrice(){
+      if(this.validateForm.value.priceFloor !== undefined)
+      if( this.validateForm.value.priceFloor == this.productItem.floorPrice){
+        this.handleSetIsVisisble();
+      }else{
+        this.producService.updateProductWareHouse(this.validateForm.value.priceFloor, this.productItem).subscribe({
+          next: (v) =>{
+            if (v.status == false){
+              this.notification.create("error", `${v.message}`, "");
+            }
+            else{
+              this.notification.create("success", `${v.message}`, "");
+              this.handleCloseModal();
+            }
+          }
+      })
+      }
       
-      this.producService.updateProductWareHouse(this.productItem).subscribe({
-        next: (v) =>{
-          if (v.status == false){
-            this.notification.create("error", `${v.message}`, "");
-
-          }
-          else{
-            this.notification.create("success", `${v.message}`, "");
-            this.handleCancel();
-          }
-        }
-    })
     }
 
+   
 }

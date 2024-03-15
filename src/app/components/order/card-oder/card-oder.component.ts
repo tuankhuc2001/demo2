@@ -14,7 +14,8 @@ export class CardOderComponent {
       id: 0,
       nameCustomer: "abc",
       phoneCustomer: "abc",
-      adderss: "abc",
+      address: "abc",
+      avatar: ""
     },
     totalPrice: 0,
     status: "abc",

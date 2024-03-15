@@ -96,3 +96,6 @@
     padding: 0.5vw;
 }
 
+::ng-deep .ant-form-item-explain-error{
+    font-size: 2vw;
+}

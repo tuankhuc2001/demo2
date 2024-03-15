@@ -4,6 +4,7 @@
         <app-modal-update-price
          [isVisible]="isVisibleModalUpdatePrice"
          (closeModal)="handleCloseModalUpdatePrice()"
+         (isVisibleChange)="handleSetIsVisibleClose()"
           [productItem]="productItem">
     </app-modal-update-price>
     </div>

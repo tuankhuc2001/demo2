@@ -57,9 +57,17 @@ export class WarehouseComponent implements OnInit, OnDestroy{
   handleOpenModalUpdatePrice(event: IProduct){
     this.isVisibleModalUpdatePrice = true;
     this.productItem = event;
+   
   }
 
   handleCloseModalUpdatePrice() {
+    this.isVisibleModalUpdatePrice = false;
+    this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({next: value => {
+      this.handleSearch(value)
+    }})
+  }
+
+  handleSetIsVisibleClose(){
     this.isVisibleModalUpdatePrice = false;
   }
 
@@ -67,12 +75,15 @@ export class WarehouseComponent implements OnInit, OnDestroy{
       this.producService.getProductSale(1, textSearch).subscribe({
           next: (v) =>{
             if (v.status == false){
-              this.notification.create("false", `${v.message}`, "");
+              this.notification.create("error", `${v.message}`, "");
             }
             else{
               this.listProduct = v.content.list
+              console.log(this.listProduct);
+              
             }
           }
       }) 
   }
+
 }
