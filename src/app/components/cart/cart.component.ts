@@ -114,6 +114,8 @@ export class CartComponent implements OnDestroy, OnInit {
         this.isLoading = false
         this.listCard = res.content.list
         this.listCustomer = res?.content.list
+        console.log("getCART");
+        
       },
       error: (error) => {
         this.isLoading = false

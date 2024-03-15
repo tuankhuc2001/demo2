@@ -25,6 +25,7 @@
     [listCard]="listCard"
     (onClickDeleteSingle)="handleOpenModalDeleteSingle($event)"
     (totalPriceChanged)="handleTotalPriceChanged($event)"
+    (getCart)="handleGetCart()"
   ></app-card-cart>
   <app-modal-delete-single
     [isVisible]="isVisibleDeleteSingle"
