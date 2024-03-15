@@ -6,12 +6,16 @@
 >
   <Content>
     <div class="main">
-      <span class="text-nameProduct">{{ formProduct.nameProduct }}</span>
-      <span class="text-lable">Tồn kho: {{ formProduct.quantityProduct }}</span>
+      <span class="text-nameProduct">{{ ProductDetail.nameProduct }}</span>
+      <span class="text-lable"
+        >Tồn kho: {{ ProductDetail.quantityProduct }}</span
+      >
       <div class="mf1">
         <div class="mf-left">
           <span>Giá đang bán:</span>
-          <span style="color: red">{{ formProduct.floorPrice }}</span>
+          <span style="color: red">{{
+            ProductDetail.floorPrice | number
+          }}</span>
         </div>
         <div class="mf-right">
           <span>*Số lượng nhập:</span>
@@ -19,11 +23,17 @@
             <nz-form-item>
               <nz-form-control [nzErrorTip]="quantityValidate">
                 <nz-input-group>
-                  <input type="number" nz-input formControlName="quantity" />
+                  <nz-input-number
+                    formControlName="quantity"
+                    [nzStep]="1"
+                    class="input-number"
+                  />
                 </nz-input-group>
 
                 <ng-template #quantityValidate let-control>
-                  @if (control.errors?.['required']) { Vui lòng nhập số lượng } @if (control.errors?.['confirm']) { Vui lòng nhập số lượng phải lớn hơn 0 }
+                  @if (control.errors?.['required']) { Vui lòng nhập số lượng }
+                  @if (control.errors?.['confirm']) { Vui lòng nhập số lượng
+                  phải lớn hơn 0 }
                 </ng-template>
               </nz-form-control>
             </nz-form-item>
@@ -33,36 +43,53 @@
       <div class="mf2">
         <div class="mf-left">
           <span>Nguồn cung:</span>
-          <input [disabled]="true" />
+          <input [disabled]="true" [ngModel]="ProductDetail.provider" />
         </div>
         <div class="mf-right">
           <span>Giá nhập:</span>
-          <input [disabled]="true" />
+          <input [disabled]="true" [ngModel]="ProductDetail.providePrice" />
         </div>
       </div>
       <div class="mf3">
         <div class="mf-left">
           <span>SĐT:</span>
-          <input [disabled]="true" />
+          <input [disabled]="true" [ngModel]="ProductDetail.phoneProvider" />
         </div>
         <div class="mf-right">
           <span>HSD:</span>
-          <input [disabled]="true" />
+          <input
+            [disabled]="true"
+            [ngModel]="ProductDetail.expiredDate | date : 'shortDate'"
+          />
         </div>
       </div>
 
       <div class="mfc-1">
         <span class="mfc-text"> Tồn kho sau nhập hàng: </span>
-        <span class="mfc-textStrong"> 880 </span>
+        <span class="mfc-textStrong">
+          {{
+            validateAddCartForm.value.quantity
+              ? validateAddCartForm.value.quantity +
+                ProductDetail.quantityProduct
+              : ProductDetail.quantityProduct
+          }}
+        </span>
       </div>
       <div class="mfc-1">
         <span class="mfc-text"> Tổng số tiền nhập: </span>
         <span class="mfc-textStrongRed">
-          {{ formProduct.providePrice | number }}
+          {{
+            (validateAddCartForm.value.quantity
+              ? validateAddCartForm.value.quantity * ProductDetail.providePrice
+              : 0
+            ) | number
+          }}
         </span>
       </div>
       <div class="mbtn-submit">
-        <button nz-button class="btn-submit" (click)="handleSubmit()">Nhập kho</button>
+        <button nz-button class="btn-submit" (click)="handleSubmit()" [nzLoading]="isLoading">
+          Nhập kho
+        </button>
       </div>
     </div>
   </Content>

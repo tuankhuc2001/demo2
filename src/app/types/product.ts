@@ -1,7 +1,7 @@
 export interface IProduct {
   id: number;
   nameProduct: String;
-  quantityProduct: number;
+  quantityProduct: number ;
   expiredDate: Date;
   provider: string;
   unit: string;
@@ -11,6 +11,7 @@ export interface IProduct {
   description: string;
   providePrice: number;
   floorPrice: number;
+  phoneProvider: string;
 }
 
 export interface IResponseProduct {

@@ -26,6 +26,7 @@ export class ModalAddCartItemComponent implements OnChanges {
     description: 'Avoid drinking more than 1 gauge',
     providePrice: 500000,
     floorPrice: 550000,
+    phoneProvider: "012345678"
   }
 
   @Output() closeModal: EventEmitter<void> = new EventEmitter()
