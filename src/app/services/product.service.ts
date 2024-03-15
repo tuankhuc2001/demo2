@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IProduct, IResponseProduct } from '../types/product';
+import { IProduct, IRequestProduct, IResponseProduct } from '../types/product';
 import { apiProduct } from '../constant/api';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 
@@ -17,7 +17,7 @@ export class ProductService {
     return this.http.get<IResponseProduct>(`${apiProduct.getProductSale}${idUser}?textSearch=${textSearch}`)
   }
 
-  addProduct(product: IProduct): Observable<IResponseProduct> {
+  addProduct(product: IRequestProduct): Observable<IResponseProduct> {
     return this.http.post<IResponseProduct>(`${apiProduct.addProduct}`, product)
   }
   getProductWareHouse(idUser: number, textSearch: string): Observable<IResponseProduct> {

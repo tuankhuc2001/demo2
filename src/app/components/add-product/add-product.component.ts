@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Observable, Observer, defer } from 'rxjs';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
 import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
 import { filter } from 'rxjs/operators';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { routerNames } from '../../constant/router';
 import { IProduct } from '../../types/product';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+
+
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -27,7 +28,8 @@ export class AddProductComponent {
     private productService: ProductService,
     private msg: NzMessageService,
     private http: HttpClient,
-    private fb: NonNullableFormBuilder, private router: Router
+    private fb: NonNullableFormBuilder, private router: Router,
+    private notification: NzNotificationService
   ) { }
 
   product: IProduct = {
@@ -87,12 +89,6 @@ export class AddProductComponent {
           this.msg.success('upload successfully');
         }
       );
-  }
-  handleAddProduct() {
-    console.log("Test hàm add product");
-    this.productService.addProduct(this.product).subscribe(() => { });
-    this.handleCallApiImage();
-    console.log(this.product);
   }
 
   quantityValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
@@ -197,6 +193,30 @@ export class AddProductComponent {
     expiredDate: ["", [Validators.required, this.expireDateValidator]],
   });
 
+  handleNavigate(): void {
+    this.router.navigate(['/home/importWarehouse']);
+  }
+
+  handleAddProduct() {
+    const addProduct = {
+      nameProduct: this.validateAddProductForm.value.nameProduct ? this.validateAddProductForm.value.nameProduct : '',
+      floorPrice: this.validateAddProductForm.value.floorPrice ? this.validateAddProductForm.value.floorPrice : 0,
+      quantityProduct: this.validateAddProductForm.value.quantityProduct ? this.validateAddProductForm.value.quantityProduct : 0,
+      providePrice: this.validateAddProductForm.value.providePrice ? this.validateAddProductForm.value.providePrice : 0,
+      provider: this.validateAddProductForm.value.provider ? this.validateAddProductForm.value.provider : "",
+      origin: this.validateAddProductForm.value.origin ? this.validateAddProductForm.value.origin : "",
+      unit: this.validateAddProductForm.value.unit ? this.validateAddProductForm.value.unit : "",
+      expiredDate: this.validateAddProductForm.value.expiredDate ? this.validateAddProductForm.value.expiredDate : "",
+      avatar: "",
+      codeProduct: this.product.codeProduct,
+      description: this.product.description,
+    }
+
+    this.productService.addProduct(addProduct).subscribe(() => {
+
+    });
+  }
+
   handleSubmit() {
     if (this.validateAddProductForm.valid) {
       this.handleAddProduct();
@@ -210,4 +230,5 @@ export class AddProductComponent {
       });
     }
   }
+
 }
