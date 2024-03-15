@@ -28,7 +28,6 @@ export class ModalAddOrderComponent {
   }
 
   handleAddOrder(idCart: any, orderRequest: IOder) {
-    console.log(typeof orderRequest,"xem lay duoc du lieu gui xuong chua");
     this.orderSerVice.addOrder(idCart, orderRequest).subscribe({
       next: (res) => {
         this.createNotification('success', res.message) 

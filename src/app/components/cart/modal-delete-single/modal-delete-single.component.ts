@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 import { CartService } from '../../../services/cart.service';
 import { CartItemService } from '../../../services/cart-item.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { ICartItem } from '../../../types/cart-item';
 
 @Component({
   selector: 'app-modal-delete-single',
@@ -17,15 +18,37 @@ export class ModalDeleteSingleComponent {
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
   @Output() getCart: EventEmitter<void> = new EventEmitter();
-  @Input() idCartItem: any;
+  @Input() cartItem: ICartItem ={
+    id: 1,
+    Product: {
+      id: 1,
+      nameProduct: "String",
+      quantityProduct: 1,
+      expiredDate: "String",
+      provider: "string",
+      unit: "string",
+      origin: "string",
+      avatar: "any",
+      codeProduct: "string",
+      description: "string",
+      providePrice: 1,
+      floorPrice: 1,
+    },
+    idCart: 1,
+    quantity: 1,
+    rate: 1,
+    plus: false,
+    editPrice: 1,
+    isDisable: false,
+  } ;
 
   handleCloseModal() {
     this.closeModal.emit();
   }
 
-  handleDeleteCartItem(idCartItem: number){
+  handleDeleteCartItem(cartItem: ICartItem){
     
-    this.cartItemService.deleteCartItem(idCartItem).subscribe({
+    this.cartItemService.deleteCartItem(cartItem).subscribe({
       next: (res) => {
         this.createNotification('success', res.message) 
         this.closeModal.emit();

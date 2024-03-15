@@ -18,13 +18,13 @@ export class ModalDeleteAllComponent {
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
   @Output() getCart: EventEmitter<void> = new EventEmitter();
-  @Input() idCart: any
+  @Input() idCart: number = 0;
 
   handleCloseModal() {
     this.closeModal.emit();
   }
 
-  handleDeleteAllCartItem(idCart: any){
+  handleDeleteAllCartItem(idCart: number){
     this.cartItemService.deleteAllCartItem(idCart).subscribe({
       next: (res) => {
         this.createNotification('success', res.message) 

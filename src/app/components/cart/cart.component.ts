@@ -23,35 +23,38 @@ export class CartComponent implements OnDestroy, OnInit {
     private router: Router) {
   }
 
+  isLoading: boolean = false;
+  isVisibleDeleteAll: boolean = false;
+  isVisibleDeleteSingle: boolean = false;
+  isVisibleAddOrder: boolean = false;
+
+  idCartDelete: number = 0;
+  idCartOrder: number = 0;
 
   listCard: any[] = [];
-  // itemCartItem: ICartItem = {
-  //   id: 0,
-  //   Product : {
-  //     id: 0,
-  //     nameProduct: "",
-  //     quantityProduct: 0,
-  //     expiredDate: "",
-  //     provider: "",
-  //     unit: "",
-  //     origin: "",
-  //     avatar: "any",
-  //     codeProduct: "",
-  //     description: "",
-  //     providePrice: 0,
-  //     floorPrice: 0,
-  //   },
-  //   quantity: 0,
-  //   rate: 0,
-  //   isPlus: false,
-  //   editPrice: 0,
-  //   isDisable: false,
-  // };
-
-  itemCartItem: any;
-  idCartDelete: any;
-  idCartOrder: any;
-
+  itemCartItem: ICartItem = {
+    id: 1,
+    Product: {
+      id: 1,
+      nameProduct: "String",
+      quantityProduct: 1,
+      expiredDate: "String",
+      provider: "string",
+      unit: "string",
+      origin: "string",
+      avatar: "any",
+      codeProduct: "string",
+      description: "string",
+      providePrice: 1,
+      floorPrice: 1,
+    },
+    idCart: 1,
+    quantity: 1,
+    rate: 1,
+    plus: false,
+    editPrice: 1,
+    isDisable: false,
+  };
   listCustomer: any[] = [];
   totalPrice: IAddOder ={
     totalPrice: 1,
@@ -60,13 +63,6 @@ export class CartComponent implements OnDestroy, OnInit {
   handleTotalPriceChanged(totalPrice: number) {
     this.totalPrice.totalPrice = totalPrice;
   }
-
-  
-
-  isLoading: boolean = false;
-  isVisibleDeleteAll: boolean = false;
-  isVisibleDeleteSingle: boolean = false;
-  isVisibleAddOrder: boolean = false;
 
   handleBackProductSale() {
     this.router.navigate([routerNames.homePage + "/" + routerNames.productSalePage]);
@@ -79,7 +75,6 @@ export class CartComponent implements OnDestroy, OnInit {
   handleOpenModalDeleteAll(idCart: any) {
     this.isVisibleDeleteAll = true;
     this.idCartDelete = idCart;
-    
   }
 
   handleCloseModalDeleteAll(): void {
@@ -89,14 +84,11 @@ export class CartComponent implements OnDestroy, OnInit {
   handleOpenModalDeleteSingle(event: ICartItem) {
     this.isVisibleDeleteSingle = true;
     this.itemCartItem = event;
-
   }
 
   handleCloseModalDeleteSingle(): void {
     this.isVisibleDeleteSingle = false
-
   }
-
 
   handleOpenModelAddOrder(idCart: any): void{
     this.isVisibleAddOrder = true;
@@ -114,8 +106,6 @@ export class CartComponent implements OnDestroy, OnInit {
         this.isLoading = false
         this.listCard = res.content.list
         this.listCustomer = res?.content.list
-        console.log("getCART");
-        
       },
       error: (error) => {
         this.isLoading = false
@@ -128,7 +118,6 @@ export class CartComponent implements OnDestroy, OnInit {
     this.handleGetCart();
   }
 
-
   createNotification(type: string, content: string): void {
     this.notification.create(
       type,
@@ -136,6 +125,7 @@ export class CartComponent implements OnDestroy, OnInit {
       ''
     );
   }
+
   ngOnDestroy(): void {
     this.destroyed$.next(true)
     this.destroyed$.complete()

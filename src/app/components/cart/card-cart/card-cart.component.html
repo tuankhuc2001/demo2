@@ -28,8 +28,8 @@
               </div>
               <div nz-col nzSpan="9" >
                 <input nz-input type="number"class="quantity" [ngModel] = "item?.quantity" (blur)="handleQuantityBlur(item, $event)" (input)="onInputQuantity(item, $event)" />
-                <span *ngIf="item.showQuantityError" style="color: red;font-size: 2.5vw; position:absolute;top: 7vw; left: -0.2vw; width: 30vw; z-index: 99;">Vui lòng nhập số lượng.</span>
-                <span *ngIf="item.showQuantityErrora" style="color: red;font-size: 2.5vw; position:absolute;top: 7vw; left: -0.2vw; width: 30vw; z-index: 99;">Vui lòng nhập lại số lượng.</span>
+                <span *ngIf="item.showErrorQuantityNoEnter" class="showErrorQuantityNoEnter">Vui lòng nhập số lượng.</span>
+                <span *ngIf="item.showErrorQuantityExceed" class="showErrorQuantityExceed">Số lương vượt quá cho phép.</span>
 
               </div>
             </div>
@@ -40,7 +40,7 @@
               </div>
               <div nz-col nzSpan="9">
                 <input  nz-input type="number" class="rate" [ngModel] = "item?.rate" (blur)="handleRateBlur(item, $event)" (input)="onInputRate(item, $event)" />
-                <span *ngIf="item.showRateError" style="color: red;font-size: 2.5vw; position:absolute;top: 7vw; left: -0.2vw; width: 30vw; z-index: 99;">Vui lòng nhập số giá chênh lệch.</span>
+                <span *ngIf="item.showRateError" class="showRateError">Vui lòng nhập giá chênh lệch.</span>
               </div>
               <div nz-col nzSpan="10" class="finalPrice">
                 <p>{{item.plus ? (item.editPrice + item.rate) * item.quantity : (item.editPrice - item.rate) * item.quantity}}</p>

@@ -2,29 +2,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { apiCartItem } from '../constant/api';
-import { CartItemRequest, ICartItem } from '../types/cart-item';
+import { CartItemRequest, ICartItem, IResponseCartIem } from '../types/cart-item';
 
 @Injectable({ providedIn: 'root' })
 export class CartItemService {
   constructor(private http: HttpClient) { }
 
-  deleteCartItem(idCartItem: any): Observable<any>{
-    return this.http.delete<any>(`${apiCartItem.deleteCartItem}${idCartItem.id}`)
+  deleteCartItem(cartItem: ICartItem): Observable<IResponseCartIem>{
+    return this.http.delete<IResponseCartIem>(`${apiCartItem.deleteCartItem}${cartItem.id}`)
   }
-  deleteAllCartItem(idCart: any): Observable<any>{
-    return this.http.delete<any>(`${apiCartItem.deleteAllCartItem}${idCart}`)
-  }
-
-  updateQuantity(idCartItem: any, cartItemRequest: ICartItem): Observable<any>{
-    return this.http.put<any>(`${apiCartItem.updateQuantity}${idCartItem }`, cartItemRequest)
+  deleteAllCartItem(idCart: number): Observable<IResponseCartIem>{
+    return this.http.delete<IResponseCartIem>(`${apiCartItem.deleteAllCartItem}${idCart}`)
   }
 
-  updateRate(idCartItem: any, cartItemRequest: ICartItem): Observable<any>{
-    return this.http.put<any>(`${apiCartItem.updateRate}${idCartItem }`, cartItemRequest)
+  updateQuantity(idCartItem: number, cartItemRequest: ICartItem): Observable<IResponseCartIem>{
+    return this.http.put<IResponseCartIem>(`${apiCartItem.updateQuantity}${idCartItem }`, cartItemRequest)
   }
 
-  updateIsPlus(idCartItem: any, cartItemRequest: ICartItem): Observable<any>{
-    return this.http.put<any>(`${apiCartItem.updateIsPlus}${idCartItem }`, cartItemRequest)
+  updateRate(idCartItem: number, cartItemRequest: ICartItem): Observable<IResponseCartIem>{
+    return this.http.put<IResponseCartIem>(`${apiCartItem.updateRate}${idCartItem }`, cartItemRequest)
+  }
+
+  updateIsPlus(idCartItem: any, cartItemRequest: ICartItem): Observable<IResponseCartIem>{
+    return this.http.put<IResponseCartIem>(`${apiCartItem.updateIsPlus}${idCartItem }`, cartItemRequest)
   }
   
 }

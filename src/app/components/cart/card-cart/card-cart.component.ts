@@ -51,31 +51,24 @@ export class CardCartComponent implements OnChanges {
   }
 
   onInputQuantity(item: any, event: any) {
-    const value = event.target.value;
-    item.showQuantityError = !value;
-    if(value > this.listCard[0].cartItemResponseSet[0].productResponse.quantityProduct){
-      item.showQuantityErrora = !value;
+    const inputQuantity = event.target.value;
+    const availableQuantity = item.productResponse.quantityProduct;
+
+    item.showErrorQuantityNoEnter = false;
+    item.showErrorQuantityExceed = false;
+
+    if (!inputQuantity || inputQuantity <= 0) {
+        item.showErrorQuantityNoEnter = true;
+    } else if (inputQuantity > availableQuantity) {
+        item.showErrorQuantityExceed = true;
     }
-  }
-
-  // onExceed(item: any, event: any){
-  //   const value = event.target.value;
-  //   console.log(this.listCard[0].cartItemResponseSet[0].productResponse.quantityProduct,"so luong");1
-  //   if(value > this.listCard[0].cartItemResponseSet[0].productResponse.quantityProduct){
-  //     item.showQuantityError = !value;
-  //   }
-  // }
-
-
-
+}
 
   onInputRate(item: any, event: any) {
     const value = event.target.value;
     item.showRateError = !value;
   }
   
-
-
   ngOnChanges(changes: SimpleChanges) {
     if (changes.listCard) {
       this.calculateTotalPrice();
@@ -84,7 +77,6 @@ export class CardCartComponent implements OnChanges {
 
   calculateTotalPrice() {
     if (!this.listCard || this.listCard.length === 0) {
-      console.log("Danh sách card trống hoặc chưa được khởi tạo.");
       return;
     }
     this.totalPrice = 0;
@@ -103,17 +95,12 @@ export class CardCartComponent implements OnChanges {
 
   handlePlusQuantity(item: any) { 
     if (!item) {
-      console.log("Item không tồn tại hoặc chưa được khởi tạo.");
       return;
     }
     item.quantity = (item.quantity ?? 0) + 1;
-    
     this.cartItemRequest.quantity = item.quantity;
-    
-    
     this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
       next: (res) => {
-        this.createNotification('success', res.message) 
         this.calculateTotalPrice();
         this.getCart.emit();
       },
@@ -126,7 +113,6 @@ export class CardCartComponent implements OnChanges {
 
   handleMinusQuantity(item: any) {
     if (!item) {
-      console.log("Item không tồn tại hoặc chưa được khởi tạo.");
       return;
     }
     if (item.quantity <= 1) {
@@ -137,7 +123,6 @@ export class CardCartComponent implements OnChanges {
     
     this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
       next: (res) => {
-        this.createNotification('success', res.message) 
         this.calculateTotalPrice();
         this.getCart.emit();
       },
@@ -150,7 +135,6 @@ export class CardCartComponent implements OnChanges {
 
   handlePlus(item: any) {
     if (!item) {
-      console.log("Item không tồn tại hoặc chưa được khởi tạo.");
       return;
     }
     this.cartItemRequest.plus = !this.cartItemRequest.plus
@@ -172,7 +156,6 @@ export class CardCartComponent implements OnChanges {
     item.showRateError = !value;
     this.cartItemRequest.rate = event.target.value;
     if (!item) {
-      console.log("Item không tồn tại hoặc chưa được khởi tạo.");
       return;
     }
     this.cartItemService.updateRate(item.id, this.cartItemRequest).subscribe({
@@ -190,26 +173,34 @@ export class CardCartComponent implements OnChanges {
   }
 
   handleQuantityBlur(item: any, event: any) {
-    const value = event.target.value;
-    item.showQuantityError = !value;
-    this.cartItemRequest.quantity = event.target.value;
-    
-    if (!item) {
-      console.log("Item không tồn tại hoặc chưa được khởi tạo.");
-      return;
-    }
-    this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
-      next: (res) => {
-        this.createNotification('success', res.message) 
-        this.calculateTotalPrice();
+    const newValue = event.target.value;
+  
+    if (item.showErrorQuantityNoEnter || item.showErrorQuantityExceed) {
+      event.target.value = item.quantity; 
+      setTimeout(() => {
+        item.showErrorQuantityNoEnter = false;
+        item.showErrorQuantityExceed = false;
         this.getCart.emit();
-      },
-      error: (error) => {
-        this.createNotification('error', error) 
-        this.getCart.emit();
+    }, 1000);
+    } else {
+      if (!item) {
+        return;
       }
-    })
-    
+      this.cartItemRequest.quantity = newValue;
+  
+      this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
+        next: (res) => {
+          item.originalQuantity = newValue;
+          this.calculateTotalPrice();
+          this.getCart.emit();
+        },
+        error: (error) => {
+          event.target.value = item.originalQuantity;
+          this.createNotification('error', error);
+          this.getCart.emit();
+        }
+      });
+    }
   }
 
   createNotification(type: string, content: string): void {
