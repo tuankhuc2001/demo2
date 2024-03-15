@@ -8,13 +8,15 @@ import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, Valida
 import { Router } from '@angular/router';
 import { IProduct } from '../../types/product';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { notificationEnum } from '../../utils/notificationEnum';
+import { Location } from '@angular/common';
 
 
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.readAsDataURL(file);8
+    reader.readAsDataURL(file); 8
     reader.onload = () => resolve(reader.result);
     reader.onerror = (error) => reject(error);
   });
@@ -30,7 +32,8 @@ export class AddProductComponent {
     private msg: NzMessageService,
     private http: HttpClient,
     private fb: NonNullableFormBuilder, private router: Router,
-    private notification: NzNotificationService
+    private notification: NzNotificationService,
+    private location: Location
   ) { }
 
   product: IProduct = {
@@ -173,6 +176,17 @@ export class AddProductComponent {
     }
   }
 
+  phoneNumberValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 11) {
+      return { confirm: true, error: true };
+    } else if (control.value === null) {
+      return { required: true };
+    }
+    else {
+      return {}
+    }
+  }
+
   validateAddProductForm: FormGroup<{
     nameProduct: FormControl<string>;
     floorPrice: FormControl<number>;
@@ -182,6 +196,7 @@ export class AddProductComponent {
     origin: FormControl<string>;
     unit: FormControl<string>;
     expiredDate: FormControl<string>;
+    phoneNumber: FormControl<string>;
   }> = this.fb.group({
     nameProduct: ["", [Validators.required, this.nameProductValidator]],
     floorPrice: [0, [Validators.required, this.floorPriceValidator]],
@@ -191,10 +206,11 @@ export class AddProductComponent {
     origin: ["", [Validators.required, this.originValidator]],
     unit: ["", [Validators.required, this.unitValidator]],
     expiredDate: ["", [Validators.required, this.expireDateValidator]],
+    phoneNumber: ["", [Validators.required, this.phoneNumberValidator]],
   });
 
   handleNavigate(): void {
-    this.router.navigate(['/home/importWarehouse']);
+    this.location.back();
   }
 
   handleAddProduct() {
@@ -212,9 +228,15 @@ export class AddProductComponent {
       description: this.product.description,
     }
 
-    this.productService.addProduct(addProduct).subscribe(() => {
-
-    });
+    this.productService.addProduct(addProduct).subscribe({
+      next: (res) => {
+        this.createNotification(notificationEnum.success, res.message)
+        this.handleNavigate()
+      },
+        error: (error) => {
+          this.createNotification(notificationEnum.error, error.message)
+        }
+    })
   }
 
   handleSubmit() {
@@ -229,6 +251,14 @@ export class AddProductComponent {
         }
       });
     }
+  }
+
+  createNotification(type: notificationEnum, content: string): void {
+    this.notification.create(
+      type,
+      `${content}`,
+      ''
+    );
   }
 
 }

@@ -130,19 +130,19 @@
               }
             </ng-template>
           </nz-form-control>
-          <nz-form-control [nzSpan]="8" [nzErrorTip]="originValidate">
-            <nz-input-group [nzPrefix]="prefixTemplateorigin">
-              <input nz-input formControlName="origin" />
+          <nz-form-control [nzSpan]="8" [nzErrorTip]="originPhoneNumber">
+            <nz-input-group [nzPrefix]="prefixTemplatePhoneNumber">
+              <input nz-input formControlName="phoneNumber" />
             </nz-input-group>
-            <ng-template #prefixTemplateorigin>
-              Xuất xứ:
+            <ng-template #prefixTemplatePhoneNumber>
+              SĐT:
             </ng-template>
-            <ng-template #originValidate let-control>
+            <ng-template #originPhoneNumber let-control>
               @if (control.errors?.['required']) {
-              Vui lòng nhập xuất xứ!
+              Vui lòng nhập số điện thoại!
               }
               @if (control.errors?.['confirm']) {
-              Không vượt quá 255 ký tự!
+              Không vượt quá 11 ký tự!
               }
             </ng-template>
           </nz-form-control>
