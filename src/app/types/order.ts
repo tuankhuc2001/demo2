@@ -10,7 +10,7 @@ export interface IOrder {
   totalCartItem: number
   codeOrder: string
   User: IUser
-  Customer: ICustomer
+  customerResponse: ICustomer
 }
 
 export interface IOrderAndOrderDetail {
