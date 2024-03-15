@@ -22,6 +22,7 @@ export class CardCartComponent {
       description: "abc",
       providePrice: 0,
       floorPrice: 0,
+      phoneProvider: "012345"
     },
     idCart: 0,
     quantity: 0,

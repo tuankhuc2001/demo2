@@ -14,10 +14,11 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file);8
     reader.onload = () => resolve(reader.result);
     reader.onerror = (error) => reject(error);
   });
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -44,7 +45,8 @@ export class AddProductComponent {
     codeProduct: "",
     description: "",
     providePrice: 0,
-    floorPrice: 0
+    floorPrice: 0,
+    phoneProvider: "",
   };
 
   fileList: NzUploadFile[] = [];
@@ -80,11 +82,9 @@ export class AddProductComponent {
       .pipe(filter((e) => e instanceof HttpResponse))
       .subscribe(
         () => {
-          this.loading = false;
           this.msg.error('upload failed.');
         },
         () => {
-          this.loading = false;
           this.fileList = [];
           this.msg.success('upload successfully');
         }

@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ModalComponent implements OnInit {
     constructor() { }
 
+    @Input() isCentered: boolean = true
     @Input() buttonX : boolean = false
     @Input() isLoading: boolean = false
     @Input() title: string = ""

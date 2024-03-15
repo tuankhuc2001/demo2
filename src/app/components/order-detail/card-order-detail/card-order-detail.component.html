@@ -1,34 +1,35 @@
-<div *ngIf="listCardOrderDetail.length == 0">ko co du</div>
-<cCard *ngFor="let item of listCardOrderDetail">
+<div *ngIf="listCardOrderDetail.orderDetailResponseList.length == 0">
+  <div style="text-align: center">
+    <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+  </div>
+</div>
+<cCard *ngFor="let item of listCardOrderDetail.orderDetailResponseList">
   <Content>
-    <div class="main-card">
-      <div nz-col nzSpan="1">
-        <div class="card-status"></div>
-      </div>
-      <div nz-col nzSpan="15" style="display: flex; flex-direction: column;justify-content: space-between;">
-        <div nz-row nzSpan="6">
-            <span class="codeOder-card">{{listOderDetail.codeOder}}</span>
-        </div>
-        <div nz-row nzSpan="6">
-            <span class="nameCustomer-card">{{listOderDetail.Customer.nameCustomer}}</span>
-        </div>
-        <div nz-row nzSpan="6">
-            <span class="textOder-card">{{listOderDetail.Customer.adderss}}</span>
-        </div>
-        <div nz-row nzSpan="6" >
-            <span nz-icon nzType="calendar" nzTheme="outline" class="IconOder-card"></span>
-            <span class="textOder-card">{{listOderDetail.createdAt}}</span>
+    <div class="main-card" nz-row>
+      <div nz-col nzSpan="6">
+        <div class="image_product">
+          <img src="https://hoanghamobile.com/tin-tuc/wp-content/webp-express/webp-images/uploads/2023/09/hinh-nen-may-tinh-4k-cong-nghe-4.jpg.webp" alt="picture">
         </div>
       </div>
-      <div nz-col nzSpan="8" style="display: flex; flex-direction: column;justify-content: space-between;">
-        <div nz-row class="flex-end">
-            <span class="totalPrice-card">{{listOderDetail.totalPrice}}</span>
+      <div nz-col nzSpan="18" style="padding-left: 2vw;">
+        <div nz-row style="margin-bottom: 3vw;">
+          <span class="nameProduct">{{item.productResponse.nameProduct}}</span>
         </div>
-        <div nz-row class="flex-end">
-            <span class="textOder-card">({{listOderDetail.totalCartItem}})</span>
+        <div nz-row style="margin-bottom: 3vw;">
+          <div nz-col nzSpan="16">
+            <span class="editPrice">{{item.editPrice | number}}</span>
+          </div>
+          <div nz-col nzSpan="8">
+            <span class="quantity">x {{item.quantity}}</span>
+          </div>
         </div>
-        <div nz-row class="flex-end">
-            <span class="textOder-card">{{listOderDetail.status}}</span>
+        <div nz-row>
+          <div nz-col nzSpan="8">
+            <span class="unit">{{item.productResponse.unit}}</span>
+          </div>
+          <div nz-col nzSpan="16">
+            <span class="totalPriceProduct">{{item.totalPriceProduct | number}}</span>
+          </div>
         </div>
       </div>
     </div>
