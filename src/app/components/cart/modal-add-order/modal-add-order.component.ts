@@ -3,7 +3,7 @@ import { CartService } from '../../../services/cart.service';
 import { CartItemService } from '../../../services/cart-item.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { OrderService } from '../../../services/order.service';
-import { IOder } from '../../../types/order';
+import { IOrder } from '../../../types/order';
 
 @Component({
   selector: 'app-modal-add-order',
@@ -27,7 +27,7 @@ export class ModalAddOrderComponent {
     this.closeModal.emit();
   }
 
-  handleAddOrder(idCart: any, orderRequest: IOder) {
+  handleAddOrder(idCart: any, orderRequest: IOrder) {
     this.orderSerVice.addOrder(idCart, orderRequest).subscribe({
       next: (res) => {
         this.createNotification('success', res.message) 

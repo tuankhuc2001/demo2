@@ -35,7 +35,7 @@ export interface CartItemRequest {
   plus: boolean,
   editPrice: number,
   floorPrice: number,
-  idCart: ICart,
+  idCart: number,
 }
 
 export interface ICartItemRequest {
@@ -44,5 +44,4 @@ export interface ICartItemRequest {
   plus: boolean,
   editPrice: number,
   floorPrice: number,
-  idCart: ICart,
 }

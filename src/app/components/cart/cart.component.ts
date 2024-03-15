@@ -8,7 +8,7 @@ import { routerNames } from '../../constant/router';
 import { ICartItem } from '../../types/cart-item';
 import { IProduct } from '../../types/product';
 import { ICart } from '../../types/cart';
-import { IAddOder, IOder } from '../../types/order';
+import { IAddOder, IOrder } from '../../types/order';
 
 @Component({
   selector: 'app-cart',
@@ -47,6 +47,7 @@ export class CartComponent implements OnDestroy, OnInit {
       description: "string",
       providePrice: 1,
       floorPrice: 1,
+      phoneProvider: "string",
     },
     idCart: 1,
     quantity: 1,
