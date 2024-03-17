@@ -66,6 +66,8 @@
         </button>
         <app-modal-add-order [isVisible]="isVisibleAddOrder" (closeModal)="handleCloseModelAddOrder()"
           (getCart)="handleGetCart()" [idCart]="idCartOrder" [orderRequest]="totalPrice"></app-modal-add-order>
+        <app-modal-add-customer [isVisible]="isVisibleModalCustomer" (closeModal)="handleCloseModelAddOrder()">
+        </app-modal-add-customer>
       </div>
     </div>
   </div>

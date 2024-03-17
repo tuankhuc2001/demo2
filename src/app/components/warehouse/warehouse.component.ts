@@ -85,7 +85,7 @@ export class WarehouseComponent implements OnInit, OnDestroy{
     id: 0,
     nameProduct: "abc",
     quantityProduct: 0,
-    expiredDate: "new Date",
+    expiredDate: new Date,
     provider: "abc",
     unit: "abc",
     origin: "abc",

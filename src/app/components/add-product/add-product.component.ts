@@ -40,7 +40,7 @@ export class AddProductComponent {
     id: 0,
     nameProduct: "",
     quantityProduct: 0,
-    expiredDate: "new Date()",
+    expiredDate: new Date(),
     provider: "",
     unit: "",
     origin: "",
@@ -217,30 +217,39 @@ export class AddProductComponent {
   }
 
   handleAddProduct() {
-    const addProduct = {
-      nameProduct: this.validateAddProductForm.value.nameProduct ? this.validateAddProductForm.value.nameProduct : '',
-      floorPrice: this.validateAddProductForm.value.floorPrice ? this.validateAddProductForm.value.floorPrice : 0,
-      quantityProduct: this.validateAddProductForm.value.quantityProduct ? this.validateAddProductForm.value.quantityProduct : 0,
-      providePrice: this.validateAddProductForm.value.providePrice ? this.validateAddProductForm.value.providePrice : 0,
-      provider: this.validateAddProductForm.value.provider ? this.validateAddProductForm.value.provider : "",
-      origin: this.validateAddProductForm.value.origin ? this.validateAddProductForm.value.origin : "",
-      unit: this.validateAddProductForm.value.unit ? this.validateAddProductForm.value.unit : "",
-      expiredDate: this.validateAddProductForm.value.expiredDate ? this.validateAddProductForm.value.expiredDate : "",
-      avatar: "",
-      codeProduct: this.product.codeProduct,
-      description: this.product.description,
-    }
-
-    this.productService.addProduct(addProduct).subscribe({
-      next: (res) => {
-        this.createNotification(notificationEnum.success, res.message)
-        this.handleNavigate()
-      },
-      error: (error) => {
-        this.createNotification(notificationEnum.error, error.message)
+    if(this.validateAddProductForm.valid) {
+      const addProduct = {
+        nameProduct: this.validateAddProductForm.value.nameProduct ? this.validateAddProductForm.value.nameProduct : '',
+        floorPrice: this.validateAddProductForm.value.floorPrice ? this.validateAddProductForm.value.floorPrice : 0,
+        quantityProduct: this.validateAddProductForm.value.quantityProduct ? this.validateAddProductForm.value.quantityProduct : 0,
+        providePrice: this.validateAddProductForm.value.providePrice ? this.validateAddProductForm.value.providePrice : 0,
+        provider: this.validateAddProductForm.value.provider ? this.validateAddProductForm.value.provider : "",
+        origin: this.validateAddProductForm.value.origin ? this.validateAddProductForm.value.origin : "",
+        unit: this.validateAddProductForm.value.unit ? this.validateAddProductForm.value.unit : "",
+        expiredDate: this.validateAddProductForm.value.expiredDate ? this.validateAddProductForm.value.expiredDate : "",
+        avatar: "",
+        codeProduct: this.product.codeProduct,
+        description: this.product.description,
       }
-    })
-  }
+  
+      this.productService.addProduct(addProduct).subscribe({
+        next: (res) => {
+          this.createNotification(notificationEnum.success, res.message)
+          this.handleNavigate()
+        },
+        error: (error) => {
+          this.createNotification(notificationEnum.error, error.message)
+        }
+      })
+    }else{
+      Object.values(this.validateAddProductForm.controls).forEach(control => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    }
+    }
 
   handleSubmit() {
     if (this.validateAddProductForm.valid) {
