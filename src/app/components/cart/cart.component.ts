@@ -28,7 +28,6 @@ export class CartComponent implements OnDestroy, OnInit {
   isVisibleDeleteAll: boolean = false;
   isVisibleDeleteSingle: boolean = false;
   isVisibleAddOrder: boolean = false;
-  isVisibleCustomer = false;
 
   idCartDelete: number = 0;
   idCartOrder: number = 0;
