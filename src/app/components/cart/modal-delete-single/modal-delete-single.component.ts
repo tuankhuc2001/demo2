@@ -24,7 +24,7 @@ export class ModalDeleteSingleComponent {
       id: 1,
       nameProduct: "String",
       quantityProduct: 1,
-      expiredDate: "new Date",
+      expiredDate: new Date,
       provider: "string",
       unit: "string",
       origin: "string",

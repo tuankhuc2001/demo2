@@ -38,7 +38,7 @@ export class ModalUpdatePriceComponent {
     id: 0,
     nameProduct: "Vitamin gái",
     quantityProduct: 0,
-    expiredDate: "new Date",
+    expiredDate: new Date,
     provider: "string",
     unit: "string",
     origin: "string",

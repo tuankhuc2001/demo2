@@ -23,8 +23,7 @@ export class CartComponent implements OnDestroy, OnInit {
     private router: Router) {
   }
 
-  @Input() isVisibleModalCustomer: boolean = false;
-
+  isVisibleModalCustomer: boolean = false;
   isLoading: boolean = false;
   isVisibleDeleteAll: boolean = false;
   isVisibleDeleteSingle: boolean = false;
@@ -41,7 +40,7 @@ export class CartComponent implements OnDestroy, OnInit {
       id: 1,
       nameProduct: "String",
       quantityProduct: 1,
-      expiredDate: "String",
+      expiredDate: new Date,
       provider: "string",
       unit: "string",
       origin: "string",
