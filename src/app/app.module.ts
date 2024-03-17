@@ -7,7 +7,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 registerLocaleData(en);
@@ -37,8 +37,9 @@ import { CardCustomerComponent } from './components/cart/card-customer/card-cust
 import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
 import { CardWarehouseComponent } from './components/warehouse/card-warehouse/card-warehouse.component';
 import { InputComponent } from './common/inputValidate/input.component';
-import {CardOrderDetailComponent} from './components/order-detail/card-order-detail/card-order-detail.component'
+import { CardOrderDetailComponent } from './components/order-detail/card-order-detail/card-order-detail.component'
 import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse.component';
+
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';

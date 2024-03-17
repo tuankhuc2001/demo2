@@ -32,7 +32,7 @@ export class ModalAddCartItemComponent implements OnChanges {
     id: 1,
     nameProduct: 'mockProduct',
     quantityProduct: 200,
-    expiredDate: new Date(),
+    expiredDate: "new Date",
     provider: 'Factory ABC',
     unit: 'Box(es)',
     origin: 'Ha Noi',

@@ -1,41 +1,62 @@
 <div *ngIf="listCard.length == 0">ko co du</div>
-<cCard *ngFor="let item of listCard">
+<cCard *ngFor="let item of listCard[0]?.cartItemResponseSet">
   <Content>
-    <div class="main-card">
-      <div nz-col nzSpan="6" class="card-img">
+    <div class="main_card" nz-row>
+      <div nz-col nzSpan="8" class="card_img">
         <img
           nz-image
           width="80%"
-          nzSrc="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+          nzSrc="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1533427237i/41046229.jpg"
           alt="songay"
           nzDisablePreview="true"
         />
       </div>
-      <div nz-col nzSpan="12" style="display: flex; flex-direction: column;justify-content: space-between;">
-        <div nz-row>
-            <span class="nameProduct-card"></span>
+      <div nz-col nzSpan="16" class="card_content">
+        <div class="content_title">
+          <p class="content_nameProduct">{{ item?.productResponse?.nameProduct }}</p>
+          <p class="content_delete"><span nz-icon nzType="close" nzTheme="outline" (click)="handleOpenDeleteSingle(item)"></span></p>
         </div>
-        <div nz-row>
-            <span class="textProduct-card"></span>
+          <div nz-row >
+          <div class="content_main" nz-col nzSpan="20">
+            <div nz-row >
+              <div nz-col nzSpan="9">
+                <p class="editPrice">{{ item?.editPrice }}</p>
+                <p class="unit">{{ item?.productResponse?.unit }}</p>
+              </div>
+              <div nz-col nzSpan="5" class="multiply" >
+              X
+              </div>
+              <div nz-col nzSpan="9" >
+                <input nz-input type="number"class="quantity" [ngModel] = "item?.quantity" (blur)="handleQuantityBlur(item, $event)" (input)="onInputQuantity(item, $event)" />
+                <span *ngIf="item.showErrorQuantityNoEnter" class="showErrorQuantityNoEnter">Vui lòng nhập số lượng.</span>
+                <span *ngIf="item.showErrorQuantityExceed" class="showErrorQuantityExceed">Số lương vượt quá cho phép.</span>
+
+              </div>
+            </div>
+            <div nz-row >
+              <div nz-col nzSpan="5" class="isPlus">
+                <span nz-icon nzType="plus" nzTheme="outline" *ngIf="item.plus == true" (click)="handlePlus(item)" ></span>
+                <span nz-icon nzType="minus" nzTheme="outline" *ngIf="item.plus == false" style="color: red;" (click)="handlePlus(item)"></span>
+              </div>
+              <div nz-col nzSpan="9">
+                <input  nz-input type="number" class="rate" [ngModel] = "item?.rate" (blur)="handleRateBlur(item, $event)" (input)="onInputRate(item, $event)" />
+                <span *ngIf="item.showRateError" class="showRateError">Vui lòng nhập giá chênh lệch.</span>
+              </div>
+              <div nz-col nzSpan="10" class="finalPrice">
+                <p>{{item.plus ? (item.editPrice + item.rate) * item.quantity : (item.editPrice - item.rate) * item.quantity}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="content_editQuantity" nz-col nzSpan="4">
+            <div>
+              <span class="editQuantity_up" nz-icon nzType="caret-up" nzTheme="outline" (click)="handlePlusQuantity(item)"></span>
+            </div>
+            <div>
+              <span class="editQuantity_down" nz-icon nzType="caret-down" nzTheme="outline" (click)="handleMinusQuantity(item)"></span>
+            </div>
+          </div>
         </div>
-        <div nz-row>
-            <span class="textProduct-card"></span>
-        </div>
-        <div nz-row>
-            <span class="textProduct-card"></span>
-        </div>  
-      </div>
-      <div nz-col nzSpan="6">
-        <div nz-row class="flex-end">
-            <span class="floorPrice-card"></span>
-        </div>
-        <div nz-row class="flex-end">
-            <span class="textProduct-card"></span>
-        </div>
-        <div nz-row class="flex-end">
-            <span class="textProduct-card"></span>
-        </div>
-      </div>
+      </div>   
     </div>
   </Content>
 </cCard>

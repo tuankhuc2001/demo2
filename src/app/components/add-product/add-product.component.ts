@@ -40,7 +40,7 @@ export class AddProductComponent {
     id: 0,
     nameProduct: "",
     quantityProduct: 0,
-    expiredDate: new Date(),
+    expiredDate: "new Date()",
     provider: "",
     unit: "",
     origin: "",
@@ -182,6 +182,9 @@ export class AddProductComponent {
     } else if (control.value === null) {
       return { required: true };
     }
+    else if (control.value.length < 10) {
+      return { confirm: true, error: true };
+    }
     else {
       return {}
     }
@@ -233,9 +236,9 @@ export class AddProductComponent {
         this.createNotification(notificationEnum.success, res.message)
         this.handleNavigate()
       },
-        error: (error) => {
-          this.createNotification(notificationEnum.error, error.message)
-        }
+      error: (error) => {
+        this.createNotification(notificationEnum.error, error.message)
+      }
     })
   }
 

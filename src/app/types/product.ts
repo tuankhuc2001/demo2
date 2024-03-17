@@ -1,8 +1,10 @@
+import { ICartItem } from "./cart-item";
+
 export interface IProduct {
   id: number;
   nameProduct: String;
   quantityProduct: number ;
-  expiredDate: Date;
+  expiredDate: string;
   provider: string;
   unit: string;
   origin: string;

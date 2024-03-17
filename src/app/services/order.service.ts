@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IOrderAndOrderDetail, IResponseOrder, IResponseOrderAndOrderDetails } from '../types/order';
+import { IOrder, IOrderAndOrderDetail, IOrderResponse, IResponseOrder, IResponseOrderAndOrderDetails } from '../types/order';
 import { HttpClient } from '@angular/common/http';
 import { apiOrder, apiOrderDetail } from '../constant/api';
 
@@ -24,5 +24,9 @@ export class OrderService {
 
     getOrderDetail(idOrder: number): Observable<IResponseOrderAndOrderDetails> {
         return this.http.get<IResponseOrderAndOrderDetails>(`${apiOrderDetail.getOrderDetail}${idOrder}`)
+    }
+
+    addOrder(idCart: number, orderRequest: IOrder): Observable<IOrderResponse> {
+        return this.http.post<IOrderResponse>(`${apiOrder.addOrder}${idCart}`, orderRequest)
     }
 }
