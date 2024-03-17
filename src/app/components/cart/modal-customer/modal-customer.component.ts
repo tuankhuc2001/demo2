@@ -13,7 +13,7 @@ import { ICustomer } from '../../../types/customer';
 export class ModalCustomerComponent {
 
   @Input() isVisibleModalAddCustomer: boolean = false;
-  @Output() isVisibleCustomer: EventEmitter<void> = new EventEmitter<void> ();
+  @Input() isVisibleCustomer: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
   listCustomer: ICustomer[] = [];
   
@@ -103,7 +103,6 @@ export class ModalCustomerComponent {
     this.handleGetCustomer();
   }
 
-
   handleGetCustomer() {
     this.customerService.getCustomer(this.textSearch).subscribe(
       {
@@ -119,9 +118,8 @@ export class ModalCustomerComponent {
   }
 
   handleOpenModalCustomer() {
-    this.isVisibleCustomer.emit();
+    this.closeModal.emit();
   }
-
 }
 
 
