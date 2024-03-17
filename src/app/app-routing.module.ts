@@ -8,10 +8,9 @@ import { OrderComponent } from './components/order/order.component';
 import { WarehouseComponent } from './components/warehouse/warehouse.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { CartComponent } from './components/cart/cart.component';
-
 import { routerNames } from './constant/router';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
-import { CartComponent } from './components/cart/cart.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/signIn' },
@@ -59,7 +58,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: `${routerNames.cart}`,
+    path: `${routerNames.cartPage}`,
     component: CartComponent,
   },
 ];

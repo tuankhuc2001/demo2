@@ -3,7 +3,6 @@ export interface ICustomer {
     nameCustomer: string,
     phoneCustomer: string,
     address: string,
-    avatar: string,
 }
 
 export interface IResponseCustomer {
@@ -12,4 +11,11 @@ export interface IResponseCustomer {
     content: {
         list: ICustomer[],
     }
+}
+
+export interface ICustomerRequest {
+    nameCustomer: string,
+    phoneCustomer: string,
+    address: string,
+    avatar: string
 }

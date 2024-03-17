@@ -11,7 +11,12 @@ import { ICustomer } from '../../../types/customer';
   styleUrl: './modal-customer.component.css'
 })
 export class ModalCustomerComponent {
+
+  @Input() isVisibleModalAddCustomer: boolean = false;
+  @Output() isVisibleCustomer: EventEmitter<void> = new EventEmitter<void> ();
+  @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
   listCustomer: ICustomer[] = [];
+  
   constructor(
     private customerService: CustomerService,
     private cartService: CartService,
@@ -66,9 +71,6 @@ export class ModalCustomerComponent {
 
   }
 
-  @Input() isVisibleModalCustomer: boolean = false;
-  @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
-
   displayNone: {} = {
     display: 'none',
   }
@@ -90,7 +92,6 @@ export class ModalCustomerComponent {
     nameCustomer: "",
     phoneCustomer: "",
     address: "",
-    avatar: ""
   }
 
   handleOpenAddCustomer() {
@@ -116,6 +117,11 @@ export class ModalCustomerComponent {
       }
     )
   }
+
+  handleOpenModalCustomer() {
+    this.isVisibleCustomer.emit();
+  }
+
 }
 
 

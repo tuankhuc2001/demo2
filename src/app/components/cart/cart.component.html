@@ -14,14 +14,14 @@
         (getCart)="handleGetCart()" [idCart]="idCartDelete"></app-modal-delete-all>
     </div>
   </div>
-  <div >
+  <div>
     <div style="height: 12vw;"></div>
     <div style="overflow-y: scroll">
       <app-card-cart [listCard]="listCard" (onClickDeleteSingle)="handleOpenModalDeleteSingle($event)"
-      (totalPriceChanged)="handleTotalPriceChanged($event)" (getCart)="handleGetCart()"></app-card-cart>
+        (totalPriceChanged)="handleTotalPriceChanged($event)" (getCart)="handleGetCart()"></app-card-cart>
     </div>
 
-      <div style="height: 40vw;"></div>
+    <div style="height: 40vw;"></div>
   </div>
 
   <app-modal-delete-single [isVisible]="isVisibleDeleteSingle" (closeModal)="handleCloseModalDeleteSingle()"
@@ -43,8 +43,8 @@
           {{ listCustomer[0]?.customerResponse?.address }}
         </span>
       </div>
-      <div nz-col nzSpan="8" class="customer_click" (click)="handleOpenModelCustomer()">
-        <button>Thay đổi</button>
+      <div nz-col nzSpan="8" class="customer_click">
+        <button (click)="handleOpenModelCustomer()">Thay đổi</button>
       </div>
     </div>
     <div nz-row class="below_price">

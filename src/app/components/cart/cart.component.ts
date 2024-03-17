@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, } from '@angular/core';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { CartService } from '../../services/cart.service';
@@ -22,6 +22,8 @@ export class CartComponent implements OnDestroy, OnInit {
     private cartService: CartService,
     private router: Router) {
   }
+
+  @Input() isVisibleModalCustomer: boolean = false;
 
   isLoading: boolean = false;
   isVisibleDeleteAll: boolean = false;
@@ -118,11 +120,11 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   handleOpenModelCustomer(){
-    this.isVisibleCustomer = true
+    this.isVisibleModalCustomer = true
   }
 
   handleCloseModelCustomer(){
-    this.isVisibleCustomer = false
+    this.isVisibleModalCustomer = false
   }
 
   ngOnInit(): void {
