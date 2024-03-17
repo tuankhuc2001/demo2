@@ -2,7 +2,8 @@ export interface ICustomer {
     id: number,
     nameCustomer: string,
     phoneCustomer: string,
-    address: string
+    address: string,
+    avatar: string,
 }
 
 export interface IResponseCustomer {

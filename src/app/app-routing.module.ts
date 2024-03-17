@@ -11,6 +11,7 @@ import { CartComponent } from './components/cart/cart.component';
 
 import { routerNames } from './constant/router';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/signIn' },
@@ -56,6 +57,10 @@ const routes: Routes = [
         component: AddProductComponent,
       },
     ],
+  },
+  {
+    path: `${routerNames.cart}`,
+    component: CartComponent,
   },
 ];
 

@@ -40,6 +40,8 @@ import { InputComponent } from './common/inputValidate/input.component';
 import { CardOrderDetailComponent } from './components/order-detail/card-order-detail/card-order-detail.component'
 import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse.component';
 
+
+
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -64,6 +66,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
+import { ModalUpdatePriceComponent } from './components/warehouse/modal-update-price/modal-update-price.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +98,10 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
     InputComponent,
     CardOrderDetailComponent,
     CardWarehouseComponent,
-    CardImportWarehouseComponent
+    CardImportWarehouseComponent,
+    WarehouseComponent,
+    CardWarehouseComponent,
+    ModalUpdatePriceComponent,
   ],
   imports: [
     BrowserModule,
