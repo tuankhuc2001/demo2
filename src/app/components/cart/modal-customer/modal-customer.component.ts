@@ -68,8 +68,10 @@ export class ModalCustomerComponent {
       });
   }
 
-  handleUpdateCartCustomer() {
-    
+  handleUpdateCartCustomer(customer: ICustomer) {
+    this.cartService.updateCart(this.idCart,customer).subscribe(() => {
+
+    });
   }
 
   displayNone: {} = {

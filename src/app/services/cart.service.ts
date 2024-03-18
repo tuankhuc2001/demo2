@@ -15,4 +15,8 @@ export class CartService {
   updateCart(idCart: number, cartRequest: ICartCustomer): Observable<IResponseCart> {
     return this.http.put<IResponseCart>(`${apiCart.updateCart}${idCart}`, cartRequest)
   }
+
+  updateCartCustomer(idCart: number, cartRequest: ICartCustomer): Observable<IResponseCart> {
+    return this.http.put<IResponseCart>(`${apiCart.updateCart}${idCart}`, cartRequest)
+  }
 }
