@@ -27,7 +27,7 @@
               X
               </div>
               <div nz-col nzSpan="9" >
-                <input nz-input type="number"class="quantity" [ngModel] = "item?.quantity" (blur)="handleQuantityBlur(item, $event)" (input)="onInputQuantity(item, $event)" />
+                <input *ngIf="item.disable == true " nz-input type="number"class="quantity" [ngModel] = "item?.quantity" (blur)="handleQuantityBlur(item, $event)" (input)="onInputQuantity(item, $event)" />
                 <span *ngIf="item.showErrorQuantityNoEnter" class="showErrorQuantityNoEnter">Vui lòng nhập số lượng.</span>
                 <span *ngIf="item.showErrorQuantityExceed" class="showErrorQuantityExceed">Số lương vượt quá cho phép.</span>
 
