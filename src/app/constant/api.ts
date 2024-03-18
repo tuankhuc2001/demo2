@@ -19,7 +19,7 @@ export const apiProduct = {
 
 export const apiCart = {
     getCart: objectApi.cart + `getCart/`,
-    updateCart: objectApi.cart + `updateCart/`
+    updateCart: objectApi.cart + `updateCart/`,
 }
 
 export const apiCartItem = {

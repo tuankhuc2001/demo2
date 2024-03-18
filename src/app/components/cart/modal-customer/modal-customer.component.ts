@@ -16,7 +16,7 @@ export class ModalCustomerComponent {
   @Input() isVisibleCustomer: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
   listCustomer: ICustomer[] = [];
-  
+
   constructor(
     private customerService: CustomerService,
     private cartService: CartService,
@@ -26,6 +26,7 @@ export class ModalCustomerComponent {
   private destroyed$ = new Subject();
   textSearch: string = "";
   isVisibleAddCustomer: boolean = false;
+  idCart: number = 0;
 
   createNotification(type: string, content: string): void {
     this.notification.create(
@@ -68,7 +69,7 @@ export class ModalCustomerComponent {
   }
 
   handleUpdateCartCustomer() {
-
+    
   }
 
   displayNone: {} = {
