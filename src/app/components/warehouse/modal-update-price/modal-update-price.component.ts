@@ -38,7 +38,7 @@ export class ModalUpdatePriceComponent {
     id: 0,
     nameProduct: "Vitamin gái",
     quantityProduct: 0,
-    expiredDate: new Date,
+    expiredDate: "",
     provider: "string",
     unit: "string",
     origin: "string",
@@ -46,7 +46,8 @@ export class ModalUpdatePriceComponent {
     codeProduct: "",
     description: "",
     providePrice: 0,
-    floorPrice: 1
+    floorPrice: 1,
+    phoneProvider: ""
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -16,12 +16,9 @@ export class ProductService {
   getProductWareHouse(idUser: number, textSearch: string): Observable<IResponseProduct> {
     return this.http.get<IResponseProduct>(`${apiProduct.getProductWarehouse}${idUser}?textSearch=${textSearch}`)
   }
+  
   updateQuantity(id: number, payload: any): Observable<IResponseProduct> {
     return this.http.put<IResponseProduct>(`${apiProduct.updateProductQuantity}${id}`, payload)
-  }
-
-  getProductWareHouse(idUser: number, textSearch: string): Observable<IResponseProduct> {
-    return this.http.get<IResponseProduct>(`${apiProduct.getProductWarehouse}${idUser}?textSearch =${textSearch} `)
   }
 
   updateProductWareHouse (price: number | undefined, productItem:IProduct) : Observable<IResponseProduct> {

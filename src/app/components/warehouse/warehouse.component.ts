@@ -42,7 +42,7 @@ export class WarehouseComponent implements OnInit, OnDestroy{
     id: 0,
     nameProduct: "abc",
     quantityProduct: 0,
-    expiredDate: new Date,
+    expiredDate: "",
     provider: "abc",
     unit: "abc",
     origin: "abc",
@@ -51,6 +51,7 @@ export class WarehouseComponent implements OnInit, OnDestroy{
     description: "abc",
     providePrice: 0,
     floorPrice: 0,
+    phoneProvider: ""
   }
 
   isVisibleModalUpdatePrice: boolean= false;
