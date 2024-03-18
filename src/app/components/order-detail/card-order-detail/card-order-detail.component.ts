@@ -29,7 +29,8 @@ export class CardOrderDetailComponent implements OnInit {
         id: 0,
         nameCustomer: '',
         phoneCustomer: '',
-        address: ''
+        address: '',
+        avatar: ''
       },
       orderDetailResponseList: []
   };

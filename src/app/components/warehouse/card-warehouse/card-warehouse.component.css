@@ -1,0 +1,35 @@
+.main-card {
+    display: flex;
+}
+::ng-deep.ant-card-body {
+    padding: 6px !important;
+}
+
+.card-img {
+    display: flex;
+}   
+.nameProduct-card {
+    font-size: 4vw;
+    font-weight: 700;
+    color: #25403b;
+}
+.textProduct-card {
+    font-size: 2.5vw;
+    color: #3d7165; 
+}
+.floorPrice-card {
+    font-size: 4vw;
+    font-weight: 700;
+    color: #B31312;
+}
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+.pd-tb10-lr20{
+    padding: 10px;
+}
+.img-card-warehouse{
+    object-fit: cover;
+    border-radius: 5%;
+}
