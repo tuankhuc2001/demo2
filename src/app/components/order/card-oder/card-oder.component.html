@@ -1,34 +1,49 @@
-<div *ngIf="listCard.length == 0">ko co du</div>
-<cCard *ngFor="let item of listCard">
+<div *ngIf="listCard.length == 0">
+  <div style="text-align: center">
+    <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+  </div>
+</div>
+<cCard *ngFor="let item of listCard" (click)="handleClickCard(item.id)">
   <Content>
     <div class="main-card">
-      <div nz-col nzSpan="1">
+      <div nz-col nzSpan="1" [ngClass]="{
+        'success': item.status === 'success', 
+        'fail': item.status === 'fail', 
+        'pending': item.status === 'pending'}">
         <div class="card-status"></div>
       </div>
-      <div nz-col nzSpan="15" style="display: flex; flex-direction: column;justify-content: space-between;">
-        <div nz-row nzSpan="6">
-            <span class="codeOder-card">{{listOder.codeOder}}</span>
+      <div nz-col nzSpan="15" class="flex-column-btw padding-top-bot-1vw">
+        <div nz-row nzSpan="6" [ngClass]="{
+          'success': item.status === 'success', 
+          'fail': item.status === 'fail', 
+          'pending': item.status === 'pending'}">
+          <span class="codeOder-card">{{item.codeOrder}}</span>
         </div>
         <div nz-row nzSpan="6">
-            <span class="nameCustomer-card">{{listOder.Customer.nameCustomer}}</span>
+          <span class="nameCustomer-card">{{item.customerResponse.nameCustomer}}</span>
         </div>
         <div nz-row nzSpan="6">
-            <span class="textOder-card">{{listOder.Customer.address}}</span>
+          <span nz-icon nzType="environment" nzTheme="outline" class="IconOder-card"></span>
+          <span class="textOder-card">{{item.customerResponse.address}}</span>
         </div>
-        <div nz-row nzSpan="6" >
-            <span nz-icon nzType="calendar" nzTheme="outline" class="IconOder-card"></span>
-            <span class="textOder-card">{{listOder.createdAt}}</span>
+        <div nz-row nzSpan="6">
+          <span nz-icon nzType="calendar" nzTheme="outline" class="IconOder-card"></span>
+          <span class="textOder-card">{{item.createdAt | date: "dd/MM/yyyy HH:mm"}}</span>
         </div>
       </div>
-      <div nz-col nzSpan="8" style="display: flex; flex-direction: column;justify-content: space-between;">
+      <div nz-col nzSpan="8" class="flex-column-btw padding-top-bot-1vw">
         <div nz-row class="flex-end">
-            <span class="totalPrice-card">{{listOder.totalPrice}}</span>
+          <span class="totalPrice-card">{{item.totalPrice | number}}</span>
         </div>
         <div nz-row class="flex-end">
-            <span class="textOder-card">({{listOder.totalCartItem}})</span>
+          <span class="totalDetail-card">({{item.totalCartItem}})</span>
         </div>
         <div nz-row class="flex-end">
-            <span class="textOder-card">{{listOder.status}}</span>
+          <span class="status-card">
+            <span *ngIf="item.status === 'success'" style="color: #158c37">Thành công</span>
+            <span *ngIf="item.status === 'fail'" style="color: #b31312">Đang giao</span>
+            <span *ngIf="item.status === 'pending'" style="color: #1E5993">Đã xử lý</span>
+          </span>
         </div>
       </div>
     </div>

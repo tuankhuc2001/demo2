@@ -6,6 +6,7 @@ import { IProduct } from '../../types/product';
 import { ProductService } from '../../services/product.service';
 import { SearchService } from '../../services/search.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-sale',
@@ -20,7 +21,8 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
 
   constructor( private notification: NzNotificationService,
     private searchService: SearchService, 
-    private productService: ProductService) {
+    private productService: ProductService,
+    private router: Router) {
   }
 
   isVisibleModalAddCartItem: boolean = false
@@ -28,15 +30,16 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
     id: 0,
     nameProduct: "undefined",
     quantityProduct: 0,
-    expiredDate: new Date,
+    expiredDate: "new Date",
     provider: '',
     unit: '',
     origin: '',
-    avatar: undefined,
+    avatar: 'undefined',
     codeProduct: '',
     description: '',
     providePrice: 0,
-    floorPrice: 0
+    floorPrice: 0,
+    phoneProvider: "0123456"
   }
 
   handleSearch(value: string) {
@@ -75,6 +78,10 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
         this.handleSearch(value)
       }
     })
+  }
+
+  handleNavigate(): void {
+    this.router.navigate(['/cartPage']);
   }
 
   ngOnDestroy(): void {

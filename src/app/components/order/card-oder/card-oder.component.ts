@@ -1,27 +1,20 @@
-import { Component, Input } from '@angular/core';
-import { IOder } from '../../../types/order';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IOrder } from '../../../types/order';
+
 @Component({
   selector: 'app-card-oder',
   templateUrl: './card-oder.component.html',
   styleUrl: './card-oder.component.css',
 })
 export class CardOderComponent {
-  @Input() listCard: any;
-  @Input() listOder: IOder = {
-    id: 0,
-    idUser: 0,
-    Customer: {
-      id: 0,
-      nameCustomer: "abc",
-      phoneCustomer: "abc",
-      address: "abc",
-      avatar: ""
-    },
-    totalPrice: 0,
-    status: "abc",
-    createdAt: new Date(),
-    totalCartItem: 0,
-    color: "abc",
-    codeOder: "abc",
-  };
+  @Input() listCard: IOrder[] = [];
+
+  @Output() onClickCard: EventEmitter<number> = new EventEmitter()
+
+  handleClickCard(item: number){
+    this.onClickCard.emit(item)
+  }
+
+  ngOnInit(): void {
+  } 
 }

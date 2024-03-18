@@ -1,6 +1,6 @@
 <nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" 
-nzCentered
-[nzFooter]="null"
+[nzCentered]="isCentered === true ? true : false"
+[nzFooter]="footer === true ? modalFooter : null"
 [nzClosable]="buttonX"
 [nzWidth]="width"
 >

@@ -12,7 +12,7 @@ export const objectApi = {
 export const apiProduct = {
     getProductSale: objectApi.product + `getProductSale/`,
     getProductWarehouse: objectApi.product + `getProductWarehouse/`,
-    updateProductQuantity: objectApi.product + `/updateQuantity/`,
+    updateProductQuantity: objectApi.product + `updateQuantity/`,
     addProduct: objectApi.product + `addProduct`,
     updatePrice: objectApi.product + `updatePrice/`
 }

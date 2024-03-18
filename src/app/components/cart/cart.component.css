@@ -1,0 +1,155 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.cart_container{
+    position: relative;
+}
+
+.header__cart{
+    display: flex;
+    position: fixed;
+    background-color: white;
+    top: 0px;
+    z-index: 99;
+    width: 100%;
+    justify-content: space-between;
+    padding: 2vw 5vw;
+    align-items: center;
+    border-bottom: 1px rgb(144, 144, 144) solid;
+}
+
+.tag__back{
+    font-size: 4vw;
+}
+
+.tag__title{
+    font-size: 5vw;
+    display: flex;
+    justify-content: center;
+}
+
+.tag__delete{
+    font-size: 4vw;
+    font-weight: bold;
+    color: #c7393c;
+    display: flex;
+    justify-content: end;
+}
+
+
+
+.footer__cart{
+    position: fixed;
+    background-color: white;
+    bottom: 0px;
+}
+
+.customer_img {
+    aspect-ratio: 1/1;
+}
+
+.customer_img>img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    padding: 4vw 1vw;
+}
+
+.customer_info{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1vw;
+}
+
+.customer_info > p {
+    font-weight: bold;
+    font-size: 4.5vw;
+}
+
+.info_phone {
+    color: #c7393c;
+    font-size: 4vw;
+}
+
+.info_address {
+    font-size: 3.5vw;
+    color: #afafaf;
+}
+
+.customer_click {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customer_click > button {
+    background-color: #1E5993;
+    color: white;
+    padding: 1vw 5vw;
+    border-radius: 1vw;
+    font-size: 4.5vw;
+    font-weight: 500;
+    border: none;
+}
+
+.below_price {
+    border-top: 1px #afafaf solid;
+    padding: 3vw 0 2vw;
+}
+
+.shipPrice {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1vw;
+    margin-bottom: 2vw;
+}
+
+.shipPrice_text {
+    font-size: 4vw;
+}
+
+.shipPrice_number {
+    font-size: 4vw;
+}
+
+.totalPrice {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1vw;
+}
+
+.totalPrice_text {
+    font-size: 4.5vw;
+    font-weight: bold;
+    color: #1E5993;
+}
+
+.totalPrice_number {
+    font-size: 4.5vw;
+    font-weight: bold;
+    color: #c7393c;
+}
+
+.customer_submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customer_submit > .btn_submit {
+    background-color: #ff4e00;
+    width: 80%;
+    height: 80%;
+    color: white;
+    border-radius: 1vw;
+    font-size: 4.5vw;
+    font-weight: 500;
+    border: none;
+}
+
+.customer_submit >.btn_submit:disabled {
+    background-color: rgb(120, 114, 106);
+}

@@ -1,33 +1,44 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-
-import { IOder } from '../../../types/order';
+import { IOrderAndOrderDetail } from '../../../types/order';
 
 @Component({
   selector: 'app-card-order-detail',
   templateUrl: './card-order-detail.component.html',
   styleUrls: ['./card-order-detail.component.css']
 })
+
 export class CardOrderDetailComponent implements OnInit {
 
-  @Input() listCardOrderDetail: any;
-  @Input() listOderDetail: IOder = {
-    id: 0,
-    idUser: 0,
-    Customer: {
+  @Input() listCardOrderDetail: IOrderAndOrderDetail = {
       id: 0,
-      nameCustomer: "abc",
-      phoneCustomer: "abc",
-      address: "abc",
-      avatar: ""
-    },
-    totalPrice: 0,
-    status: "abc",
-    createdAt: new Date(),
-    totalCartItem: 0,
-    color: "abc",
-    codeOder: "abc",
+      totalPrice: 0,
+      status: '',
+      createdAt: new Date(),
+      totalCartItem: 0,
+      codeOrder: '',
+      userResponse: {
+        id: 0,
+        phone: '',
+        password: '',
+        email: '',
+        fullname: '',
+        avatar: '',
+        type: '',
+      },
+      customerResponse: {
+        id: 0,
+        nameCustomer: '',
+        phoneCustomer: '',
+        address: '',
+        avatar: ''
+      },
+      orderDetailResponseList: []
   };
+
+  handlelog(): void {
+    console.log(this.listCardOrderDetail, "AppList")
+  }
+
   constructor() { }
 
   ngOnInit() {

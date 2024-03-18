@@ -1,11 +1,26 @@
-<!-- <app-card-customer [listCard]="listCard"></app-card-customer> -->
-<nz-upload class="avatar-uploader" nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-  nzName="avatar" nzListType="picture-card" [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload"
-  (nzChange)="handleChange($event)" [nzShowButton]="fileList.length < 8">
-  <ng-container *ngIf="!avatarUrl">
-    <span class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></span>
-    <div class="ant-upload-text">Upload</div>
-  </ng-container>
-  <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+<nz-upload
+  nzName="avatar"
+  nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+  nzListType="picture-card"
+  [(nzFileList)]="fileList"
+  [nzShowButton]="fileList.length < 1"
+  [nzPreview]="handlePreview"
+  style="margin-top: 40px;"
+>
+  <div>
+    <span nz-icon nzType="plus"></span>
+    <div style="margin-top: 8px">Upload</div>
+  </div>
 </nz-upload>
-<button (click)="handleCallAIP()">check</button>
+<nz-modal
+  [nzVisible]="previewVisible"
+  [nzContent]="modalContent"
+  [nzFooter]="null"
+  (nzOnCancel)="previewVisible = false"
+>
+  <ng-template #modalContent>
+    <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+  </ng-template>
+</nz-modal>
+
+<button  (click)="handleCallAIP()">check</button>

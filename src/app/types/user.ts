@@ -7,3 +7,5 @@ export interface IUser {
   avatar: any;
   type: string;
 }
+
+
