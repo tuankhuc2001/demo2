@@ -19,7 +19,7 @@ export class CustomerService {
         return this.http.get<IResponseCustomer>(`${apiCustomer.getCustomer}?textSearch=${textSearch}`)
     }
 
-    addCustomer(customer: ICustomerRequest): Observable<IResponseCustomer> { 
-        return this.http.post<IResponseCustomer>(`${apiCustomer.addCustomer}`, customer)
+    addCustomer(customerRequest: ICustomerRequest): Observable<IResponseCustomer> {
+        return this.http.post<IResponseCustomer>(`${apiCustomer.addCustomer}`, customerRequest)
     }
 }

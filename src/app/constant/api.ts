@@ -32,8 +32,8 @@ export const apiCartItem = {
 }
 
 export const apiCustomer = {
-    getCustomer: `http://localhost:8080/customer/getCustomer/`,
-    addCustomer: `http://localhost:8080/customer/addCustomer/`
+    getCustomer: objectApi.customer + `getCustomer/`,
+    addCustomer: objectApi.customer + `addCustomer`,
 }
 
 export const apiOrder = {
