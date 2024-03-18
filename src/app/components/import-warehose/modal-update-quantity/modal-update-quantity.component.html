@@ -23,10 +23,11 @@
             <nz-form-item>
               <nz-form-control [nzErrorTip]="quantityValidate">
                 <nz-input-group>
-                  <nz-input-number
+                  <input
+                    nz-input
                     formControlName="quantity"
-                    [nzStep]="1"
                     class="input-number"
+                    type="number"
                   />
                 </nz-input-group>
 
@@ -87,7 +88,12 @@
         </span>
       </div>
       <div class="mbtn-submit">
-        <button nz-button class="btn-submit" (click)="handleSubmit()" [nzLoading]="isLoading">
+        <button
+          nz-button
+          class="btn-submit"
+          (click)="handleSubmit()"
+          [nzLoading]="isLoading"
+        >
           Nhập kho
         </button>
       </div>
