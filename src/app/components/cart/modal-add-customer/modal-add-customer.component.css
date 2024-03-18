@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.jct-bw {
+    justify-content: space-between;
+}
+
+.font-size-14px{
+    font-size: 14px;
+}
+
+.font-size-20px{
+    font-size: 20px;
+}
+
+.mg-t-8{
+    margin-top: 24px;
+}
+
+.title-add-customer{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.input-control{
+    margin-top: 12px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.container-input{
+    flex-direction: column;
+    height: 100%;
+    margin-top: 12px;
+}
+
+.btn-container{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-add-customer{
+    padding: 8px;
+    background-color: #3d7165;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}

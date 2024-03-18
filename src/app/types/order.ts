@@ -13,6 +13,16 @@ export interface IOrder {
   customerResponse: ICustomer
 }
 
+export interface IAddOder {
+  totalPrice: number;
+}
+
+export interface IOrderResponse {
+  message: string,
+  status: boolean,
+  content: {
+  }
+}
 export interface IOrderAndOrderDetail {
   id: number
   totalPrice: number

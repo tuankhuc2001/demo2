@@ -1,0 +1,26 @@
+.add_text {
+    font-size: 4.5vw;
+    font-weight: 600;
+    padding: 4vw 4vw 1vw;
+}
+
+
+.add_submit {
+    font-size: 4.5vw;
+    font-weight: 600;
+    margin-right: 2vw;
+    padding: 1vw 5vw;
+    border-radius: 5vw;
+    border: none;
+    color: white;
+    background-color: #c7393c;
+}
+
+.add_cancel {
+    font-size: 4.5vw;
+    font-weight: 600;
+    padding: 1vw 5vw;
+    border-radius: 5vw;
+    border: 1px solid #afafaf;
+    background-color: white;
+}

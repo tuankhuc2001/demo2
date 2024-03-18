@@ -10,6 +10,7 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 
 import { routerNames } from './constant/router';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/signIn' },
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: `${routerNames.orderDetailPage}`,
     component: OrderDetailComponent,
+  },
+  {
+    path: `${routerNames.cartPage}`,
+    component: CartComponent,
   },
   {
     path: `${routerNames.homePage}`,
@@ -47,6 +52,10 @@ const routes: Routes = [
         component: WarehouseComponent,
       },
     ],
+  },
+  {
+    path: `${routerNames.cartPage}`,
+    component: CartComponent,
   },
 ];
 

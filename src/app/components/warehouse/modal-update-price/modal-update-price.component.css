@@ -1,0 +1,101 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.img__modal-price{
+    height: 40vw;
+    object-fit: cover;
+}
+
+.content-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 12px;
+}
+
+.text--grey{
+    opacity: 0.6;
+}
+
+.text--red{
+    color: red;
+}
+
+.text--bold{
+    font-weight: bold;
+}
+
+.text--size-3{
+    font-size: 3vw;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.jct-bw{
+    justify-content: space-between;
+}
+
+.width-100{
+    width: 100%;
+}
+
+.btn-control{
+    padding: 1vw 3vw;
+    color: white;
+    border: none;
+    border-radius: 8vw;
+}
+
+.btn-cancel{
+    margin-right: 8px;
+}
+
+.bg-cl-red{
+    background-color: red;
+}
+
+.bg-cl-red{
+    background-color: red;
+}
+
+.bg-cl-red:hover{
+    background-color: red;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.bg-cl-green{
+    background-color: #3d7165;
+}
+
+.bg-cl-green:hover{
+    background-color: #3d7165;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+
+.text-ct{
+    text-align: center;
+}
+
+.jct-ct{
+    justify-content: center;
+}
+
+.input-control{
+    border-radius: 1vw !important;
+    width: 84%;
+    padding: 0.5vw;
+}
+
+::ng-deep .ant-form-item-explain-error{
+    font-size: 2vw;
+}
