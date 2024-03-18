@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IResponseProduct } from '../types/product';
+import { IProduct, IResponseProduct } from '../types/product';
 import { apiProduct } from '../constant/api';
 
 
@@ -16,8 +16,13 @@ export class ProductService {
   getProductWareHouse(idUser: number, textSearch: string): Observable<IResponseProduct> {
     return this.http.get<IResponseProduct>(`${apiProduct.getProductWarehouse}${idUser}?textSearch=${textSearch}`)
   }
+  
   updateQuantity(id: number, payload: any): Observable<IResponseProduct> {
     return this.http.put<IResponseProduct>(`${apiProduct.updateProductQuantity}${id}`, payload)
+  }
+
+  updateProductWareHouse (price: number | undefined, productItem:IProduct) : Observable<IResponseProduct> {
+    return this.http.put<IResponseProduct>(`${apiProduct.updatePrice}${productItem.id}`,price)
   }
 }
 
