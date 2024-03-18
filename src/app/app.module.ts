@@ -22,7 +22,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { OrderComponent } from './components/order/order.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { WarehouseComponent } from './components/warehouse/warehouse.component';
-import { ModalUpdateQuantityComponent } from './components/modal-update-quantity/modal-update-quantity.component';
+import { ModalUpdateQuantityComponent } from './components/import-warehose/modal-update-quantity/modal-update-quantity.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { ProductSaleComponent } from './components/product-sale/product-sale.component';
 import { ModalAddCartItemComponent } from './components/product-sale/modal-add-cart-item/modal-add-cart-item.component';
@@ -37,6 +37,7 @@ import { CardCustomerComponent } from './components/cart/card-customer/card-cust
 import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
 import { InputComponent } from './common/inputValidate/input.component';
 import {CardOrderDetailComponent} from './components/order-detail/card-order-detail/card-order-detail.component'
+import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse.component';
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -58,6 +59,9 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+
 
 @NgModule({
   declarations: [
@@ -88,6 +92,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     CardCartComponent,
     InputComponent,
     CardOrderDetailComponent,
+    CardImportWarehouseComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +120,9 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     NzCheckboxModule,
     NzSpinModule,
     NzUploadModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzInputNumberModule,
+    NzTabsModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

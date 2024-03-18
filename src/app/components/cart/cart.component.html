@@ -1,4 +1,72 @@
-<p>cart works!</p>
-<div>
-    
+<div class="cart_container">
+  <div [class]="'header__cart'" nz-row>
+    <div nz-col nzSpan="8" (click)="handleBackProductSale()">
+      <span class="tag__back" nz-icon nzType="left" nzTheme="outline"></span>
+    </div>
+    <div class="tag__title" nz-col nzSpan="8">
+      <p class="">Giỏ hàng</p>
+    </div>
+    <div class="tag__delete" nz-col nzSpan="8">
+      <p *ngIf="listCard[0]?.cartItemResponseSet.length > 0" (click)="handleOpenModalDeleteAll(listCard[0]?.id)">
+        Xóa tất cả
+      </p>
+      <app-modal-delete-all [isVisible]="isVisibleDeleteAll" (closeModal)="handleCloseModalDeleteAll()"
+        (getCart)="handleGetCart()" [idCart]="idCartDelete"></app-modal-delete-all>
+    </div>
+  </div>
+  <div >
+    <div style="height: 12vw;"></div>
+    <div style="overflow-y: scroll">
+      <app-card-cart [listCard]="listCard" (onClickDeleteSingle)="handleOpenModalDeleteSingle($event)"
+      (totalPriceChanged)="handleTotalPriceChanged($event)" (getCart)="handleGetCart()"></app-card-cart>
+    </div>
+
+      <div style="height: 40vw;"></div>
+  </div>
+
+  <app-modal-delete-single [isVisible]="isVisibleDeleteSingle" (closeModal)="handleCloseModalDeleteSingle()"
+    (getCart)="handleGetCart()" [cartItem]="itemCartItem"></app-modal-delete-single>
+
+  <div class="footer__cart">
+    <div nz-row>
+      <div nz-col nzSpan="3" class="customer_img">
+        <img nz-image width="80%"
+          nzSrc="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          nzDisablePreview="true" />
+      </div>
+      <div nz-col nzSpan="13" class="customer_info">
+        <p>{{ listCustomer[0]?.customerResponse?.nameCustomer }}</p>
+        <span class="info_phone">
+          {{ listCustomer[0]?.customerResponse?.phoneCustomer }}
+        </span>
+        <span class="info_address">
+          {{ listCustomer[0]?.customerResponse?.address }}
+        </span>
+      </div>
+      <div nz-col nzSpan="8" class="customer_click">
+        <button>Thay đổi</button>
+      </div>
+    </div>
+    <div nz-row class="below_price">
+      <div nz-col nzSpan="16">
+        <div class="shipPrice">
+          <span class="shipPrice_text">Phí ship: </span>
+          <span class="shipPrice_number"> 50,000</span>
+        </div>
+        <div class="totalPrice">
+          <span class="totalPrice_text">Tổng tạm tính:</span>
+          <span class="totalPrice_number">{{ ((totalPrice?.totalPrice ?? 0) + 50000) | number:'1.0-0' }}</span>
+        </div>
+      </div>
+      <div nz-col nzSpan="8" class="customer_submit">
+        <button nz-button class="btn_submit" nzType="primary"
+          [disabled]="!(listCard[0]?.cartItemResponseSet.length > 0 && listCustomer[0]?.customerResponse?.length !== null)"
+          (click)="handleOpenModelAddOrder(listCard[0]?.id)">
+          Tạo đơn
+        </button>
+        <app-modal-add-order [isVisible]="isVisibleAddOrder" (closeModal)="handleCloseModelAddOrder()"
+          (getCart)="handleGetCart()" [idCart]="idCartOrder" [orderRequest]="totalPrice"></app-modal-add-order>
+      </div>
+    </div>
+  </div>
 </div>

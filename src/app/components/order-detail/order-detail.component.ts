@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
+import { Location } from '@angular/common';
 
-import { routerNames } from '../../constant/router';
-import { OrderDetailService } from '../../services/order-detail.service';
+import { IOrderAndOrderDetail } from '../../types/order';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -12,12 +12,64 @@ import { OrderDetailService } from '../../services/order-detail.service';
 })
 export class OrderDetailComponent {
 
-  constructor(private orderDetailService: OrderDetailService, private router: Router){}
+  constructor(
+    private orderService: OrderService,
+    private location: Location) { }
+
   private $destroy = new Subject()
-  listCardOrderDetail: any = [{},{}]
 
+  listOrderAndDetail: IOrderAndOrderDetail[] = []
+  listCardOrderDetail: IOrderAndOrderDetail = {
+    id: 0,
+    totalPrice: 0,
+    status: '',
+    createdAt: new Date(),
+    totalCartItem: 0,
+    codeOrder: '',
+    userResponse: {
+      id: 0,
+      phone: '',
+      password: '',
+      email: '',
+      fullname: '',
+      avatar: '',
+      type: ''
+    },
+    customerResponse: {
+      id: 0,
+      nameCustomer: '',
+      phoneCustomer: '',
+      address: ''
+    },
+    orderDetailResponseList: []
+  };
 
-  handleBackOrder(){
-    this.router.navigate([routerNames.homePage+"/"+routerNames.orderPage]);
+  isLoading: boolean = false
+
+  handleGetOrderDetail(value: number) {
+    this.orderService.getOrderDetail(value).subscribe({
+      next: (res) => {
+        this.listOrderAndDetail = res.content.list
+        this.listCardOrderDetail = res.content.list[0]
+        console.log(res.content.list[0])
+      }
+    })
+  }
+
+  ngOnInit(): void {
+    this.orderService.getOrderDetails().subscribe({
+      next: (value: number) => {
+        this.handleGetOrderDetail(value)
+      }
+    })
+  }
+
+  handleBackOrder() {
+    this.location.back()
+  }
+
+  ngOnDestroy(): void {
+    this.$destroy.next(true)
+    this.$destroy.complete()
   }
 }

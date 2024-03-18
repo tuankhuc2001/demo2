@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable  } from 'rxjs';
+import { Observable } from 'rxjs';
+import { IResponseProduct } from '../types/product';
+import { apiProduct } from '../constant/api';
+
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-    constructor(private http: HttpClient) { }
-  public upload(payload: any): Observable<any> {
-    return this.http.post<any>(
-      `http://localhost:8080/upload
-    `,
-      payload
-    );
+  constructor(private http: HttpClient) { }
+  
+  getProductSale(idUser: number, textSearch: string): Observable<IResponseProduct> {
+    return this.http.get<IResponseProduct>(`${apiProduct.getProductWarehouse}${idUser}?textSearch=${textSearch}`)
+  }
+  
+  getProductWareHouse(idUser: number, textSearch: string): Observable<IResponseProduct> {
+    return this.http.get<IResponseProduct>(`${apiProduct.getProductWarehouse}${idUser}?textSearch=${textSearch}`)
+  }
+  updateQuantity(id: number, payload: any): Observable<IResponseProduct> {
+    return this.http.put<IResponseProduct>(`${apiProduct.updateProductQuantity}${id}`, payload)
   }
 }
 
