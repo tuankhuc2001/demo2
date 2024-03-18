@@ -138,7 +138,25 @@ export class CardCartComponent implements OnChanges {
     if (!item) {
       return;
     }
-    this.cartItemRequest.plus = !this.cartItemRequest.plus
+    this.cartItemRequest.plus = false
+    this.cartItemService.updateIsPlus(item.id, this.cartItemRequest).subscribe({
+      next: (res) => {
+        this.createNotification('success', res.message) 
+        this.calculateTotalPrice();
+        this.getCart.emit();
+      },
+      error: (error) => {
+        this.createNotification('error', error) 
+        this.getCart.emit();
+      }
+    })
+  } 
+
+  handleMinus(item: any) {
+    if (!item) {
+      return;
+    }
+    this.cartItemRequest.plus = true
     this.cartItemService.updateIsPlus(item.id, this.cartItemRequest).subscribe({
       next: (res) => {
         this.createNotification('success', res.message) 

@@ -27,7 +27,7 @@
               X
               </div>
               <div nz-col nzSpan="9" >
-                <input *ngIf="item.disable == true " nz-input type="number"class="quantity" [ngModel] = "item?.quantity" (blur)="handleQuantityBlur(item, $event)" (input)="onInputQuantity(item, $event)" />
+                <input nz-input type="number"class="quantity" [ngModel] = "item?.quantity" (blur)="handleQuantityBlur(item, $event)" (input)="onInputQuantity(item, $event)" />
                 <span *ngIf="item.showErrorQuantityNoEnter" class="showErrorQuantityNoEnter">Vui lòng nhập số lượng.</span>
                 <span *ngIf="item.showErrorQuantityExceed" class="showErrorQuantityExceed">Số lương vượt quá cho phép.</span>
 
@@ -36,7 +36,7 @@
             <div nz-row >
               <div nz-col nzSpan="5" class="isPlus">
                 <span nz-icon nzType="plus" nzTheme="outline" *ngIf="item.plus == true" (click)="handlePlus(item)" ></span>
-                <span nz-icon nzType="minus" nzTheme="outline" *ngIf="item.plus == false" style="color: red;" (click)="handlePlus(item)"></span>
+                <span nz-icon nzType="minus" nzTheme="outline" *ngIf="item.plus == false" style="color: red;" (click)="handleMinus(item)"></span>
               </div>
               <div nz-col nzSpan="9">
                 <input  nz-input type="number" class="rate" [ngModel] = "item?.rate" (blur)="handleRateBlur(item, $event)" (input)="onInputRate(item, $event)" />
