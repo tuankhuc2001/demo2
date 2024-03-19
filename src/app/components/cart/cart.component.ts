@@ -31,6 +31,7 @@ export class CartComponent implements OnDestroy, OnInit {
 
   idCartDelete: number = 0;
   idCartOrder: number = 0;
+  idCartCustomer: number = 0;
 
   listCard: any[] = [];
   listCart: ICart[] = [];
@@ -119,12 +120,15 @@ export class CartComponent implements OnDestroy, OnInit {
     })
   }
 
-  handleOpenModelCustomer(){
+  handleOpenModelCustomer(idCartCustomer:number){
+    this.idCartCustomer = this.listCard[0].id;
     this.isVisibleModalCustomer = true
   }
 
   handleCloseModelCustomer(){
     this.isVisibleModalCustomer = false
+    console.log('nguuuuuuuuuuuuuuu');
+    
   }
 
   ngOnInit(): void {
