@@ -134,7 +134,7 @@ export class ModalCustomerComponent {
     )
   }
 
-  handleOpenModalCustomer() {
+  handleCloseModalCustomer() {
     this.closeModal.emit();
   }
 }

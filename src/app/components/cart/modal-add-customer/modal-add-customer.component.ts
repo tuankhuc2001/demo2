@@ -22,6 +22,14 @@ export class ModalAddCustomerComponent {
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
 
+  ngOnInIt(){
+    this.validateFormAddCustomer.setValue({
+      nameCustomer: "1",
+      phoneCustomer: "2",
+      address: "3",
+    })
+  }
+
   handleResetState() {
     this.validateFormAddCustomer.setValue({
       nameCustomer: "",
