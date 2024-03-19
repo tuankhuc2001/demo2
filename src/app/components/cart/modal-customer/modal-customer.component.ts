@@ -4,6 +4,7 @@ import { CartService } from '../../../services/cart.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { ICustomer } from '../../../types/customer';
+import { ICart, IUpdateCart } from '../../../types/cart';
 
 @Component({
   selector: 'app-modal-customer',
@@ -17,6 +18,11 @@ export class ModalCustomerComponent {
   @Input() idCart: number = 0;
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
   listCustomer: ICustomer[] = [];
+
+  customer: IUpdateCart = {
+    idCustomer: 0,
+    }
+  
 
   constructor(
     private customerService: CustomerService,
@@ -69,13 +75,8 @@ export class ModalCustomerComponent {
   }
 
   handleUpdateCartCustomer(idCustomer: number) {
-    const customer: ICustomer = {
-      id: idCustomer,
-      nameCustomer: "",
-      phoneCustomer: "",
-      address: "",
-    }
-    this.cartService.updateCartCustomer(this.idCart, customer).subscribe(() => {
+    this.customer.idCustomer = idCustomer;
+    this.cartService.updateCartCustomer(1,this.customer).subscribe(() => {
       next: (v: any) => {
         if (v.status == false) {
           this.notification.create('error', `${v.message}`, '')

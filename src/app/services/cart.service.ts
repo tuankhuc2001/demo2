@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ICartCustomer, IResponseCart } from '../types/cart';
+import { ICart, ICartCustomer, IResponseCart, IUpdateCart } from '../types/cart';
 import { apiCart } from '../constant/api';
 import { ICustomer } from '../types/customer';
 
@@ -13,7 +13,7 @@ export class CartService {
     return this.http.get<IResponseCart>(`${apiCart.getCart}${idUser}`)
   }
 
-  updateCartCustomer(idCart: number, customerRequest: ICustomer): Observable<IResponseCart> {
+  updateCartCustomer(idCart: number, customerRequest: IUpdateCart): Observable<IResponseCart> {
     return this.http.put<IResponseCart>(`${apiCart.updateCart}${idCart}`, customerRequest)
   }
 }

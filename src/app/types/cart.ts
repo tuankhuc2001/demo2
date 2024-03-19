@@ -16,6 +16,10 @@ export interface IResponseCart {
   }
 }
 
+export interface IUpdateCart {
+  idCustomer: number;
+}
+
 export interface ICartCustomer {
   Customer: ICustomer;
 }

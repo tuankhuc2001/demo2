@@ -22,21 +22,17 @@ export class ModalAddCustomerComponent {
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
 
-  customerRequest: ICustomerRequest = {
-    nameCustomer: "",
-    phoneCustomer: "",
-    address: "",
-  }
-
   handleResetState() {
-    this.customerRequest.nameCustomer = "",
-      this.customerRequest.phoneCustomer = "",
-      this.customerRequest.address = ""
+    this.validateFormAddCustomer.setValue({
+      nameCustomer: "",
+      phoneCustomer: "",
+      address: "",
+    })
   }
 
   handleCloseAddCustomer() {
-    this.closeModal.emit();
     this.handleResetState();
+    this.closeModal.emit();
   }
 
   handleAddCustomer() {
@@ -52,6 +48,7 @@ export class ModalAddCustomerComponent {
             this.notification.create('error', `${v.message}`, '')
           } else {
             this.notification.create('success', `${v.message}`, '')
+            this.handleResetState();
             this.handleCloseAddCustomer();
           }
         }
