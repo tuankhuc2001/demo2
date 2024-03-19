@@ -17,6 +17,7 @@ export class ModalCustomerComponent {
   @Input() isVisibleCustomer: boolean = false;
   @Input() idCart: number = 0;
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
+  @Output() getCart: EventEmitter<void> = new EventEmitter();
   listCustomer: ICustomer[] = [];
 
   customer: IUpdateCart = {
@@ -82,7 +83,8 @@ export class ModalCustomerComponent {
           this.notification.create('error', `${v.message}`, '')
         } else {
           this.notification.create('success', `${v.message}`, '')
-          this.handleCloseModalCustomer()
+          this.closeModal.emit();
+          this.getCart.emit();
         }
       }
     });

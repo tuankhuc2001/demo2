@@ -9,6 +9,7 @@ import { ICartItem } from '../../types/cart-item';
 import { IProduct } from '../../types/product';
 import { ICart } from '../../types/cart';
 import { IAddOder, IOrder } from '../../types/order';
+import { ICustomer } from '../../types/customer';
 
 @Component({
   selector: 'app-cart',
@@ -125,9 +126,9 @@ export class CartComponent implements OnDestroy, OnInit {
     this.isVisibleModalCustomer = true
   }
 
-  handleCloseModelCustomer(){
-    this.isVisibleModalCustomer = false
-    console.log('nguuuuuuuuuuuuuuu');
+  handleCloseModelCustomer(event: ICustomer){
+    this.isVisibleModalCustomer = false;
+    this.idCartCustomer = event;
     
   }
 
