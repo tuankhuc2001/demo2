@@ -28,9 +28,8 @@ export class ProductService {
   updateQuantity(id: number, payload: any): Observable<IResponseProduct> {
     return this.http.put<IResponseProduct>(`${apiProduct.updateProductQuantity}${id}`, payload)
   }
-
-  updateProductWareHouse (productItem:IProduct) : Observable<IResponseProduct> {
-    return this.http.put<IResponseProduct>(`${apiProduct.updatePrice}${productItem.id}`,productItem)
+  updateProductWareHouse (price: number | undefined, productItem:IProduct) : Observable<IResponseProduct> {
+    return this.http.put<IResponseProduct>(`${apiProduct.updatePrice}${productItem.id}`,price)
   }
 }
 

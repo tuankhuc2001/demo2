@@ -37,8 +37,10 @@ import { CardCustomerComponent } from './components/cart/card-customer/card-cust
 import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
 import { CardWarehouseComponent } from './components/warehouse/card-warehouse/card-warehouse.component';
 import { InputComponent } from './common/inputValidate/input.component';
-import {CardOrderDetailComponent} from './components/order-detail/card-order-detail/card-order-detail.component';
+import { CardOrderDetailComponent } from './components/order-detail/card-order-detail/card-order-detail.component'
 import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse.component';
+
+
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -60,9 +62,10 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+
 import { ModalUpdatePriceComponent } from './components/warehouse/modal-update-price/modal-update-price.component';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
-import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 
 @NgModule({
@@ -94,6 +97,11 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
     CardCartComponent,
     InputComponent,
     CardOrderDetailComponent,
+    CardWarehouseComponent,
+    CardImportWarehouseComponent,
+    WarehouseComponent,
+    CardWarehouseComponent,
+    ModalUpdatePriceComponent,
     WarehouseComponent,
     CardWarehouseComponent,
     ModalUpdatePriceComponent,
