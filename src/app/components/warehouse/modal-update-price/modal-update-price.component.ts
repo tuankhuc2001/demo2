@@ -70,8 +70,8 @@ export class ModalUpdatePriceComponent {
         this.handleSetIsVisisble();
       }else{
         console.log(this.validateForm.value.priceFloor,"TYPE");
-        
-        this.producService.updateProductWareHouse(this.validateForm.value.priceFloor, this.productItem).subscribe({
+        this.productItem.floorPrice = this.validateForm.value.priceFloor;
+        this.producService.updateProductWareHouse(this.productItem).subscribe({
           next: (v) =>{
             if (v.status == false){
               this.notification.create("error", `${v.message}`, "");
