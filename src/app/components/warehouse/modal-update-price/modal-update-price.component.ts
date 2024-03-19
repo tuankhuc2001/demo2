@@ -47,7 +47,7 @@ export class ModalUpdatePriceComponent {
     description: "",
     providePrice: 0,
     floorPrice: 1,
-    phoneProvider: ""
+    phoneProvider: "",
   }
 
   ngOnChanges(changes: SimpleChanges): void {

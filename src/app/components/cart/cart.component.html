@@ -14,14 +14,14 @@
         (getCart)="handleGetCart()" [idCart]="idCartDelete"></app-modal-delete-all>
     </div>
   </div>
-  <div >
+  <div>
     <div style="height: 12vw;"></div>
     <div style="overflow-y: scroll">
       <app-card-cart [listCard]="listCard" (onClickDeleteSingle)="handleOpenModalDeleteSingle($event)"
-      (totalPriceChanged)="handleTotalPriceChanged($event)" (getCart)="handleGetCart()"></app-card-cart>
+        (totalPriceChanged)="handleTotalPriceChanged($event)" (getCart)="handleGetCart()"></app-card-cart>
     </div>
 
-      <div style="height: 40vw;"></div>
+    <div style="height: 40vw;"></div>
   </div>
 
   <app-modal-delete-single [isVisible]="isVisibleDeleteSingle" (closeModal)="handleCloseModalDeleteSingle()"
@@ -34,7 +34,7 @@
           nzSrc="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           nzDisablePreview="true" />
       </div>
-      <div nz-col nzSpan="13" class="customer_info">
+      <div nz-col nzSpan="13" class="customer_info" > 
         <p>{{ listCustomer[0]?.customerResponse?.nameCustomer }}</p>
         <span class="info_phone">
           {{ listCustomer[0]?.customerResponse?.phoneCustomer }}
@@ -43,8 +43,8 @@
           {{ listCustomer[0]?.customerResponse?.address }}
         </span>
       </div>
-      <div nz-col nzSpan="8" class="customer_click">
-        <button>Thay đổi</button>
+      <div nz-col nzSpan ="8" class="customer_click">
+        <button (click)="handleOpenModelCustomer()">Thay đổi</button>
       </div>
     </div>
     <div nz-row class="below_price">
@@ -66,6 +66,8 @@
         </button>
         <app-modal-add-order [isVisible]="isVisibleAddOrder" (closeModal)="handleCloseModelAddOrder()"
           (getCart)="handleGetCart()" [idCart]="idCartOrder" [orderRequest]="totalPrice"></app-modal-add-order>
+        <app-modal-customer [isVisibleModalAddCustomer]="isVisibleModalCustomer" [idCart]="listCart[0].id" (closeModal)="handleCloseModelCustomer()">
+        </app-modal-customer>
       </div>
     </div>
   </div>

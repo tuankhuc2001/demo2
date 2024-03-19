@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, } from '@angular/core';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { CartService } from '../../services/cart.service';
@@ -23,6 +23,7 @@ export class CartComponent implements OnDestroy, OnInit {
     private router: Router) {
   }
 
+  isVisibleModalCustomer: boolean = false;
   isLoading: boolean = false;
   isVisibleDeleteAll: boolean = false;
   isVisibleDeleteSingle: boolean = false;
@@ -32,13 +33,14 @@ export class CartComponent implements OnDestroy, OnInit {
   idCartOrder: number = 0;
 
   listCard: any[] = [];
+  listCart: ICart[] = [];
   itemCartItem: ICartItem = {
     id: 1,
     Product: {
       id: 1,
       nameProduct: "String",
       quantityProduct: 1,
-      expiredDate: "String",
+      expiredDate: new Date,
       provider: "string",
       unit: "string",
       origin: "string",
@@ -60,6 +62,7 @@ export class CartComponent implements OnDestroy, OnInit {
   totalPrice: IAddOder ={
     totalPrice: 1,
   };
+
 
   handleTotalPriceChanged(totalPrice: number) {
     this.totalPrice.totalPrice = totalPrice;
@@ -106,13 +109,22 @@ export class CartComponent implements OnDestroy, OnInit {
       next: (res) => {
         this.isLoading = false
         this.listCard = res.content.list
-        this.listCustomer = res?.content.list
+        this.listCart = res.content.list
+        this.listCustomer = res?.content.list      
       },
       error: (error) => {
         this.isLoading = false
         this.createNotification('error', error)
       }
     })
+  }
+
+  handleOpenModelCustomer(){
+    this.isVisibleModalCustomer = true
+  }
+
+  handleCloseModelCustomer(){
+    this.isVisibleModalCustomer = false
   }
 
   ngOnInit(): void {
