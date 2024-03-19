@@ -17,6 +17,7 @@ export class ModalCustomerComponent {
   @Input() isVisibleCustomer: boolean = false;
   @Input() idCart: number = 0;
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
+  @Output() getCart: EventEmitter<void> = new EventEmitter();
   listCustomer: ICustomer[] = [];
 
   customer: IUpdateCart = {
@@ -76,13 +77,14 @@ export class ModalCustomerComponent {
 
   handleUpdateCartCustomer(idCustomer: number) {
     this.customer.idCustomer = idCustomer;
-    this.cartService.updateCartCustomer(1, this.customer).subscribe(() => {
+    this.cartService.updateCartCustomer(1, this.customer).subscribe({
       next: (v: any) => {
         if (v.status == false) {
-          this.notification.create('error', `${v.message}`, '')
+          this.notification.create('error', `${v.message}`, '') 
         } else {
           this.notification.create('success', `${v.message}`, '')
           this.handleCloseModalCustomer()
+          this.getCart.emit()
         }
       }
     });
