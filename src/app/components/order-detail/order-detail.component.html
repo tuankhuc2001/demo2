@@ -1,16 +1,16 @@
-<div class="content__OrderDetail">
-
+<div class="content_orderDetail">
     <div class="header_direction" nz-row>
         <div nz-col nzSpan="3" class="header_backButton" (click)="handleBackOrder()">
             <span nz-icon nzType="left" nzTheme="outline" class="font_size_4vw"></span>
         </div>
         <div nz-col nzSpan="18" class="header_title">
-            <span class="codeOrder" [class.green]="listCardOrderDetail.status === 'success'"
+            <span class="codeOrder" 
+                [class.green]="listCardOrderDetail.status === 'success'"
                 [class.red]="listCardOrderDetail.status === 'fail'"
                 [class.blue]="listCardOrderDetail.status === 'pending'">{{listCardOrderDetail.codeOrder}} - </span>
             <span *ngIf="listCardOrderDetail.status === 'success'" style="margin-left: 2vw; color: #158c37">Thành công</span>
             <span *ngIf="listCardOrderDetail.status === 'fail'" style="margin-left: 2vw; color: #b31312">Đang giao</span>
-            <span *ngIf="listCardOrderDetail.status === 'pending'" style="margin-left: 2vw; color: #1E5993">Đang xử lý</span>
+            <span *ngIf="listCardOrderDetail.status === 'pending'" style="margin-left: 2vw; color: #1E5993">Đã xử lý</span>
         </div>
     </div>
 
@@ -28,7 +28,7 @@
         </nz-tabset>
     </div>
 
-    <div class="footer__OrderDetail">
+    <div class="footer_orderDetail">
         <div nz-row class="customer">
             <div nz-col nzSpan="3" class="customer_avatar">
                 <img src="https://hoanghamobile.com/tin-tuc/wp-content/webp-express/webp-images/uploads/2023/09/hinh-nen-may-tinh-4k-cong-nghe-4.jpg.webp" alt="picture">
