@@ -14,6 +14,7 @@ export class ModalCustomerComponent {
 
   @Input() isVisibleModalAddCustomer: boolean = false;
   @Input() isVisibleCustomer: boolean = false;
+  @Input() idCart: number = 0;
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
   listCustomer: ICustomer[] = [];
 
@@ -26,7 +27,6 @@ export class ModalCustomerComponent {
   private destroyed$ = new Subject();
   textSearch: string = "";
   isVisibleAddCustomer: boolean = false;
-  idCart: number = 0;
 
   createNotification(type: string, content: string): void {
     this.notification.create(
@@ -68,9 +68,22 @@ export class ModalCustomerComponent {
       });
   }
 
-  handleUpdateCartCustomer(customer: ICustomer) {
-    this.cartService.updateCart(this.idCart,customer).subscribe(() => {
-
+  handleUpdateCartCustomer(idCustomer: number) {
+    const customer: ICustomer = {
+      id: idCustomer,
+      nameCustomer: "",
+      phoneCustomer: "",
+      address: "",
+    }
+    this.cartService.updateCartCustomer(this.idCart, customer).subscribe(() => {
+      next: (v: any) => {
+        if (v.status == false) {
+          this.notification.create('error', `${v.message}`, '')
+        } else {
+          this.notification.create('success', `${v.message}`, '')
+          this.ngOnInit();
+        }
+      }
     });
   }
 

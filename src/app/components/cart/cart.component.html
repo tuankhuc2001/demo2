@@ -34,7 +34,7 @@
           nzSrc="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           nzDisablePreview="true" />
       </div>
-      <div nz-col nzSpan="13" class="customer_info">
+      <div nz-col nzSpan="13" class="customer_info" > 
         <p>{{ listCustomer[0]?.customerResponse?.nameCustomer }}</p>
         <span class="info_phone">
           {{ listCustomer[0]?.customerResponse?.phoneCustomer }}
@@ -43,7 +43,7 @@
           {{ listCustomer[0]?.customerResponse?.address }}
         </span>
       </div>
-      <div nz-col nzSpan="8" class="customer_click">
+      <div nz-col nzSpan ="8" class="customer_click">
         <button (click)="handleOpenModelCustomer()">Thay đổi</button>
       </div>
     </div>
@@ -66,7 +66,7 @@
         </button>
         <app-modal-add-order [isVisible]="isVisibleAddOrder" (closeModal)="handleCloseModelAddOrder()"
           (getCart)="handleGetCart()" [idCart]="idCartOrder" [orderRequest]="totalPrice"></app-modal-add-order>
-        <app-modal-customer [isVisibleModalAddCustomer]="isVisibleModalCustomer" (closeModal)="handleCloseModelCustomer()">
+        <app-modal-customer [isVisibleModalAddCustomer]="isVisibleModalCustomer" [idCart]="listCart[0].id" (closeModal)="handleCloseModelCustomer()">
         </app-modal-customer>
       </div>
     </div>

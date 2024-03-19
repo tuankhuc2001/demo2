@@ -32,7 +32,7 @@ export const apiCartItem = {
 }
 
 export const apiCustomer = {
-    getCustomer: objectApi.customer + `getCustomer/`,
+    getCustomer: objectApi.customer + `getCustomer`,
     addCustomer: objectApi.customer + `addCustomer`,
 }
 
