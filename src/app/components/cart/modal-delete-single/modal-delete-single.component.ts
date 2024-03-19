@@ -48,7 +48,7 @@ export class ModalDeleteSingleComponent {
   }
 
   handleDeleteCartItem(cartItem: ICartItem){
-    
+    console.log(cartItem);
     this.cartItemService.deleteCartItem(cartItem).subscribe({
       next: (res) => {
         this.createNotification('success', res.message) 

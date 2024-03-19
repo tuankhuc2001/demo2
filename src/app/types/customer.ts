@@ -17,4 +17,5 @@ export interface ICustomerRequest {
     nameCustomer: string,
     phoneCustomer: string,
     address: string,
+    avatar: string
 }

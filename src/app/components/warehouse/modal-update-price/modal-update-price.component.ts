@@ -38,7 +38,7 @@ export class ModalUpdatePriceComponent {
     id: 0,
     nameProduct: "Vitamin gái",
     quantityProduct: 0,
-    expiredDate: new Date,
+    expiredDate: "",
     provider: "string",
     unit: "string",
     origin: "string",
@@ -69,6 +69,8 @@ export class ModalUpdatePriceComponent {
       if( this.validateForm.value.priceFloor == this.productItem.floorPrice){
         this.handleSetIsVisisble();
       }else{
+        console.log(this.validateForm.value.priceFloor,"TYPE");
+        
         this.producService.updateProductWareHouse(this.validateForm.value.priceFloor, this.productItem).subscribe({
           next: (v) =>{
             if (v.status == false){
