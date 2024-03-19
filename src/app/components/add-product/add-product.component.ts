@@ -40,7 +40,7 @@ export class AddProductComponent {
     id: 0,
     nameProduct: "",
     quantityProduct: 0,
-    expiredDate: new Date(),
+    expiredDate: "new Date()",
     provider: "",
     unit: "",
     origin: "",
