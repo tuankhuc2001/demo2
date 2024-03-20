@@ -29,6 +29,7 @@ export class CartItemService {
   }
 
   addCartItem(idProduct: number, productDetails: ICartItemRequest ,idUser : number): Observable<IResponseProduct> {
+    console.log(`${apiCartItem.addCartItem}?idProduct=${idProduct}&idUser=${idUser}`,productDetails)
     return this.http.post<IResponseProduct>(`${apiCartItem.addCartItem}?idProduct=${idProduct}&idUser=${idUser}`,productDetails)
 }
   

@@ -24,3 +24,17 @@ export interface IResponseProduct {
     totalCartItem: number,
   }
 }
+
+export interface IRequestProduct {
+  nameProduct: string,
+  quantityProduct: number,
+  expiredDate: string,
+  provider: string,
+  unit: string,
+  origin: string,
+  avatar: string,
+  codeProduct: string,
+  description: string,
+  providePrice: number,
+  floorPrice: number
+}

@@ -47,7 +47,7 @@ export class ModalUpdatePriceComponent {
     description: "",
     providePrice: 0,
     floorPrice: 1,
-    phoneProvider: ""
+    phoneProvider: "",
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -70,8 +70,7 @@ export class ModalUpdatePriceComponent {
         this.handleSetIsVisisble();
       }else{
         console.log(this.validateForm.value.priceFloor,"TYPE");
-        this.productItem.floorPrice = this.validateForm.value.priceFloor;
-        this.producService.updateProductWareHouse(this.productItem).subscribe({
+        this.producService.updateProductWareHouse(this.productItem, this.validateForm.value.priceFloor).subscribe({
           next: (v) =>{
             if (v.status == false){
               this.notification.create("error", `${v.message}`, "");

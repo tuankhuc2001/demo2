@@ -42,7 +42,6 @@ export class OrderDetailComponent {
       nameCustomer: '',
       phoneCustomer: '',
       address: '',
-      avatar: ''
     },
     orderDetailResponseList: []
   };

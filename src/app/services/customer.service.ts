@@ -1,22 +1,25 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { ICustomerRequest, IResponseCustomer } from '../types/customer';
-import { apiCustomer } from '../constant/api';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+import { apiCustomer } from "../constant/api";
+import { ICustomer, ICustomerRequest, IResponseCustomer } from "../types/customer";
 
 @Injectable({ providedIn: 'root' })
 export class CustomerService {
 
+    searchInputSubject = new BehaviorSubject<string>('');
+
     constructor(private http: HttpClient) { }
 
+    getSearchInput(): BehaviorSubject<string> {
+        return this.searchInputSubject;
+    }
+
     getCustomer(textSearch: string): Observable<IResponseCustomer> {
-        return this.http.get<IResponseCustomer>(`http://localhost:8080/customer/getCustomer?textSearch=${textSearch}`)
+        return this.http.get<IResponseCustomer>(`${apiCustomer.getCustomer}?textSearch=${textSearch}`)
     }
 
-    addCustomer(customer: ICustomerRequest): Observable<IResponseCustomer> {
-        console.log(customer);
-        
-        return this.http.post<IResponseCustomer>(`http://localhost:8080/customer/addCustomer`, customer)
+    addCustomer(customerRequest: ICustomerRequest): Observable<IResponseCustomer> {
+        return this.http.post<IResponseCustomer>(`${apiCustomer.addCustomer}`, customerRequest)
     }
-
 }

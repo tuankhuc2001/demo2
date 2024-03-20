@@ -1,9 +1,9 @@
 <div class="content_orderDetail">
     <div class="header_direction" nz-row>
-        <div nz-col nzSpan="3" class="header_backButton" (click)="handleBackOrder()">
+        <div nz-col nzSpan="2" class="header_backButton" (click)="handleBackOrder()">
             <span nz-icon nzType="left" nzTheme="outline" class="font_size_4vw"></span>
         </div>
-        <div nz-col nzSpan="18" class="header_title">
+        <div nz-col nzSpan="20" class="header_title">
             <span class="codeOrder" 
                 [class.green]="listCardOrderDetail.status === 'success'"
                 [class.red]="listCardOrderDetail.status === 'fail'"
