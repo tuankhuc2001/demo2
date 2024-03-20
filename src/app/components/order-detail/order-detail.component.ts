@@ -39,7 +39,7 @@ export class OrderDetailComponent {
       id: 0,
       nameCustomer: '',
       phoneCustomer: '',
-      address: ''
+      address: '',
     },
     orderDetailResponseList: []
   };

@@ -7,7 +7,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 registerLocaleData(en);
@@ -35,9 +35,12 @@ import { CardProductSaleComponent } from './components/product-sale/card-product
 import { CardOderComponent } from './components/order/card-oder/card-oder.component';
 import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
 import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
+import { CardWarehouseComponent } from './components/warehouse/card-warehouse/card-warehouse.component';
 import { InputComponent } from './common/inputValidate/input.component';
-import {CardOrderDetailComponent} from './components/order-detail/card-order-detail/card-order-detail.component'
+import { CardOrderDetailComponent } from './components/order-detail/card-order-detail/card-order-detail.component'
 import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse.component';
+
+
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -59,8 +62,10 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+
+import { ModalUpdatePriceComponent } from './components/warehouse/modal-update-price/modal-update-price.component';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 
 
 @NgModule({
@@ -92,6 +97,14 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
     CardCartComponent,
     InputComponent,
     CardOrderDetailComponent,
+    CardWarehouseComponent,
+    CardImportWarehouseComponent,
+    WarehouseComponent,
+    CardWarehouseComponent,
+    ModalUpdatePriceComponent,
+    WarehouseComponent,
+    CardWarehouseComponent,
+    ModalUpdatePriceComponent,
     CardImportWarehouseComponent
   ],
   imports: [

@@ -1,12 +1,12 @@
-export const Url = "http://localhost:8080/"
+export const Url = "http://localhost:8080"
 
 export const objectApi = {
-    product: Url + `product/`,
-    cart: Url + `cart/`,
-    cartItem: Url + `cartItem/`,
-    order: Url + `order/`,
-    orderDetail: Url + `orderDetail/`,
-    customer: Url + `customer/`,
+    product: Url + `/product/`,
+    cart: Url + `/cart/`,
+    cartItem: Url + `/cartItem/`,
+    order: Url + `/order/`,
+    orderDetail: Url + `/orderDetail/`,
+    customer: Url + `/customer/`,
 }
 
 export const apiProduct = {
@@ -19,7 +19,7 @@ export const apiProduct = {
 
 export const apiCart = {
     getCart: objectApi.cart + `getCart/`,
-    updateCart: objectApi.cart + `updateCart/`
+    updateCart: objectApi.cart + `updateCart/`,
 }
 
 export const apiCartItem = {
@@ -33,7 +33,7 @@ export const apiCartItem = {
 
 export const apiCustomer = {
     getCustomer: objectApi.customer + `getCustomer`,
-    addCustomer: objectApi.customer + `addCustomer`
+    addCustomer: objectApi.customer + `addCustomer`,
 }
 
 export const apiOrder = {

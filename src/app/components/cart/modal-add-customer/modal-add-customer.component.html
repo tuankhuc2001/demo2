@@ -1,1 +1,76 @@
-<p>modal-add-customer works!</p>
+<cModal [isVisible]="isVisible" [width]="'60%'" >
+    <Content>
+        <div style="height: 30vh; min-height: 250px;">
+            <div nz-col nzSpan="24" class="center">
+                <button class="button-close" (click)="handleCloseAddCustomer()">X</button>
+                <form class="input-control" nz-col nz-form [formGroup]="validateFormAddCustomer">
+                    <nz-form-item>
+                        <nz-form-control [nzSpan]="24" [nzErrorTip]="nameCustomerValidator">
+                            <nz-input-group [nzPrefix]="prefixTemplateNameCustomer">
+                                <input nz-input formControlName="nameCustomer" />
+                            </nz-input-group>
+                            <ng-template #prefixTemplateNameCustomer>
+                                Tên khách hàng:
+                            </ng-template>
+                            <ng-template #nameCustomerValidator let-control>
+                                @if (control.errors?.['required']) {
+                                Vui lòng nhập tên khách hàng!
+                                }
+                                @if (control.errors?.['confirm']) {
+                                Tên khách hàng không được vượt quá 255 ký tự!
+                                }
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+            </div>
+            <div nz-col nzSpan="24" class="center">
+                <form class="input-control" nz-col nz-form [formGroup]="validateFormAddCustomer">
+                    <nz-form-item>
+                        <nz-form-control [nzSpan]="24" [nzErrorTip]="phoneCustomerValidator">
+                            <nz-input-group [nzPrefix]="prefixTemplatePhoneCustomer">
+                                <input nz-input formControlName="phoneCustomer" />
+                            </nz-input-group>
+                            <ng-template #prefixTemplatePhoneCustomer>
+                                SĐT:
+                            </ng-template>
+                            <ng-template #phoneCustomerValidator let-control>
+                                @if (control.errors?.['required']) {
+                                Vui lòng nhập SĐT!
+                                }
+                                @if (control.errors?.['confirm']) {
+                                SĐT không được vượt quá 11 số!
+                                }
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+            </div>
+            <div nz-col nzSpan="24" class="center">
+                <form class="input-control" nz-form [formGroup]="validateFormAddCustomer">
+                    <nz-form-item>
+                        <nz-form-control [nzSpan]="24" [nzErrorTip]="addressValidator">
+                            <nz-input-group [nzPrefix]="prefixTemplateAddress">
+                                <input nz-input formControlName="address" />
+                            </nz-input-group>
+                            <ng-template #prefixTemplateAddress>
+                                Địa chỉ:
+                            </ng-template>
+                            <ng-template #addressValidator let-control>
+                                @if (control.errors?.['required']) {
+                                Vui lòng nhập địa chỉ!
+                                }
+                                @if (control.errors?.['confirm']) {
+                                Địa chỉ không được vượt quá 255 ký tự!
+                                }
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
+                </form>
+            </div>
+        </div>
+        <div class="center">
+            <button class="btn-add-customer" (click)="handleAddCustomer()">Thêm khách hàng</button>
+        </div>
+    </Content>
+</cModal>

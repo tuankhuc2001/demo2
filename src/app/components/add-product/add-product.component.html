@@ -1,26 +1,163 @@
-<nz-upload
-  nzName="avatar"
-  nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-  nzListType="picture-card"
-  [(nzFileList)]="fileList"
-  [nzShowButton]="fileList.length < 1"
-  [nzPreview]="handlePreview"
-  style="margin-top: 40px;"
->
-  <div>
-    <span nz-icon nzType="plus"></span>
-    <div style="margin-top: 8px">Upload</div>
+<section class="container">
+  <div class="header">
+    <div class="icon-back"><span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
+    </div>
+    <div class="title"><span style="font-weight: bold;">Thêm sản phẩm</span></div>
   </div>
-</nz-upload>
-<nz-modal
-  [nzVisible]="previewVisible"
-  [nzContent]="modalContent"
-  [nzFooter]="null"
-  (nzOnCancel)="previewVisible = false"
->
-  <ng-template #modalContent>
-    <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
-  </ng-template>
-</nz-modal>
-
-<button  (click)="handleCallAIP()">check</button>
+  <section class="dflex" nz-col>
+    <div nz-col nzSpan="12" class="center-upload">
+      <nz-upload nzName="avatar" nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+          nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1"
+          [nzPreview]="handlePreview" style="margin-top: 40px;">
+          <div>
+            <span nz-icon nzType="plus"></span>
+            <div style="margin-top: 8px">Upload</div>
+          </div>
+        </nz-upload>
+    </div>
+    <div nz-col nzSpan="12" class="center">
+      <form nz-form [formGroup]="validateAddProductForm">
+        <nz-form-item>
+          <nz-form-control [nzSpan]="24" [nzErrorTip]="editPriceValidate">
+            <nz-input-group [nzPrefix]="prefixTemplate">
+              <input type="number" nz-input formControlName="floorPrice" width="100px" />
+            </nz-input-group>
+            <ng-template #prefixTemplate>Giá sàn:</ng-template>
+            <ng-template #editPriceValidate let-control>
+              @if (control.errors?.['required']) {
+              Vui lòng nhập giá sàn!
+              }
+              @if (control.errors?.['confirm']) {
+              Giá sàn không được nhỏ hơn hoặc bằng 0
+              }
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="24" nzErrorTip="Vui lòng nhập số lượng tồn">
+            <nz-input-group [nzPrefix]="prefixTemplateQuantity">
+              <input type="number" nz-input formControlName="quantityProduct" />
+            </nz-input-group>
+            <ng-template #prefixTemplateQuantity>
+              Số lượng tồn:
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+      <button (click)="handleCallApiImage()" class="button-upload">Thêm ảnh</button>
+    </div>
+  </section>
+  <section>
+    <div>
+      <form nz-form [formGroup]="validateAddProductForm">
+        <nz-form-item>
+          <nz-form-control [nzSpan]="24" [nzErrorTip]="nameProductValidate">
+            <nz-input-group [nzPrefix]="prefixTemplateNameProduct">
+              <input nz-input formControlName="nameProduct" />
+            </nz-input-group>
+            <ng-template #prefixTemplateNameProduct>
+              Tên sản phẩm:
+            </ng-template>
+            <ng-template #nameProductValidate let-control>
+              @if (control.errors?.['required']) {
+              Vui lòng nhập tên sản phẩm!
+              }
+              @if (control.errors?.['confirm']) {
+              Tên sản phẩm không được vượt quá 255 ký tự!
+              }
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+    <div>
+      <form nz-form [formGroup]="validateAddProductForm">
+        <nz-form-item>
+          <nz-form-control [nzSpan]="10" [nzErrorTip]="unitValidate">
+            <nz-input-group [nzPrefix]="prefixTemplateUnit">
+              <input nz-input formControlName="unit" />
+            </nz-input-group>
+            <ng-template #prefixTemplateUnit>
+              Đơn vị tính:
+            </ng-template>
+            <ng-template #unitValidate let-control>
+              @if (control.errors?.['required']) {
+              Vui lòng nhập đơn vị!
+              }
+              @if (control.errors?.['confirm']) {
+              Không vượt quá 255 ký tự!
+              }
+            </ng-template>
+          </nz-form-control>
+          <nz-form-control [nzSpan]="7" [nzErrorTip]="expiredDateValidate">
+            <nz-input-group [nzPrefix]="prefixTemplateExpiredDate">
+              <input nz-input formControlName="expiredDate" />
+            </nz-input-group>
+            <ng-template #prefixTemplateExpiredDate>
+              Hạn sử dụng:
+            </ng-template>
+            <ng-template #expiredDateValidate let-control>
+              @if (control.errors?.['required']) {
+              Vui lòng nhập hạn sử dụng ngăn cách bởi dấu ( / )
+              }
+              @if (control.errors?.['confirm']) {
+              Không được vượt quá 255 ký tự!
+              }
+            </ng-template>
+          </nz-form-control>
+          <nz-form-control [nzSpan]="7" [nzErrorTip]="providePriceValidator">
+            <nz-input-group [nzPrefix]="prefixTemplateProvidePrice">
+              <input type="number" nz-input formControlName="providePrice" width="100px" />
+            </nz-input-group>
+            <ng-template #prefixTemplateProvidePrice>Giá cung:</ng-template>
+            <ng-template #providePriceValidator let-control>
+              @if (control.errors?.['required']) {
+              Vui lòng nhập giá cung!
+              }
+              @if (control.errors?.['confirm']) {
+              Giá cung không được nhỏ hơn hoặc bằng 0
+              }
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="16" [nzErrorTip]="providerValidate">
+            <nz-input-group [nzPrefix]="prefixTemplateProvider">
+              <input nz-input formControlName="provider" />
+            </nz-input-group>
+            <ng-template #prefixTemplateProvider>
+              Nguồn cung:
+            </ng-template>
+            <ng-template #providerValidate let-control>
+              @if (control.errors?.['required']) {
+              Vui lòng nhập nguồn cung!
+              }
+              @if (control.errors?.['confirm']) {
+              Không vượt quá 255 ký tự!
+              }
+            </ng-template>
+          </nz-form-control>
+          <nz-form-control [nzSpan]="8" [nzErrorTip]="originPhoneNumber">
+            <nz-input-group [nzPrefix]="prefixTemplatePhoneNumber">
+              <input nz-input formControlName="phoneNumber" />
+            </nz-input-group>
+            <ng-template #prefixTemplatePhoneNumber>
+              SĐT:
+            </ng-template>
+            <ng-template #originPhoneNumber let-control>
+              @if (control.errors?.['required']) {
+              Vui lòng nhập số điện thoại!
+              }
+              @if (control.errors?.['confirm']) {
+              Vui lòng nhập đúng định dạng số điện thoại!
+              }
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </section>
+  <input [(ngModel)]="product.description" class="description" placeholder="Mô tả...">
+  <div class="center">
+    <button class="button-add-product" (click)="handleAddProduct()">Thêm sản phẩm</button>
+  </div>

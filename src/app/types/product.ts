@@ -1,8 +1,10 @@
+import { ICartItem } from "./cart-item";
+
 export interface IProduct {
   id: number;
   nameProduct: String;
   quantityProduct: number ;
-  expiredDate: Date;
+  expiredDate: string;
   provider: string;
   unit: string;
   origin: string;
@@ -23,8 +25,16 @@ export interface IResponseProduct {
   }
 }
 
-export interface IResponseProductError {
-  messageError: {},
-  status: boolean,
+export interface IRequestProduct {
+  nameProduct: string,
+  quantityProduct: number,
+  expiredDate: string,
+  provider: string,
+  unit: string,
+  origin: string,
+  avatar: string,
+  codeProduct: string,
+  description: string,
+  providePrice: number,
+  floorPrice: number
 }
-

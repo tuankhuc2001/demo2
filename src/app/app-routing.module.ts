@@ -7,9 +7,10 @@ import { ProductSaleComponent } from './components/product-sale/product-sale.com
 import { OrderComponent } from './components/order/order.component';
 import { WarehouseComponent } from './components/warehouse/warehouse.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
-
+import { CartComponent } from './components/cart/cart.component';
 import { routerNames } from './constant/router';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/signIn' },
@@ -18,12 +19,16 @@ const routes: Routes = [
     component: SignInComponent,
   },
   {
-    path: `${routerNames.addProduct}`,
+    path: `${routerNames.addProductPage}`,
     component: AddProductComponent,
   },
   {
     path: `${routerNames.orderDetailPage}`,
     component: OrderDetailComponent,
+  },
+  {
+    path: `${routerNames.cartPage}`,
+    component: CartComponent,
   },
   {
     path: `${routerNames.homePage}`,
@@ -46,7 +51,15 @@ const routes: Routes = [
         path: `${routerNames.warehousePage}`,
         component: WarehouseComponent,
       },
+      {
+        path: `${routerNames.addProductPage}`,
+        component: AddProductComponent,
+      },
     ],
+  },
+  {
+    path: `${routerNames.cartPage}`,
+    component: CartComponent,
   },
 ];
 

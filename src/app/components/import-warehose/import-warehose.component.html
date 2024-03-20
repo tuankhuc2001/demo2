@@ -9,5 +9,10 @@
     [ProductDetail]="productDetail"
     (getProduct)="handleSearch(textSearch)"
   ></app-modal-update-quantity>
-  <button nz-button class="btn-Add" nzShape="circle" (click)="handlenavigate()" ><span nz-icon nzType="plus" class="icon"></span></button>
+  <button nz-button class="btn-Add" nzShape="circle" (click)="handlenavigate()">
+    <span nz-icon nzType="plus" class="icon"></span>
+  </button>
 </div>
+<button class="btn-addProduct" (click)="handlenavigate()">
+  <span nz-icon nzType="plus" nzTheme="outline"></span>
+</button>
