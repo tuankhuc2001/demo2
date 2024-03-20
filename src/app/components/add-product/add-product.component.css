@@ -87,3 +87,9 @@
   color: black;
   font-weight: bold;
 }
+
+.center-upload{
+  display: flex;
+  flex-direction: column;
+  left: 15%;
+}
