@@ -126,8 +126,9 @@ export class CartComponent implements OnDestroy, OnInit {
     this.isVisibleModalCustomer = true
   }
 
-  handleCloseModelCustomer(event: ICustomer){
-    this.isVisibleModalCustomer = false;
+  handleCloseModelCustomer(): void{
+    this.isVisibleModalCustomer = false
+    this.handleGetCart()
   }
 
   ngOnInit(): void {

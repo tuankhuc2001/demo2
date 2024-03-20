@@ -77,14 +77,14 @@ export class ModalCustomerComponent {
 
   handleUpdateCartCustomer(idCustomer: number) {
     this.customer.idCustomer = idCustomer;
-    this.cartService.updateCartCustomer(1, this.customer).subscribe(() => {
+    this.cartService.updateCartCustomer(1, this.customer).subscribe({
       next: (v: any) => {
         if (v.status == false) {
-          this.notification.create('error', `${v.message}`, '')
+          this.notification.create('error', `${v.message}`, '') 
         } else {
           this.notification.create('success', `${v.message}`, '')
-          this.closeModal.emit();
-          this.getCart.emit();
+          this.handleCloseModalCustomer()
+          this.getCart.emit()
         }
       }
     });
