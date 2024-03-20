@@ -1,7 +1,7 @@
 <div *ngIf="listCard.length == 0">ko co du</div>
 <cCard *ngFor="let item of listCard">
   <Content>
-    <div class="main-card" (click)="handleProductIdEmit(item.id)">
+    <div class="main-card">
       <div nz-col nzSpan="6" class="card-img">
         <img
           nz-image

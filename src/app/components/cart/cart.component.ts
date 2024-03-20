@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, } from '@angular/core';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { CartService } from '../../services/cart.service';
@@ -9,6 +9,7 @@ import { ICartItem } from '../../types/cart-item';
 import { IProduct } from '../../types/product';
 import { ICart } from '../../types/cart';
 import { IOrder } from '../../types/order';
+import { ICustomer } from '../../types/customer';
 
 @Component({
   selector: 'app-cart',
@@ -23,6 +24,7 @@ export class CartComponent implements OnDestroy, OnInit {
     private router: Router) {
   }
 
+  isVisibleModalCustomer: boolean = false;
   isLoading: boolean = false;
   isVisibleDeleteAll: boolean = false;
   isVisibleDeleteSingle: boolean = false;
@@ -30,15 +32,17 @@ export class CartComponent implements OnDestroy, OnInit {
 
   idCartDelete: number = 0;
   idCartOrder: number = 0;
+  idCartCustomer: number = 0;
 
   listCard: any[] = [];
+  listCart: ICart[] = [];
   itemCartItem: ICartItem = {
     id: 1,
     Product: {
       id: 1,
       nameProduct: "String",
       quantityProduct: 1,
-      expiredDate: "String",
+      expiredDate: "new Date",
       provider: "string",
       unit: "string",
       origin: "string",
@@ -77,10 +81,10 @@ export class CartComponent implements OnDestroy, OnInit {
       id: 1,
       nameCustomer: "string",
       phoneCustomer: "string",
-      address: "string",
-      avatar: "string",    
+      address: "string",  
     }
   };
+
 
   handleTotalPriceChanged(totalPrice: number) {
     this.addOrder.totalPrice = totalPrice;
@@ -127,13 +131,24 @@ export class CartComponent implements OnDestroy, OnInit {
       next: (res) => {
         this.isLoading = false
         this.listCard = res.content.list
-        this.listCustomer = res?.content.list
+        this.listCart = res.content.list
+        this.listCustomer = res?.content.list      
       },
       error: (error) => {
         this.isLoading = false
         this.createNotification('error', error)
       }
     })
+  }
+
+  handleOpenModelCustomer(idCartCustomer:number){
+    this.idCartCustomer = this.listCard[0].id;
+    this.isVisibleModalCustomer = true
+  }
+
+  handleCloseModelCustomer(): void{
+    this.isVisibleModalCustomer = false
+    this.handleGetCart()
   }
 
   ngOnInit(): void {
