@@ -73,6 +73,9 @@
                                     @if (control.errors?.['confirm']) {
                                     Vui lòng nhập số lượng lớn hơn hoặc bằng 1!
                                     }
+                                    @if (control.errors?.['invalid']) {
+                                    Số lượng chọn nhiều hơn số lượng sẵn có!
+                                    }
                                 </ng-template>
                             </nz-form-control>
                         </nz-form-item>
@@ -82,6 +85,7 @@
             <div *ngIf="enableDescription === true">
                 <div class="productName">Mô tả ngắn:</div>
                 <div class="descriptionContent">
+                    DESCRIPTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
                     {{ProductDetail.description}}
                 </div>
             </div>
@@ -94,7 +98,7 @@
                     </button>
                 </div>
                 <div nz-col nzSpan="6">
-                    <button nz-button class="cancelButton"> Hủy </button>
+                    <button nz-button class="cancelButton" (click)="handleCloseModal()"> Hủy </button>
                 </div>
                 <div nz-col nzSpan="6">
                     <button nz-button class="submitButton" [disabled]="validateAddCartForm.invalid" (click)="handleSubmit()">Thêm</button>
