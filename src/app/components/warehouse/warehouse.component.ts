@@ -77,8 +77,9 @@ export class WarehouseComponent implements OnInit, OnDestroy{
   }
 
   handleOpenModal(id: number){
-    console.log(id,"id");
+    this.isVisibleModalUpdatePrice = true;
   }
+  
   listProduct:IProduct [] = []
 
   productItem:IProduct = {
