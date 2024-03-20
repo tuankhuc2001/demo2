@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { notificationEnum } from '../../../utils/notificationEnum';
 
 import { ICart } from '../../../types/cart';
 import { CartItemRequest, ICartItem } from '../../../types/cart-item';
@@ -105,7 +106,9 @@ export class CardCartComponent implements OnChanges {
         this.getCart.emit();
       },
       error: (error) => {
-        this.createNotification('error', error) 
+        error.error.messageError.map((e: string) => {
+          this.createNotification(notificationEnum.error, e)
+        })
         this.getCart.emit();
       }
     })
@@ -127,7 +130,9 @@ export class CardCartComponent implements OnChanges {
         this.getCart.emit();
       },
       error: (error) => {
-        this.createNotification('error', error) 
+        error.error.messageError.map((e: string) => {
+          this.createNotification(notificationEnum.error, e)
+        })
         this.getCart.emit();
       }
     })
@@ -145,7 +150,9 @@ export class CardCartComponent implements OnChanges {
         this.getCart.emit();
       },
       error: (error) => {
-        this.createNotification('error', error) 
+        error.error.messageError.map((e: string) => {
+          this.createNotification(notificationEnum.error, e)
+        }) 
         this.getCart.emit();
       }
     })
@@ -166,7 +173,9 @@ export class CardCartComponent implements OnChanges {
         this.getCart.emit();
       },
       error: (error) => {
-        this.createNotification('error', error) 
+        error.error.messageError.map((e: string) => {
+          this.createNotification(notificationEnum.error, e)
+        }) 
         this.getCart.emit();
       }
     })
@@ -197,7 +206,9 @@ export class CardCartComponent implements OnChanges {
         },
         error: (error) => {
           event.target.value = item.originalQuantity;
-          this.createNotification('error', error);
+          error.error.messageError.map((e: string) => {
+            this.createNotification(notificationEnum.error, e)
+          })
           this.getCart.emit();
         }
       });
