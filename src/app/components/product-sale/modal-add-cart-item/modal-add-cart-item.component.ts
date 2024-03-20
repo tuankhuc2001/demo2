@@ -119,7 +119,6 @@ export class ModalAddCartItemComponent implements OnChanges {
               this.handleCloseModal()
         },
         error: (error) => {
-          console.log(error.error.messageError)
           error.error.messageError.map((e: string) => {
             this.createNotification(notificationEnum.error, e)
           })
