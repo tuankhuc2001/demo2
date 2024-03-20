@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { IOrderAndOrderDetail } from '../../types/order';
 import { OrderService } from '../../services/order.service';
+import { OrderDetailService } from '../../services/order-detail.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -14,6 +15,7 @@ export class OrderDetailComponent {
 
   constructor(
     private orderService: OrderService,
+    private orderDetailService: OrderDetailService,
     private location: Location) { }
 
   private $destroy = new Subject()
@@ -47,7 +49,7 @@ export class OrderDetailComponent {
   isLoading: boolean = false
 
   handleGetOrderDetail(value: number) {
-    this.orderService.getOrderDetail(value).subscribe({
+    this.orderDetailService.getOrderDetail(value).subscribe({
       next: (res) => {
         this.listOrderAndDetail = res.content.list
         this.listCardOrderDetail = res.content.list[0]
