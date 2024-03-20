@@ -22,3 +22,9 @@ export interface IResponseProduct {
     totalCartItem: number,
   }
 }
+
+export interface IResponseProductError {
+  messageError: {},
+  status: boolean,
+}
+

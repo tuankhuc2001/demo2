@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { ICartItemRequest } from '../types/cart-item';
-import { IResponseProduct } from '../types/product';
+import { IResponseProduct, IResponseProductError } from '../types/product';
 import { Observable } from 'rxjs';
 import { apiCartItem } from '../constant/api';
 

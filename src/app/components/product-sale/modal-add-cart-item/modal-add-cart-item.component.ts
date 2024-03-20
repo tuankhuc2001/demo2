@@ -49,7 +49,7 @@ export class ModalAddCartItemComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ProductDetail'] && !changes['ProductDetail'].firstChange) {
       console.log('ProductDetail changed:', changes['ProductDetail'].currentValue);
-      this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: this.ProductDetail.floorPrice / 10})
+      this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: 0})
       this.enableDescription = false
       this.plus = true
 }
@@ -68,9 +68,11 @@ export class ModalAddCartItemComponent implements OnChanges {
 
   quantityValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
     if (control.value === null) {
-      return { required: true };
+      return { required: true }
     } else if (control.value <= 0) {
-      return { confirm: true, error: true };
+      return { confirm: true, error: true }
+    } else if (control.value > this.ProductDetail.quantityProduct) {
+      return { invalid: true, error: true }
     }
     return {};
   }
@@ -102,23 +104,26 @@ export class ModalAddCartItemComponent implements OnChanges {
           this.userId = res
         }
       })
-      console.log('submit:', this.validateAddCartForm.value)
       const requestdObject: ICartItemRequest = {
-        quantity: this.validateAddCartForm.value.quantity ? this.validateAddCartForm.value.quantity : 1,
-        rate: this.validateAddCartForm.value.rate ? this.validateAddCartForm.value.rate : 1,
+        quantity: this.validateAddCartForm.value.quantity ? this.validateAddCartForm.value.quantity : 0,
+        rate: this.validateAddCartForm.value.rate ? this.validateAddCartForm.value.rate : 0,
         plus: this.plus,
-        editPrice: this.validateAddCartForm.value.editPrice ? this.validateAddCartForm.value.editPrice : 1,
+        editPrice: this.validateAddCartForm.value.editPrice ? this.validateAddCartForm.value.editPrice : this.ProductDetail.floorPrice,
         floorPrice: this.ProductDetail.floorPrice
       }
       this.cartItemService.addCartItem(this.ProductDetail.id, requestdObject, this.userId).subscribe({
         next: (res) => {
           this.isLoading = false
-          this.createNotification(notificationEnum.success, res.message)
-          this.handleCloseModal()
+            this.createNotification( res.status === true ? notificationEnum.success : notificationEnum.error,
+              res.message)
+              this.handleCloseModal()
         },
         error: (error) => {
+          console.log(error.error.messageError)
+          error.error.messageError.map((e: string) => {
+            this.createNotification(notificationEnum.error, e)
+          })
           this.isLoading = false
-          this.createNotification(notificationEnum.error, error.message)
         }
       })
     } else {
