@@ -38,8 +38,7 @@ export class ModalAddOrderComponent {
         id: 1,
         nameCustomer: "string",
         phoneCustomer: "string",
-        address: "string",
-        avatar: "string",    
+        address: "string",   
       }
   };
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
