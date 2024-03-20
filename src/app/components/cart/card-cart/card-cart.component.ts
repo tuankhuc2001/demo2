@@ -138,7 +138,7 @@ export class CardCartComponent implements OnChanges {
     if (!item) {
       return;
     }
-    this.cartItemRequest.plus = !this.cartItemRequest.plus
+    this.cartItemRequest.plus = !item.plus
     this.cartItemService.updateIsPlus(item.id, this.cartItemRequest).subscribe({
       next: (res) => {
         this.createNotification('success', res.message) 
@@ -151,6 +151,7 @@ export class CardCartComponent implements OnChanges {
       }
     })
   } 
+
 
   handleRateBlur(item: any, event: any) {
     const value = event.target.value;

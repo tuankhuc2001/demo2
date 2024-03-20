@@ -48,7 +48,6 @@ export class ModalAddCartItemComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ProductDetail'] && !changes['ProductDetail'].firstChange) {
-      console.log('ProductDetail changed:', changes['ProductDetail'].currentValue);
       this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: this.ProductDetail.floorPrice / 10})
       this.enableDescription = false
       this.plus = true
@@ -102,7 +101,6 @@ export class ModalAddCartItemComponent implements OnChanges {
           this.userId = res
         }
       })
-      console.log('submit:', this.validateAddCartForm.value)
       const requestdObject: ICartItemRequest = {
         quantity: this.validateAddCartForm.value.quantity ? this.validateAddCartForm.value.quantity : 1,
         rate: this.validateAddCartForm.value.rate ? this.validateAddCartForm.value.rate : 1,
