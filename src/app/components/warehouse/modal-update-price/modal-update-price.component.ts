@@ -79,6 +79,13 @@ export class ModalUpdatePriceComponent {
               this.notification.create("success", `${v.message}`, "");
               this.handleCloseModal();
             }
+          },
+          error: (error) => {
+            console.log(error.error.messageError)
+            error.error.messageError.map((e: string) => {
+              this.notification.create("error", `${e}`, "");
+
+            })
           }
       })
       }

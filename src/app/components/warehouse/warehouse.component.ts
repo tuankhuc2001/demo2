@@ -126,6 +126,13 @@ export class WarehouseComponent implements OnInit, OnDestroy{
               console.log(this.listProduct);
               
             }
+          },
+          error: (error) => {
+            console.log(error.error.messageError)
+            error.error.messageError.map((e: string) => {
+              this.notification.create("error", `${e}`, "");
+
+            })
           }
       }) 
   }
