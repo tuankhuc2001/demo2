@@ -11,7 +11,6 @@ import { ICartItem } from '../../../types/cart-item';
 })
 export class ModalDeleteSingleComponent {
   constructor (
-    private cartService: CartService, 
     private cartItemService: CartItemService,
     private notification: NzNotificationService,
     ) {}

@@ -5,7 +5,6 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { ICart } from '../../../types/cart';
 import { CartItemRequest, ICartItem } from '../../../types/cart-item';
 import {IProduct} from '../../../types/product'
-import { IAddOder } from '../../../types/order';
 import { CartItemService } from '../../../services/cart-item.service';
 @Component({
   selector: 'app-card-cart',

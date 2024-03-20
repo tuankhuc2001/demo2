@@ -55,7 +55,7 @@
         </div>
         <div class="totalPrice">
           <span class="totalPrice_text">Tổng tạm tính:</span>
-          <span class="totalPrice_number">{{ ((totalPrice?.totalPrice ?? 0) + 50000) | number }}</span>
+          <span class="totalPrice_number">{{ ((addOrder?.totalPrice ?? 0) + 50000) | number }}</span>
         </div>
       </div>
       <div nz-col nzSpan="8" class="customer_submit">
@@ -65,7 +65,7 @@
           Tạo đơn
         </button>
         <app-modal-add-order [isVisible]="isVisibleAddOrder" (closeModal)="handleCloseModelAddOrder()"
-          (getCart)="handleGetCart()" [idCart]="idCartOrder" [orderRequest]="totalPrice"></app-modal-add-order>
+          (getCart)="handleGetCart()" [idCart]="idCartOrder" [orderRequest]="addOrder"></app-modal-add-order>
       </div>
     </div>
   </div>

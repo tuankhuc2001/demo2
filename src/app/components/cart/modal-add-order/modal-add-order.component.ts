@@ -13,13 +13,35 @@ import { IOrder } from '../../../types/order';
 export class ModalAddOrderComponent {
   constructor (
     private orderSerVice: OrderService,
-    private cartItemService: CartItemService,
     private notification: NzNotificationService,
     ) {}
 
   @Input() isVisible: boolean = false;
-  @Input() idCart: any;
-  @Input() orderRequest: any;
+  @Input() idCart: number = 0;;
+  @Input() orderRequest: IOrder = {
+      id: 1,    
+      totalPrice: 1,    
+      status: "string",
+      createdAt: new Date(),
+      totalCartItem: 1,    
+      codeOrder: "string",
+      User: {
+        id: 1,
+        phone: "string",
+        password: "string",
+        email: "string",
+        fullname: "string",
+        avatar: "any",
+        type: "string",
+      },
+      customerResponse: {
+        id: 1,
+        nameCustomer: "string",
+        phoneCustomer: "string",
+        address: "string",
+        avatar: "string",    
+      }
+  };
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
   @Output() getCart: EventEmitter<void> = new EventEmitter();
 
@@ -27,7 +49,7 @@ export class ModalAddOrderComponent {
     this.closeModal.emit();
   }
 
-  handleAddOrder(idCart: any, orderRequest: IOrder) {
+  handleAddOrder(idCart: number, orderRequest: IOrder) {
     this.orderSerVice.addOrder(idCart, orderRequest).subscribe({
       next: (res) => {
         this.createNotification('success', res.message) 
