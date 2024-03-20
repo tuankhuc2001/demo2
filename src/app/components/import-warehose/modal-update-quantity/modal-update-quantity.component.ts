@@ -101,7 +101,7 @@ export class ModalUpdateQuantityComponent {
         }
       });
     }
-  }
+  } 
 
   createNotification(type: string, content: string): void {
     this.notification.create(type, `${content}`, '');
