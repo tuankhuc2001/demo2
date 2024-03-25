@@ -137,6 +137,7 @@ export class ModalCustomerComponent {
   }
 
   handleCloseModalCustomer() {
+    this.textSearch = "";
     this.closeModal.emit();
   }
 }
