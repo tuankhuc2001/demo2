@@ -95,7 +95,7 @@ export class ModalCustomerComponent {
   }
 
   displayBlock: {} = {
-    display: 'block'
+    display: 'block',
   }
 
   heightModalData: {} = {

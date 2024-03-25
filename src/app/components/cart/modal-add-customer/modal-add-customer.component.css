@@ -30,12 +30,9 @@
 }
 
 .input-control {
-    margin-top: 12px;
     padding: 4px;
     border-radius: 4px;
-    width: 60%;
-    margin-top: 15px;
-    margin-bottom: 10px;
+    width: 100%;
 }
 
 .container-input {
@@ -73,4 +70,20 @@
     width: 40px;
     background-color: rgb(189, 89, 89);
     font-weight: bold;
+}
+
+.width-90{
+    width: 90%;
+}
+
+.margin-top-30{
+    margin-top: 30px;
+}
+
+.input-edit{
+    border-radius: 5px;
+}
+
+.input-label{
+    margin-bottom: 2px;
 }
