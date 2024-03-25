@@ -26,7 +26,7 @@
                     <nz-form-item>
                         <nz-form-control [nzSpan]="24" [nzErrorTip]="phoneCustomerValidator">
                             <nz-input-group>
-                                <label>Số điện thoại</label>
+                                <label class="input-label">Số điện thoại</label>
                                 <input class="input-edit" placeholder="Số điện thoại..." nz-input formControlName="phoneCustomer" />
                             </nz-input-group>
                             <ng-template #phoneCustomerValidator let-control>
@@ -46,7 +46,7 @@
                     <nz-form-item>
                         <nz-form-control [nzSpan]="24" [nzErrorTip]="addressValidator">
                             <nz-input-group>
-                                <label>Địa chỉ:</label>
+                                <label class="input-label">Địa chỉ:</label>
                                 <input class="input-edit" placeholder="Địa chỉ..." nz-input formControlName="address" />
                             </nz-input-group>
                             <ng-template #addressValidator let-control>
