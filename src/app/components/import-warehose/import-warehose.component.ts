@@ -19,7 +19,6 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
   listProduct: IProduct[] = [];
   totalCartItem: number = 0;
   private destroyed$ = new Subject();
-
   constructor(
     private notification: NzNotificationService,
     private searchService: SearchService,
@@ -39,7 +38,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     avatar: 'undefined',
     codeProduct: '',
     description: '',
-    providePrice: 0,
+    providePrice: 0,  
     floorPrice: 0,
     phoneProvider: "01234567"
   }
@@ -55,7 +54,6 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
       },
     });
   }
-
   createNotification(type: string, content: string): void {
     this.notification.create(type, `${content}`, '');
   }

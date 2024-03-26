@@ -68,6 +68,7 @@ export class ModalUpdateQuantityComponent {
     }
     return {};
   };
+
   validateAddCartForm: FormGroup<{
     quantity: FormControl<number>;
   }> = this.fb.group({
@@ -99,7 +100,7 @@ export class ModalUpdateQuantityComponent {
           control.updateValueAndValidity({ onlySelf: true });
           this.isLoading = false;
         }
-      });
+      }); 
     }
   } 
 
