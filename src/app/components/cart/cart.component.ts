@@ -8,7 +8,8 @@ import { routerNames } from '../../constant/router';
 import { ICartItem } from '../../types/cart-item';
 import { IProduct } from '../../types/product';
 import { ICart } from '../../types/cart';
-import { IAddOder, IOrder } from '../../types/order';
+import { IOrder } from '../../types/order';
+import { ICustomer } from '../../types/customer';
 
 @Component({
   selector: 'app-cart',
@@ -60,13 +61,33 @@ export class CartComponent implements OnDestroy, OnInit {
     isDisable: false,
   };
   listCustomer: any[] = [];
-  totalPrice: IAddOder ={
-    totalPrice: 1,
+  addOrder: IOrder ={
+    id: 1,    
+    totalPrice: 1,    
+    status: "string",
+    createdAt: new Date(),
+    totalCartItem: 1,    
+    codeOrder: "string",
+    User: {
+      id: 1,
+      phone: "string",
+      password: "string",
+      email: "string",
+      fullname: "string",
+      avatar: "any",
+      type: "string",
+    },
+    customerResponse: {
+      id: 1,
+      nameCustomer: "string",
+      phoneCustomer: "string",
+      address: "string",  
+    }
   };
 
 
   handleTotalPriceChanged(totalPrice: number) {
-    this.totalPrice.totalPrice = totalPrice;
+    this.addOrder.totalPrice = totalPrice;
   }
 
   handleBackProductSale() {
@@ -77,7 +98,7 @@ export class CartComponent implements OnDestroy, OnInit {
 
   }
 
-  handleOpenModalDeleteAll(idCart: any) {
+  handleOpenModalDeleteAll(idCart: number) {
     this.isVisibleDeleteAll = true;
     this.idCartDelete = idCart;
   }
@@ -95,7 +116,7 @@ export class CartComponent implements OnDestroy, OnInit {
     this.isVisibleDeleteSingle = false
   }
 
-  handleOpenModelAddOrder(idCart: any): void{
+  handleOpenModelAddOrder(idCart: number): void{
     this.isVisibleAddOrder = true;
     this.idCartOrder = idCart;
   }

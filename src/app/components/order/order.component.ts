@@ -37,9 +37,11 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   handleSearch(value: string) {
+    this.isLoading = true
     this.orderService.getOrder(1, value).subscribe({
       next: (res) => {
         this.listOrder = res.content.list
+        this.isLoading = false
         console.log(res)
       }
     })
