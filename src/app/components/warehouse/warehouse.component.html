@@ -1,5 +1,5 @@
 <div>
-  <app-card-warehouse [listCard]="listCard" (productIdEmit)="handleOpenModal($event)" (click) = "handleOpenModal(1)"></app-card-warehouse>
+  <app-card-warehouse [listCard]="listProduct" (productIdEmit)="handleOpenModal($event)" (click) = "handleOpenModal(1)"></app-card-warehouse>
   <app-modal-update-price [isVisible]="isVisibleModalUpdatePrice" 
   (isVisibleChange)="handleSetIsVisibleClose()" 
   (closeModal)="handleCloseModalUpdatePrice()"></app-modal-update-price>

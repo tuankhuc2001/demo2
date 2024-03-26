@@ -14,8 +14,11 @@
                     <nz-form-item>
                         <nz-form-control style="text-align: center;" nzErrorTip="Làm ơn hãy nhập giá sàn!">
                           <nz-input-group class="d-flex jct-ct">
-                            <input type="number" class="text-ct input-control text--size-3"
-                            formControlName="priceFloor" nz-input placeholder="Nhập giá sàn!" />
+                            <!-- <input type="number" class="text-ct input-control text--size-3"
+                            formControlName="priceFloor" nz-input placeholder="Nhập giá sàn!" /> -->
+                            <input nz-input  nz type="text" class="text-ct input-control text--size-3" 
+                            formControlName="priceFloor" placeholder="Nhập giá sàn!"
+                            (input)="formatPrice($event)" />
                           </nz-input-group>
                         </nz-form-control>
                       </nz-form-item>  
