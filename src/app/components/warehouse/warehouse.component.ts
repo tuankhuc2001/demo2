@@ -10,18 +10,18 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
   templateUrl: './warehouse.component.html',
   styleUrl: './warehouse.component.css'
 })
-export class WarehouseComponent implements OnInit, OnDestroy{
+export class WarehouseComponent implements OnInit, OnDestroy {
 
   constructor(
     private searchService: SearchService,
     private producService: ProductService,
-    private  notification: NzNotificationService,
-     ) {}
+    private notification: NzNotificationService,
+  ) { }
 
   private $destroy = new Subject()
 
   listProduct: IProduct[] = [];
-  productItem:IProduct = {
+  productItem: IProduct = {
     id: 0,
     nameProduct: "abc",
     quantityProduct: 0,
@@ -34,12 +34,12 @@ export class WarehouseComponent implements OnInit, OnDestroy{
     description: "abc",
     providePrice: 0,
     floorPrice: 0,
-    phoneProvider:""
+    phoneProvider: ""
   }
 
   textSearch: string = ""
-  isVisibleModalUpdatePrice: boolean= false;
-  
+  isVisibleModalUpdatePrice: boolean = false;
+
   ngOnInit(): void {
     this.searchService
       .getSearchInput()
@@ -57,49 +57,46 @@ export class WarehouseComponent implements OnInit, OnDestroy{
     console.log("Destoryed")
   }
 
-  handleSearch(textSearch: string){
+  handleSearch(textSearch: string) {
     this.handleGetProduct(textSearch);
   }
 
-  handleOpenModal(id: number){
-    this.isVisibleModalUpdatePrice = true;
-  }
-  
-
-  handleOpenModalUpdatePrice(event: IProduct){
+  handleOpenModalUpdatePrice(event: IProduct) {
     this.isVisibleModalUpdatePrice = true;
     this.productItem = event;
   }
 
   handleCloseModalUpdatePrice() {
     this.isVisibleModalUpdatePrice = false;
-    this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({next: value => {
-      this.handleSearch(value)
-    }})
+    this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({
+      next: value => {
+        this.handleSearch(value)
+      }
+    })
   }
 
-  handleSetIsVisibleClose(){
+  handleSetIsVisibleClose() {
     this.isVisibleModalUpdatePrice = false;
   }
 
-  handleGetProduct(textSearch: string){
-      this.producService.getProductSale(1, textSearch).subscribe({
-          next: (v) => {
-            if (v.status == false){
-              this.notification.create("error", `${v.message}`, "");
-            }
-            else {
-              this.listProduct = v.content.list
-              console.log(this.listProduct);
-            }
-          },
-          error: (error) => {
-            console.log(error.error.messageError)
-            error.error.messageError.map((e: string) => {
-              this.notification.create("error", `${e}`, "");
-            })
-          }
-      }) 
+  handleGetProduct(textSearch: string) {
+    this.producService.getProductSale(1, textSearch).subscribe({
+      next: (v) => {
+        if (v.status == false) {
+          this.notification.create("error", `${v.message}`, "");
+        }
+        else {
+          this.listProduct = v.content.list
+          console.log(this.listProduct);
+        }
+      },
+      error: (error) => {
+        console.log(error.error.messageError)
+        error.error.messageError.map((e: string) => {
+          this.notification.create("error", `${e}`, "");
+        })
+      }
+    })
   }
 
 }

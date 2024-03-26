@@ -24,12 +24,10 @@ export class ModalUpdatePriceComponent {
   @Output() isVisibleChange: EventEmitter<void> = new EventEmitter<void>();
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
 
-  handleCloseModal() {
-    this.closeModal.emit();
-  }
+
 
   handleSetIsVisisble() {
-    this.isVisibleChange.emit();
+    this.closeModal.emit();
     this.validateForm.setValue({ priceFloor: this.productItem.floorPrice })
   }
 
@@ -74,7 +72,7 @@ export class ModalUpdatePriceComponent {
               this.notification.create("error", `${v.message}`, "");
             } else {
               this.notification.create("success", `${v.message}`, "");
-              this.handleCloseModal();
+              this.handleSetIsVisisble();
             }
           },
           error: (error) => {
@@ -101,7 +99,7 @@ export class ModalUpdatePriceComponent {
     value = value || '0';
     value = value.replace(/\D/g, '');
     if (!isNaN(Number(value))) {
-      const formattedValue = Number(value).toLocaleString('en-US', {maximumFractionDigits: 0 });
+      const formattedValue = Number(value).toLocaleString('en-US', { maximumFractionDigits: 0 });
       event.target.value = value.endsWith('.') ? value : formattedValue;
     }
   }
