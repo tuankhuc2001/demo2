@@ -45,7 +45,7 @@ export class ModalUpdatePriceComponent {
     codeProduct: "",
     description: "",
     providePrice: 0,
-    floorPrice: 1,
+    floorPrice: 0,
     phoneProvider: "",
   }
 
@@ -101,7 +101,7 @@ export class ModalUpdatePriceComponent {
     value = value || '0';
     value = value.replace(/\D/g, '');
     if (!isNaN(Number(value))) {
-      const formattedValue = Number(value).toLocaleString('en-US', {maximumFractionDigits: 0});
+      const formattedValue = Number(value).toLocaleString('en-US', {maximumFractionDigits: 0 });
       event.target.value = value.endsWith('.') ? value : formattedValue;
     }
   }
