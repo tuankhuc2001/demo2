@@ -25,9 +25,9 @@ export class CardWarehouseComponent {
     phoneProvider: "abc",
   }
 
-  @Output() productIdEmit: EventEmitter<number> = new EventEmitter();
+  @Output() productIdEmit: EventEmitter<IProduct> = new EventEmitter();
 
-  handleProductIdEmit(productId: number) {
+  handleProductIdEmit(productId: IProduct) {
     this.productIdEmit.emit(productId)
   }
 }
