@@ -39,6 +39,7 @@ import { CardWarehouseComponent } from './components/warehouse/card-warehouse/ca
 import { InputComponent } from './common/inputValidate/input.component';
 import { CardOrderDetailComponent } from './components/order-detail/card-order-detail/card-order-detail.component'
 import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse.component';
+import { ModalUpdatePriceComponent } from './components/warehouse/modal-update-price/modal-update-price.component';
 
 
 //UI
@@ -63,9 +64,8 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
-
-import { ModalUpdatePriceComponent } from './components/warehouse/modal-update-price/modal-update-price.component';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { CurrencyPipe } from '@angular/common';
 
 
 @NgModule({
@@ -135,10 +135,11 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
     NzUploadModule,
     NzDatePickerModule,
     NzInputNumberModule,
-    NzTabsModule
+    NzTabsModule,
   ],
   providers: [
-    { provide: NZ_I18N, useValue: en_US }
+    { provide: NZ_I18N, useValue: en_US },
+    CurrencyPipe
   ],
   bootstrap: [AppComponent]
 })

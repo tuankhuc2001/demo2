@@ -20,7 +20,7 @@
           <div class="content_main" nz-col nzSpan="20">
             <div nz-row >
               <div nz-col nzSpan="9">
-                <p class="editPrice">{{ item?.editPrice }}</p>
+                <p class="editPrice">{{ item?.editPrice | number }}</p>
                 <p class="unit">{{ item?.productResponse?.unit }}</p>
               </div>
               <div nz-col nzSpan="5" class="multiply" >
@@ -43,7 +43,7 @@
                 <span *ngIf="item.showRateError" class="showRateError">Vui lòng nhập giá chênh lệch.</span>
               </div>
               <div nz-col nzSpan="10" class="finalPrice">
-                <p>{{item.plus ? (item.editPrice + item.rate) * item.quantity : (item.editPrice - item.rate) * item.quantity}}</p>
+                <p>{{(item.plus ? (item.editPrice + item.rate) * item.quantity : (item.editPrice - item.rate) * item.quantity) | number}}</p>
               </div>
             </div>
           </div>

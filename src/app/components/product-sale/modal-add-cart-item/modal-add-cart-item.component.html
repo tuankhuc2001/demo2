@@ -9,14 +9,14 @@
                 </div>
                 <div nz-col nzSpan="12">
                     <div class="productName">{{ProductDetail.nameProduct}}</div>
-                    <div class="floorPrice">{{ProductDetail.floorPrice}}</div>
+                    <div class="floorPrice">{{ProductDetail.floorPrice | number}}</div>
                     <div class="quantityProduct">Tồn kho: {{ProductDetail.quantityProduct}}</div>
                     <form nz-form [formGroup]="validateAddCartForm">
                         <nz-form-item>
                             <nz-form-control [nzErrorTip]="editPriceValidate">
                                 <nz-input-group [nzPrefix]="prefixTemplate" style="width: 100%;">
                                     <input type="number" nz-input formControlName="editPrice"
-                                        class="responsive-input" />
+                                        class="responsive-input"/>
                                 </nz-input-group>
                                 <ng-template #prefixTemplate>
                                     <div class="responsive-input">Sửa giá:</div>
