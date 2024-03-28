@@ -52,7 +52,6 @@
           </nz-form-control>
         </nz-form-item>
       </form>
-      <button (click)="handleCallApiImage()" class="button-upload">Thêm ảnh</button>
     </div>
   </section>
   <section>
@@ -124,6 +123,24 @@
               }
               @if (control.errors?.['confirm']) {
               Giá cung không được nhỏ hơn hoặc bằng 0
+              }
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="24" [nzErrorTip]="originValidate">
+            <nz-input-group [nzPrefix]="prefixTemplateOrigin">
+              <input nz-input formControlName="origin" />
+            </nz-input-group>
+            <ng-template #prefixTemplateOrigin>
+              Xuất xứ:
+            </ng-template>
+            <ng-template #originValidate let-control>
+              @if (control.errors?.['required']) {
+              Vui lòng nhập xuất xứ!
+              }
+              @if (control.errors?.['confirm']) {
+              Xuất xứ không được vượt quá 255 ký tự!
               }
             </ng-template>
           </nz-form-control>
