@@ -164,7 +164,7 @@
           </nz-form-control>
           <nz-form-control [nzSpan]="8" [nzErrorTip]="originPhoneNumber">
             <nz-input-group [nzPrefix]="prefixTemplatePhoneNumber">
-              <input nz-input formControlName="phoneNumber" />
+              <input type="number" inputmode="decimal" nz-input formControlName="phoneNumber" />
             </nz-input-group>
             <ng-template #prefixTemplatePhoneNumber>
               SĐT:

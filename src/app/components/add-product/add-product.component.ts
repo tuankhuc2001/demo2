@@ -177,15 +177,13 @@ export class AddProductComponent {
   }
 
   phoneNumberValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
-    if (control.value.length > 11) {
+    if (control.value.toString().length > 9) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
-    }
-    else if (control.value.length < 10) {
+    } else if (control.value.toString().length <= 8) {
       return { confirm: true, error: true };
-    }
-    else {
+    } else {
       return {}
     }
   }
@@ -217,7 +215,7 @@ export class AddProductComponent {
   }
 
   handleAddProduct() {
-    if(this.validateAddProductForm.valid) {
+    if (this.validateAddProductForm.valid) {
       const addProduct = {
         nameProduct: this.validateAddProductForm.value.nameProduct ? this.validateAddProductForm.value.nameProduct : '',
         floorPrice: this.validateAddProductForm.value.floorPrice ? this.validateAddProductForm.value.floorPrice : 0,
@@ -231,7 +229,7 @@ export class AddProductComponent {
         codeProduct: this.product.codeProduct,
         description: this.product.description,
       }
-  
+
       this.productService.addProduct(addProduct).subscribe({
         next: (res) => {
           this.createNotification(notificationEnum.success, res.message)
@@ -241,7 +239,7 @@ export class AddProductComponent {
           this.createNotification(notificationEnum.error, error.message)
         }
       })
-    }else{
+    } else {
       Object.values(this.validateAddProductForm.controls).forEach(control => {
         if (control.invalid) {
           control.markAsDirty();
@@ -249,7 +247,7 @@ export class AddProductComponent {
         }
       });
     }
-    }
+  }
 
   handleSubmit() {
     if (this.validateAddProductForm.valid) {
