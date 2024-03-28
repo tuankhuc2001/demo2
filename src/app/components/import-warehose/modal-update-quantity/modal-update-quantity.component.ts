@@ -89,7 +89,10 @@ export class ModalUpdateQuantityComponent {
             this.isLoading = false;
           },
           error: (error) => {
-            this.createNotification('error', error);
+            error.error.messageError.map((e: string) => {
+              this.notification.create("error", `${e}`, "");
+              this.isLoading = false;
+            })
           },
         });
     } else {
