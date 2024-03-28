@@ -51,7 +51,6 @@ export class ModalUpdatePriceComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['productItem'] && !changes['productItem'].firstChange) {
-      console.log('productItem changed:', changes['productItem'].currentValue);
       this.validateForm.setValue({
         priceFloor: this.formatCurrencyValue(this.productItem.floorPrice),
       })
@@ -69,7 +68,6 @@ export class ModalUpdatePriceComponent {
       if (priceFloorValue === this.productItem.floorPrice) {
         this.handleSetIsVisisble();
       } else {
-        console.log(priceFloorValue, "TYPE");
         this.producService.updateProductWareHouse(this.productItem, priceFloorValue).subscribe({
           next: (v) => {
             if (v.status == false) {
@@ -115,7 +113,6 @@ export class ModalUpdatePriceComponent {
       const numericValue = Number(value)
       const formattedValue = numericValue.toLocaleString('en-US', { maximumFractionDigits: 0 });
       event.target.value = value.endsWith('.') ? value : formattedValue;
-      console.log(numericValue)
     }
     return event.target.value;
   }
