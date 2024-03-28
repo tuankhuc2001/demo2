@@ -46,7 +46,7 @@ export class ModalUpdateQuantityComponent {
   listProduct = {
     nameProduct: '',
     quantityProduct: 0,
-    expiredDate: new Date(),
+    expiredDate: '',
     provider: '',
     unit: '',
     origin: '',
