@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -7,24 +7,24 @@
 
 ::-webkit-scrollbar {
     width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+}
 
-.pd-4{
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.pd-4 {
     padding: 20px;
 }
 
@@ -32,12 +32,12 @@
     display: flex;
 }
 
-.font-size-3vw{
+.font-size-3vw {
     font-size: 16px;
     padding: 4px;
 }
 
-.container-input{
+.container-input {
     border-bottom: 1px solid #ccc;
     margin-bottom: 8px;
     position: absolute;
@@ -49,24 +49,24 @@
     left: 20px;
 }
 
-.input-search{
+.input-search {
     width: 100%;
     font-size: 16px;
 }
 
-.al-item-ct{
+.al-item-ct {
     align-items: center;
 }
 
-.jct-bw{
+.jct-bw {
     justify-content: space-between;
 }
 
-.mg-t-4{
+.mg-t-4 {
     margin-top: 4px;
 }
 
-.img-customer{
+.img-customer {
     /* height: 14vw; */
     width: 80%;
     object-fit: cover;
@@ -76,22 +76,22 @@
 
 
 
-.text_customer-name{
+.text_customer-name {
     font-size: 3.5vw;
     font-weight: bold;
 }
 
-.text_customer-phone{
+.text_customer-phone {
     font-size: 3vw;
     color: red;
 }
 
-.text_customer-addres{
+.text_customer-addres {
     font-size: 3vw;
     opacity: 0.8;
 }
 
-.jct-ct{
+.jct-ct {
     justify-content: center;
 }
 
@@ -99,24 +99,32 @@
     flex-direction: column;
 }
 
-.modal-custom{
+.modal-custom {
     overflow-y: scroll;
 }
 
-.btn-add-customer{
-    margin-top: 28px;
+.btn-add-customer {
     padding: 10px;
     background-color: #3d7165;
     color: white;
     border-radius: 4px;
     border: none;
-    cursor: pointer;
+    margin-top: 90px;
 }
 
-.btn-add-customer:hover{
+.btn-add-customer:hover {
     opacity: 0.8;
 }
 
-.btn-container{
+.btn-container {
     text-align: center;
+}
+
+.min-height {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    min-height: 300px;
+    top: 40%;
 }
