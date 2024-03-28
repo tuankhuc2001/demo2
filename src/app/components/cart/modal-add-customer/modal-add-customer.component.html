@@ -1,17 +1,14 @@
-<cModal [isVisible]="isVisible" [width]="'60%'" >
+<cModal [isVisible]="isVisible" [width]="'80%'" [buttonX]="true" (closeModal)="handleCloseAddCustomer()">
     <Content>
-        <div style="height: 30vh; min-height: 250px;">
+        <div class="cover" style="height: 40vh; min-height: 300px;">
             <div nz-col nzSpan="24" class="center">
-                <button class="button-close" (click)="handleCloseAddCustomer()">X</button>
                 <form class="input-control" nz-col nz-form [formGroup]="validateFormAddCustomer">
                     <nz-form-item>
-                        <nz-form-control [nzSpan]="24" [nzErrorTip]="nameCustomerValidator">
-                            <nz-input-group [nzPrefix]="prefixTemplateNameCustomer">
-                                <input nz-input formControlName="nameCustomer" />
+                        <nz-form-control class="margin-top-30" [nzSpan]="24" [nzErrorTip]="nameCustomerValidator">
+                            <nz-input-group>
+                                <label class="input-label">Tên khách hàng:</label>
+                                <input class="input-edit"placeholder="Tên khách hàng..." nz-input formControlName="nameCustomer" />
                             </nz-input-group>
-                            <ng-template #prefixTemplateNameCustomer>
-                                Tên khách hàng:
-                            </ng-template>
                             <ng-template #nameCustomerValidator let-control>
                                 @if (control.errors?.['required']) {
                                 Vui lòng nhập tên khách hàng!
@@ -28,12 +25,10 @@
                 <form class="input-control" nz-col nz-form [formGroup]="validateFormAddCustomer">
                     <nz-form-item>
                         <nz-form-control [nzSpan]="24" [nzErrorTip]="phoneCustomerValidator">
-                            <nz-input-group [nzPrefix]="prefixTemplatePhoneCustomer">
-                                <input nz-input formControlName="phoneCustomer" />
+                            <nz-input-group>
+                                <label class="input-label">Số điện thoại</label>
+                                <input class="input-edit" placeholder="Số điện thoại..." nz-input formControlName="phoneCustomer" />
                             </nz-input-group>
-                            <ng-template #prefixTemplatePhoneCustomer>
-                                SĐT:
-                            </ng-template>
                             <ng-template #phoneCustomerValidator let-control>
                                 @if (control.errors?.['required']) {
                                 Vui lòng nhập SĐT!
@@ -50,12 +45,10 @@
                 <form class="input-control" nz-form [formGroup]="validateFormAddCustomer">
                     <nz-form-item>
                         <nz-form-control [nzSpan]="24" [nzErrorTip]="addressValidator">
-                            <nz-input-group [nzPrefix]="prefixTemplateAddress">
-                                <input nz-input formControlName="address" />
+                            <nz-input-group>
+                                <label class="input-label">Địa chỉ:</label>
+                                <input class="input-edit" placeholder="Địa chỉ..." nz-input formControlName="address" />
                             </nz-input-group>
-                            <ng-template #prefixTemplateAddress>
-                                Địa chỉ:
-                            </ng-template>
                             <ng-template #addressValidator let-control>
                                 @if (control.errors?.['required']) {
                                 Vui lòng nhập địa chỉ!
@@ -70,7 +63,7 @@
             </div>
         </div>
         <div class="center">
-            <button class="btn-add-customer" (click)="handleAddCustomer()">Thêm khách hàng</button>
+            <button class="btn-add-customer" (click)="handleAddCustomer()"><span nz-icon nzType="user-add" nzTheme="outline"></span>Lưu khách hàng mới</button>
         </div>
     </Content>
 </cModal>
