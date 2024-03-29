@@ -82,7 +82,7 @@ export class ModalUpdateQuantityComponent {
     if (this.validateAddCartForm.valid) {
       this.productService
         .updateQuantity(this.ProductDetail.id, this.listProduct)
-        .subscribe({
+        .subscribe({ 
           next: (v) => {
             this.handleCloseModal();
             this.getProduct.emit();
@@ -90,7 +90,9 @@ export class ModalUpdateQuantityComponent {
             this.isLoading = false;
           },
           error: (error) => {
-            this.createNotification('error', error);
+            error.error.messageError.map((e: string) => {
+              this.notification.create("error", `${e}`, "");
+            })
           },
         });
     } else {
