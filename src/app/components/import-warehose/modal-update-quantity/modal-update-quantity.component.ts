@@ -46,7 +46,7 @@ export class ModalUpdateQuantityComponent {
   listProduct = {
     nameProduct: '',
     quantityProduct: 0,
-    expiredDate: new Date(),
+    expiredDate: '',
     provider: '',
     unit: '',
     origin: '',
@@ -92,6 +92,7 @@ export class ModalUpdateQuantityComponent {
           error: (error) => {
             error.error.messageError.map((e: string) => {
               this.notification.create("error", `${e}`, "");
+              this.isLoading = false;
             })
           },
         });
