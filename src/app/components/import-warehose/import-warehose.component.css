@@ -8,40 +8,23 @@
   height: 100%;
 }
 .btn-Add{
-  width: 100px;
-  height: 100px;
+  width: 20vw;
+  height: 20vw;
   position: absolute;
-  bottom: 50px;
-  right: 10px;
-  border-radius: 50px;
+  bottom: 15vw;
+  right: 5vw;
+  border-radius: 50%;
   border: 1px solid #ccc;
   background-color: #0F6F64;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 
 .icon {
-  font-size:40px;
+  font-size:8vw;
   color: #fff;
 }
 
-@media only screen and (max-width: 400px) {
-  .btn-Add{
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    bottom: 30px;
-    right: 5px;
-    border-radius: 50px;
-    border: 1px solid #ccc;
-    background-color: #0F6F64;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-  }
-  
-  .icon {
-    font-size:15px;
-    color: #fff;
-  }
-}
+
 
 .btn-addProduct:focus{
   background-color: aqua;
