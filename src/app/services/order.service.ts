@@ -3,10 +3,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { IOrder, IOrderResponse, IResponseOrder } from '../types/order';
 import { HttpClient } from '@angular/common/http';
 import { apiOrder } from '../constant/api';
+import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private userService: UserService) { }
 
     idOrderDetail = new BehaviorSubject<number>(1);
 
@@ -19,10 +20,12 @@ export class OrderService {
     }
 
     getOrder(idUser: number, textSearch: string): Observable<IResponseOrder> {
-        return this.http.get<IResponseOrder>(`${apiOrder.getOrder}${idUser}?textSearch=${textSearch}`)
+        const headers = this.userService.header()
+        return this.http.get<IResponseOrder>(`${apiOrder.getOrder}${idUser}?textSearch=${textSearch}`, {headers})
       }
 
     addOrder(idCart: number, orderRequest: IOrder): Observable<IOrderResponse> {
-        return this.http.post<IOrderResponse>(`${apiOrder.addOrder}${idCart}`, orderRequest)
+        const headers = this.userService.header()
+        return this.http.post<IOrderResponse>(`${apiOrder.addOrder}${idCart}`, orderRequest, {headers})
     }
 }
