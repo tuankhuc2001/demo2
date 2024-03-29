@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+
+import { apiCustomer, apiUser } from "../constant/api";
+import { IAddUser, IUpdateUser, IUser, IUserRequest, IUserRequestUpdate } from '../types/user';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    constructor() { }
+    constructor(private http: HttpClient) { }
 
     userId = new BehaviorSubject<number>(1)
     userToken = new BehaviorSubject<string>('')
@@ -22,6 +26,14 @@ export class UserService {
 
     getUserId(): BehaviorSubject<number> {
         return this.userId;
+    }
+
+    addAccount(accountRequest: IUserRequest): Observable<IAddUser> {
+        return this.http.post<IAddUser>(`${apiUser.addAccount}`, accountRequest)
+    }
+
+    updateAccount(idUser: number, accountRequest: IUserRequestUpdate): Observable<IUpdateUser> {
+        return this.http.put<IAddUser>(`${apiUser.updateAccount}${idUser}`, accountRequest)
     }
 }
 

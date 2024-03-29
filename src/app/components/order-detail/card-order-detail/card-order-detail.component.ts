@@ -22,6 +22,7 @@ export class CardOrderDetailComponent implements OnInit {
         password: '',
         email: '',
         fullname: '',
+        address: '',
         avatar: '',
         type: '',
       },

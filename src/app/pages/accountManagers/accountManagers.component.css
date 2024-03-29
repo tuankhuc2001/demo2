@@ -1,0 +1,22 @@
+.account_container {
+    position: relative;
+}
+
+.account_add {
+    position: fixed;
+    bottom: 12vw;
+    right: 5vw;
+    background-color: #3c7265;
+    z-index: 10;
+    padding: 3vw;
+    border-radius: 20vw;
+    aspect-ratio: 1/0.4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5vw;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    
+}

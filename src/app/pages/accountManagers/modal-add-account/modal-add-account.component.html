@@ -1,0 +1,109 @@
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()">
+  <Content>
+    <h3 class="modal_title">Thêm nhân viên</h3>
+    <div class="modal_content">
+      <div class="content_info" nz-row>
+        <label nz-col [nzSpan]="8" for="">Họ và tên:</label>
+        <form nz-col [nzSpan]="16" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="userValidator">
+              <nz-input-group>
+                <input nz-input formControlName="fullname" />
+              </nz-input-group>
+              <ng-template #userValidator let-control>
+                @if (control.errors?.['required']) {
+                Vui lòng nhập tên người dùng!
+                }
+                @if (control.errors?.['confirm']) {
+                Tên người dùng không được vượt quá 255 ký tự!
+                }
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+      <div class="content_info" nz-row>
+        <label nz-col [nzSpan]="8" for="">Địa chị:</label>
+        <form nz-col [nzSpan]="16" class="input-control" nz-form [formGroup]="validateFormAddUser">
+          <nz-form-item>
+            <nz-form-control [nzSpan]="24" [nzErrorTip]="addressValidator">
+              <nz-input-group>
+                <input nz-input formControlName="address" />
+              </nz-input-group>
+              <ng-template #addressValidator let-control>
+                @if (control.errors?.['required']) {
+                Vui lòng nhập địa chỉ!
+                }
+                @if (control.errors?.['confirm']) {
+                Địa chỉ không được vượt quá 255 ký tự!
+                }
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+      <div class="content_info" nz-row>
+        <label nz-col [nzSpan]="8" for="">Số điện thoại:</label>
+        <form nz-col [nzSpan]="16" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
+          <nz-form-item>
+            <nz-form-control [nzSpan]="24" [nzErrorTip]="phoneValidator">
+              <nz-input-group>
+                <input nz-input formControlName="phone" />
+              </nz-input-group>
+              <ng-template #phoneValidator let-control>
+                @if (control.errors?.['required']) {
+                Vui lòng nhập SĐT!
+                }
+                @if (control.errors?.['confirm']) {
+                SĐT không được vượt quá 11 số!
+                }
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+      <div class="content_info" nz-row>
+        <label nz-col [nzSpan]="8" for="">Mật khẩu</label>
+        <form nz-col [nzSpan]="16" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
+        <nz-form-item class="form-item" >
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate" nzErrorTip="Please input your Password!">
+              <input
+                [type]="passwordVisible ? 'text' : 'password'"
+                formControlName="password"
+                nz-input
+                placeholder="Password"
+                class="input-login"
+              />
+            </nz-input-group>
+            <ng-template #suffixTemplate>
+              <span
+                nz-icon
+                [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                (click)="passwordVisible = !passwordVisible"
+              ></span>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+      </div>
+      <div class="content_info" nz-row>
+        <label nz-col nzSpan="8" for="">Chức vụ:</label>
+        <nz-select class="content_select" nz-col nzSpan="16"
+         [ngModel]="selectedValue"
+         (ngModelChange)="handleChangeRole($event)"
+        >
+          <nz-option nzValue="ROLE_SALE" nzLabel="Sale"></nz-option>
+          <nz-option nzValue="ROLE_WAREHOUSE" nzLabel="WareHouse"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+
+  </Content>
+  <Footer>
+    <div style="margin-right: 2vw;">
+      <button class="add_submit" (click)="handleAddAccount()">Xác nhận</button>
+      <button class="add_cancel" (click)="handleCloseModal()">Hủy</button>
+    </div>
+  </Footer>
+</cModal>

@@ -10,6 +10,7 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { CartComponent } from './components/cart/cart.component';
 import { routerNames } from './constant/router';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { AccountManagersComponent } from './pages/accountManagers/accountManagers.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
     path: `${routerNames.cartPage}`,
     component: CartComponent,
   },
+  
   {
     path: `${routerNames.homePage}`,
     component: SideBarComponent,
@@ -54,6 +56,10 @@ const routes: Routes = [
       {
         path: `${routerNames.addProductPage}`,
         component: AddProductComponent,
+      },
+      {
+        path: `${routerNames.accountManagersPage}`,
+        component: AccountManagersComponent,
       },
     ],
   },

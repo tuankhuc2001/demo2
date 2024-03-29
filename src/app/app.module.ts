@@ -41,6 +41,11 @@ import { CardOrderDetailComponent } from './components/order-detail/card-order-d
 import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse.component';
 import { ModalUpdatePriceComponent } from './components/warehouse/modal-update-price/modal-update-price.component';
 
+import { AccountManagersComponent } from './pages/accountManagers/accountManagers.component';
+import { CardAccountComponent } from './pages/accountManagers/card-account/card-account.component';
+import { ModalAddAccountComponent } from './pages/accountManagers/modal-add-account/modal-add-account.component';
+import { ModalUpdateAccountComponent } from './pages/accountManagers/modal-update-account/modal-update-account.component';
+
 
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -105,7 +110,11 @@ import { CurrencyPipe } from '@angular/common';
     WarehouseComponent,
     CardWarehouseComponent,
     ModalUpdatePriceComponent,
-    CardImportWarehouseComponent
+    CardImportWarehouseComponent,
+    AccountManagersComponent,
+    CardAccountComponent,
+    ModalAddAccountComponent,
+    ModalUpdateAccountComponent
   ],
   imports: [
     BrowserModule,
