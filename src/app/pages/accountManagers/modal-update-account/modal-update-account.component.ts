@@ -52,7 +52,7 @@ export class ModalUpdateAccountComponent implements OnInit {
       console.log(updateAccount);
       
       this.userService.updateAccount(idUser, updateAccount).subscribe({
-        next: (v) => {
+        next: (v: any) => {
           if (v.status == false) {
             this.notification.create('error', `${v.message}`, '')
           } else {

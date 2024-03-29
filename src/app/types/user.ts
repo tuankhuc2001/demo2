@@ -1,12 +1,12 @@
 export interface IUser {
   id: number;
   phone: string;
-  password: string;
   email: string;
-  address: string;
   fullname: string;
   avatar: any;
-  type: string;
+  role: string;
+  token: string;
+  refreshToken: string
 }
 
 export interface IUserRequest {

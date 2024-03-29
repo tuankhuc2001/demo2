@@ -4,23 +4,27 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { IProduct, IRequestProduct, IResponseProduct } from '../types/product';
 import { apiProduct } from '../constant/api';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { UserService } from './user.service';
 
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserService) { }
 
   upload(payload: any): Observable<any> {
     return this.http.post<any>(`http://localhost:8080/upload`, payload)
   }
 
   getProductSale(idUser: number, textSearch: string): Observable<IResponseProduct> {
-    return this.http.get<IResponseProduct>(`${apiProduct.getProductWarehouse}${idUser}?textSearch=${textSearch}`)
+    const headers = this.userService.header()
+    return this.http.get<IResponseProduct>(`${apiProduct.getProductSale}${idUser}?textSearch=${textSearch}`, {headers: headers});
   }
 
   addProduct(product: IRequestProduct): Observable<IResponseProduct> {
-    return this.http.post<IResponseProduct>(`${apiProduct.addProduct}`, product)
+    const headers = this.userService.header()
+    return this.http.post<IResponseProduct>(`${apiProduct.addProduct}`, product, {headers})
   }
+
   getProductWareHouse(idUser: number, textSearch: string): Observable<IResponseProduct> {
     return this.http.get<IResponseProduct>(`${apiProduct.getProductWarehouse}${idUser}?textSearch=${textSearch}`)
   }

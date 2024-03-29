@@ -7,6 +7,7 @@ export const objectApi = {
     order: Url + `/order/`,
     orderDetail: Url + `/orderDetail/`,
     customer: Url + `/customer/`,
+    login: Url + `/api/v1/auth/signin`,
     user: Url + `/api/v1/auth/`,
 }
 

@@ -10,29 +10,29 @@ import { IOrderAndOrderDetail } from '../../../types/order';
 export class CardOrderDetailComponent implements OnInit {
 
   @Input() listCardOrderDetail: IOrderAndOrderDetail = {
+    id: 0,
+    totalPrice: 0,
+    status: '',
+    createdAt: new Date(),
+    totalCartItem: 0,
+    codeOrder: '',
+    userResponse: {
       id: 0,
-      totalPrice: 0,
-      status: '',
-      createdAt: new Date(),
-      totalCartItem: 0,
-      codeOrder: '',
-      userResponse: {
-        id: 0,
-        phone: '',
-        password: '',
-        email: '',
-        fullname: '',
-        address: '',
-        avatar: '',
-        type: '',
-      },
-      customerResponse: {
-        id: 0,
-        nameCustomer: '',
-        phoneCustomer: '',
-        address: '',
-      },
-      orderDetailResponseList: []
+      phone: 'string',
+      email: 'string',
+      fullname: 'string',
+      avatar: 'any',
+      role: 'string',
+      token: 'string',
+      refreshToken: 'string'
+    },
+    customerResponse: {
+      id: 0,
+      nameCustomer: '',
+      phoneCustomer: '',
+      address: '',
+    },
+    orderDetailResponseList: []
   };
 
   handlelog(): void {

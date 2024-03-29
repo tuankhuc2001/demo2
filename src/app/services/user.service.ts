@@ -1,32 +1,54 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from "rxjs";
-import { HttpClient } from "@angular/common/http";
-
-import { apiCustomer, apiUser } from "../constant/api";
+import { BehaviorSubject, Observable } from 'rxjs';
+import { apiUser, objectApi } from '../constant/api';
+import { ILoginResponse } from '../types/login';
 import { IAddUser, IUpdateUser, IUser, IUserRequest, IUserRequestUpdate } from '../types/user';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
     constructor(private http: HttpClient) { }
 
-    userId = new BehaviorSubject<number>(1)
-    userToken = new BehaviorSubject<string>('')
+    user = new BehaviorSubject<IUser>({
+        id: 1,
+        phone: "",
+        email: "",
+        fullname: "",
+        avatar: "",
+        role: "",
+        token: "",
+        refreshToken: ""
+    })
 
-    setUserToken(value: string): void {
-        this.userToken.next(value);
+    getUser(): BehaviorSubject<IUser> {
+        return this.user
     }
 
-    getUserToken(): BehaviorSubject<string> {
-        return this.userToken;
+    setUser(value: ILoginResponse): void {
+        this.user.next({
+            id: value.id,
+            phone: value.phone,
+            email: value.email,
+            fullname: value.fullName,
+            avatar: value.avatar,
+            role: value.role,
+            token: value.token,
+            refreshToken: value.refreshToken
+        })
     }
 
-    setUserId(value: number): void {
-        this.userId.next(value);
+    header(): HttpHeaders {
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("token")}`
+        });
+        return headers
     }
 
-    getUserId(): BehaviorSubject<number> {
-        return this.userId;
+    login(userName: string, password: string): Observable<ILoginResponse> {
+        return this.http.post<ILoginResponse>(`${objectApi.login}`, { phone: userName, password })
     }
+
 
     addAccount(accountRequest: IUserRequest): Observable<IAddUser> {
         return this.http.post<IAddUser>(`${apiUser.addAccount}`, accountRequest)
@@ -35,30 +57,5 @@ export class UserService {
     updateAccount(idUser: number, accountRequest: IUserRequestUpdate): Observable<IUpdateUser> {
         return this.http.put<IAddUser>(`${apiUser.updateAccount}${idUser}`, accountRequest)
     }
-}
 
-// import { Injectable } from '@angular/core';
-// import { BehaviorSubject } from 'rxjs';
-// @Injectable({providedIn: 'root'})
-// export class UserService {
-//     constructor() { }
-    
-//     userSubject = new BehaviorSubject<string>('');
-//     roleSubject = new BehaviorSubject<string>('');
-//     tokenSubject = new BehaviorSubject<string>('')
-//     setUserInfo(user: string, role: string){
-//         this.userSubject.next(user)
-//         this.roleSubject.next(role)
-//     }
-//     getUserInfo(){
-//         return this.userSubject, this.roleSubject
-//     }
-//     getTokenInfo(){
-//         return this.tokenSubject
-//     }
-//     onSignOut(){
-//         this.userSubject.next('')
-//         this.roleSubject.next('')
-//         this.tokenSubject.next('')
-//     }
-// }
+}

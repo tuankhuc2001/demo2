@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { IUser } from '../../types/user';
+import { UserService } from '../../services/user.service';
+import { ILoginResponse } from '../../types/login';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -8,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent {
 
-  isLoading:boolean = false
+  isLoading: boolean = false
 
   passwordVisible = false;
 
@@ -22,11 +26,11 @@ export class SignInComponent {
     remember: [true]
   });
 
-  
+
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      this.handleTimeOut();
+      this.handleLogin();
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -37,15 +41,44 @@ export class SignInComponent {
     }
   }
 
-  handleTimeOut():void {
-    this.isLoading = true
-    setTimeout(()=> this.handleNavigate(),2000)
 
+  createNotification(type: string, content: string): void {
+    this.notification.create(
+      type,
+      `${content}`,
+      ''
+    );
   }
-  handleNavigate():void {
+
+  handleLogin(): void {
+    this.isLoading = true
+    this.userService.login(
+      this.validateForm.value.userName ? this.validateForm.value.userName : "",
+      this.validateForm.value.password ? this.validateForm.value.password : ""
+    ).subscribe({
+      next: (res: ILoginResponse) => {
+        this.userService.setUser(res)
+        this.isLoading = false
+        localStorage.setItem("token",res.token)
+        this.createNotification("success", "Đăng nhập thành công")
+        this.handleNavigate()
+      },
+      error: (error: Error) => {
+        this.isLoading = false
+        this.createNotification("error", "Sai tài khoản hoặc mật khẩu")
+      }
+    })
+  }
+
+  handleNavigate(): void {
     this.isLoading = false
     this.router.navigate(['/home']);
   }
 
-  constructor(private fb: NonNullableFormBuilder,private router: Router) {}
+  constructor(
+    private fb: NonNullableFormBuilder,
+    private router: Router,
+    private userService: UserService,
+    private notification: NzNotificationService
+  ) { }
 }
