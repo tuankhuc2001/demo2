@@ -3,6 +3,7 @@ import { IProduct } from '../../../types/product';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-modal-update-price',
@@ -11,11 +12,12 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 })
 
 export class ModalUpdatePriceComponent {
-  constructor
-    (private fb: NonNullableFormBuilder,
-      private producService: ProductService,
-      private notification: NzNotificationService,
-    ) { }
+  constructor(
+    private fb: NonNullableFormBuilder,
+    private producService: ProductService,
+    private notification: NzNotificationService,
+  ) {
+  }
 
   ngOnInit() {
   }
@@ -49,24 +51,24 @@ export class ModalUpdatePriceComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['productItem'] && !changes['productItem'].firstChange) {
-      console.log('productItem changed:', changes['productItem'].currentValue);
       this.validateForm.setValue({
-        priceFloor: this.productItem.floorPrice
+        priceFloor: this.formatCurrencyValue(this.productItem.floorPrice),
       })
     }
   }
 
-  validateForm: FormGroup<{ priceFloor: FormControl<number> }> = this.fb.group({
-    priceFloor: [this.productItem.floorPrice, [Validators.required]],
-  })
+  validateForm: FormGroup = this.fb.group({
+    priceFloor: [null, [Validators.required]],
+  });
 
   handleUpdatePrice() {
-    if (this.validateForm.value.priceFloor !== undefined)
-      if (this.validateForm.value.priceFloor == this.productItem.floorPrice) {
+    const priceFloorValue = this.getNumberValue(this.validateForm.value.priceFloor);
+
+    if (priceFloorValue !== undefined) {
+      if (priceFloorValue === this.productItem.floorPrice) {
         this.handleSetIsVisisble();
       } else {
-        console.log(this.validateForm.value.priceFloor, "TYPE");
-        this.producService.updateProductWareHouse(this.productItem, this.validateForm.value.priceFloor).subscribe({
+        this.producService.updateProductWareHouse(this.productItem, priceFloorValue).subscribe({
           next: (v) => {
             if (v.status == false) {
               this.notification.create("error", `${v.message}`, "");
@@ -83,24 +85,35 @@ export class ModalUpdatePriceComponent {
           }
         })
       }
+    }
   }
 
-  // formatPrice(event: any) {
-  //   let value: string | null = event.target.value;
-  //   value = value || '0';
-  //   value = value.replace(/\D/g, '');
-  //   if (!isNaN(Number(value))) {
-  //     event.target.value = Number(value).toLocaleString('vnd');
-  //   }
-  // }
+  getNumberValue(value: string | null): number | undefined {
+    if (value !== undefined && value !== null && value !== '') {
+      return parseFloat(value.replace(/\D/g, ''));
+    }
+    return undefined;
+  }
+
+  formatCurrencyValue(value: number | null): string {
+    if (value !== null) {
+      let formattedValue = value.toLocaleString('en-US', { maximumFractionDigits: 2 });
+      formattedValue = formattedValue.replace(/\$/g, '').replace(/\.00$/, '');
+      return formattedValue;
+    } else {
+      return '';
+    }
+  }
 
   formatPrice(event: any) {
     let value: string | null = event.target.value;
     value = value || '0';
     value = value.replace(/\D/g, '');
     if (!isNaN(Number(value))) {
-      const formattedValue = Number(value).toLocaleString('en-US', { maximumFractionDigits: 0 });
+      const numericValue = Number(value)
+      const formattedValue = numericValue.toLocaleString('en-US', { maximumFractionDigits: 0 });
       event.target.value = value.endsWith('.') ? value : formattedValue;
     }
+    return event.target.value;
   }
 }

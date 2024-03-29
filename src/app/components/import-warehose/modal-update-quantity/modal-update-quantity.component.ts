@@ -29,33 +29,33 @@ export class ModalUpdateQuantityComponent {
 
   @Input() ProductDetail: IProduct = {
     id: 1,
-    nameProduct: 'mockProduct',
-    quantityProduct: 200,
-    expiredDate: "new Date()",
-    provider: 'Factory ABC',
-    unit: 'Box(es)',
-    origin: 'Ha Noi',
-    avatar: 'AAAAAAAAAAAAAAAAAAAAAAAAA',
-    codeProduct: 'XM2304',
-    description: 'Avoid drinking more than 1 gauge',
-    providePrice: 500000,
-    floorPrice: 550000,
-    phoneProvider: '01234567890',
+    nameProduct: '',
+    quantityProduct: 0,
+    expiredDate: "",
+    provider: '',
+    unit: '',
+    origin: '',
+    avatar: '',
+    codeProduct: '',
+    description: '',
+    providePrice: 0,
+    floorPrice: 0,
+    phoneProvider: '',
   };
   isLoading: boolean = false;
   listProduct = {
-    nameProduct: 'mockProduct',
-    quantityProduct: 200,
-    expiredDate: new Date(),
-    provider: 'Factory ABC',
-    unit: 'Box(es)',
-    origin: 'Ha Noi',
-    avatar: 'AAAAAAAAAAAAAAAAAAAAAAAAA',
-    codeProduct: 'XM2304',
-    description: 'Avoid drinking more than 1 gauge',
-    providePrice: 500000,
-    floorPrice: 550000,
-    phoneProvider: '01234567890',
+    nameProduct: '',
+    quantityProduct: 0,
+    expiredDate: '',
+    provider: '',
+    unit: '',
+    origin: '',
+    avatar: '',
+    codeProduct: '',
+    description: '',
+    providePrice: 0,
+    floorPrice: 0,
+    phoneProvider: '',
   }
 
   quantityValidator: ValidatorFn = (
@@ -89,7 +89,10 @@ export class ModalUpdateQuantityComponent {
             this.isLoading = false;
           },
           error: (error) => {
-            this.createNotification('error', error);
+            error.error.messageError.map((e: string) => {
+              this.notification.create("error", `${e}`, "");
+              this.isLoading = false;
+            })
           },
         });
     } else {

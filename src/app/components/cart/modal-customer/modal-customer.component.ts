@@ -47,7 +47,6 @@ export class ModalCustomerComponent {
     this.customerService.getCustomer(value).subscribe({
       next: (res) => {
         this.listCustomer = res.content.list
-        console.log(res)
       },
       error: (error) => {
         this.createNotification('error', error)
@@ -95,7 +94,7 @@ export class ModalCustomerComponent {
   }
 
   displayBlock: {} = {
-    display: 'block'
+    display: 'block',
   }
 
   heightModalData: {} = {
@@ -137,7 +136,9 @@ export class ModalCustomerComponent {
   }
 
   handleCloseModalCustomer() {
+    this.textSearch = "";
     this.closeModal.emit();
+    this.handleGetCustomer()
   }
 }
 

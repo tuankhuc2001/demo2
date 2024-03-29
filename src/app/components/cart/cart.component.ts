@@ -29,6 +29,7 @@ export class CartComponent implements OnDestroy, OnInit {
   isVisibleDeleteAll: boolean = false;
   isVisibleDeleteSingle: boolean = false;
   isVisibleAddOrder: boolean = false;
+  reloadCustomer: boolean = false;
 
   idCartDelete: number = 0;
   idCartOrder: number = 0;
@@ -144,7 +145,7 @@ export class CartComponent implements OnDestroy, OnInit {
 
   handleOpenModelCustomer(idCartCustomer:number){
     this.idCartCustomer = this.listCard[0].id;
-    this.isVisibleModalCustomer = true
+    this.isVisibleModalCustomer = true;
   }
 
   handleCloseModelCustomer(): void{
