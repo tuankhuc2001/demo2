@@ -1,0 +1,30 @@
+<cCard (click)="handleOpenUpdateAccount(idUser)" >
+  <Content>
+    <div class="main_card" nz-row>
+      <div nz-col nzSpan="8" class="card_img">
+        <img nz-image width="80%"
+          nzSrc="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1533427237i/41046229.jpg"
+          alt="songay" nzDisablePreview="true" />
+      </div>
+      <div nz-col nzSpan="16" class="card_content">
+        <div class="content_info"> 
+          <label for="">Họ và tên:</label>
+          <p>Phạm Thành Đạt</p>
+        </div>
+        <div class="content_info"> 
+          <label for="">Địa chỉ:</label>
+          <p>Phạm Thành Đạt</p>
+        </div>
+        <div class="content_info"> 
+          <label for="">Số điện thoại:</label>
+          <p>Phạm Thành Đạt</p>
+        </div>
+        <div class="content_info"> 
+          <label for="">Chức vụ:</label>
+          <p>Phạm Thành Đạt</p>
+        </div>
+      </div>
+    </div>
+  </Content>
+  <app-modal-update-account [isVisible]="isVisibleModalUpdateAccount" (closeModal)="handleCloseModelUpdateAccount()" ></app-modal-update-account>
+</cCard>

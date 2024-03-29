@@ -74,6 +74,7 @@ export class CartComponent implements OnDestroy, OnInit {
       password: "string",
       email: "string",
       fullname: "string",
+      address: "string",
       avatar: "any",
       type: "string",
     },

@@ -34,6 +34,7 @@ export class OrderDetailComponent {
       password: '',
       email: '',
       fullname: '',
+      address: '',
       avatar: '',
       type: ''
     },

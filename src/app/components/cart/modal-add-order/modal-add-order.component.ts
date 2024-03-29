@@ -31,6 +31,7 @@ export class ModalAddOrderComponent {
         password: "string",
         email: "string",
         fullname: "string",
+        address: "string",
         avatar: "any",
         type: "string",
       },

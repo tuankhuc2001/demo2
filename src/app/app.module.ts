@@ -40,6 +40,11 @@ import { InputComponent } from './common/inputValidate/input.component';
 import { CardOrderDetailComponent } from './components/order-detail/card-order-detail/card-order-detail.component'
 import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse.component';
 
+import { AccountManagersComponent } from './pages/accountManagers/accountManagers.component';
+import { CardAccountComponent } from './pages/accountManagers/card-account/card-account.component';
+import { ModalAddAccountComponent } from './pages/accountManagers/modal-add-account/modal-add-account.component';
+import { ModalUpdateAccountComponent } from './pages/accountManagers/modal-update-account/modal-update-account.component';
+
 
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -105,7 +110,11 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
     WarehouseComponent,
     CardWarehouseComponent,
     ModalUpdatePriceComponent,
-    CardImportWarehouseComponent
+    CardImportWarehouseComponent,
+    AccountManagersComponent,
+    CardAccountComponent,
+    ModalAddAccountComponent,
+    ModalUpdateAccountComponent
   ],
   imports: [
     BrowserModule,

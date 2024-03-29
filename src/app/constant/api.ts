@@ -7,6 +7,7 @@ export const objectApi = {
     order: Url + `/order/`,
     orderDetail: Url + `/orderDetail/`,
     customer: Url + `/customer/`,
+    user: Url + `/api/v1/auth/`,
 }
 
 export const apiProduct = {
@@ -44,4 +45,9 @@ export const apiOrder = {
 
 export const apiOrderDetail = {
     getOrderDetail: objectApi.orderDetail + `getOrderDetail/`,
+}
+
+export const apiUser = {
+    addAccount: objectApi.user + `signup/`,
+    updateAccount: objectApi.user + `updateAccount/`
 }
