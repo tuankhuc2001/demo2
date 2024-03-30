@@ -6,6 +6,7 @@ import { CartItemService } from '../../../services/cart-item.service';
 import { UserService } from '../../../services/user.service';
 import { ICartItemRequest } from '../../../types/cart-item';
 import { notificationEnum } from '../../../utils/notificationEnum';
+import { IUser } from '../../../types/user';
 
 @Component({ 
   selector: 'app-modal-add-cart-item',
@@ -99,9 +100,9 @@ export class ModalAddCartItemComponent implements OnChanges {
   handleSubmit() {
     if (this.validateAddCartForm.valid) {
       this.isLoading = true
-      this.userService.getUserId().subscribe({
-        next: (res: number) => {
-          this.userId = res
+      this.userService.getUser().subscribe({
+        next: (res: IUser) => {
+          this.userId = res.id
         }
       })
       const requestdObject: ICartItemRequest = {

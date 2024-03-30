@@ -30,12 +30,13 @@ export class OrderDetailComponent {
     codeOrder: '',
     userResponse: {
       id: 0,
-      phone: '',
-      password: '',
-      email: '',
-      fullname: '',
-      avatar: '',
-      type: ''
+      phone: 'string',
+      email: 'string',
+      fullname: 'string',
+      avatar: 'any',
+      role: 'string',
+      token: 'string',
+      refreshToken: 'string'
     },
     customerResponse: {
       id: 0,

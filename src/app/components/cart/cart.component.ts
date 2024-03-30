@@ -70,13 +70,14 @@ export class CartComponent implements OnDestroy, OnInit {
     totalCartItem: 1,    
     codeOrder: "string",
     User: {
-      id: 1,
-      phone: "string",
-      password: "string",
-      email: "string",
-      fullname: "string",
-      avatar: "any",
-      type: "string",
+      id: 0,
+      phone: 'string',
+      email: 'string',
+      fullname: 'string',
+      avatar: 'any',
+      role: 'string',
+      token: 'string',
+      refreshToken: 'string'
     },
     customerResponse: {
       id: 1,

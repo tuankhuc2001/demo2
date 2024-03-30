@@ -1,0 +1,50 @@
+.modal_title{
+    color: #3c7265;
+    padding: 2vw 5vw;
+    font-size: 5vw;
+    font-weight: 600;
+}
+
+.modal_content{
+    width: 90vw;
+    padding: 0 5vw 5vw;
+}
+
+.content_info {
+    display: flex;
+    width: 100% ;
+    margin-bottom: 2vw;
+}
+
+.content_info> label{
+    width: 100%;
+    font-size: 3.5vw;
+    font-weight: bold;
+
+}
+
+.content_info>input {
+    border: 1px solid gray;
+    font-size: 3.5vw;
+    width: 100%;
+}
+
+.add_submit {
+    background-color: #3c7265;
+    margin-right: 3vw;
+    padding: 1vw 4vw;   
+    border-radius: 2vw;
+    color: white;
+    font-size: 4vw;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.add_cancel {
+    background-color: #d14444;
+    padding: 1vw 4vw;   
+    border-radius: 2vw;
+    font-size: 4vw;
+    font-weight: 500;
+    cursor: pointer;
+}

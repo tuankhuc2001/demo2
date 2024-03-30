@@ -55,7 +55,7 @@
         </div>
         <div class="totalPrice">
           <span class="totalPrice_text">Tổng tạm tính:</span>
-          <span class="totalPrice_number">{{ ((addOrder?.totalPrice ?? 0) + 50000) | number }}</span>
+          <span class="totalPrice_number">{{ (addOrder.totalPrice + 50000) | number }}</span>
         </div>
       </div>
       <div nz-col nzSpan="8" class="customer_submit">

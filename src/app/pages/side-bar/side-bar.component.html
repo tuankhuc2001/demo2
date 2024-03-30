@@ -98,6 +98,16 @@
               </li>
             </ul>
           </li>
+          <li 
+          nz-menu-item
+          [routerLink]="routerNames.accountManagersPage"
+          routerLinkActive="router-link-active"
+          class="title-menuItem"
+          (click)="handleSideDrawerClose()"
+          >
+            <span nz-icon nzType="bell" nzTheme="fill"></span>
+            <span>Quản lý tài khoản</span>
+          </li>
           <li nz-menu-item>
             <span nz-icon nzType="bell" nzTheme="fill"></span>
             <span>Thông báo</span>
