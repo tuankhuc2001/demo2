@@ -46,6 +46,7 @@ export class ModalAddCartItemComponent implements OnChanges {
   }
 
   @Output() closeModal: EventEmitter<void> = new EventEmitter()
+  @Output() callBackGetProductSale: EventEmitter<void> = new EventEmitter()
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ProductDetail'] && !changes['ProductDetail'].firstChange) {
@@ -115,8 +116,8 @@ export class ModalAddCartItemComponent implements OnChanges {
       this.cartItemService.addCartItem(this.ProductDetail.id, requestdObject, this.userId).subscribe({
         next: (res) => {
           this.isLoading = false
-            this.createNotification( res.status === true ? notificationEnum.success : notificationEnum.error,
-              res.message)
+            this.createNotification( res.status === true ? notificationEnum.success : notificationEnum.error, res.message)
+              this.callBackGetProductSale.emit()
               this.handleCloseModal()
         },
         error: (error) => {

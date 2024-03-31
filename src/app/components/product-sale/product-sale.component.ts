@@ -7,6 +7,8 @@ import { ProductService } from '../../services/product.service';
 import { SearchService } from '../../services/search.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { IUser } from '../../types/user';
 
 @Component({
   selector: 'app-product-sale',
@@ -22,7 +24,20 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
   constructor( private notification: NzNotificationService,
     private searchService: SearchService, 
     private productService: ProductService,
-    private router: Router) {
+    private router: Router,
+    private userService: UserService) {
+  }
+
+  textSearch: string = ""
+  user: IUser = {
+    id: 0,
+    phone: "",
+    email: "",
+    fullname: "",
+    avatar: "",
+    role: "",
+    token: "",
+    refreshToken: ""
   }
 
   isVisibleModalAddCartItem: boolean = false
@@ -43,11 +58,15 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
   }
 
   handleSearch(value: string) {
-    this.productService.getProductSale(1, value).subscribe({
+    this.textSearch = value
+    this.handleGetProductSale(this.user.id, value)
+  }
+
+  handleGetProductSale(userId: number, textSearch: string){
+    this.productService.getProductSale(userId, textSearch).subscribe({
       next: (res) => {
         this.listProduct = res.content.list
         this.totalCartItem = res.content.totalCartItem
-        console.log(res)
       },
       error: (error) => {
         this.createNotification('error', error)
@@ -76,6 +95,11 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
     this.searchService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
       next: value => {
         this.handleSearch(value)
+      }
+    })
+    this.userService.getUser().subscribe({
+      next: (res: IUser) => {
+        this.user = res
       }
     })
   }
