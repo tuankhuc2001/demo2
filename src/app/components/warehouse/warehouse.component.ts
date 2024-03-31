@@ -71,34 +71,6 @@ export class WarehouseComponent implements OnInit, OnDestroy {
       })
   }
 
-  ngOnDestroy(): void {
-    this.$destroy.next(true)
-    this.$destroy.complete()
-    console.log("Destoryed")
-  }
-
-  handleSearch(textSearch: string) {
-    this.handleGetProduct(textSearch);
-  }
-
-  handleOpenModalUpdatePrice(event: IProduct) {
-    this.isVisibleModalUpdatePrice = true;
-    this.productItem = event;
-  }
-
-  handleCloseModalUpdatePrice() {
-    this.isVisibleModalUpdatePrice = false;
-    this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({
-      next: value => {
-        this.handleSearch(value)
-      }
-    })
-  }
-
-  handleSetIsVisibleClose() {
-    this.isVisibleModalUpdatePrice = false;
-  }
-
   handleGetProduct(textSearch: string) {
     this.producService.getProductSale(this.user.id, textSearch).subscribe({
       next: (v) => {
@@ -118,5 +90,32 @@ export class WarehouseComponent implements OnInit, OnDestroy {
       }
     })
   }
+  
+  handleSearch(textSearch: string) {
+    this.handleGetProduct(textSearch);
+  }
 
+  ngOnDestroy(): void {
+    this.$destroy.next(true)
+    this.$destroy.complete()
+    console.log("Destoryed")
+  }
+
+  handleOpenModalUpdatePrice(event: IProduct) {
+    this.isVisibleModalUpdatePrice = true;
+    this.productItem = event;
+  }
+
+  handleCloseModalUpdatePrice() {
+    this.isVisibleModalUpdatePrice = false;
+    this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({
+      next: value => {
+        this.handleSearch(value)
+      }
+    })
+  }
+
+  handleSetIsVisibleClose() {
+    this.isVisibleModalUpdatePrice = false;
+  }
 }
