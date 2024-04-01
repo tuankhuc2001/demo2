@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
-import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpRequest,
+  HttpResponse,
+} from '@angular/common/http';
 import { filter } from 'rxjs/operators';
 import {
   AbstractControl,
@@ -38,9 +43,9 @@ export class AddProductComponent {
     private msg: NzMessageService,
     private http: HttpClient,
     private fb: NonNullableFormBuilder,
-    private router: Router,
     private notification: NzNotificationService,
-    private location: Location
+    private location: Location,
+
   ) {}
 
   product: IProduct = {
@@ -73,19 +78,24 @@ export class AddProductComponent {
     this.previewImage = file.url || file.preview;
     this.previewVisible = true;
   };
-  handleCallApiImage(): void {
+   handleCallApiImage(): void {
     const formData = new FormData();
     this.fileList.forEach((file: any) => {
       formData.append('file', file.originFileObj!);
     });
     this.loading = true;
-    formData.forEach((value, key) => { 
-      console.log(key + ':', value);
-    });
-    this.productService.upload(formData).subscribe({
-      next: (res) => {},
-      error: (error) => {},
-    });
+
+    const header = this.productService.headerUpload();
+
+    this.productService.uploadImage(formData, header).subscribe(
+      () => {
+        this.msg.error('upload failed.');
+      },
+      () => {
+        this.fileList = [];
+        this.msg.success('upload successfully');
+      }
+    );
   }
 
   quantityValidator: ValidatorFn = (
