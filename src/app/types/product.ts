@@ -8,12 +8,12 @@ export interface IProduct {
   provider: string;
   unit: string;
   origin: string;
-  avatar: string;
   codeProduct: string;
   description: string;
   providePrice: number;
   floorPrice: number;
   phoneProvider: string;
+  imageUrl: string;
 }
 
 export interface IResponseProduct {
