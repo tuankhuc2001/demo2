@@ -259,6 +259,7 @@ export class AddProductComponent {
           : '',
         codeProduct: this.product.codeProduct,
         description: this.product.description,
+        imageUrl: this.product.imageUrl
       };
       const formData = new FormData();
       this.fileList.forEach((file: any) => {
@@ -276,7 +277,9 @@ export class AddProductComponent {
 
 
           this.productService.addProduct(addProduct).subscribe({
+            
             next: (res) => {
+              console.log(addProduct,"addProduct");
               this.createNotification(notificationEnum.success, res.message);
               this.handleNavigate();
             },
