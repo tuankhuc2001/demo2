@@ -81,44 +81,46 @@ nz-badge {
   vertical-align: middle;
 }
 
-.cart-button {
-  display: flex;
-  justify-content: flex-end;
-  min-height: 55px;
-  height: 5%;
+.cart-navigate {
+  width: 35%;
+  height: 6%;
   position: fixed;
-  bottom: 50px;
-  right: 20px;
-  z-index: 999;
+  bottom: 5%;
+  right: 8%;
+  z-index: 10;
+  border: none;
+  padding: 0;
 }
 
-.cart-icon {
-  width: 30%;
+.cart-button {
+  display: flex;
+  width: 100%;
   height: 100%;
-  border-radius: 25px;
-  background-color: rgb(12, 111, 99);
-  color: white;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
+  padding: 2vw;
+  background-color: #3c7265;
+  color: #fff;
+  align-items: center;
+  border-radius: 27px;
+  font-size: 5vw;
 }
 
 .item-count {
   position: absolute;
-  top: -15px;
-  right: 10px;
+  top: -25%;
+  right: 2%;
   background-color: red;
   color: white;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 2.4vw;
+  width: 7vw;
+  height: 7vw;
+  font-size: 4.5vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.icon-image {
-  font-size: 3.4vw;
+.cart-icon {
+  font-size: 6vw;
+  padding: 0 2vw;
+  width: auto;
 }

@@ -1,0 +1,75 @@
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()">
+  <Content>
+    <h3 class="modal_title">Sửa nhân viên</h3>
+    <div class="modal_content">
+      <div class="content_info" nz-row>
+        <label nz-col [nzSpan]="8" for="">Mật khẩu mới: </label>
+        <form nz-col [nzSpan]="16" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
+        <nz-form-item class="form-item" >
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate" nzErrorTip="Please input your Password!">
+              <input
+                [type]="passwordVisible ? 'text' : 'password'"
+                formControlName="password"
+                nz-input
+                placeholder="Password"
+                class="input-login"
+              />
+            </nz-input-group>
+            <ng-template #suffixTemplate>
+              <span
+                nz-icon
+                [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                (click)="passwordVisible = !passwordVisible"
+              ></span>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+      </div>
+
+      <div class="content_info" nz-row>
+        <label nz-col [nzSpan]="8" for="">Nhâp lại mật khẩu mới: </label>
+        <form nz-col [nzSpan]="16" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
+        <nz-form-item class="form-item" >
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate" nzErrorTip="Please input your Password!">
+              <input
+                [type]="passwordVisible ? 'text' : 'newPassword'"
+                formControlName="newPassword"
+                nz-input
+                placeholder="newPassword"
+                class="input-login"
+              />
+            </nz-input-group>
+            <ng-template #suffixTemplate>
+              <span
+                nz-icon
+                [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                (click)="passwordVisible = !passwordVisible"
+              ></span>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+      </div>
+      <div class="content_info" nz-row>
+        <label nz-col nzSpan="8" for="">Chức vụ:</label>
+        <nz-select class="content_select" nz-col nzSpan="16"
+         [ngModel]="selectedValue"
+         (ngModelChange)="handleChangeRole($event)"
+        >
+          <nz-option nzValue="ROLE_SALE" nzLabel="Sale"></nz-option>
+          <nz-option nzValue="ROLE_WAREHOUSE" nzLabel="WareHouse"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+
+  </Content>
+  <Footer>
+    <div style="margin-right: 2vw;">
+      <button class="add_submit" (click)="handleUpdateAccount(1)">Xác nhận</button>
+      <button class="add_cancel" (click)="handleCloseModal()">Hủy</button>
+    </div>
+  </Footer>
+</cModal>

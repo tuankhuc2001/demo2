@@ -1,11 +1,39 @@
 export interface IUser {
   id: number;
   phone: string;
-  password: string;
   email: string;
   fullname: string;
   avatar: any;
-  type: string;
+  role: string;
+  token: string;
+  refreshToken: string
 }
 
+export interface IUserRequest {
+  phone: string;
+  password: string ;
+  address: string;
+  fullname: string;
+  role: string;
+}
+
+export interface IUserRequestUpdate {
+  password: string ;
+  newPassword: string;
+  role: string;
+}
+
+export interface IAddUser {
+  message: string,
+  status: boolean,
+  content: {
+  }
+}
+
+export interface IUpdateUser {
+  message: string,
+  status: boolean,
+  content: {
+  }
+}
 

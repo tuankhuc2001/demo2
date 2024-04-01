@@ -11,35 +11,36 @@ import { IOrder } from '../../../types/order';
   styleUrl: './modal-add-order.component.css'
 })
 export class ModalAddOrderComponent {
-  constructor (
+  constructor(
     private orderSerVice: OrderService,
     private notification: NzNotificationService,
-    ) {}
+  ) { }
 
   @Input() isVisible: boolean = false;
   @Input() idCart: number = 0;;
   @Input() orderRequest: IOrder = {
-      id: 1,    
-      totalPrice: 1,    
-      status: "string",
-      createdAt: new Date(),
-      totalCartItem: 1,    
-      codeOrder: "string",
-      User: {
-        id: 1,
-        phone: "string",
-        password: "string",
-        email: "string",
-        fullname: "string",
-        avatar: "any",
-        type: "string",
-      },
-      customerResponse: {
-        id: 1,
-        nameCustomer: "string",
-        phoneCustomer: "string",
-        address: "string",   
-      }
+    id: 1,
+    totalPrice: 1,
+    status: "string",
+    createdAt: new Date(),
+    totalCartItem: 1,
+    codeOrder: "string",
+    User: {
+      id: 0,
+      phone: 'string',
+      email: 'string',
+      fullname: 'string',
+      avatar: 'any',
+      role: 'string',
+      token: 'string',
+      refreshToken: 'string'
+    },
+    customerResponse: {
+      id: 1,
+      nameCustomer: "string",
+      phoneCustomer: "string",
+      address: "string",
+    }
   };
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
   @Output() getCart: EventEmitter<void> = new EventEmitter();
@@ -51,12 +52,12 @@ export class ModalAddOrderComponent {
   handleAddOrder(idCart: number, orderRequest: IOrder) {
     this.orderSerVice.addOrder(idCart, orderRequest).subscribe({
       next: (res) => {
-        this.createNotification('success', res.message) 
+        this.createNotification('success', res.message)
         this.closeModal.emit();
         this.getCart.emit();
       },
       error: (error) => {
-        this.createNotification('error', error) 
+        this.createNotification('error', error)
         this.closeModal.emit();
         this.getCart.emit();
       }

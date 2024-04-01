@@ -4,6 +4,8 @@ import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { IProduct } from '../../types/product';
 import { ProductService } from '../../services/product.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { IUser } from '../../types/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-warehouse',
@@ -16,6 +18,7 @@ export class WarehouseComponent implements OnInit, OnDestroy {
     private searchService: SearchService,
     private producService: ProductService,
     private notification: NzNotificationService,
+    private userService: UserService
   ) { }
 
   private $destroy = new Subject()
@@ -38,6 +41,17 @@ export class WarehouseComponent implements OnInit, OnDestroy {
     imageUrl:""
   }
 
+  user: IUser = {
+    id: 0,
+    phone: "",
+    email: "",
+    fullname: "",
+    avatar: "",
+    role: "",
+    token: "",
+    refreshToken: ""
+  }
+
   textSearch: string = ""
   isVisibleModalUpdatePrice: boolean = false;
 
@@ -50,16 +64,42 @@ export class WarehouseComponent implements OnInit, OnDestroy {
           this.handleSearch(value)
         }
       })
+
+      this.userService.getUser().subscribe({
+        next: (res: IUser) => {
+          this.user = res
+        }
+      })
+  }
+
+  handleGetProduct(textSearch: string) {
+    this.producService.getProductSale(this.user.id, textSearch).subscribe({
+      next: (v) => {
+        if (v.status == false) {
+          this.notification.create("error", `${v.message}`, "");
+        }
+        else {
+          this.listProduct = v.content.list
+          console.log(this.listProduct);
+        }
+      },
+      error: (error) => {
+        console.log(error.error.messageError)
+        error.error.messageError.map((e: string) => {
+          this.notification.create("error", `${e}`, "");
+        })
+      }
+    })
+  }
+  
+  handleSearch(textSearch: string) {
+    this.handleGetProduct(textSearch);
   }
 
   ngOnDestroy(): void {
     this.$destroy.next(true)
     this.$destroy.complete()
     console.log("Destoryed")
-  }
-
-  handleSearch(textSearch: string) {
-    this.handleGetProduct(textSearch);
   }
 
   handleOpenModalUpdatePrice(event: IProduct) {
@@ -79,25 +119,4 @@ export class WarehouseComponent implements OnInit, OnDestroy {
   handleSetIsVisibleClose() {
     this.isVisibleModalUpdatePrice = false;
   }
-
-  handleGetProduct(textSearch: string) {
-    this.producService.getProductSale(1, textSearch).subscribe({
-      next: (v) => {
-        if (v.status == false) {
-          this.notification.create("error", `${v.message}`, "");
-        }
-        else {
-          this.listProduct = v.content.list
-          console.log(this.listProduct);
-        }
-      },
-      error: (error) => {
-        console.log(error.error.messageError)
-        error.error.messageError.map((e: string) => {
-          this.notification.create("error", `${e}`, "");
-        })
-      }
-    })
-  }
-
 }
