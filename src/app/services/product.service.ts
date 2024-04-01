@@ -11,6 +11,8 @@ export class ProductService {
   constructor(private http: HttpClient, private userService: UserService) { }
 
   upload(payload: any): Observable<any> {
+    console.log("dddddd");
+    
     const headers = this.userService.header()
     return this.http.post<any>(`http://localhost:8080/upload`, payload, {headers})
   }

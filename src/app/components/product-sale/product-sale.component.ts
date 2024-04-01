@@ -37,7 +37,6 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
     provider: '',
     unit: '',
     origin: '',
-    avatar: 'undefined',
     codeProduct: '',
     description: '',
     providePrice: 0,

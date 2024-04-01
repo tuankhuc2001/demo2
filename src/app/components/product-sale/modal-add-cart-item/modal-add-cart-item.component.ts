@@ -37,7 +37,6 @@ export class ModalAddCartItemComponent implements OnChanges {
     provider: 'Factory ABC',
     unit: 'Box(es)',
     origin: 'Ha Noi',
-    avatar: 'undefined',
     codeProduct: 'XM2304',
     description: 'Avoid drinking more than 1 gauge',
     providePrice: 500000,

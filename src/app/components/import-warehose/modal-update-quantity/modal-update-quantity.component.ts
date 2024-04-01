@@ -35,7 +35,6 @@ export class ModalUpdateQuantityComponent {
     provider: '',
     unit: '',
     origin: '',
-    avatar: '',
     codeProduct: '',
     description: '',
     providePrice: 0,

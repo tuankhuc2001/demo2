@@ -47,7 +47,6 @@ export class CartComponent implements OnDestroy, OnInit {
       provider: "string",
       unit: "string",
       origin: "string",
-      avatar: "any",
       codeProduct: "string",
       description: "string",
       providePrice: 1,

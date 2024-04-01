@@ -17,7 +17,6 @@ export class CardWarehouseComponent {
     provider: "abc",
     unit: "abc",
     origin: "abc",
-    avatar: "abc",
     codeProduct: "abc",
     description: "abc",
     providePrice: 0,

@@ -41,7 +41,6 @@ export class ModalUpdatePriceComponent {
     provider: "",
     unit: "",
     origin: "",
-    avatar: "",
     codeProduct: "",
     description: "",
     providePrice: 0,

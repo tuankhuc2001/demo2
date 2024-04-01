@@ -6,6 +6,8 @@ import { ProductService } from '../../services/product.service';
 import { SearchService } from '../../services/search.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { IUser } from '../../types/user';
 @Component({
   selector: 'app-import-warehose',
   templateUrl: './import-warehose.component.html',
@@ -23,10 +25,25 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     private notification: NzNotificationService,
     private searchService: SearchService,
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {}
 
+  private $destroy = new Subject()
+
   isVisibleModalupdateProductQuantity: boolean = false;
+
+  user: IUser = {
+    id: 0,
+    phone: "",
+    email: "",
+    fullname: "",
+    avatar: "",
+    role: "",
+    token: "",
+    refreshToken: ""
+  }
+
   productDetail: IProduct = {
     id: 0,
     nameProduct: "undefined",
@@ -35,7 +52,6 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     provider: '',
     unit: '', 
     origin: '',
-    avatar: 'undefined',
     codeProduct: '',
     description: '',
     providePrice: 0,  
@@ -46,7 +62,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
   textSearch :string = ""
 
   handleSearch(value: string) {
-    this.productService.getProductWareHouse(1, value).subscribe({
+    this.productService.getProductWareHouse(this.user.id, value).subscribe({
       next: (res) => {
         this.listProduct = res.content.list;
       },
@@ -69,6 +85,13 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
+    this.userService.getUser().subscribe({
+      next: (res: IUser) => {
+        this.user = res
+        console.log(res,"resres");
+        
+      }
+    })
     this.searchService
       .getSearchInput()
       .pipe(takeUntil(this.destroyed$), debounceTime(1000))

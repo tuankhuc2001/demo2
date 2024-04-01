@@ -35,7 +35,6 @@ export class CardCartComponent implements OnChanges {
       provider: "abc",
       unit: "abc",
       origin: "abc",
-      avatar: "abc",
       codeProduct: "abc",
       description: "abc",
       providePrice: 0,
