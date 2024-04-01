@@ -38,6 +38,7 @@ export class WarehouseComponent implements OnInit, OnDestroy {
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: ""
+    
   }
 
   user: IUser = {
