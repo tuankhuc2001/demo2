@@ -44,8 +44,7 @@ export class AddProductComponent {
     private http: HttpClient,
     private fb: NonNullableFormBuilder,
     private notification: NzNotificationService,
-    private location: Location,
-
+    private location: Location
   ) {}
 
   product: IProduct = {
@@ -78,7 +77,7 @@ export class AddProductComponent {
     this.previewImage = file.url || file.preview;
     this.previewVisible = true;
   };
-   handleCallApiImage(): void {
+  handleCallApiImage(): void {
     const formData = new FormData();
     this.fileList.forEach((file: any) => {
       formData.append('file', file.originFileObj!);
@@ -261,17 +260,36 @@ export class AddProductComponent {
         codeProduct: this.product.codeProduct,
         description: this.product.description,
       };
-      this.handleCallApiImage();
-
-      this.productService.addProduct(addProduct).subscribe({
-        next: (res) => {
-          this.createNotification(notificationEnum.success, res.message);
-          this.handleNavigate();
-        },
-        error: (error) => {
-          this.createNotification(notificationEnum.error, error.message);
-        },
+      const formData = new FormData();
+      this.fileList.forEach((file: any) => {
+        formData.append('file', file.originFileObj!);
       });
+      this.loading = true;
+
+      const header = this.productService.headerUpload();
+
+      this.productService.uploadImage(formData, header).subscribe(
+        (v) => {
+          this.fileList = [];
+          this.msg.success('upload successfully');
+          this.product.imageUrl = v.body.message
+
+
+          this.productService.addProduct(addProduct).subscribe({
+            next: (res) => {
+              this.createNotification(notificationEnum.success, res.message);
+              this.handleNavigate();
+            },
+            error: (error) => {
+              this.createNotification(notificationEnum.error, error.message);
+            },
+          });
+        },
+        () => {
+          this.msg.error('upload failed.');
+        }
+       
+      );
     } else {
       Object.values(this.validateAddProductForm.controls).forEach((control) => {
         if (control.invalid) {
