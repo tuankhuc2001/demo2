@@ -133,9 +133,9 @@ export class CartComponent implements OnDestroy, OnInit {
     this.isVisibleDeleteSingle = false
   }
 
-  handleOpenModelAddOrder(idCart: number): void{
+  handleOpenModelAddOrder(): void{
     this.isVisibleAddOrder = true;
-    this.idCartOrder = idCart;
+    this.idCartOrder = this.user.id;
   }
 
   handleCloseModelAddOrder(): void{
@@ -144,7 +144,6 @@ export class CartComponent implements OnDestroy, OnInit {
 
   handleGetCart(): void {
     this.isLoading = true
-
     this.cartService.getCart(this.user.id).subscribe({
       next: (res) => {
         this.isLoading = false
@@ -159,8 +158,10 @@ export class CartComponent implements OnDestroy, OnInit {
     })
   }
 
-  handleOpenModelCustomer(idCartCustomer:number){
-    idCartCustomer = this.user.id;
+  handleOpenModelCustomer(){
+    console.log(this.listCard[0].id, "id customer");
+    
+    this.idCartCustomer = this.listCard[0].id;
     this.isVisibleModalCustomer = true;
   }
 
