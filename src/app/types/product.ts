@@ -32,9 +32,9 @@ export interface IRequestProduct {
   provider: string,
   unit: string,
   origin: string,
-  avatar: string,
   codeProduct: string,
   description: string,
   providePrice: number,
-  floorPrice: number
+  floorPrice: number,
+  imageUrl: string;
 }
