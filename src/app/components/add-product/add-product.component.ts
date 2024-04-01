@@ -44,12 +44,12 @@ export class AddProductComponent {
     provider: "",
     unit: "",
     origin: "",
-    avatar: "",
     codeProduct: "",
     description: "",
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: "",
+    imageUrl: ""
   };
 
   fileList: NzUploadFile[] = [];
