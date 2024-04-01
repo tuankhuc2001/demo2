@@ -72,7 +72,7 @@ export class WarehouseComponent implements OnInit, OnDestroy {
   }
 
   handleGetProduct(textSearch: string) {
-    this.producService.getProductSale(this.user.id, textSearch).subscribe({
+    this.producService.getProductWareHouse(this.user.id, textSearch).subscribe({
       next: (v) => {
         if (v.status == false) {
           this.notification.create("error", `${v.message}`, "");
