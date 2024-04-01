@@ -23,6 +23,7 @@ export class CardWarehouseComponent {
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: "abc",
+    imageUrl:""
   }
 
   @Output() productIdEmit: EventEmitter<IProduct> = new EventEmitter();

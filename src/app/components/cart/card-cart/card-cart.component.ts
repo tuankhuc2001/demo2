@@ -40,7 +40,8 @@ export class CardCartComponent implements OnChanges {
       description: "abc",
       providePrice: 0,
       floorPrice: 0,
-      phoneProvider: "012345"
+      phoneProvider: "012345",
+      imageUrl:""
     },
     idCart: 1,
     quantity: 0,

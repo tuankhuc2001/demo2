@@ -34,7 +34,8 @@ export class WarehouseComponent implements OnInit, OnDestroy {
     description: "abc",
     providePrice: 0,
     floorPrice: 0,
-    phoneProvider: ""
+    phoneProvider: "",
+    imageUrl:""
   }
 
   textSearch: string = ""

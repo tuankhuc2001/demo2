@@ -50,6 +50,7 @@ export class AddProductComponent {
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: "",
+    imageUrl:""
   };
 
   fileList: NzUploadFile[] = [];

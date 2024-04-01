@@ -41,6 +41,7 @@ export class ModalUpdateQuantityComponent {
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: '',
+    imageUrl:""
   };
   isLoading: boolean = false;
   listProduct = {
@@ -56,6 +57,7 @@ export class ModalUpdateQuantityComponent {
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: '',
+    imageUrl:""
   }
 
   quantityValidator: ValidatorFn = (
