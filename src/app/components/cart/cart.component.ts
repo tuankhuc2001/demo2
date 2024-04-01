@@ -51,12 +51,12 @@ export class CartComponent implements OnDestroy, OnInit {
       provider: "string",
       unit: "string",
       origin: "string",
-      avatar: "any",
       codeProduct: "string",
       description: "string",
       providePrice: 1,
       floorPrice: 1,
       phoneProvider: "string",
+      imageUrl: ""
     },
     idCart: 1,
     quantity: 1,

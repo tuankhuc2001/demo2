@@ -32,13 +32,12 @@ export class WarehouseComponent implements OnInit, OnDestroy {
     provider: "abc",
     unit: "abc",
     origin: "abc",
-    avatar: "abc",
     codeProduct: "abc",
     description: "abc",
     providePrice: 0,
     floorPrice: 0,
-    phoneProvider: ""
-    
+    phoneProvider: "",
+    imageUrl: ""
   }
 
   user: IUser = {
