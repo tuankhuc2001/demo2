@@ -232,6 +232,32 @@ export class AddProductComponent {
 
   handleAddProduct() {
     if (this.validateAddProductForm.valid) {
+      const formData = new FormData();
+      this.fileList.forEach((file: any) => {
+        formData.append('file', file.originFileObj!);
+      });
+      this.loading = true;
+      const header = this.productService.headerUpload();
+      this.productService.uploadImage(formData, header).subscribe(
+        (v) => {
+          this.fileList = [];
+          this.msg.success('upload successfully');
+          addProduct.imageUrl = v.body.message  
+          this.productService.addProduct(addProduct).subscribe({
+            next: (res) => {
+              this.createNotification(notificationEnum.success, res.message);
+              this.handleNavigate();
+            },
+            error: (error) => {
+              this.createNotification(notificationEnum.error, error.message);
+            },
+          });
+        },
+        () => {
+          this.msg.error('upload failed.');
+        }
+      );
+
       const addProduct = {
         nameProduct: this.validateAddProductForm.value.nameProduct
           ? this.validateAddProductForm.value.nameProduct
@@ -261,38 +287,9 @@ export class AddProductComponent {
         description: this.product.description,
         imageUrl: this.product.imageUrl
       };
-      const formData = new FormData();
-      this.fileList.forEach((file: any) => {
-        formData.append('file', file.originFileObj!);
-      });
-      this.loading = true;
-
-      const header = this.productService.headerUpload();
-
-      this.productService.uploadImage(formData, header).subscribe(
-        (v) => {
-          this.fileList = [];
-          this.msg.success('upload successfully');
-          this.product.imageUrl = v.body.message
 
 
-          this.productService.addProduct(addProduct).subscribe({
-            
-            next: (res) => {
-              console.log(addProduct,"addProduct");
-              this.createNotification(notificationEnum.success, res.message);
-              this.handleNavigate();
-            },
-            error: (error) => {
-              this.createNotification(notificationEnum.error, error.message);
-            },
-          });
-        },
-        () => {
-          this.msg.error('upload failed.');
-        }
-       
-      );
+
     } else {
       Object.values(this.validateAddProductForm.controls).forEach((control) => {
         if (control.invalid) {
@@ -306,7 +303,6 @@ export class AddProductComponent {
   handleSubmit() {
     if (this.validateAddProductForm.valid) {
       this.handleAddProduct();
-      console.log('submit:', this.validateAddProductForm.value);
     } else {
       Object.values(this.validateAddProductForm.controls).forEach((control) => {
         if (control.invalid) {
