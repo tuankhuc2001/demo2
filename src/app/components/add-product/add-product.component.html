@@ -1,9 +1,11 @@
 <section class="container">
-  <div class="header">
-    <div class="icon-back"><span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
+  <section class="container">
+    <div class="header">
+      <div class="icon-back"><span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
+      </div>
+      <div class="title"><span style="font-weight: bold;">Thêm sản phẩm</span></div>
     </div>
-    <div class="title"><span style="font-weight: bold;">Thêm sản phẩm</span></div>
-  </div>
+  </section>
   <section class="dflex">
     <div nz-col nzSpan="12" class="center-upload">
       <nz-upload nzName="avatar" nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
@@ -75,7 +77,7 @@
                 Vui lòng nhập tên sản phẩm!
                 }
                 @if (control.errors?.['confirm']) {
-                Tên sản phẩm không được vượt quá 255 ký tự!
+                Tên sản phẩm không được dưới 3 hoặc vượt quá 255 ký tự!
                 }
               </ng-template>
             </nz-form-control>
@@ -96,7 +98,7 @@
                   Vui lòng nhập đơn vị!
                   }
                   @if (control.errors?.['confirm']) {
-                  Không vượt quá 255 ký tự!
+                  Đơn vị tính không được dưới 3 hoặc vượt quá 255 ký tự!
                   }
                 </ng-template>
               </nz-form-control>
@@ -114,7 +116,7 @@
                   Vui lòng nhập hạn sử dụng ngăn cách bởi dấu ( / )
                   }
                   @if (control.errors?.['confirm']) {
-                  Không được vượt quá 255 ký tự!
+                  Hạn sử dụng không được dưới 3 hoặc vượt quá 255 ký tự!
                   }
                 </ng-template>
               </nz-form-control>
@@ -151,7 +153,7 @@
                 Vui lòng nhập xuất xứ!
                 }
                 @if (control.errors?.['confirm']) {
-                Xuất xứ không được vượt quá 255 ký tự!
+                Xuất xứ không được dưới 3 hoặc vượt quá 255 ký tự!
                 }
               </ng-template>
             </nz-form-control>
@@ -172,7 +174,7 @@
                   Vui lòng nhập nguồn cung!
                   }
                   @if (control.errors?.['confirm']) {
-                  Không vượt quá 255 ký tự!
+                  Nguồn cung không được dưới 3 hoặc vượt quá 255 ký tự!
                   }
                 </ng-template>
               </nz-form-control>

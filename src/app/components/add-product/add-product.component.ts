@@ -134,7 +134,7 @@ export class AddProductComponent {
   nameProductValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -146,7 +146,7 @@ export class AddProductComponent {
   originValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -158,7 +158,7 @@ export class AddProductComponent {
   unitValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -170,7 +170,7 @@ export class AddProductComponent {
   providerValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -182,7 +182,7 @@ export class AddProductComponent {
   expireDateValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
