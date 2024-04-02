@@ -66,6 +66,7 @@ export class AddProductComponent {
     this.previewImage = file.url || file.preview;
     this.previewVisible = true;
   };
+  
   handleCallApiImage(): void {
     const formData = new FormData();
     this.fileList.forEach((file: any) => {
