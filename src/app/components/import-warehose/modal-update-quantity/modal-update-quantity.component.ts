@@ -40,7 +40,7 @@ export class ModalUpdateQuantityComponent {
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: '',
-    imageUrl:""
+    imageUrl: ""
   };
   isLoading: boolean = false;
   listProduct = {

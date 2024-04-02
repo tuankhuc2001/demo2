@@ -32,7 +32,7 @@ export class ModalDeleteSingleComponent {
       providePrice: 1,
       floorPrice: 1,
       phoneProvider: "string",
-      imageUrl:""
+      imageUrl: ""
     },
     idCart: 1,
     quantity: 1,

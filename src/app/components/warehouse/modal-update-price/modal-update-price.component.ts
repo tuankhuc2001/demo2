@@ -46,7 +46,7 @@ export class ModalUpdatePriceComponent {
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: "",
-    imageUrl:""
+    imageUrl: ""
   }
 
   ngOnChanges(changes: SimpleChanges): void {

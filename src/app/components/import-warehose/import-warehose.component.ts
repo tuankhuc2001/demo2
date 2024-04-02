@@ -57,7 +57,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     providePrice: 0,  
     floorPrice: 0,
     phoneProvider: "01234567",
-    imageUrl:""
+    imageUrl: ""
   }
   textSearch :string = ""
 

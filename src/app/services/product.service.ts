@@ -14,15 +14,6 @@ import { UserService } from './user.service';
 export class ProductService {
   constructor(private http: HttpClient, private userService: UserService) {}
 
-  upload(payload: any): Observable<any> {
-    console.log({ ...payload }, 'dddddd');
-
-    const headers = this.userService.headerUpload();
-    return this.http.post<any>(`http://localhost:8080/upload`, payload, {
-      headers,
-    });
-  }
-
   headerUpload(): HttpHeaders {
     console.log('GODA');
     const headers = new HttpHeaders({

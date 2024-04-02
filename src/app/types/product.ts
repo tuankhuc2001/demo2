@@ -26,14 +26,15 @@ export interface IResponseProduct {
 }
 
 export interface IRequestProduct {
-  nameProduct: string;
-  quantityProduct: number;
-  expiredDate: string;
-  provider: string;
-  unit: string;
-  origin: string;
-  codeProduct: string;
-  description: string;
-  providePrice: number;
-  floorPrice: number;
+  nameProduct: string,
+  quantityProduct: number,
+  expiredDate: string,
+  provider: string,
+  unit: string,
+  origin: string,
+  codeProduct: string,
+  description: string,
+  providePrice: number,
+  floorPrice: number,
+  imageUrl: string;
 }

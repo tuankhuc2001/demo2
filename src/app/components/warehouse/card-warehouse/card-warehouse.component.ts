@@ -8,8 +8,8 @@ import { IProduct } from '../../../types/product';
 })
 export class CardWarehouseComponent {
 
-  @Input() listCard: any;
-  @Input() listProduct: IProduct = {
+  @Input() listProduct: IProduct[] = [];
+  @Input() productItem: IProduct = {
     id: 0,
     nameProduct: "abc",
     quantityProduct: 0,
@@ -22,7 +22,7 @@ export class CardWarehouseComponent {
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: "abc",
-    imageUrl:""
+    imageUrl: ""
   }
 
   @Output() productIdEmit: EventEmitter<IProduct> = new EventEmitter();

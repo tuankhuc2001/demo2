@@ -42,7 +42,7 @@ export class ModalAddCartItemComponent implements OnChanges {
     providePrice: 500000,
     floorPrice: 550000,
     phoneProvider: "012345678",
-    imageUrl:""
+    imageUrl: ""
   }
 
   @Output() closeModal: EventEmitter<void> = new EventEmitter()

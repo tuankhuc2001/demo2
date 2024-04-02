@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { apiUser, objectApi } from '../constant/api';
 import { ILoginResponse } from '../types/login';
-import { IAddUser, IUpdateUser, IUser, IUserRequest, IUserRequestUpdate } from '../types/user';
+import { IAddUser, IGetUser, IUpdateUser, IUser, IUserRequest, IUserRequestUpdate } from '../types/user';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -57,13 +57,20 @@ export class UserService {
         return this.http.post<ILoginResponse>(`${objectApi.login}`, { phone: userName, password })
     }
 
+    getAllAccount(): Observable<IGetUser> {
+        const headers = this.header()
+        return this.http.get<IGetUser>(`${apiUser.getAllAccount}`, {headers})
+    }
 
     addAccount(accountRequest: IUserRequest): Observable<IAddUser> {
-        return this.http.post<IAddUser>(`${apiUser.addAccount}`, accountRequest)
+        const headers = this.header()
+        return this.http.post<IAddUser>(`${apiUser.addAccount}`, accountRequest, {headers})
     }
 
-    updateAccount(idUser: number, accountRequest: IUserRequestUpdate): Observable<IUpdateUser> {
-        return this.http.put<IAddUser>(`${apiUser.updateAccount}${idUser}`, accountRequest)
+    updateAccount(idUser: number, accountRequest: IUserRequest): Observable<IUpdateUser> {
+        const headers = this.header()
+        return this.http.put<IAddUser>(`${apiUser.updateAccount}${idUser}`, accountRequest, {headers})
     }
+    
 
 }

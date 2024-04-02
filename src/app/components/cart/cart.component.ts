@@ -10,6 +10,8 @@ import { IProduct } from '../../types/product';
 import { ICart } from '../../types/cart';
 import { IOrder } from '../../types/order';
 import { ICustomer } from '../../types/customer';
+import { IUser } from '../../types/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +23,9 @@ export class CartComponent implements OnDestroy, OnInit {
   constructor(
     private notification: NzNotificationService,
     private cartService: CartService,
-    private router: Router) {
+    private router: Router,
+    private userService: UserService
+    ) {
   }
 
   isVisibleModalCustomer: boolean = false;
@@ -52,7 +56,7 @@ export class CartComponent implements OnDestroy, OnInit {
       providePrice: 1,
       floorPrice: 1,
       phoneProvider: "string",
-      imageUrl:""
+      imageUrl: ""
     },
     idCart: 1,
     quantity: 1,
@@ -87,6 +91,17 @@ export class CartComponent implements OnDestroy, OnInit {
     }
   };
 
+  user: IUser = {
+    id: 0,
+    phone: "",
+    email: "",
+    fullname: "",
+    avatar: "",
+    role: "",
+    token: "",
+    refreshToken: ""
+  }
+
 
   handleTotalPriceChanged(totalPrice: number) {
     this.addOrder.totalPrice = totalPrice;
@@ -118,9 +133,9 @@ export class CartComponent implements OnDestroy, OnInit {
     this.isVisibleDeleteSingle = false
   }
 
-  handleOpenModelAddOrder(idCart: number): void{
+  handleOpenModelAddOrder(): void{
     this.isVisibleAddOrder = true;
-    this.idCartOrder = idCart;
+    this.idCartOrder = this.user.id;
   }
 
   handleCloseModelAddOrder(): void{
@@ -129,7 +144,7 @@ export class CartComponent implements OnDestroy, OnInit {
 
   handleGetCart(): void {
     this.isLoading = true
-    this.cartService.getCart(1).subscribe({
+    this.cartService.getCart(this.user.id).subscribe({
       next: (res) => {
         this.isLoading = false
         this.listCard = res.content.list
@@ -143,7 +158,9 @@ export class CartComponent implements OnDestroy, OnInit {
     })
   }
 
-  handleOpenModelCustomer(idCartCustomer:number){
+  handleOpenModelCustomer(){
+    console.log(this.listCard[0].id, "id customer");
+    
     this.idCartCustomer = this.listCard[0].id;
     this.isVisibleModalCustomer = true;
   }
@@ -154,6 +171,11 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
+    this.userService.getUser().subscribe({
+      next: (res: IUser) => {
+        this.user = res
+      }
+    })
     this.handleGetCart();
   }
 

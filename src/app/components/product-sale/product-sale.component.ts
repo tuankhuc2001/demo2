@@ -42,7 +42,7 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: "0123456",
-    imageUrl:""
+    imageUrl: ""
   }
 
   user: IUser = {
