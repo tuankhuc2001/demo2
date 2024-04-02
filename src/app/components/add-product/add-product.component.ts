@@ -45,7 +45,7 @@ export class AddProductComponent {
     private fb: NonNullableFormBuilder,
     private notification: NzNotificationService,
     private location: Location
-  ) {}
+  ) { }
 
   product: IProduct = {
     id: 0,
@@ -77,7 +77,7 @@ export class AddProductComponent {
     this.previewImage = file.url || file.preview;
     this.previewVisible = true;
   };
-  
+
   handleCallApiImage(): void {
     const formData = new FormData();
     this.fileList.forEach((file: any) => {
@@ -241,7 +241,7 @@ export class AddProductComponent {
         (v) => {
           this.fileList = [];
           this.msg.success('upload successfully');
-          addProduct.imageUrl = v.body.message  
+          addProduct.imageUrl = v.body.message
           this.productService.addProduct(addProduct).subscribe({
             next: (res) => {
               this.createNotification(notificationEnum.success, res.message);

@@ -32,7 +32,7 @@
   line-height: 1.5715;
   background-image: none;
   border: 1px solid #d9d9d9;
-  border-radius: 10px;
+  border-radius: 4px;
   transition: all .3s;
   display: inline-flex;
 }
@@ -77,6 +77,7 @@
 
 .icon-back:hover {
   background-color: aqua;
+  cursor: pointer;
 }
 
 .title {
