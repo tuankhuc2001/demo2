@@ -1,10 +1,10 @@
-<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" width="90%" [isCentered]="true">
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" width="90%" [isCentered]="true" [footer]="false">
     <Content>
         <div class="content">
             <div nz-row>
                 <div nz-col nzSpan="12" class="image-container">
                     <img nz-image width="100%" height="100%"
-                        nzSrc="{{ProductDetail.nameProduct}}"
+                        nzSrc="http://{{ProductDetail.imageUrl}}"
                         alt="No Image or Image is broken" />
                 </div>
                 <div nz-col nzSpan="12">
@@ -85,7 +85,6 @@
             <div *ngIf="enableDescription === true">
                 <div class="productName">Mô tả ngắn:</div>
                 <div class="descriptionContent">
-                    DESCRIPTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
                     {{ProductDetail.description}}
                 </div>
             </div>
