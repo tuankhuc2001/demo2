@@ -2,7 +2,7 @@ import { ICart } from "./cart";
 import { IProduct } from "./product";
 export interface ICartItem {
   id: number;
-  Product: IProduct;
+  productResponse: IProduct;
   idCart: number;
   quantity: number;
   rate: number;

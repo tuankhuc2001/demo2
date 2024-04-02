@@ -43,7 +43,7 @@ export class CartComponent implements OnDestroy, OnInit {
   listCart: ICart[] = [];
   itemCartItem: ICartItem = {
     id: 1,
-    Product: {
+    productResponse: {
       id: 1,
       nameProduct: "String",
       quantityProduct: 1,
@@ -127,6 +127,7 @@ export class CartComponent implements OnDestroy, OnInit {
   handleOpenModalDeleteSingle(event: ICartItem) {
     this.isVisibleDeleteSingle = true;
     this.itemCartItem = event;
+    
   }
 
   handleCloseModalDeleteSingle(): void {
@@ -159,7 +160,7 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   handleOpenModelCustomer(){
-    console.log(this.listCard[0].id, "id customer");
+    console.log(this.listCard, "list customer");
     
     this.idCartCustomer = this.listCard[0].id;
     this.isVisibleModalCustomer = true;

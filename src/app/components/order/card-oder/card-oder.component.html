@@ -1,7 +1,5 @@
-<div *ngIf="listCard.length == 0">
-  <div style="text-align: center">
-    <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
-  </div>
+<div *ngIf="listCard.length == 0" class="no-data">
+  <img width="80%" nz-image nzSrc="../../../../assets/images/no-data.png" alt="No-Data" nzDisablePreview="true" />
 </div>
 <cCard *ngFor="let item of listCard" (click)="handleClickCard(item.id)">
   <Content>
