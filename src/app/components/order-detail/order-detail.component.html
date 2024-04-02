@@ -14,13 +14,13 @@
         </div>
     </div>
 
-    <div style="height: 17vw;"></div>
+    <div class="block-tab"></div>
 
     <div class="header_tab">
         <nz-tabset nzCentered nzSize="large" [nzSelectedIndex]="1">
             <nz-tab nzTitle="Liên biến động"></nz-tab>
             <nz-tab nzTitle="Liên giao">
-                <div style="height: 14vw;"></div>
+                <div class="block-top-card"></div>
                 <app-card-order-detail [listCardOrderDetail]="listCardOrderDetail"></app-card-order-detail>
                 <div style="height: 50vw;"></div>
             </nz-tab>
@@ -40,13 +40,13 @@
             </div>
         </div>
         <div nz-row>
-            <div nz-col nzSpan="24" class="ship_price" style="margin: 5vw 0 3vw 0;">
-                <Span class="font_size_4vw">Phí ship:</Span>
-                <Span class="font_size_4vw">50,000</Span>
+            <div nz-col nzSpan="24" class="ship_price">
+                <Span>Phí ship:</Span>
+                <Span>50,000</Span>
             </div>
             <div nz-col nzSpan="24" class="ship_price">
-                <span class="font_size_4vw blue bold">Tổng tạm tính:</span>
-                <span class="font_size_4vw red bold">{{listCardOrderDetail.totalPrice + 50000 | number}}</span>
+                <span class="blue bold">Tổng tạm tính:</span>
+                <span class="red bold">{{listCardOrderDetail.totalPrice + 50000 | number}}</span>
             </div>
         </div>
     </div>

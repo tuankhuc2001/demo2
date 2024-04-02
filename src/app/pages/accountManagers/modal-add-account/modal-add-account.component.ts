@@ -21,6 +21,7 @@ export class ModalAddAccountComponent implements OnInit {
   ) { }
 
   @Input() isVisible: boolean = false;
+  @Output() getUser: EventEmitter<void> = new EventEmitter();
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
     handleCloseModal() {
     this.closeModal.emit();
@@ -53,8 +54,6 @@ export class ModalAddAccountComponent implements OnInit {
         address: this.validateFormAddUser.value.address ? this.validateFormAddUser.value.address : "",
         role: this.selectedValue
       }
-      console.log(addAccount);
-      
       this.userService.addAccount(addAccount).subscribe({
         next: (v) => {
           if (v.status == false) {
@@ -63,6 +62,7 @@ export class ModalAddAccountComponent implements OnInit {
             this.notification.create('success', `${v.message}`, '')
             this.handleResetState();
             this.handleCloseModal();
+            this.getUser.emit();
           }
         }
       })
