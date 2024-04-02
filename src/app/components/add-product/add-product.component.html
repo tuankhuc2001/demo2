@@ -19,7 +19,24 @@
     </div>
     <div nz-col nzSpan="12" class="center">
       <form nz-form [formGroup]="validateAddProductForm">
-        <label for="">Mã sản phẩm: </label>
+        <nz-form-item>
+          <nz-form-control [nzSpan]="24" [nzErrorTip]="codeProductValidator" class="margin-tb-quantity">
+            <nz-input-group [nzPrefix]="prefixTemplateCodeProduct">
+              <input nz-input formControlName="codeProduct" />
+            </nz-input-group>
+            <ng-template #prefixTemplateCodeProduct>
+              Mã sản phẩm:
+            </ng-template>
+            <ng-template #codeProductValidator let-control>
+              @if (control.errors?.['required']) {
+              Vui lòng nhập mã sản phẩm!
+              }
+              @if (control.errors?.['confirm']) {
+              Mã sản phẩm không hợp lệ!
+              }
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
         <nz-form-item>
           <nz-form-control [nzSpan]="24" [nzErrorTip]="floorPriceValidate" class="margin-tb-quantity">
             <nz-input-group [nzPrefix]="prefixTemplate">

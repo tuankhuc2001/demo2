@@ -203,6 +203,18 @@ export class AddProductComponent {
     }
   }
 
+  codeProductValidator: ValidatorFn = (
+    control: AbstractControl
+  ): { [s: string]: boolean } | null => {
+    if (control.value.length > 10 || control.value.length < 3) {
+      return { confirm: true, error: true };
+    } else if (control.value === null) {
+      return { required: true };
+    } else {
+      return {};
+    }
+  };
+
   validateAddProductForm: FormGroup<{
     nameProduct: FormControl<string>;
     floorPrice: FormControl<number>;
@@ -213,6 +225,7 @@ export class AddProductComponent {
     unit: FormControl<string>;
     expiredDate: FormControl<string>;
     phoneNumber: FormControl<string>;
+    codeProduct: FormControl<string>;
   }> = this.fb.group({
     nameProduct: ['', [Validators.required, this.nameProductValidator]],
     floorPrice: [0, [Validators.required, this.floorPriceValidator]],
@@ -223,6 +236,7 @@ export class AddProductComponent {
     unit: ['', [Validators.required, this.unitValidator]],
     expiredDate: ['', [Validators.required, this.expireDateValidator]],
     phoneNumber: ['', [Validators.required, this.phoneNumberValidator]],
+    codeProduct: ['', [Validators.required, this.codeProductValidator]],
   });
 
   handleNavigate(): void {
@@ -282,7 +296,9 @@ export class AddProductComponent {
         expiredDate: this.validateAddProductForm.value.expiredDate
           ? this.validateAddProductForm.value.expiredDate
           : '',
-        codeProduct: this.product.codeProduct,
+        codeProduct: this.validateAddProductForm.value.codeProduct
+          ? this.validateAddProductForm.value.codeProduct
+          : '',
         description: this.product.description,
         imageUrl: this.product.imageUrl
       };
