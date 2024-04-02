@@ -10,16 +10,16 @@ import { ICartItem } from '../../../types/cart-item';
   styleUrl: './modal-delete-single.component.css'
 })
 export class ModalDeleteSingleComponent implements OnChanges {
-  constructor (
+  constructor(
     private cartItemService: CartItemService,
     private notification: NzNotificationService,
-    ) {}
+  ) { }
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
   @Output() getCart: EventEmitter<void> = new EventEmitter();
-  @Input() cartItem: ICartItem ={
+  @Input() cartItem: ICartItem = {
     id: 1,
-    Product: {
+    productResponse: {
       id: 1,
       nameProduct: "String",
       quantityProduct: 1,
@@ -40,33 +40,28 @@ export class ModalDeleteSingleComponent implements OnChanges {
     plus: false,
     editPrice: 1,
     isDisable: false,
-  } ;
-
+  };
   ngOnChanges(changes: SimpleChanges): void {
-    // if (changes.cartItem && changes.cartItem.currentValue) {
-    //   this.cartItem = changes.cartItem.currentValue;
-    // }
-    // console.log(this.cartItem,"aaaaaaaaaaaaaaaaaaaaaa");
     if (changes['cartItem'] && !changes['cartItem'].firstChange) {
-      console.log('cartItem changed:', changes['cartItem'].currentValue);
-}
-    
+      this.cartItem = changes['cartItem'].currentValue;
+    }
+
   }
 
   handleCloseModal() {
     this.closeModal.emit();
   }
 
-  handleDeleteCartItem(cartItem: ICartItem){
+  handleDeleteCartItem(cartItem: ICartItem) {
     console.log(this.cartItem);
     this.cartItemService.deleteCartItem(cartItem).subscribe({
       next: (res) => {
-        this.createNotification('success', res.message) 
+        this.createNotification('success', res.message)
         this.closeModal.emit();
         this.getCart.emit();
       },
       error: (error) => {
-        this.createNotification('error', error) 
+        this.createNotification('error', error)
         this.closeModal.emit();
         this.getCart.emit();
       }

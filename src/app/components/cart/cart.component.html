@@ -16,7 +16,7 @@
   </div>
   <div>
     <div style="height: 12vw;"></div>
-    <div style="overflow-y: scroll">
+    <div >
       <app-card-cart [listCard]="listCard" (onClickDeleteSingle)="handleOpenModalDeleteSingle($event)"
         (totalPriceChanged)="handleTotalPriceChanged($event)" (getCart)="handleGetCart()"></app-card-cart>
     </div>

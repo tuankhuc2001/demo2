@@ -43,7 +43,7 @@ export class CartComponent implements OnDestroy, OnInit {
   listCart: ICart[] = [];
   itemCartItem: ICartItem = {
     id: 1,
-    Product: {
+    productResponse: {
       id: 1,
       nameProduct: "String",
       quantityProduct: 1,
@@ -127,7 +127,6 @@ export class CartComponent implements OnDestroy, OnInit {
   handleOpenModalDeleteSingle(event: ICartItem) {
     this.isVisibleDeleteSingle = true;
     this.itemCartItem = event;
-    console.log(this.itemCartItem,"sản phẩm cần xóa");
     
   }
 

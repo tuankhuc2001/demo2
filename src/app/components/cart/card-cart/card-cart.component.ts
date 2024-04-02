@@ -27,7 +27,7 @@ export class CardCartComponent implements OnChanges {
 
   cartItemRequest: ICartItem ={
     id: 1,
-    Product: {
+    productResponse: {
       id: 0,
       nameProduct: "abc",
       quantityProduct: 0,
