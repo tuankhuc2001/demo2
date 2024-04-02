@@ -44,12 +44,14 @@
 nz-header {
   padding: 0;
   width: 100%;
+  position: fixed;
   z-index: 2;
   background-color: #3c7265;
+
 }
 
 .app-header {
-  position: relative;
+  position: fixed;
   height: 64px;
   padding: 0;
   background: #fff;
@@ -84,7 +86,7 @@ nz-header {
   background-color: #25403b;
 } */
 nz-content {
-  margin: 0px;
+  margin-top: 64px;
 }
 
 .inner-content {

@@ -6,7 +6,7 @@ import { IProduct } from '../../../types/product';
   styleUrl: './card-product-sale.component.css'
 })
 export class CardProductSaleComponent {
-  @Input() listCard: any;
+  @Input() listCard: IProduct [] = [];
 
   @Output() onClickCard: EventEmitter<IProduct> = new EventEmitter()
 

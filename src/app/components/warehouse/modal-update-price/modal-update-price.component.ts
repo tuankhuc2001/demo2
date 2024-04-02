@@ -29,6 +29,10 @@ export class ModalUpdatePriceComponent {
 
 
   handleSetIsVisisble() {
+    this.isVisibleChange.emit();
+  }
+
+  handleCloseModal(){
     this.closeModal.emit();
     this.validateForm.setValue({ priceFloor: this.productItem.floorPrice })
   }
@@ -67,14 +71,14 @@ export class ModalUpdatePriceComponent {
     if (priceFloorValue !== undefined) {
       if (priceFloorValue === this.productItem.floorPrice) {
         this.handleSetIsVisisble();
-      } else {
+      } else { 
         this.producService.updateProductWareHouse(this.productItem, priceFloorValue).subscribe({
           next: (v) => {
             if (v.status == false) {
               this.notification.create("error", `${v.message}`, "");
             } else {
               this.notification.create("success", `${v.message}`, "");
-              this.handleSetIsVisisble();
+              this.handleCloseModal();
             }
           },
           error: (error) => {
