@@ -55,10 +55,10 @@ export class ModalUpdateQuantityComponent {
     return {};
   };
 
-  validateAddCartForm: FormGroup<{
+  validateAddCartForm: FormGroup<{ 
     quantity: FormControl<number>;
   }> = this.fb.group({
-    quantity: [0, [Validators.required, this.quantityValidator]],
+    quantity: [1, [Validators.required, this.quantityValidator]],
   });
 
   handleSubmit() { 
