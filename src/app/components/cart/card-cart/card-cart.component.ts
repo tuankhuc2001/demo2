@@ -43,7 +43,7 @@ export class CardCartComponent implements OnChanges {
       imageUrl: ""
     },
     idCart: 1,
-    quantity: 0,
+    quantity: 1,
     rate: 4,
     plus: false,
     editPrice: 1,

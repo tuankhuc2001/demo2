@@ -9,7 +9,7 @@ import { ICartItem } from '../../../types/cart-item';
   templateUrl: './modal-delete-single.component.html',
   styleUrl: './modal-delete-single.component.css'
 })
-export class ModalDeleteSingleComponent {
+export class ModalDeleteSingleComponent implements OnChanges {
   constructor (
     private cartItemService: CartItemService,
     private notification: NzNotificationService,
@@ -42,12 +42,23 @@ export class ModalDeleteSingleComponent {
     isDisable: false,
   } ;
 
+  ngOnChanges(changes: SimpleChanges): void {
+    // if (changes.cartItem && changes.cartItem.currentValue) {
+    //   this.cartItem = changes.cartItem.currentValue;
+    // }
+    // console.log(this.cartItem,"aaaaaaaaaaaaaaaaaaaaaa");
+    if (changes['cartItem'] && !changes['cartItem'].firstChange) {
+      console.log('cartItem changed:', changes['cartItem'].currentValue);
+}
+    
+  }
+
   handleCloseModal() {
     this.closeModal.emit();
   }
 
   handleDeleteCartItem(cartItem: ICartItem){
-    console.log(cartItem);
+    console.log(this.cartItem);
     this.cartItemService.deleteCartItem(cartItem).subscribe({
       next: (res) => {
         this.createNotification('success', res.message) 

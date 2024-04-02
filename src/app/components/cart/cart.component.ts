@@ -127,6 +127,8 @@ export class CartComponent implements OnDestroy, OnInit {
   handleOpenModalDeleteSingle(event: ICartItem) {
     this.isVisibleDeleteSingle = true;
     this.itemCartItem = event;
+    console.log(this.itemCartItem,"sản phẩm cần xóa");
+    
   }
 
   handleCloseModalDeleteSingle(): void {
@@ -159,7 +161,7 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   handleOpenModelCustomer(){
-    console.log(this.listCard[0].id, "id customer");
+    console.log(this.listCard, "list customer");
     
     this.idCartCustomer = this.listCard[0].id;
     this.isVisibleModalCustomer = true;
