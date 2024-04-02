@@ -56,6 +56,7 @@ export class ModalUpdateQuantityComponent {
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: '',
+    imageUrl:""
   }
 
   quantityValidator: ValidatorFn = (
@@ -68,6 +69,7 @@ export class ModalUpdateQuantityComponent {
     }
     return {};
   };
+
   validateAddCartForm: FormGroup<{
     quantity: FormControl<number>;
   }> = this.fb.group({
@@ -81,7 +83,7 @@ export class ModalUpdateQuantityComponent {
     if (this.validateAddCartForm.valid) {
       this.productService
         .updateQuantity(this.ProductDetail.id, this.listProduct)
-        .subscribe({
+        .subscribe({ 
           next: (v) => {
             this.handleCloseModal();
             this.getProduct.emit();
@@ -102,9 +104,9 @@ export class ModalUpdateQuantityComponent {
           control.updateValueAndValidity({ onlySelf: true });
           this.isLoading = false;
         }
-      });
+      }); 
     }
-  }
+  } 
 
   createNotification(type: string, content: string): void {
     this.notification.create(type, `${content}`, '');

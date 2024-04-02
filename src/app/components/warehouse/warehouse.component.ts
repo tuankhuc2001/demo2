@@ -16,7 +16,7 @@ export class WarehouseComponent implements OnInit, OnDestroy {
 
   constructor(
     private searchService: SearchService,
-    private producService: ProductService,
+    private producService: ProductService, 
     private notification: NzNotificationService,
     private userService: UserService
   ) { }

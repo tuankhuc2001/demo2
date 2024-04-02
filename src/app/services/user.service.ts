@@ -45,6 +45,14 @@ export class UserService {
         return headers
     }
 
+    headerUpload(): HttpHeaders {
+        console.log("GODA");
+        const headers = new HttpHeaders({
+            'Authorization': `Bearer ${localStorage.getItem("token")}`
+        });
+        return headers
+    }
+
     login(userName: string, password: string): Observable<ILoginResponse> {
         return this.http.post<ILoginResponse>(`${objectApi.login}`, { phone: userName, password })
     }

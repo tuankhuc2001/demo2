@@ -67,7 +67,7 @@ export class ModalUpdatePriceComponent {
     if (priceFloorValue !== undefined) {
       if (priceFloorValue === this.productItem.floorPrice) {
         this.handleSetIsVisisble();
-      } else {
+      } else { 
         this.producService.updateProductWareHouse(this.productItem, priceFloorValue).subscribe({
           next: (v) => {
             if (v.status == false) {

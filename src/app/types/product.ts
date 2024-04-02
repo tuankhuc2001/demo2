@@ -1,9 +1,9 @@
-import { ICartItem } from "./cart-item";
+import { ICartItem } from './cart-item';
 
 export interface IProduct {
   id: number;
   nameProduct: String;
-  quantityProduct: number ;
+  quantityProduct: number;
   expiredDate: string;
   provider: string;
   unit: string;
@@ -17,12 +17,12 @@ export interface IProduct {
 }
 
 export interface IResponseProduct {
-  message: string,
-  status: boolean,
+  message: string;
+  status: boolean;
   content: {
-    list: IProduct[],
-    totalCartItem: number,
-  }
+    list: IProduct[];
+    totalCartItem: number;
+  };
 }
 
 export interface IRequestProduct {
@@ -32,9 +32,9 @@ export interface IRequestProduct {
   provider: string,
   unit: string,
   origin: string,
-  avatar: string,
   codeProduct: string,
   description: string,
   providePrice: number,
-  floorPrice: number
+  floorPrice: number,
+  imageUrl: string;
 }
