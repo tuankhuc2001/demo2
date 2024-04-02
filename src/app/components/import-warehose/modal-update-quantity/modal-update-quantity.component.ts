@@ -35,28 +35,14 @@ export class ModalUpdateQuantityComponent {
     provider: '',
     unit: '',
     origin: '',
-    avatar: '',
     codeProduct: '',
     description: '',
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: '',
+    imageUrl: ""
   };
   isLoading: boolean = false;
-  listProduct = {
-    nameProduct: '',
-    quantityProduct: 0,
-    expiredDate: '',
-    provider: '',
-    unit: '',
-    origin: '',
-    avatar: '',
-    codeProduct: '',
-    description: '',
-    providePrice: 0,
-    floorPrice: 0,
-    phoneProvider: '',
-  }
 
   quantityValidator: ValidatorFn = (
     control: AbstractControl
@@ -68,20 +54,21 @@ export class ModalUpdateQuantityComponent {
     }
     return {};
   };
-  validateAddCartForm: FormGroup<{
+
+  validateAddCartForm: FormGroup<{ 
     quantity: FormControl<number>;
   }> = this.fb.group({
-    quantity: [0, [Validators.required, this.quantityValidator]],
+    quantity: [1, [Validators.required, this.quantityValidator]],
   });
 
-  handleSubmit() {
+  handleSubmit() { 
     if (this.validateAddCartForm.value.quantity)
-      this.listProduct.quantityProduct = this.validateAddCartForm.value.quantity;
+      this.ProductDetail.quantityProduct = this.validateAddCartForm.value.quantity;
     this.isLoading = true;
     if (this.validateAddCartForm.valid) {
       this.productService
-        .updateQuantity(this.ProductDetail.id, this.listProduct)
-        .subscribe({
+        .updateQuantity(this.ProductDetail.id, this.ProductDetail)
+        .subscribe({ 
           next: (v) => {
             this.handleCloseModal();
             this.getProduct.emit();
@@ -102,15 +89,15 @@ export class ModalUpdateQuantityComponent {
           control.updateValueAndValidity({ onlySelf: true });
           this.isLoading = false;
         }
-      });
+      }); 
     }
-  }
+  } 
 
   createNotification(type: string, content: string): void {
     this.notification.create(type, `${content}`, '');
   }
   handleCloseModal() {
-    this.validateAddCartForm.setValue({ quantity: 0 });
+    this.validateAddCartForm.setValue({ quantity: 1 });
     this.closeModal.emit();
   }
 }

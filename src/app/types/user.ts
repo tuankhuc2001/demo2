@@ -19,7 +19,6 @@ export interface IUserRequest {
 
 export interface IUserRequestUpdate {
   password: string ;
-  newPassword: string;
   role: string;
 }
 
@@ -37,3 +36,10 @@ export interface IUpdateUser {
   }
 }
 
+export interface IGetUser {
+  message: string,
+  status: boolean,
+  content: {
+    list: IUser[];
+  }
+}

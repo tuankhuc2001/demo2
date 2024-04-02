@@ -49,6 +49,7 @@ export const apiOrderDetail = {
 }
 
 export const apiUser = {
-    addAccount: objectApi.user + `signup/`,
-    updateAccount: objectApi.user + `updateAccount/`
+    getAllAccount: objectApi.user + `getAllUser`,
+    addAccount: objectApi.user + `signup`,
+    updateAccount: objectApi.user + `updateUser/`
 }
