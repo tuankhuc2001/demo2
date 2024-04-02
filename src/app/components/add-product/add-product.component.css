@@ -55,8 +55,8 @@
 .header {
   display: flex;
   padding: 5px;
-  margin-top: 3vw;
-  margin-bottom: 6vw;
+  margin-top: 2vw;
+  margin-bottom: 3vw;
 }
 
 .dflex {
@@ -133,7 +133,7 @@
 }
 
 .description {
-  height: 150px;
+  height: 20vw;
   width: 100%;
   border-radius: 10px;
 }
@@ -173,6 +173,16 @@
   height: 5%;
 }
 
+
+@media screen and (max-width: 424) {
+  .header {
+    display: flex;
+    padding: 5px;
+    margin-top: 1vw;
+    margin-bottom: 2vw;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .button-upload {
     padding: 8px;
@@ -192,14 +202,5 @@
     border: none;
     width: 20vw;
     height: 8vw;
-  }
-}
-
-@media screen and (max-width: 467) {
-  .header {
-    display: flex;
-    padding: 5px;
-    margin-top: 1vw;
-    margin-bottom: 2vw;
   }
 }
