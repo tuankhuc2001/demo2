@@ -30,6 +30,10 @@ export class ModalUpdatePriceComponent {
 
   handleSetIsVisisble() {
     this.isVisibleChange.emit();
+  }
+
+  handleCloseModal(){
+    this.closeModal.emit();
     this.validateForm.setValue({ priceFloor: this.productItem.floorPrice })
   }
 
@@ -74,7 +78,7 @@ export class ModalUpdatePriceComponent {
               this.notification.create("error", `${v.message}`, "");
             } else {
               this.notification.create("success", `${v.message}`, "");
-              this.handleSetIsVisisble();
+              this.handleCloseModal();
             }
           },
           error: (error) => {
