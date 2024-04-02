@@ -13,11 +13,10 @@
     align-items: center;
 }
 .card-img {
-    aspect-ratio: 1/1;
-    width: 100%;
+    padding-right: 3vw;
 }  
-
 .card-img>img {
+    aspect-ratio: 1/1;
     width: 100%;
 }
 .nameProduct-card {
