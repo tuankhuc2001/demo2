@@ -8,9 +8,9 @@
                         alt="No Image or Image is broken" />
                 </div>
                 <div nz-col nzSpan="12">
-                    <div class="productName">{{ProductDetail.nameProduct}}</div>
-                    <div class="floorPrice">{{ProductDetail.floorPrice | number}}</div>
-                    <div class="quantityProduct">Tồn kho: {{ProductDetail.quantityProduct}}</div>
+                    <div class="productName mg-l-8">{{ProductDetail.nameProduct}}</div>
+                    <div class="floorPrice mg-l-8">{{ProductDetail.floorPrice | number}}</div>
+                    <div class="quantityProduct mg-l-8">Tồn kho: {{ProductDetail.quantityProduct}}</div>
                     <form nz-form [formGroup]="validateAddCartForm">
                         <nz-form-item>
                             <nz-form-control [nzErrorTip]="editPriceValidate">
