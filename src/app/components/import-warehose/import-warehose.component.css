@@ -8,8 +8,8 @@
   height: 100%;
 }
 .btn-Add{
-  width: 20vw;
-  height: 20vw;
+  width: 15vw;
+  height: 15vw;
   position: fixed;
   bottom: 15vw;
   right: 5vw;
@@ -23,7 +23,7 @@
   font-size:8vw;
   color: #fff;
 }
-
+ 
 
 .btn-addProduct:focus{
   background-color: aqua;
@@ -32,5 +32,3 @@
 .btn-addProduct:hover{
   background-color: blue;
 }
-
-@media only screen and (max-width: 768px) {}

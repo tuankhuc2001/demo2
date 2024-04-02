@@ -6,13 +6,14 @@
   align-items: center;
 }
 .main-signIn {
-  width: 1024px;
-  height: 1366px;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
 .img {
   text-align: center;
+  margin-top: 20vw;
 }
 .img-logo {
   width: 30%;
