@@ -29,7 +29,7 @@ export class ModalUpdatePriceComponent {
 
 
   handleSetIsVisisble() {
-    this.closeModal.emit();
+    this.isVisibleChange.emit();
     this.validateForm.setValue({ priceFloor: this.productItem.floorPrice })
   }
 
