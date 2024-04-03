@@ -75,12 +75,13 @@
 }
 
 .block-top-card {
-    height: 14vw;
+    height: 15vw;
 }
 
 .footer_orderDetail {
     position: fixed;
     bottom: 0;
+    width: 100%;
     padding: 5vw;
     background-color: white;
 }
