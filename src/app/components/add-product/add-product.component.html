@@ -21,12 +21,9 @@
       <form nz-form [formGroup]="validateAddProductForm">
         <nz-form-item>
           <nz-form-control [nzSpan]="24" [nzErrorTip]="codeProductValidator" class="margin-tb-quantity">
-            <nz-input-group [nzPrefix]="prefixTemplateCodeProduct">
-              <input nz-input formControlName="codeProduct" />
+            <nz-input-group>
+              <input nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly/>
             </nz-input-group>
-            <ng-template #prefixTemplateCodeProduct>
-              Mã sản phẩm:
-            </ng-template>
             <ng-template #codeProductValidator let-control>
               @if (control.errors?.['required']) {
               Vui lòng nhập mã sản phẩm!

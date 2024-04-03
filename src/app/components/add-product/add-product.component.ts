@@ -2,13 +2,8 @@ import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpRequest,
-  HttpResponse,
-} from '@angular/common/http';
-import { filter } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
+import { debounceTime, filter, takeUntil } from 'rxjs/operators';
 import {
   AbstractControl,
   FormControl,
@@ -22,6 +17,8 @@ import { IProduct } from '../../types/product';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { notificationEnum } from '../../utils/notificationEnum';
 import { Location } from '@angular/common';
+import { Subject } from 'rxjs';
+import { SearchService } from '../../services/search.service';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -44,8 +41,11 @@ export class AddProductComponent {
     private http: HttpClient,
     private fb: NonNullableFormBuilder,
     private notification: NzNotificationService,
-    private location: Location
+    private location: Location,
   ) { }
+
+  listProduct: IProduct[] = [];
+  currentTime: Date = new Date();
 
   product: IProduct = {
     id: 0,
@@ -64,6 +64,7 @@ export class AddProductComponent {
   };
 
   fileList: NzUploadFile[] = [];
+  private $destroy = new Subject()
 
   loading = false;
 
@@ -203,10 +204,8 @@ export class AddProductComponent {
     }
   }
 
-  codeProductValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 10 || control.value.length < 3) {
+  codeProductValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length < 17 || control.value.length > 17 ) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -236,7 +235,7 @@ export class AddProductComponent {
     unit: ['', [Validators.required, this.unitValidator]],
     expiredDate: ['', [Validators.required, this.expireDateValidator]],
     phoneNumber: ['', [Validators.required, this.phoneNumberValidator]],
-    codeProduct: ['', [Validators.required, this.codeProductValidator]],
+    codeProduct: ['MSP' + `${this.currentTime.getFullYear()}${(this.currentTime.getMonth() + 1).toString().padStart(2, '0')}${this.currentTime.getDate().toString().padStart(2, '0')}${this.currentTime.getHours().toString().padStart(2, '0')}${this.currentTime.getMinutes().toString().padStart(2, '0')}${this.currentTime.getSeconds().toString().padStart(2, '0')}`, [Validators.required, this.codeProductValidator]],
   });
 
   handleNavigate(): void {
