@@ -2,13 +2,7 @@ import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpRequest,
-  HttpResponse,
-} from '@angular/common/http';
-import { filter } from 'rxjs/operators';
+import {  HttpClient} from '@angular/common/http';
 import {
   AbstractControl,
   FormControl,

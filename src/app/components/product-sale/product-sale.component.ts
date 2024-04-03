@@ -9,6 +9,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { IUser } from '../../types/user';
+import { routerNames } from '../../constant/router';
 
 @Component({
   selector: 'app-product-sale',
@@ -83,7 +84,12 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
         this.totalCartItem = res.content.totalCartItem
       },
       error: (error) => {
-        this.createNotification('error', error)
+        if(error.status == 403) {
+          this.createNotification('error', 'Vui lòng đăng nhập lại')
+        }
+        else{
+          this.createNotification('error', error)
+        }
       }
     })
   }
