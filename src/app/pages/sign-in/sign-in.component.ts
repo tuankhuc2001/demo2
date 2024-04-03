@@ -49,7 +49,7 @@ export class SignInComponent {
       ''
     );
   }
-
+ 
   handleLogin(): void {
     this.isLoading = true
     this.userService.login(
@@ -62,7 +62,7 @@ export class SignInComponent {
         localStorage.setItem("token",res.token)
         this.createNotification("success", "Đăng nhập thành công")
         this.handleNavigate()
-      },
+      }, 
       error: (error: Error) => {
         this.isLoading = false
         this.createNotification("error", "Sai tài khoản hoặc mật khẩu")

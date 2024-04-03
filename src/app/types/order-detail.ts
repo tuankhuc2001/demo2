@@ -8,6 +8,7 @@ export interface IOrderDetail {
   totalPriceProduct: number
   plus: boolean
   productResponse: IProduct
+  imageUrl: string
 }
 
 export interface IResponseOrderDetail {

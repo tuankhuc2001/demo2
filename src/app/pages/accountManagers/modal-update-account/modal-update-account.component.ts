@@ -11,7 +11,7 @@ import { IAddUser, IUser, IUserRequest } from '../../../types/user';
   templateUrl: './modal-update-account.component.html',
   styleUrls: ['./modal-update-account.component.css']
 })
-export class ModalUpdateAccountComponent implements OnInit {
+export class ModalUpdateAccountComponent implements OnChanges {
 
   constructor(
     private userService: UserService,
@@ -23,6 +23,7 @@ export class ModalUpdateAccountComponent implements OnInit {
     handleCloseModal() {
     this.closeModal.emit();
   }
+  @Input() idUser: number =0;
 
   selectedValue = 'ROLE_SALE';
 
@@ -42,16 +43,20 @@ export class ModalUpdateAccountComponent implements OnInit {
     
   }
 
-  handleUpdateAccount(idUser: number){
+  handleUpdateAccount(){
+
     if (this.validateFormAddUser.valid) {
-      const updateAccount = {
-        password: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
-        newPassword: this.validateFormAddUser.value.newPassword ? this.validateFormAddUser.value.newPassword : "",
-        role: this.selectedValue
-      }
-      console.log(updateAccount);
+      // const updateAccount = {
+      //   password: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
+      //   phone: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
+      //   address: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
+      //   fullname: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
+      //   role: this.selectedValue
+      // }
+      this.IUserRequest.password = this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
+      this.IUserRequest.role = this.selectedValue
       
-      this.userService.updateAccount(idUser, updateAccount).subscribe({
+      this.userService.updateAccount(this.idUser, this.IUserRequest).subscribe({
         next: (v: any) => {
           if (v.status == false) {
             this.notification.create('error', `${v.message}`, '')
@@ -80,7 +85,7 @@ export class ModalUpdateAccountComponent implements OnInit {
   }
 
 
-  ngOnInit() {
+  ngOnChanges() {
   }
 
 

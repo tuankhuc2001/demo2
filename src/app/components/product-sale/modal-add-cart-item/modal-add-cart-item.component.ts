@@ -7,11 +7,30 @@ import { UserService } from '../../../services/user.service';
 import { ICartItemRequest } from '../../../types/cart-item';
 import { notificationEnum } from '../../../utils/notificationEnum';
 import { IUser } from '../../../types/user';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({ 
   selector: 'app-modal-add-cart-item',
   templateUrl: './modal-add-cart-item.component.html',
-  styleUrl: './modal-add-cart-item.component.css'
+  styleUrl: './modal-add-cart-item.component.css',
+  animations: [
+    trigger('slideInOut', [
+      state('void', style({
+          height: '0',
+          opacity: '0'
+      })),
+      state('*', style({
+          height: '*',
+          opacity: '1'
+      })),
+      transition(':enter', [
+          animate('0.2s ease-out')
+      ]),
+      transition(':leave', [
+          animate('0.2s ease-in')
+      ])
+  ])
+]
 })
 
 export class ModalAddCartItemComponent implements OnChanges {
@@ -37,12 +56,12 @@ export class ModalAddCartItemComponent implements OnChanges {
     provider: 'Factory ABC',
     unit: 'Box(es)',
     origin: 'Ha Noi',
-    avatar: 'undefined',
     codeProduct: 'XM2304',
     description: 'Avoid drinking more than 1 gauge',
     providePrice: 500000,
     floorPrice: 550000,
-    phoneProvider: "012345678"
+    phoneProvider: "012345678",
+    imageUrl: ""
   }
 
   @Output() closeModal: EventEmitter<void> = new EventEmitter()

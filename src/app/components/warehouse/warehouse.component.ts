@@ -16,7 +16,7 @@ export class WarehouseComponent implements OnInit, OnDestroy {
 
   constructor(
     private searchService: SearchService,
-    private producService: ProductService,
+    private producService: ProductService, 
     private notification: NzNotificationService,
     private userService: UserService
   ) { }
@@ -32,12 +32,12 @@ export class WarehouseComponent implements OnInit, OnDestroy {
     provider: "abc",
     unit: "abc",
     origin: "abc",
-    avatar: "abc",
     codeProduct: "abc",
     description: "abc",
     providePrice: 0,
     floorPrice: 0,
-    phoneProvider: ""
+    phoneProvider: "",
+    imageUrl: ""
   }
 
   user: IUser = {
@@ -71,14 +71,34 @@ export class WarehouseComponent implements OnInit, OnDestroy {
       })
   }
 
+  handleGetProduct(textSearch: string) {
+    this.producService.getProductWareHouse(this.user.id, textSearch).subscribe({
+      next: (v) => {
+        if (v.status == false) {
+          this.notification.create("error", `${v.message}`, "");
+        }
+        else {
+          this.listProduct = v.content.list
+          console.log(this.listProduct);
+        }
+      },
+      error: (error) => {
+        console.log(error.error.messageError)
+        error.error.messageError.map((e: string) => {
+          this.notification.create("error", `${e}`, "");
+        })
+      }
+    })
+  }
+  
+  handleSearch(textSearch: string) {
+    this.handleGetProduct(textSearch);
+  }
+
   ngOnDestroy(): void {
     this.$destroy.next(true)
     this.$destroy.complete()
     console.log("Destoryed")
-  }
-
-  handleSearch(textSearch: string) {
-    this.handleGetProduct(textSearch);
   }
 
   handleOpenModalUpdatePrice(event: IProduct) {
@@ -98,25 +118,4 @@ export class WarehouseComponent implements OnInit, OnDestroy {
   handleSetIsVisibleClose() {
     this.isVisibleModalUpdatePrice = false;
   }
-
-  handleGetProduct(textSearch: string) {
-    this.producService.getProductSale(this.user.id, textSearch).subscribe({
-      next: (v) => {
-        if (v.status == false) {
-          this.notification.create("error", `${v.message}`, "");
-        }
-        else {
-          this.listProduct = v.content.list
-          console.log(this.listProduct);
-        }
-      },
-      error: (error) => {
-        console.log(error.error.messageError)
-        error.error.messageError.map((e: string) => {
-          this.notification.create("error", `${e}`, "");
-        })
-      }
-    })
-  }
-
 }

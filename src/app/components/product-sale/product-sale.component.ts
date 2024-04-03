@@ -49,12 +49,26 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
     provider: '',
     unit: '',
     origin: '',
-    avatar: 'undefined',
     codeProduct: '',
     description: '',
     providePrice: 0,
     floorPrice: 0,
-    phoneProvider: "0123456"
+    phoneProvider: "0123456",
+    imageUrl: ""
+  }
+
+  ngOnInit(): void {
+    this.searchService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
+      next: value => {
+        this.handleSearch(value)
+      }
+    })
+
+    this.userService.getUser().subscribe({
+      next: (res: IUser) => {
+        this.user = res
+      }
+    })
   }
 
   handleSearch(value: string) {
@@ -89,19 +103,6 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
 
   handleCloseModalAddCartItem() {
     this.isVisibleModalAddCartItem = false
-  }
-
-  ngOnInit(): void {
-    this.searchService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
-      next: value => {
-        this.handleSearch(value)
-      }
-    })
-    this.userService.getUser().subscribe({
-      next: (res: IUser) => {
-        this.user = res
-      }
-    })
   }
 
   handleNavigate(): void {

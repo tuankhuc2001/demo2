@@ -1,4 +1,4 @@
-<cCard (click)="handleOpenUpdateAccount(idUser)" >
+<cCard *ngFor="let item of listUser" (click)="handleOpenUpdateAccount()" >
   <Content>
     <div class="main_card" nz-row>
       <div nz-col nzSpan="8" class="card_img">
@@ -9,22 +9,22 @@
       <div nz-col nzSpan="16" class="card_content">
         <div class="content_info"> 
           <label for="">Họ và tên:</label>
-          <p>Phạm Thành Đạt</p>
+          <p>{{item.fullname}}</p>
         </div>
         <div class="content_info"> 
           <label for="">Địa chỉ:</label>
-          <p>Phạm Thành Đạt</p>
+          <p>{{item.address}}</p>
         </div>
         <div class="content_info"> 
           <label for="">Số điện thoại:</label>
-          <p>Phạm Thành Đạt</p>
+          <p>{{item.phone}}</p>
         </div>
         <div class="content_info"> 
           <label for="">Chức vụ:</label>
-          <p>Phạm Thành Đạt</p>
+          <p>{{ formatRole(item.role) }}</p>
         </div>
       </div>
     </div>
   </Content>
-  <app-modal-update-account [isVisible]="isVisibleModalUpdateAccount" (closeModal)="handleCloseModelUpdateAccount()" ></app-modal-update-account>
+  <app-modal-update-account [isVisible]="isVisibleModalUpdateAccount" [idUser]="item.id" (closeModal)="handleCloseModelUpdateAccount()" ></app-modal-update-account>
 </cCard>

@@ -1,12 +1,13 @@
-<div *ngIf="listCard.length == 0" class="no-data">
+<div *ngIf="listProduct.length == 0" class="no-data">
   <img width="80%" nz-image nzSrc="../../../../assets/images/no-data.png" alt="No-Data" nzDisablePreview="true" />
 </div>
-<cCard *ngFor="let item of listCard">
+<cCard *ngFor="let item of listProduct">
   <Content>
-    <div class="main-card" (click)="handleProductIdEmit(item)">
+    <div nz-row class="main-card" (click)="handleProductIdEmit(item)">
       <div nz-col nzSpan="6" class="card-img">
-        <img nz-image width="80%" nzSrc="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-          alt="songay" nzDisablePreview="true" />
+        <img nz-image
+         nzSrc="http://{{item.imageUrl}}" 
+         alt="songay" nzDisablePreview="true" />
       </div>
       <div nz-col nzSpan="12" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div nz-row>

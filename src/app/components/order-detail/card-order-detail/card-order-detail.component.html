@@ -8,14 +8,14 @@
     <div class="main-card" nz-row>
       <div nz-col nzSpan="6">
         <div class="image_product">
-          <img src="https://hoanghamobile.com/tin-tuc/wp-content/webp-express/webp-images/uploads/2023/09/hinh-nen-may-tinh-4k-cong-nghe-4.jpg.webp" alt="picture">
+          <img nz-image nzSrc="http://{{item.productResponse.imageUrl}}" alt="picture">
         </div>
       </div>
       <div nz-col nzSpan="18" style="padding-left: 2vw;">
-        <div nz-row style="margin-bottom: 3vw;">
+        <div nz-row class="margin-bot">
           <span class="nameProduct">{{item.productResponse.nameProduct}}</span>
         </div>
-        <div nz-row style="margin-bottom: 3vw;">
+        <div nz-row class="margin-bot">
           <div nz-col nzSpan="16">
             <span class="editPrice">{{item.editPrice | number}}</span>
           </div>
