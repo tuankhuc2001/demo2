@@ -86,6 +86,7 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
       error: (error) => {
         if(error.status == 403) {
           this.createNotification('error', 'Vui lòng đăng nhập lại')
+          this.router.navigate([`/signIn`])
         }
         else{
           this.createNotification('error', error)
