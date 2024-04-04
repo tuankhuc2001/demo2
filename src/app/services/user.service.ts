@@ -29,7 +29,7 @@ export class UserService {
             id: value.id,
             phone: value.phone,
             email: value.email,
-            fullname: value.fullName,
+            fullname: value.fullname,
             avatar: value.avatar,
             role: value.role,
             token: value.token,
