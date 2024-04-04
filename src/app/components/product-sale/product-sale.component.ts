@@ -19,11 +19,11 @@ import { routerNames } from '../../constant/router';
 export class ProductSaleComponent implements OnDestroy, OnInit {
   listProduct: IProduct[] = []
   totalCartItem: number = 0
-  isLoading: boolean = false
+  isLoading: boolean = true
   private destroyed$ = new Subject()
 
-  constructor( private notification: NzNotificationService,
-    private searchService: SearchService, 
+  constructor(private notification: NzNotificationService,
+    private searchService: SearchService,
     private productService: ProductService,
     private router: Router,
     private userService: UserService) {
@@ -77,14 +77,17 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
     this.handleGetProductSale(this.user.id, value)
   }
 
-  handleGetProductSale(userId: number, textSearch: string){
+  handleGetProductSale(userId: number, textSearch: string) {
+    this.isLoading = true
     this.productService.getProductSale(userId, textSearch).subscribe({
       next: (res) => {
         this.listProduct = res.content.list
         this.totalCartItem = res.content.totalCartItem
+        this.isLoading = false
       },
       error: (error) => {
-        if(error.status == 403){
+        this.isLoading = false
+        if (error.status == 403) {
           this.router.navigate([routerNames.signInPage]);
           this.createNotification('error', "Dang nhap lai")
         }
