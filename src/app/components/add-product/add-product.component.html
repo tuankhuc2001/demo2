@@ -3,26 +3,27 @@
     <div class="header">
       <div class="icon-back"><span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
       </div>
-      <div class="title"><span style="font-weight: bold;">Thêm sản phẩm</span></div>
+      <div class="title">
+        <span class="title-text">Thêm sản phẩm</span>
+      </div>
     </div>
   </section>
   <section class="dflex">
-    <div nz-col nzSpan="12" class="center-upload">
+    <div nz-col nzSpan="10" class="center-upload">
       <nz-upload nzName="avatar" nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
         nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1"
-        [nzPreview]="handlePreview" style="margin-top: 40px;">
+        [nzPreview]="handlePreview" style="display: flex; margin-top: 14vw;">
         <div>
-          <span nz-icon nzType="plus"></span>
-          <div style="margin-top: 8px">Upload</div>
+          <span class="upload_icon" nz-icon nzType="camera" nzTheme="fill"></span>
         </div>
       </nz-upload>
     </div>
-    <div nz-col nzSpan="12" class="center">
+    <div nz-col nzSpan="14" class="center">
       <form nz-form [formGroup]="validateAddProductForm">
         <nz-form-item>
           <nz-form-control [nzSpan]="24" [nzErrorTip]="codeProductValidator" class="margin-tb-quantity">
             <nz-input-group>
-              <input nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly/>
+              <input class="codeProduct" nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly/>
             </nz-input-group>
             <ng-template #codeProductValidator let-control>
               @if (control.errors?.['required']) {

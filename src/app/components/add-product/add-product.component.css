@@ -27,7 +27,7 @@
   width: 100%;
   height: 6vw;
   min-width: 0;
-  padding: 4px 11px;
+  padding: 4vw 1vw;
   color: rgba(0, 0, 0, .85);
   line-height: 1.5715;
   background-image: none;
@@ -48,23 +48,32 @@
   transition: margin-bottom .3s 17ms linear;
 }
 
+.codeProduct {
+  padding: 2vw 1vw;
+}
+
 .container {
-  padding: 10px;
+  padding: 3vw;
 }
 
 .header {
   display: flex;
-  padding: 5px;
-  margin-top: 2vw;
-  margin-bottom: 3vw;
+  padding: 3vw 0;
+  align-items: center;
+  border-bottom: #afafaf 1px solid;
 }
 
 .dflex {
   display: flex;
 }
 
+.upload_icon {
+  font-size: 25vw;
+}
+
 .title-text {
-  font-size: 14x;
+  font-size: 5vw;
+  font-weight: bold;
 }
 
 .icon-back {
@@ -89,17 +98,15 @@
 
 .jct-bw {
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .button-upload {
-  padding: 8px;
-  background-color: #2f26a7;
-  color: white;
-  border-radius: 20px;
   border: none;
   width: 20vw;
-  height: 5vw;
+  height: 10vw;
+  border-radius: 20px;
+  background-color: aqua;
 }
 
 .button-upload:hover {
@@ -159,7 +166,7 @@
 .center-upload {
   display: flex;
   flex-direction: column;
-  left: 16vw;
+  left: 8vw;
   bottom: 1.4vw;
 }
 
@@ -185,7 +192,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
   .button-upload {
     padding: 8px;
     background-color: #2f26a7;
@@ -205,4 +212,4 @@
     width: 20vw;
     height: 8vw;
   }
-}
+} */
