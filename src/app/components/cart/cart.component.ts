@@ -63,7 +63,7 @@ export class CartComponent implements OnDestroy, OnInit {
     rate: 1,
     plus: false,
     editPrice: 1,
-    isDisable: false,
+    disable: false,
   };
   listCustomer: any[] = [];
   addOrder: IOrder ={

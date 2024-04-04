@@ -47,7 +47,7 @@ export class CardCartComponent implements OnChanges {
     rate: 4,
     plus: false,
     editPrice: 1,
-    isDisable: false,
+    disable: true,
   
   }
 
@@ -92,6 +92,8 @@ export class CardCartComponent implements OnChanges {
 
   handleOpenDeleteSingle(item:ICartItem){
     this.onClickDeleteSingle.emit(item)
+    console.log(this.listCard[0].cartItemResponseSet, "danh sach san pham");
+    
   }
 
   handlePlusQuantity(item: any) { 
