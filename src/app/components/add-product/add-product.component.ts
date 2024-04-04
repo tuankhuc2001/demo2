@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
-import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
-import { debounceTime, filter, takeUntil } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import {
   AbstractControl,
   FormControl,
@@ -12,13 +11,11 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
 import { IProduct } from '../../types/product';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { notificationEnum } from '../../utils/notificationEnum';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
-import { SearchService } from '../../services/search.service';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -64,7 +61,6 @@ export class AddProductComponent {
   };
 
   fileList: NzUploadFile[] = [];
-  private $destroy = new Subject()
 
   loading = false;
 

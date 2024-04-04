@@ -42,14 +42,12 @@ export class OrderComponent implements OnInit, OnDestroy {
       next: (res) => {
         this.listOrder = res.content.list
         this.isLoading = false
-        console.log(res)
       }
     })
   }
 
   handleGetOrderDetail(id: number) {
     this.orderService.setOrderDetail(id)
-    console.log("idOrder", id),
     this.router.navigate([routerNames.orderDetailPage]);
   }
 }

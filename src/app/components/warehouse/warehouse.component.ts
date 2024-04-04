@@ -79,11 +79,9 @@ export class WarehouseComponent implements OnInit, OnDestroy {
         }
         else {
           this.listProduct = v.content.list
-          console.log(this.listProduct);
         }
       },
       error: (error) => {
-        console.log(error.error.messageError)
         error.error.messageError.map((e: string) => {
           this.notification.create("error", `${e}`, "");
         })
@@ -98,7 +96,6 @@ export class WarehouseComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.$destroy.next(true)
     this.$destroy.complete()
-    console.log("Destoryed")
   }
 
   handleOpenModalUpdatePrice(event: IProduct) {

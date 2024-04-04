@@ -1,15 +1,13 @@
-import { Component, Input, OnDestroy, OnInit, } from '@angular/core';
-import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { Component, OnDestroy, OnInit, } from '@angular/core';
+import { Subject } from 'rxjs';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { CartService } from '../../services/cart.service';
 
 import { Router } from '@angular/router';
 import { routerNames } from '../../constant/router';
 import { ICartItem } from '../../types/cart-item';
-import { IProduct } from '../../types/product';
 import { ICart } from '../../types/cart';
 import { IOrder } from '../../types/order';
-import { ICustomer } from '../../types/customer';
 import { IUser } from '../../types/user';
 import { UserService } from '../../services/user.service';
 
@@ -162,8 +160,6 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   handleOpenModelCustomer(){
-    console.log(this.listCard, "list customer");
-    
     this.idCartCustomer = this.listCard[0].id;
     this.isVisibleModalCustomer = true;
   }

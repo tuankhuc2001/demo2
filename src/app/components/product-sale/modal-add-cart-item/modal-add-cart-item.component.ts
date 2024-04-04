@@ -7,11 +7,30 @@ import { UserService } from '../../../services/user.service';
 import { ICartItemRequest } from '../../../types/cart-item';
 import { notificationEnum } from '../../../utils/notificationEnum';
 import { IUser } from '../../../types/user';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({ 
   selector: 'app-modal-add-cart-item',
   templateUrl: './modal-add-cart-item.component.html',
-  styleUrl: './modal-add-cart-item.component.css'
+  styleUrl: './modal-add-cart-item.component.css',
+  animations: [
+    trigger('slideInOut', [
+      state('void', style({
+          height: '0',
+          opacity: '0'
+      })),
+      state('*', style({
+          height: '*',
+          opacity: '1'
+      })),
+      transition(':enter', [
+          animate('0.2s ease-out')
+      ]),
+      transition(':leave', [
+          animate('0.2s ease-in')
+      ])
+  ])
+]
 })
 
 export class ModalAddCartItemComponent implements OnChanges {
@@ -46,17 +65,15 @@ export class ModalAddCartItemComponent implements OnChanges {
   }
 
   @Output() closeModal: EventEmitter<void> = new EventEmitter()
+  @Output() callBackGetProductSale: EventEmitter<void> = new EventEmitter()
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ProductDetail'] && !changes['ProductDetail'].firstChange) {
-      console.log('ProductDetail changed:', changes['ProductDetail'].currentValue);
       this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: 0})
       this.enableDescription = false
       this.plus = true
 }
   }
-
-  /////////////// Form Handling
 
   editPriceValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
     if (!control.value) {
@@ -115,8 +132,8 @@ export class ModalAddCartItemComponent implements OnChanges {
       this.cartItemService.addCartItem(this.ProductDetail.id, requestdObject, this.userId).subscribe({
         next: (res) => {
           this.isLoading = false
-            this.createNotification( res.status === true ? notificationEnum.success : notificationEnum.error,
-              res.message)
+            this.createNotification( res.status === true ? notificationEnum.success : notificationEnum.error, res.message)
+              this.callBackGetProductSale.emit()
               this.handleCloseModal()
         },
         error: (error) => {
@@ -135,8 +152,6 @@ export class ModalAddCartItemComponent implements OnChanges {
       });
     }
   }
-  //////////////////////// 
-
 
   createNotification(type: notificationEnum, content: string): void {
     this.notification.create(

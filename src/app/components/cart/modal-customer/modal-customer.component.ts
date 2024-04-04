@@ -24,7 +24,6 @@ export class ModalCustomerComponent {
     idCustomer: 0,
   }
 
-
   constructor(
     private customerService: CustomerService,
     private cartService: CartService,

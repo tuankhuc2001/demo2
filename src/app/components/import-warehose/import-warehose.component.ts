@@ -88,8 +88,6 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     this.userService.getUser().subscribe({
       next: (res: IUser) => {
         this.user = res
-        console.log(res,"resres");
-        
       }
     })
     this.searchService

@@ -67,7 +67,6 @@
 
 .header {
   display: flex;
-  padding: 3vw 0;
   align-items: center;
   border-bottom: #d9d9d9 1px solid;
 }
@@ -82,7 +81,9 @@
 
 .title-text {
   font-size: 5vw;
-  font-weight: bold;
+  font-weight: 500;
+  color: #6b6969;
+  padding-bottom: 3vw;
 }
 
 .icon-back {
@@ -148,10 +149,12 @@
   margin-top: 25px;
   border: none;
   border-radius: 40px;
-  width: 42vw;
-  height: 8vw;
-  background-color: green;
+  width: 60vw;
+  height: 10vw;
+  background-color: #0E6F64;
   color: white;
+  font-size: 4vw;
+  font-weight: bold;
 }
 
 .center-upload {

@@ -1,6 +1,6 @@
 <div *ngIf="isLoading === false">
     <app-card-product-sale [listCard]="listProduct" (onClickCard)="handleOpenModalAddCartItem($event)"></app-card-product-sale>
-    <app-modal-add-cart-item [isVisible]="isVisibleModalAddCartItem" (closeModal)="handleCloseModalAddCartItem()" [ProductDetail]="productDetail"></app-modal-add-cart-item>
+    <app-modal-add-cart-item [isVisible]="isVisibleModalAddCartItem" (callBackGetProductSale)="handleGetProductSale(user.id, textSearch)" (closeModal)="handleCloseModalAddCartItem()" [ProductDetail]="productDetail"></app-modal-add-cart-item>
     <button nz-buton (click)="handleNavigate()" class="cart-navigate">
         <div class="cart-button">
             <span nz-icon nzType="shopping-cart" nzTheme="outline" class="cart-icon"></span>

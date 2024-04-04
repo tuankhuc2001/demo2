@@ -1,5 +1,5 @@
 import { Component, Input, Output, SimpleChanges, OnChanges, EventEmitter } from '@angular/core';
-import { IUser, IUserRequest, ItemUser } from '../../../types/user';
+import { ItemUser } from '../../../types/user';
 
 @Component({
   selector: 'app-card-account',
@@ -58,5 +58,4 @@ export class CardAccountComponent implements OnChanges {
   }
   ngOnInit() {
   }
-
 }

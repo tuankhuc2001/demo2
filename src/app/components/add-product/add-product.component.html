@@ -1,14 +1,12 @@
 <section class="container">
-  <section class="container">
-    <div class="header">
-      <div class="icon-back">
-        <span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
-      </div>
-      <div class="title">
-        <span class="title-text">Thêm sản phẩm</span>
-      </div>
+  <div class="header">
+    <div class="icon-back">
+      <span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
     </div>
-  </section>
+    <div class="title">
+      <span class="title-text">Thêm sản phẩm</span>
+    </div>
+  </div>
   <section class="dflex">
     <div nz-col nzSpan="10" class="center-upload">
       <nz-upload nzName="avatar" nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
@@ -24,7 +22,7 @@
         <nz-form-item>
           <nz-form-control [nzSpan]="24" [nzErrorTip]="codeProductValidator" class="margin-tb-quantity">
             <nz-input-group>
-              <input class="codeProduct" nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly/>
+              <input class="codeProduct" nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly />
             </nz-input-group>
             <ng-template #codeProductValidator let-control>
               @if (control.errors?.['required']) {
@@ -39,7 +37,7 @@
         <nz-form-item>
           <nz-form-control [nzSpan]="24" [nzErrorTip]="floorPriceValidate" class="margin-tb-quantity">
             <nz-input-group [nzPrefix]="prefixTemplate">
-              <input type="number" nz-input formControlName="floorPrice" width="100px" />
+              <input class="input" type="number" nz-input formControlName="floorPrice" width="100px" />
             </nz-input-group>
             <ng-template #prefixTemplate>Giá sàn:</ng-template>
             <ng-template #floorPriceValidate let-control>
@@ -55,7 +53,7 @@
         <nz-form-item>
           <nz-form-control [nzSpan]="24" [nzErrorTip]="quantityValidator" class="margin-tb-quantity">
             <nz-input-group [nzPrefix]="prefixTemplateQuantity">
-              <input type="number" nz-input formControlName="quantityProduct" />
+              <input class="input" type="number" nz-input formControlName="quantityProduct" />
             </nz-input-group>
             <ng-template #prefixTemplateQuantity>
               Số lượng tồn:
@@ -84,7 +82,7 @@
           <nz-form-item>
             <nz-form-control [nzSpan]="24" [nzErrorTip]="nameProductValidate">
               <nz-input-group>
-                <input class="input" nz-input formControlName="nameProduct" placeholder="Tên SP: (*)"/>
+                <input class="input" nz-input formControlName="nameProduct" placeholder="Tên SP: (*)" />
               </nz-input-group>
               <ng-template #nameProductValidate let-control>
                 @if (control.errors?.['required']) {
@@ -102,7 +100,7 @@
             <nz-form-item nz-col [nzSpan]="9">
               <nz-form-control [nzErrorTip]="unitValidate">
                 <nz-input-group>
-                  <input class="input" nz-input formControlName="unit" placeholder="Đơn vị tính: (*)"/>
+                  <input class="input" nz-input formControlName="unit" placeholder="Đơn vị tính: (*)" />
                 </nz-input-group>
                 <ng-template #unitValidate let-control>
                   @if (control.errors?.['required']) {
@@ -117,10 +115,10 @@
             <nz-form-item nz-col [nzSpan]="7">
               <nz-form-control [nzErrorTip]="expiredDateValidate">
                 <nz-input-group [nzPrefix]="prefixTemplateExpiredDate">
-                  <input class="input" nz-input formControlName="expiredDate" placeholder="HSD:"/>
+                  <input class="input" nz-input formControlName="expiredDate" placeholder="HSD:" />
                 </nz-input-group>
                 <ng-template #prefixTemplateExpiredDate>
-                 
+
                 </ng-template>
                 <ng-template #expiredDateValidate let-control>
                   @if (control.errors?.['required']) {
@@ -135,7 +133,7 @@
             <nz-form-item nz-col [nzSpan]="7">
               <nz-form-control [nzErrorTip]="providePriceValidator">
                 <nz-input-group [nzPrefix]="prefixTemplateProvidePrice">
-                  <input type="number" nz-input formControlName="providePrice" placeholder="Giá cung:"/>
+                  <input type="number" nz-input formControlName="providePrice" placeholder="Giá cung:" />
                 </nz-input-group>
                 <ng-template #prefixTemplateProvidePrice></ng-template>
                 <ng-template #providePriceValidator let-control>
@@ -154,7 +152,7 @@
           <nz-form-item>
             <nz-form-control [nzSpan]="24" [nzErrorTip]="originValidate">
               <nz-input-group>
-                <input class="input" nz-input formControlName="origin" placeholder="Xuất xứ:"/>
+                <input class="input" nz-input formControlName="origin" placeholder="Xuất xứ:" />
               </nz-input-group>
               <ng-template #originValidate let-control>
                 @if (control.errors?.['required']) {
@@ -168,42 +166,43 @@
           </nz-form-item>
         </div>
         <div nz-row class="margin-tb dflex jct-bw">
-            <nz-form-item nz-col [nzSpan]="15">
-              <nz-form-control [nzErrorTip]="providerValidate">
-                <nz-input-group>
-                  <input class="input" nz-input formControlName="provider" placeholder="Nguồn cung:"/>
-                </nz-input-group>
-                <ng-template #providerValidate let-control>
-                  @if (control.errors?.['required']) {
-                  Vui lòng nhập nguồn cung!
-                  }
-                  @if (control.errors?.['confirm']) {
-                  Nguồn cung không được dưới 3 hoặc vượt quá 255 ký tự!
-                  }
-                </ng-template>
-              </nz-form-control>
-            </nz-form-item>
-            <nz-form-item nz-col [nzSpan]="8">
-              <nz-form-control [nzErrorTip]="originPhoneNumber">
-                <nz-input-group>
-                  <input class="input" type="number" inputmode="decimal" nz-input formControlName="phoneNumber" placeholder="SĐT:"/>
-                </nz-input-group>
-                <ng-template #originPhoneNumber let-control>
-                  @if (control.errors?.['required']) {
-                  Vui lòng nhập số điện thoại!
-                  }
-                  @if (control.errors?.['confirm']) {
-                  Vui lòng nhập đúng định dạng số điện thoại!
-                  }
-                </ng-template>
-              </nz-form-control>
-            </nz-form-item>
-          </div>
+          <nz-form-item nz-col [nzSpan]="15">
+            <nz-form-control [nzErrorTip]="providerValidate">
+              <nz-input-group>
+                <input class="input" nz-input formControlName="provider" placeholder="Nguồn cung:" />
+              </nz-input-group>
+              <ng-template #providerValidate let-control>
+                @if (control.errors?.['required']) {
+                Vui lòng nhập nguồn cung!
+                }
+                @if (control.errors?.['confirm']) {
+                Nguồn cung không được dưới 3 hoặc vượt quá 255 ký tự!
+                }
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item nz-col [nzSpan]="8">
+            <nz-form-control [nzErrorTip]="originPhoneNumber">
+              <nz-input-group>
+                <input class="input" type="number" inputmode="decimal" nz-input formControlName="phoneNumber"
+                  placeholder="SĐT:" />
+              </nz-input-group>
+              <ng-template #originPhoneNumber let-control>
+                @if (control.errors?.['required']) {
+                Vui lòng nhập số điện thoại!
+                }
+                @if (control.errors?.['confirm']) {
+                Vui lòng nhập đúng định dạng số điện thoại!
+                }
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
       </form>
     </div>
     <textarea [(ngModel)]="product.description" class="description" placeholder="Mô tả:"></textarea>
     <div class="center">
-      <button class="button-add-product" (click)="handleAddProduct()">Thêm sản phẩm</button>
+      <button class="button-add-product" (click)="handleAddProduct()">Thêm</button>
     </div>
   </section>
 </section>
