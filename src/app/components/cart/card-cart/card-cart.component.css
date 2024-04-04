@@ -37,7 +37,7 @@
 }
 
 .content_nameProduct {
-    font-size: 4vw;
+    font-size: 5vw;
     font-weight: bold;
 }
 
@@ -59,18 +59,18 @@
 }
 
 .editPrice {
-    font-size: 3.5vw;
+    font-size: 4vw;
     color: #1E5993;
 
 }
 
 .unit {
-    font-size: 3.3vw;
+    font-size: 4vw;
     color: #afafaf;
 }
 
 .multiply {
-    font-size: 3.5vw;
+    font-size: 4vw;
     color: #1E5993;
     font-weight: 600;
     display: flex;
@@ -78,7 +78,7 @@
 }
 
 .quantity {
-    font-size: 3.5vw;
+    font-size: 4vw;
     padding: 0.5vw 1vw;
 }
 
@@ -138,7 +138,7 @@
 .finalPrice {
     text-align: center;
     align-self: center;
-    font-size: 3.5vw;
+    font-size: 4vw;
     color: #c7393c;
 }
 

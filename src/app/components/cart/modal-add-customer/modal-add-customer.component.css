@@ -24,9 +24,22 @@
     margin-top: 24px;
 }
 
-.title-add-customer {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4vw;
+}
+
+.title_add_customer {
+    font-size: 5vw;
     font-weight: bold;
-    font-size: 16px;
+}
+
+.close_btn {
+    border: none;
+    color: #3d7165;
+    box-shadow: none;
 }
 
 .input-control {
@@ -47,9 +60,11 @@
 }
 
 .btn-add-customer {
+    width: 60vw;
     padding: 8px;
     background-color: #3d7165;
     color: white;
+    font-size: 4.5vw;
     border-radius: 4px;
     border: none;
     cursor: pointer;
@@ -68,13 +83,15 @@
 
 .input-edit{
     border-radius: 5px;
+    padding: 2vw;
+    font-size: 4vw;
+    margin-bottom: 8vw;
 }
 
 .input-label{
-    margin-bottom: 2px;
-    font-weight: 600;
+    font-size: 5vw;
 }
 
 .container{
-    padding: 0 3vw 3vw 3vw;
+    padding: 0 4vw 6vw 4vw;
 }

@@ -1,9 +1,9 @@
-<cModal [isVisible]="isVisible" [width]="'90vw'" [buttonX]="false" (closeModal)="handleCloseAddCustomer()" >
+<cModal [isVisible]="isVisible" [width]="'90vw'" (closeModal)="handleCloseAddCustomer()" [footer]="false" >
     <Content>
         <div class="header">
-            <span>Thêm mới khách hàng</span>
-            <button nz-button (click)="handleCloseAddCustomer()">
-                <span class="close_button" nz-icon nzType="close" nzTheme="outline"></span>
+            <span class="title_add_customer">Thêm mới khách hàng</span>
+            <button class="close_btn" nz-button (click)="handleCloseAddCustomer()">
+                <span class="close_icon" nz-icon nzType="close" nzTheme="outline"></span>
             </button>
         </div>
         <div class="container">
@@ -59,9 +59,9 @@
                     </nz-form-item>
                 </form>
             </div>
-        </div>
-        <div class="center">
-            <button class="btn-add-customer" (click)="handleAddCustomer()"><span nz-icon nzType="user-add" nzTheme="outline"></span>Lưu khách hàng mới</button>
+            <div class="center">
+                <button class="btn-add-customer" (click)="handleAddCustomer()"><span nz-icon nzType="user-add" nzTheme="outline"></span>Lưu khách hàng mới</button>
+            </div>
         </div>
     </Content>
 </cModal>

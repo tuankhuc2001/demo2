@@ -8,6 +8,8 @@
 
 .card-img {
     padding-right: 3vw;
+    display: flex;
+    align-items: center;
 }
 
 .card-img img {
@@ -16,18 +18,18 @@
 }
 
 .nameProduct-card {
-    font-size: 4vw;
+    font-size: 5vw;
     font-weight: 700;
     color: #25403b;
 }
 
 .textProduct-card {
-    font-size: 2.5vw;
-    color: #3d7165;
+    font-size: 4vw;
+    color: #afafaf;
 }
 
 .floorPrice-card {
-    font-size: 4vw;
+    font-size: 5vw;
     font-weight: 700;
     color: #B31312;
 }
