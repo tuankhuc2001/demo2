@@ -110,6 +110,15 @@
     font-size: 3.5vw;
 }
 
+.isPlus_disable>span {
+    padding: 1.5vw 2.5vw;
+    border: 1px #afafaf solid;
+    border-radius: 1vw;
+    color: #0E6F64;
+    font-size: 3.5vw;
+    opacity: 0.5;
+}
+
 .rate {
     font-size: 3.5vw;
     padding: 0.5vw 1vw;
@@ -148,9 +157,26 @@
     margin-bottom: 4vw;
 }
 
+.editQuantity_up_disable {
+    border: 1px gray solid;
+    padding: 1.5vw 2.5vw;
+    font-size: 3.5vw;
+    border-radius: 1vw;
+    margin-bottom: 4vw;
+    opacity: 0.5;
+}
+
 .editQuantity_down {
     border: 1px gray solid;
     padding: 1.5vw 2.5vw;
     font-size: 3.5vw;
     border-radius: 1vw;
+}
+
+.editQuantity_down_disable {
+    border: 1px gray solid;
+    padding: 1.5vw 2.5vw;
+    font-size: 3.5vw;
+    border-radius: 1vw;
+    opacity: 0.5;
 }

@@ -1,4 +1,4 @@
-<cCard *ngFor="let item of listUser" (click)="handleOpenUpdateAccount(item)" >
+<cCard *ngFor="let item of listUser" (click)="handleOpenUpdateAccount(item)" [ngClass]="{'disabled-card': item.role === 'ROLE_ADMIN'}">
   <Content>
     <div class="main_card" nz-row>
       <div nz-col nzSpan="8" class="card_img">
@@ -26,5 +26,5 @@
       </div>
     </div>
   </Content>
-  <app-modal-update-account [itemUser]="itemAccount" [isVisible]="isVisibleModalUpdateAccount" (closeModal)="handleCloseModelUpdateAccount()" ></app-modal-update-account>
+  <app-modal-update-account [itemUser]="itemAccount" [isVisible]="isVisibleModalUpdateAccount" (closeModal)="handleCloseModelUpdateAccount()" *ngIf="item.role !== 'ROLE_ADMIN'"></app-modal-update-account>
 </cCard>
