@@ -9,6 +9,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
 import { IUser } from '../../types/user';
 import { UserService } from '../../services/user.service';
+import { routerNames } from '../../constant/router';
 
 @Component({
   selector: 'app-product-sale',
@@ -75,10 +76,12 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
       next: (res) => {
         this.listProduct = res.content.list
         this.totalCartItem = res.content.totalCartItem
-        console.log(res)
       },
       error: (error) => {
-        this.createNotification('error', error)
+        if(error.status == 403){
+          this.router.navigate([routerNames.signInPage]);
+          this.createNotification('error', "Dang nhap lai")
+        }
       }
     })
   }
