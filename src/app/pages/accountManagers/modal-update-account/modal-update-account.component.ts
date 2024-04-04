@@ -4,7 +4,7 @@ import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, Valida
 import { Router } from '@angular/router';
 
 import { UserService } from '../../../services/user.service';
-import { IAddUser, IUser, IUserRequest, ItemUser } from '../../../types/user';
+import { ItemUser } from '../../../types/user';
 
 @Component({
   selector: 'app-modal-update-account',
@@ -44,8 +44,6 @@ export class ModalUpdateAccountComponent implements OnChanges {
 
   handleChangeRole(event: string) {
     this.selectedValue = event
-    console.log(this.selectedValue);
-    
   }
 
   handleUpdateAccount(){

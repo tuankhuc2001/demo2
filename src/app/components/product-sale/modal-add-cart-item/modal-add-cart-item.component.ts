@@ -69,14 +69,11 @@ export class ModalAddCartItemComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ProductDetail'] && !changes['ProductDetail'].firstChange) {
-      console.log('ProductDetail changed:', changes['ProductDetail'].currentValue);
       this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: 0})
       this.enableDescription = false
       this.plus = true
 }
   }
-
-  /////////////// Form Handling
 
   editPriceValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
     if (!control.value) {
@@ -155,8 +152,6 @@ export class ModalAddCartItemComponent implements OnChanges {
       });
     }
   }
-  //////////////////////// 
-
 
   createNotification(type: notificationEnum, content: string): void {
     this.notification.create(

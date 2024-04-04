@@ -35,10 +35,6 @@ export class CardOrderDetailComponent implements OnInit {
     orderDetailResponseList: []
   };
 
-  handlelog(): void {
-    console.log(this.listCardOrderDetail, "AppList")
-  }
-
   constructor() { }
 
   ngOnInit() {
