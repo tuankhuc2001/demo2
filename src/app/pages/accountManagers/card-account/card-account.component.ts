@@ -1,4 +1,5 @@
 import { Component, Input, Output, SimpleChanges, OnChanges, EventEmitter } from '@angular/core';
+import { IUser, IUserRequest, ItemUser } from '../../../types/user';
 
 @Component({
   selector: 'app-card-account',
@@ -12,10 +13,18 @@ export class CardAccountComponent implements OnChanges {
   constructor() { }
 
   @Input() listUser :any;
+  itemAccount: ItemUser = {
+    id: 1,
+    phone: "string",
+    password: "string" ,
+    address: "string",
+    fullname: "string",
+    role: "string",
+  }
   isVisibleModalUpdateAccount: boolean = false;
 
 
-  public formatRole(role: string): string {
+  formatRole(role: string): string {
     switch (role) {
       case 'ROLE_ADMIN':
         return 'Admin';
@@ -32,8 +41,11 @@ export class CardAccountComponent implements OnChanges {
     this.isVisibleModalUpdateAccount = false;
   }
 
-  handleOpenUpdateAccount(){
-    this.isVisibleModalUpdateAccount = true;
+  handleOpenUpdateAccount(item: ItemUser){
+    if(item.role !== 'ROLE_ADMIN') {
+      this.isVisibleModalUpdateAccount = true;
+      this.itemAccount = item;
+    }
   }
   
   ngOnChanges(changes: SimpleChanges) {

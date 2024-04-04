@@ -6,7 +6,7 @@
         <img
           nz-image
           width="80%"
-          nzSrc="http://{{item.productResponse?.mageUrl}}"
+          nzSrc="http://{{item.productResponse?.imageUrl}}"
           nzDisablePreview="true"
         />
       </div>
@@ -26,19 +26,19 @@
               X
               </div>
               <div nz-col nzSpan="9" >
-                <input nz-input type="number"class="quantity" [ngModel] = "item?.quantity" (blur)="handleQuantityBlur(item, $event)" (input)="onInputQuantity(item, $event)" />
+                <input nz-input type="number"class="quantity" [disabled]="item.disable === false ? false : true" [ngModel] = "item?.quantity" (blur)="handleQuantityBlur(item, $event)" (input)="onInputQuantity(item, $event)" />
                 <span *ngIf="item.showErrorQuantityNoEnter" class="showErrorQuantityNoEnter">Vui lòng nhập số lượng.</span>
                 <span *ngIf="item.showErrorQuantityExceed" class="showErrorQuantityExceed">Số lương vượt quá cho phép.</span>
 
               </div>
             </div>
             <div nz-row >
-              <div nz-col nzSpan="5" class="isPlus">
-                <span nz-icon nzType="plus" nzTheme="outline" *ngIf="item.plus == true" (click)="handlePlus(item)" ></span>
-                <span nz-icon nzType="minus" nzTheme="outline" *ngIf="item.plus == false" style="color: red;" (click)="handlePlus(item)"></span>
+              <div nz-col nzSpan="5" [class]="item.disable === true? 'isPlus_disable':'isPlus'">
+                <span nz-icon nzType="plus" nzTheme="outline" *ngIf="item.plus == true" (click)="!item.disable && handlePlus(item)" ></span>
+                <span nz-icon nzType="minus" nzTheme="outline" *ngIf="item.plus == false" style="color: red;" (click)="!item.disable && handlePlus(item)"></span>
               </div>
               <div nz-col nzSpan="9">
-                <input  nz-input type="number" class="rate" [ngModel] = "item?.rate" (blur)="handleRateBlur(item, $event)" (input)="onInputRate(item, $event)" />
+                <input  nz-input type="number" class="rate" [disabled]="item.disable === false ? false : true" [ngModel] = "item?.rate" (blur)="handleRateBlur(item, $event)" (input)="onInputRate(item, $event)" />
                 <span *ngIf="item.showRateError" class="showRateError">Vui lòng nhập giá chênh lệch.</span>
               </div>
               <div nz-col nzSpan="10" class="finalPrice">
@@ -46,12 +46,12 @@
               </div>
             </div>
           </div>
-          <div class="content_editQuantity" nz-col nzSpan="4">
+          <div class="content_editQuantity" nz-col nzSpan="4" >
             <div>
-              <span class="editQuantity_up" nz-icon nzType="caret-up" nzTheme="outline" (click)="handlePlusQuantity(item)"></span>
+              <span [class]="item.disable === true? 'editQuantity_up_disable': 'editQuantity_up'" nz-icon nzType="caret-up" nzTheme="outline" (click)="!item.disable && handlePlusQuantity(item)"></span>
             </div>
             <div>
-              <span class="editQuantity_down" nz-icon nzType="caret-down" nzTheme="outline" (click)="handleMinusQuantity(item)"></span>
+              <span [class]="item.disable === true? 'editQuantity_down_disable':'editQuantity_down'" nz-icon nzType="caret-down" nzTheme="outline" (click)="!item.disable && handleMinusQuantity(item)"></span>
             </div>
           </div>
         </div>
