@@ -22,7 +22,8 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
   isLoading: boolean = true
   private destroyed$ = new Subject()
 
-  constructor(private notification: NzNotificationService,
+  constructor(
+    private notification: NzNotificationService,
     private searchService: SearchService,
     private productService: ProductService,
     private router: Router,
@@ -89,7 +90,7 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
         this.isLoading = false
         if (error.status == 403) {
           this.router.navigate([routerNames.signInPage]);
-          this.createNotification('error', "Dang nhap lai")
+          this.createNotification('error', "Phiên đăng nhập hết hạn")
         }
       }
     })
