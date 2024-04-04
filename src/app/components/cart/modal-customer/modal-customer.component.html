@@ -1,4 +1,4 @@
-<cModal [width]="'90%'" [isVisible]="isVisibleModalAddCustomer" (closeModal)="handleCloseModalCustomer()">
+<cModal [width]="'90%'" [isVisible]="isVisibleModalAddCustomer" (closeModal)="handleCloseModalCustomer()" [footer]="false">
     <Content>
         <div style=" height: 40vh; min-height: 300px;overflow: hidden;" class="pd-4 modal-custom"
             [style]="listCustomer.length > 0 ? heightModalData : heightModalNoData">
