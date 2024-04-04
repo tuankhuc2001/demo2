@@ -44,14 +44,17 @@ export class ModalCustomerComponent {
   }
 
   handleSearch(value: string) {
-    this.customerService.getCustomer(value).subscribe({
-      next: (res) => {
-        this.listCustomer = res.content.list
-      },
-      error: (error) => {
-        this.createNotification('error', error)
-      }
-    })
+    setTimeout(() => {
+      this.customerService.getCustomer(value).subscribe({
+        next: (res) => {
+          this.listCustomer = res.content.list
+        },
+        error: (error) => {
+          this.createNotification('error', error)
+        }
+      })
+    }, 1000)
+    
   }
 
   ngOnInit(): void {
