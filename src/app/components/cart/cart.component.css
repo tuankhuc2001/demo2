@@ -45,6 +45,7 @@
     position: fixed;
     background-color: white;
     bottom: 0px;
+    margin-bottom: 3vw;
 }
 
 .customer_img {
