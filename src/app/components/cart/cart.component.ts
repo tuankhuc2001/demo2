@@ -148,6 +148,8 @@ export class CartComponent implements OnDestroy, OnInit {
     this.cartService.getCart(this.user.id).subscribe({
       next: (res) => {
         this.isLoading = false
+        console.log(res);
+        
         this.listCard = res.content.list
         this.listCart = res.content.list
         this.listCustomer = res?.content.list      
