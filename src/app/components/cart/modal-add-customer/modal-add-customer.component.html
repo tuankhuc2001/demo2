@@ -1,26 +1,12 @@
-<cModal [isVisible]="isVisible" [width]="'90vw'" title="Thêm mới khách hàng" [buttonX]="true" (closeModal)="handleCloseAddCustomer()">
+<cModal [isVisible]="isVisible" [width]="'90vw'" [buttonX]="false" (closeModal)="handleCloseAddCustomer()" >
     <Content>
-        <div class="cover" style="height: 40vh; min-height: 300px;">
-            <div nz-col nzSpan="24" class="center">
-                <form class="input-control" nz-col nz-form [formGroup]="validateFormAddCustomer">
-                    <nz-form-item>
-                        <nz-form-control class="margin-top-30" [nzSpan]="24" [nzErrorTip]="nameCustomerValidator">
-                            <nz-input-group>
-                                <label class="input-label">Tên khách hàng:</label>
-                                <input class="input-edit"placeholder="Tên khách hàng..." nz-input formControlName="nameCustomer" />
-                            </nz-input-group>
-                            <ng-template #nameCustomerValidator let-control>
-                                @if (control.errors?.['required']) {
-                                Vui lòng nhập tên khách hàng!
-                                }
-                                @if (control.errors?.['confirm']) {
-                                Tên khách hàng không được vượt quá 255 ký tự!
-                                }
-                            </ng-template>
-                        </nz-form-control>
-                    </nz-form-item>
-                </form>
-            </div>
+        <div class="header">
+            <span>Thêm mới khách hàng</span>
+            <button nz-button (click)="handleCloseAddCustomer()">
+                <span class="close_button" nz-icon nzType="close" nzTheme="outline"></span>
+            </button>
+        </div>
+        <div class="container">
             <div nz-col nzSpan="24" class="center">
                 <form class="input-control" nz-col nz-form [formGroup]="validateFormAddCustomer">
                     <nz-form-item>
@@ -39,14 +25,26 @@
                             </ng-template>
                         </nz-form-control>
                     </nz-form-item>
-                </form>
-            </div>
-            <div nz-col nzSpan="24" class="center">
-                <form class="input-control" nz-form [formGroup]="validateFormAddCustomer">
+                    <nz-form-item>
+                        <nz-form-control [nzSpan]="24" [nzErrorTip]="nameCustomerValidator">
+                            <nz-input-group>
+                                <label class="input-label">Họ và tên</label>
+                                <input class="input-edit"placeholder="Họ và tên..." nz-input formControlName="nameCustomer" />
+                            </nz-input-group>
+                            <ng-template #nameCustomerValidator let-control>
+                                @if (control.errors?.['required']) {
+                                Vui lòng nhập tên khách hàng!
+                                }
+                                @if (control.errors?.['confirm']) {
+                                Tên khách hàng không được vượt quá 255 ký tự!
+                                }
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
                     <nz-form-item>
                         <nz-form-control [nzSpan]="24" [nzErrorTip]="addressValidator">
                             <nz-input-group>
-                                <label class="input-label">Địa chỉ:</label>
+                                <label class="input-label">Địa chỉ</label>
                                 <input class="input-edit" placeholder="Địa chỉ..." nz-input formControlName="address" />
                             </nz-input-group>
                             <ng-template #addressValidator let-control>

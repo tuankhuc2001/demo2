@@ -62,22 +62,8 @@
     align-items: center;
 }
 
-.button-close {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    height: 30px;
-    width: 40px;
-    background-color: rgb(189, 89, 89);
-    font-weight: bold;
-}
-
 .width-90{
     width: 90%;
-}
-
-.margin-top-30{
-    margin-top: 30px;
 }
 
 .input-edit{
@@ -89,6 +75,6 @@
     font-weight: 600;
 }
 
-.cover{
-    padding: 20px;
+.container{
+    padding: 0 3vw 3vw 3vw;
 }
