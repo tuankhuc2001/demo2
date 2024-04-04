@@ -54,7 +54,6 @@ export class OrderDetailComponent {
       next: (res) => {
         this.listOrderAndDetail = res.content.list
         this.listCardOrderDetail = res.content.list[0]
-        console.log(res.content.list[0])
       }
     })
   }

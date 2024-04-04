@@ -4,7 +4,7 @@ import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, Valida
 import { Router } from '@angular/router';
 
 import { UserService } from '../../../services/user.service';
-import { IAddUser, IUser, IUserRequest } from '../../../types/user';
+import { IUserRequest } from '../../../types/user';
 
 
 @Component({
@@ -41,8 +41,6 @@ export class ModalAddAccountComponent implements OnInit {
 
   handleChangeRole(event: string) {
     this.selectedValue = event
-    console.log(this.selectedValue);
-    
   }
 
   handleAddAccount(){
