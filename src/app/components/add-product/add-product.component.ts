@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
-import {  HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
+import { debounceTime, filter, takeUntil } from 'rxjs/operators';
 import {
   AbstractControl,
   FormControl,
@@ -16,6 +17,8 @@ import { IProduct } from '../../types/product';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { notificationEnum } from '../../utils/notificationEnum';
 import { Location } from '@angular/common';
+import { Subject } from 'rxjs';
+import { SearchService } from '../../services/search.service';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -38,8 +41,11 @@ export class AddProductComponent {
     private http: HttpClient,
     private fb: NonNullableFormBuilder,
     private notification: NzNotificationService,
-    private location: Location
-  ) {}
+    private location: Location,
+  ) { }
+
+  listProduct: IProduct[] = [];
+  currentTime: Date = new Date();
 
   product: IProduct = {
     id: 0,
@@ -58,6 +64,7 @@ export class AddProductComponent {
   };
 
   fileList: NzUploadFile[] = [];
+  private $destroy = new Subject()
 
   loading = false;
 
@@ -71,6 +78,7 @@ export class AddProductComponent {
     this.previewImage = file.url || file.preview;
     this.previewVisible = true;
   };
+
   handleCallApiImage(): void {
     const formData = new FormData();
     this.fileList.forEach((file: any) => {
@@ -127,7 +135,7 @@ export class AddProductComponent {
   nameProductValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -139,7 +147,7 @@ export class AddProductComponent {
   originValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -151,7 +159,7 @@ export class AddProductComponent {
   unitValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -163,7 +171,7 @@ export class AddProductComponent {
   providerValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -175,7 +183,7 @@ export class AddProductComponent {
   expireDateValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -184,15 +192,23 @@ export class AddProductComponent {
     }
   };
 
-  phoneNumberValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 11) {
+  phoneNumberValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.toString().length > 9) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
-    } else if (control.value.length < 10) {
+    } else if (control.value.toString().length <= 8) {
       return { confirm: true, error: true };
+    } else {
+      return {}
+    }
+  }
+
+  codeProductValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length < 17 || control.value.length > 17 ) {
+      return { confirm: true, error: true };
+    } else if (control.value === null) {
+      return { required: true };
     } else {
       return {};
     }
@@ -208,6 +224,7 @@ export class AddProductComponent {
     unit: FormControl<string>;
     expiredDate: FormControl<string>;
     phoneNumber: FormControl<string>;
+    codeProduct: FormControl<string>;
   }> = this.fb.group({
     nameProduct: ['', [Validators.required, this.nameProductValidator]],
     floorPrice: [0, [Validators.required, this.floorPriceValidator]],
@@ -218,6 +235,7 @@ export class AddProductComponent {
     unit: ['', [Validators.required, this.unitValidator]],
     expiredDate: ['', [Validators.required, this.expireDateValidator]],
     phoneNumber: ['', [Validators.required, this.phoneNumberValidator]],
+    codeProduct: ['MSP' + `${this.currentTime.getFullYear()}${(this.currentTime.getMonth() + 1).toString().padStart(2, '0')}${this.currentTime.getDate().toString().padStart(2, '0')}${this.currentTime.getHours().toString().padStart(2, '0')}${this.currentTime.getMinutes().toString().padStart(2, '0')}${this.currentTime.getSeconds().toString().padStart(2, '0')}`, [Validators.required, this.codeProductValidator]],
   });
 
   handleNavigate(): void {
@@ -236,7 +254,7 @@ export class AddProductComponent {
         (v) => {
           this.fileList = [];
           this.msg.success('upload successfully');
-          addProduct.imageUrl = v.body.message  
+          addProduct.imageUrl = v.body.message
           this.productService.addProduct(addProduct).subscribe({
             next: (res) => {
               this.createNotification(notificationEnum.success, res.message);
@@ -277,13 +295,12 @@ export class AddProductComponent {
         expiredDate: this.validateAddProductForm.value.expiredDate
           ? this.validateAddProductForm.value.expiredDate
           : '',
-        codeProduct: this.product.codeProduct,
+        codeProduct: this.validateAddProductForm.value.codeProduct
+          ? this.validateAddProductForm.value.codeProduct
+          : '',
         description: this.product.description,
         imageUrl: this.product.imageUrl
       };
-
-
-
     } else {
       Object.values(this.validateAddProductForm.controls).forEach((control) => {
         if (control.invalid) {

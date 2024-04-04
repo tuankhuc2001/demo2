@@ -39,7 +39,7 @@ export class ModalDeleteSingleComponent implements OnChanges {
     rate: 1,
     plus: false,
     editPrice: 1,
-    isDisable: false,
+    disable: false,
   };
   
   ngOnChanges(changes: SimpleChanges): void {
