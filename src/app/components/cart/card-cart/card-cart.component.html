@@ -2,7 +2,7 @@
 <cCard *ngFor="let item of listCard[0]?.cartItemResponseSet">
   <Content>
     <div class="main_card" nz-row>
-      <div nz-col nzSpan="8" class="card_img">
+      <div nz-col nzSpan="8" nzMd="6" class="card_img">
         <img
           nz-image
           width="80%"
@@ -10,7 +10,7 @@
           nzDisablePreview="true"
         />
       </div>
-      <div nz-col nzSpan="16" class="card_content">
+      <div nz-col nzSpan="16" nzMd="18" class="card_content">
         <div class="content_title">
           <p class="content_nameProduct">{{ item?.productResponse?.nameProduct }}</p>
           <p class="content_delete"><span nz-icon nzType="close" nzTheme="outline" (click)="handleOpenDeleteSingle(item)"></span></p>
@@ -32,7 +32,7 @@
 
               </div>
             </div>
-            <div nz-row >
+            <div nz-row class="card_bolow" >
               <div nz-col nzSpan="5" [class]="item.disable === true? 'isPlus_disable':'isPlus'">
                 <span nz-icon nzType="plus" nzTheme="outline" *ngIf="item.plus == true" (click)="!item.disable && handlePlus(item)" ></span>
                 <span nz-icon nzType="minus" nzTheme="outline" *ngIf="item.plus == false" style="color: red;" (click)="!item.disable && handlePlus(item)"></span>
