@@ -42,6 +42,7 @@ export class ModalAddOrderComponent {
   };
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
   @Output() getCart: EventEmitter<void> = new EventEmitter();
+  @Output() getProductSale: EventEmitter<void> = new EventEmitter
 
   handleCloseModal() {
     this.closeModal.emit();
@@ -53,6 +54,7 @@ export class ModalAddOrderComponent {
         this.createNotification('success', res.message)
         this.closeModal.emit();
         this.getCart.emit();
+        this.getProductSale.emit();
       },
       error: (error) => {
         this.createNotification('error', error)

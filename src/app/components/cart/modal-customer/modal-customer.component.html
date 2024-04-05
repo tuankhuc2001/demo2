@@ -1,6 +1,6 @@
 <cModal [width]="'90%'" [isVisible]="isVisibleModalAddCustomer" (closeModal)="handleCloseModalCustomer()" [footer]="false">
     <Content>
-        <div style=" height: 40vh; min-height: 300px;overflow: hidden;" class="pd-4 modal-custom"
+        <div class="pd-4 modal-custom"
             [style]="listCustomer.length > 0 ? heightModalData : heightModalNoData">
             <div class="form-control">
                 <div class="d-flex jct-bw al-item-ct container-input">
@@ -26,10 +26,12 @@
                     </div>
                 </div>
             </div>
-            <div class="btn-container min-height" [style]="listCustomer.length > 0 ? displayNone:displayBlock">
-                <button class="btn-add-customer" (click)="handleOpenAddCustomer()">
-                    <span nz-icon nzType="user-add" nzTheme="outline"></span>
-                    Thêm khách hàng</button>
+            <div class="btn-container" [style]="listCustomer.length > 0 ? displayNone:displayBlock">
+                <div class="btn-cover">
+                    <button class="btn-add-customer" (click)="handleOpenAddCustomer()">
+                        <span nz-icon nzType="user-add" nzTheme="outline"></span>
+                        Thêm khách hàng</button>
+                </div>
             </div>
         </div>
     </Content>
