@@ -27,6 +27,8 @@ export class CardWarehouseComponent {
 
   @Output() productIdEmit: EventEmitter<IProduct> = new EventEmitter();
 
+  token = localStorage.getItem("token")
+
   handleProductIdEmit(productId: IProduct) {
     this.productIdEmit.emit(productId)
   }

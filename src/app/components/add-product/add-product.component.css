@@ -59,6 +59,12 @@
 
 .codeProduct {
   padding: 2vw 1vw;
+  font-size: 3.5vw;
+  background-color: #e7dcdc;
+}
+
+.codeProduct:disabled{
+  background-color: aqua;
 }
 
 .container {

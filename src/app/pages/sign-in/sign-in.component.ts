@@ -21,8 +21,8 @@ export class SignInComponent {
     password: FormControl<string>;
     remember: FormControl<boolean>;
   }> = this.fb.group({
-    userName: ['', [Validators.required]],
-    password: ['', [Validators.required]],
+    userName: ['0396179411', [Validators.required]],
+    password: ['admin', [Validators.required]],
     remember: [true]
   });
 
@@ -65,6 +65,8 @@ export class SignInComponent {
       }, 
       error: (error: Error) => {
         this.isLoading = false
+        console.log(error);
+        
         this.createNotification("error", "Sai tài khoản hoặc mật khẩu")
       }
     })
