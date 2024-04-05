@@ -8,7 +8,7 @@
           <nz-form-item>
             <nz-form-control [nzErrorTip]="userValidator">
               <nz-input-group>
-                <input nz-input formControlName="fullname" />
+                <input nz-input class="inputs" nz-input formControlName="fullname" />
               </nz-input-group>
               <ng-template #userValidator let-control>
                 @if (control.errors?.['required']) {
@@ -28,7 +28,7 @@
           <nz-form-item>
             <nz-form-control [nzSpan]="24" [nzErrorTip]="addressValidator">
               <nz-input-group>
-                <input nz-input formControlName="address" />
+                <input nz-input class="inputs" nz-input formControlName="address" />
               </nz-input-group>
               <ng-template #addressValidator let-control>
                 @if (control.errors?.['required']) {
@@ -48,7 +48,7 @@
           <nz-form-item>
             <nz-form-control [nzSpan]="24" [nzErrorTip]="phoneValidator">
               <nz-input-group>
-                <input nz-input formControlName="phone" />
+                <input nz-input class="inputs" nz-input formControlName="phone" />
               </nz-input-group>
               <ng-template #phoneValidator let-control>
                 @if (control.errors?.['required']) {
@@ -73,7 +73,7 @@
                 formControlName="password"
                 nz-input
                 placeholder="Password"
-                class="input-login"
+                class="input"
               />
             </nz-input-group>
             <ng-template #suffixTemplate>
