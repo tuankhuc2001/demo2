@@ -65,6 +65,8 @@ export class SignInComponent {
       }, 
       error: (error: Error) => {
         this.isLoading = false
+        console.log(error);
+        
         this.createNotification("error", "Sai tài khoản hoặc mật khẩu")
       }
     })

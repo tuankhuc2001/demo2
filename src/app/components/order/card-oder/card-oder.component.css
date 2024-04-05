@@ -99,3 +99,33 @@
   display: flex;
   justify-content: flex-end;
 }
+
+@media (min-width: 768px) {
+  .codeOder-card {
+    font-size: 3.5vw;
+  }
+  
+  .nameCustomer-card {
+    font-size: 3.5vw;
+  }
+  
+  .textOder-card {
+    font-size: 3vw;
+  }
+  
+  .IconOder-card {
+    font-size: 3vw;
+  }
+  
+  .totalPrice-card {
+    font-size: 3.5vw;
+  }
+  
+  .totalDetail-card {
+    font-size: 3.5vw;
+  }
+  
+  .status-card {
+    font-size: 3vw;
+  }
+}
