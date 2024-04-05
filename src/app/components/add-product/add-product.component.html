@@ -22,7 +22,7 @@
         <nz-form-item>
           <nz-form-control [nzSpan]="24" [nzErrorTip]="codeProductValidator" class="margin-tb-quantity">
             <nz-input-group>
-              <input class="codeProduct" nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly />
+              <input class="codeProduct" nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly/>
             </nz-input-group>
             <ng-template #codeProductValidator let-control>
               @if (control.errors?.['required']) {
