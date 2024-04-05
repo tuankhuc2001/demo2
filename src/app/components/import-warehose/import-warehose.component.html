@@ -1,4 +1,7 @@
-<div class="main">
+<div *ngIf="isLoading" class="loading-overlay">
+  <div class="spinner"></div>
+</div>
+<div *ngIf="!isLoading" class="main">
   <app-card-import-warehouse 
     [listCard]="listProduct"
     (onClickCard)="handleOpenModalupdateProductQuantity($event)"

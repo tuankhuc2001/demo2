@@ -21,31 +21,31 @@
 .nameProduct {
     display: flex;
     justify-content: end;
-    font-size: 4vw;
+    font-size: 4.5vw;
 }
 
 .editPrice {
-    font-size: 4vw;
+    font-size: 4.5vw;
     color: #1E5993;
 }
 
 .quantity {
     display: flex;
     justify-content: flex-end;
-    font-size: 4vw;
+    font-size: 4.5vw;
     font-weight: bold;
     color: #1E5993;
 }
 
 .unit {
-    font-size: 4vw;
+    font-size: 4.2vw;
     color: #afafaf;
 }
 
 .totalPriceProduct {
     display: flex;
     justify-content: flex-end;
-    font-size: 4vw;
+    font-size: 4.5vw;
     font-weight: bold;
     color: #b31312;
 }

@@ -1,18 +1,18 @@
-<cModal [width]="'90%'" [isVisible]="isVisibleModalAddCustomer" (closeModal)="handleCloseModalCustomer()">
+<cModal [width]="'90%'" [isVisible]="isVisibleModalAddCustomer" (closeModal)="handleCloseModalCustomer()" [footer]="false">
     <Content>
-        <div style=" height: 40vh; min-height: 300px;" class="pd-4 modal-custom"
+        <div style=" height: 40vh; min-height: 300px;overflow: hidden;" class="pd-4 modal-custom"
             [style]="listCustomer.length > 0 ? heightModalData : heightModalNoData">
             <div class="form-control">
                 <div class="d-flex jct-bw al-item-ct container-input">
                     <span (click)="handleSearch(textSearch)" nz-icon nzType="search" nzTheme="outline"
                         class="font-size-3vw icon-search" style="padding-right: 8px;"></span>
-                    <input (keyup.enter)="handleSearch(textSearch)" type="text" placeholder="Tìm kiếm ..."
+                    <input (ngModelChange)="handleSearch($event)" (keyup.enter)="handleSearch(textSearch)" type="text" placeholder="Tìm kiếm ..."
                         class="input-search" nz-input style="border: none;" [(ngModel)]="textSearch">
                     <span nz-icon nzType="close" nzTheme="outline" class="font-size-3vw  icon-search"
                         style="cursor: pointer;" (click)="handleCloseModalCustomer()"></span>
                 </div>
             </div>
-            <div style="padding-top: 28px;">
+            <div style="padding-top: 7vw;">
                 <div class="d-flex" style="padding-top: 4px; border-bottom: 1px solid #ccc;"
                     *ngFor="let item of listCustomer" (click)="handleUpdateCartCustomer(item.id)">
                     <div nz-col [nzSpan]="6" class="d-flex jct-ct">

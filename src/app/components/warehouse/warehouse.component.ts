@@ -18,13 +18,15 @@ export class WarehouseComponent implements OnInit, OnDestroy {
 
   constructor(
     private searchService: SearchService,
-    private producService: ProductService, 
+    private producService: ProductService,
     private notification: NzNotificationService,
     private userService: UserService,
     private router: Router
   ) { }
 
   private $destroy = new Subject()
+
+  isLoading: boolean = true
 
   listProduct: IProduct[] = [];
   productItem: IProduct = {
@@ -67,14 +69,15 @@ export class WarehouseComponent implements OnInit, OnDestroy {
         }
       })
 
-      this.userService.getUser().subscribe({
-        next: (res: IUser) => {
-          this.user = res
-        }
-      })
+    this.userService.getUser().subscribe({
+      next: (res: IUser) => {
+        this.user = res
+      }
+    })
   }
 
   handleGetProduct(textSearch: string) {
+    this.isLoading = true
     this.producService.getProductWareHouse(this.user.id, textSearch).subscribe({
       next: (v) => {
         if (v.status == false) {
@@ -83,20 +86,17 @@ export class WarehouseComponent implements OnInit, OnDestroy {
         else {
           this.listProduct = v.content.list
         }
+        this.isLoading = false
       },
       error: (error) => {
-        if (error.status == 403) {
-          this.handleRefreshToken();
-        }else{
-          error.error.messageError.map((e: string) => {
-            this.notification.create("error", `${e}`, "");
-          })
-        }
-       
+        error.error.messageError.map((e: string) => {
+          this.notification.create("error", `${e}`, "");
+          this.isLoading = false
+        })
       }
     })
   }
-  
+
   handleSearch(textSearch: string) {
     this.handleGetProduct(textSearch);
   }
