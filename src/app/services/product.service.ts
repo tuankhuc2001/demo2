@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpRequest,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, filter } from 'rxjs';
 import { IProduct, IRequestProduct, IResponseProduct } from '../types/product';
 import { apiProduct } from '../constant/api';
@@ -12,10 +7,9 @@ import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  constructor(private http: HttpClient, private userService: UserService) {}
+  constructor(private http: HttpClient, private userService: UserService) { }
 
   headerUpload(): HttpHeaders {
-    console.log('GODA');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     });
@@ -70,7 +64,7 @@ export class ProductService {
 
   getProduct(): Observable<IResponseProduct> {
     const headers = this.userService.header();
-    return this.http.get<IResponseProduct>(`${apiProduct.getProductWarehouse}}`,{ headers });
+    return this.http.get<IResponseProduct>(`${apiProduct.getProductWarehouse}}`, { headers });
   }
 
   updateQuantity(id: number, payload: any): Observable<IResponseProduct> {

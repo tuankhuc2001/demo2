@@ -1,1 +1,4 @@
-<app-card-oder [listCard]="listOrder" (onClickCard)="handleGetOrderDetail($event)"></app-card-oder>
+<div *ngIf="isLoading" class="loading-overlay">
+    <div class="spinner"></div>
+</div>
+<app-card-oder *ngIf="!isLoading" [listCard]="listOrder" (onClickCard)="handleGetOrderDetail($event)"></app-card-oder>

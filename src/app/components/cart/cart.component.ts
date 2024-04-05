@@ -27,7 +27,7 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   isVisibleModalCustomer: boolean = false;
-  isLoading: boolean = false;
+  isLoading: boolean = true;
   isVisibleDeleteAll: boolean = false;
   isVisibleDeleteSingle: boolean = false;
   isVisibleAddOrder: boolean = false;
@@ -38,7 +38,6 @@ export class CartComponent implements OnDestroy, OnInit {
   idCartCustomer: number = 0;
 
   listCard: any[] = [];
-  listCart: ICart[] = [];
   itemCartItem: ICartItem = {
     id: 1,
     productResponse: {
@@ -109,10 +108,6 @@ export class CartComponent implements OnDestroy, OnInit {
     this.router.navigate([routerNames.homePage + "/" + routerNames.productSalePage]);
   }
 
-  handleValidate(): void {
-
-  }
-
   handleOpenModalDeleteAll(idCart: number) {
     this.isVisibleDeleteAll = true;
     this.idCartDelete = idCart;
@@ -147,7 +142,6 @@ export class CartComponent implements OnDestroy, OnInit {
       next: (res) => {
         this.isLoading = false
         this.listCard = res.content.list
-        this.listCart = res.content.list
         this.listCustomer = res?.content.list      
       },
       error: (error) => {
