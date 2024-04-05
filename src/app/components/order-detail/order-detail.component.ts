@@ -5,6 +5,9 @@ import { Location } from '@angular/common';
 import { IOrderAndOrderDetail } from '../../types/order';
 import { OrderService } from '../../services/order.service';
 import { OrderDetailService } from '../../services/order-detail.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { Router } from '@angular/router';
+import { routerNames } from '../../constant/router';
 
 @Component({
   selector: 'app-order-detail',
@@ -14,6 +17,8 @@ import { OrderDetailService } from '../../services/order-detail.service';
 export class OrderDetailComponent {
 
   constructor(
+    private router: Router, 
+    private notification: NzNotificationService,
     private orderService: OrderService,
     private orderDetailService: OrderDetailService,
     private location: Location) { }
@@ -54,7 +59,6 @@ export class OrderDetailComponent {
       next: (res) => {
         this.listOrderAndDetail = res.content.list
         this.listCardOrderDetail = res.content.list[0]
-        console.log(res.content.list[0])
       }
     })
   }
@@ -63,8 +67,23 @@ export class OrderDetailComponent {
     this.orderService.getOrderDetails().subscribe({
       next: (value: number) => {
         this.handleGetOrderDetail(value)
+      },
+      error: (error) => {
+        this.isLoading = false
+        if (error.status == 403) {
+          this.router.navigate([routerNames.signInPage]);
+          this.createNotification('error', "Phiên đăng nhập hết hạn")
+        }
       }
     })
+  }
+
+  createNotification(type: string, content: string): void {
+    this.notification.create(
+      type,
+      `${content}`,
+      ''
+    );
   }
 
   handleBackOrder() {

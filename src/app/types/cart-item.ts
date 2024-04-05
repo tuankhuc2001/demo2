@@ -8,7 +8,7 @@ export interface ICartItem {
   rate: number;
   plus: boolean;
   editPrice: number;
-  isDisable: boolean;
+  disable: boolean;
 }
 
 export interface IResponseCartIem {

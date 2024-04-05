@@ -1,26 +1,12 @@
-<cModal [isVisible]="isVisible" [width]="'80%'" [buttonX]="true" (closeModal)="handleCloseAddCustomer()">
+<cModal [isVisible]="isVisible" [width]="'90vw'" (closeModal)="handleCloseAddCustomer()" [footer]="false" >
     <Content>
-        <div class="cover" style="height: 40vh; min-height: 300px;">
-            <div nz-col nzSpan="24" class="center">
-                <form class="input-control" nz-col nz-form [formGroup]="validateFormAddCustomer">
-                    <nz-form-item>
-                        <nz-form-control class="margin-top-30" [nzSpan]="24" [nzErrorTip]="nameCustomerValidator">
-                            <nz-input-group>
-                                <label class="input-label">Tên khách hàng:</label>
-                                <input class="input-edit"placeholder="Tên khách hàng..." nz-input formControlName="nameCustomer" />
-                            </nz-input-group>
-                            <ng-template #nameCustomerValidator let-control>
-                                @if (control.errors?.['required']) {
-                                Vui lòng nhập tên khách hàng!
-                                }
-                                @if (control.errors?.['confirm']) {
-                                Tên khách hàng không được vượt quá 255 ký tự!
-                                }
-                            </ng-template>
-                        </nz-form-control>
-                    </nz-form-item>
-                </form>
-            </div>
+        <div class="header">
+            <span class="title_add_customer">Thêm mới khách hàng</span>
+            <button class="close_btn" nz-button (click)="handleCloseAddCustomer()">
+                <span class="close_icon" nz-icon nzType="close" nzTheme="outline"></span>
+            </button>
+        </div>
+        <div class="container">
             <div nz-col nzSpan="24" class="center">
                 <form class="input-control" nz-col nz-form [formGroup]="validateFormAddCustomer">
                     <nz-form-item>
@@ -39,14 +25,26 @@
                             </ng-template>
                         </nz-form-control>
                     </nz-form-item>
-                </form>
-            </div>
-            <div nz-col nzSpan="24" class="center">
-                <form class="input-control" nz-form [formGroup]="validateFormAddCustomer">
+                    <nz-form-item>
+                        <nz-form-control [nzSpan]="24" [nzErrorTip]="nameCustomerValidator">
+                            <nz-input-group>
+                                <label class="input-label">Họ và tên</label>
+                                <input class="input-edit"placeholder="Họ và tên..." nz-input formControlName="nameCustomer" />
+                            </nz-input-group>
+                            <ng-template #nameCustomerValidator let-control>
+                                @if (control.errors?.['required']) {
+                                Vui lòng nhập tên khách hàng!
+                                }
+                                @if (control.errors?.['confirm']) {
+                                Tên khách hàng không được vượt quá 255 ký tự!
+                                }
+                            </ng-template>
+                        </nz-form-control>
+                    </nz-form-item>
                     <nz-form-item>
                         <nz-form-control [nzSpan]="24" [nzErrorTip]="addressValidator">
                             <nz-input-group>
-                                <label class="input-label">Địa chỉ:</label>
+                                <label class="input-label">Địa chỉ</label>
                                 <input class="input-edit" placeholder="Địa chỉ..." nz-input formControlName="address" />
                             </nz-input-group>
                             <ng-template #addressValidator let-control>
@@ -61,9 +59,9 @@
                     </nz-form-item>
                 </form>
             </div>
-        </div>
-        <div class="center">
-            <button class="btn-add-customer" (click)="handleAddCustomer()"><span nz-icon nzType="user-add" nzTheme="outline"></span>Lưu khách hàng mới</button>
+            <div class="center">
+                <button class="btn-add-customer" (click)="handleAddCustomer()"><span nz-icon nzType="user-add" nzTheme="outline"></span>Lưu khách hàng mới</button>
+            </div>
         </div>
     </Content>
 </cModal>

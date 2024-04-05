@@ -58,6 +58,7 @@ export class SignInComponent {
     ).subscribe({
       next: (res: ILoginResponse) => {
         this.userService.setUser(res)
+        console.log(res)
         this.isLoading = false
         localStorage.setItem("token",res.token)
         this.createNotification("success", "Đăng nhập thành công")

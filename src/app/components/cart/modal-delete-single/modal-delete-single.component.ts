@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { CartService } from '../../../services/cart.service';
 import { CartItemService } from '../../../services/cart-item.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { ICartItem } from '../../../types/cart-item';
@@ -39,13 +38,13 @@ export class ModalDeleteSingleComponent implements OnChanges {
     rate: 1,
     plus: false,
     editPrice: 1,
-    isDisable: false,
+    disable: false,
   };
+  
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['cartItem'] && !changes['cartItem'].firstChange) {
       this.cartItem = changes['cartItem'].currentValue;
     }
-
   }
 
   handleCloseModal() {
@@ -53,7 +52,6 @@ export class ModalDeleteSingleComponent implements OnChanges {
   }
 
   handleDeleteCartItem(cartItem: ICartItem) {
-    console.log(this.cartItem);
     this.cartItemService.deleteCartItem(cartItem).subscribe({
       next: (res) => {
         this.createNotification('success', res.message)

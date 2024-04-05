@@ -16,7 +16,7 @@
 .productName {
     margin-bottom: 2px;
     color: rgb(82, 82, 82);
-    font-size: 4.4vw;
+    font-size: 5vw;
     font-weight: bold;
 }
 
@@ -36,7 +36,7 @@
 .detailButton {
     min-height: 50px;
     height: 5vw;
-    font-size: 1.5vh;
+    font-size: 3vw;
     border-radius: 25px;
     width: 100%;
     background-color: rgb(30, 89, 147);
@@ -46,7 +46,7 @@
 .cancelButton {
     min-height: 50px;
     height: 5vw;
-    font-size: 1.5vh;
+    font-size: 3vw;
     border-radius: 25px;
     width: 100%;
     background-color: rgb(199, 56, 69);
@@ -56,7 +56,7 @@
 .submitButton {
     min-height: 50px;
     height: 5vw;
-    font-size: 1.5vh;
+    font-size: 3vw;
     border-radius: 25px;
     width: 100%;
     background-color: rgb(12, 111, 99);

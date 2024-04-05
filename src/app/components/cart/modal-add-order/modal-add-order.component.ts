@@ -1,6 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { CartService } from '../../../services/cart.service';
-import { CartItemService } from '../../../services/cart-item.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { OrderService } from '../../../services/order.service';
 import { IOrder } from '../../../types/order';
@@ -70,7 +68,4 @@ export class ModalAddOrderComponent {
       ''
     );
   }
-
-
-
 }

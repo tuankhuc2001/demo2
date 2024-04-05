@@ -68,6 +68,11 @@ export class ProductService {
     );
   }
 
+  getProduct(): Observable<IResponseProduct> {
+    const headers = this.userService.header();
+    return this.http.get<IResponseProduct>(`${apiProduct.getProductWarehouse}}`,{ headers });
+  }
+
   updateQuantity(id: number, payload: any): Observable<IResponseProduct> {
     const headers = this.userService.header();
     return this.http.put<IResponseProduct>(

@@ -82,7 +82,7 @@
                     </form>
                 </div>
             </div>
-            <div *ngIf="enableDescription === true">
+            <div *ngIf="enableDescription === true" [@slideInOut]>
                 <div class="productName">Mô tả ngắn:</div>
                 <div class="descriptionContent">
                     {{ProductDetail.description}}
