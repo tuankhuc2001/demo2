@@ -23,7 +23,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   private $destroy = new Subject()
 
   listOrder: IOrder[] = []
-  isLoading: boolean = false
+  isLoading: boolean = true
 
   ngOnInit(): void {
     this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({

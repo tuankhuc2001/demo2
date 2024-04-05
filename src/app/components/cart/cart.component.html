@@ -1,4 +1,8 @@
-<div class="cart_container">
+<div *ngIf="isLoading" class="loading-overlay">
+  <div class="spinner"></div>
+</div>
+
+<div *ngIf="!isLoading" class="cart_container">
   <div [class]="'header__cart'" nz-row>
     <div nz-col nzSpan="8" (click)="handleBackProductSale()">
       <span class="tag__back" nz-icon nzType="left" nzTheme="outline"></span>
