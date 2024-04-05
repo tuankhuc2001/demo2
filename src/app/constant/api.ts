@@ -9,6 +9,7 @@ export const objectApi = {
     customer: Url + `/customer/`,
     login: Url + `/api/v1/auth/signin`,
     user: Url + `/api/v1/auth/`,
+    loginRefreshToken: Url + `/api/v1/auth/refresh`
 }
 
 export const apiProduct = {

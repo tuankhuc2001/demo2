@@ -119,4 +119,6 @@ export class ModalUpdatePriceComponent {
     }
     return event.target.value;
   }
+
+  
 }

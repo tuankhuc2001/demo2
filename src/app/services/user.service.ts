@@ -45,6 +45,14 @@ export class UserService {
         return headers
     }
 
+    headerRefreshToken(): HttpHeaders {
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.setItem("token", this.user.value.refreshToken)}`
+        });
+        return headers
+    }
+
     headerUpload(): HttpHeaders {
         console.log("GODA");
         const headers = new HttpHeaders({
@@ -70,6 +78,11 @@ export class UserService {
     updateAccount(idUser: number, accountRequest: IUserRequest): Observable<IUpdateUser> {
         const headers = this.header()
         return this.http.put<IAddUser>(`${apiUser.updateAccount}${idUser}`, accountRequest, {headers})
+    }
+
+    loginRefreshToken(refreshToken: string) : Observable<ILoginResponse> {
+        const headers = this.headerRefreshToken()
+        return this.http.post<ILoginResponse>(`${objectApi.loginRefreshToken}`,{token:refreshToken}, {headers})
     }
     
 
