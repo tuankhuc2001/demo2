@@ -46,8 +46,8 @@ export class UserService {
     }
 
     headerUpload(): HttpHeaders {
-        console.log("GODA");
         const headers = new HttpHeaders({
+            'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${localStorage.getItem("token")}`
         });
         return headers

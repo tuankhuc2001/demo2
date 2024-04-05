@@ -21,6 +21,7 @@ export class CardCartComponent implements OnChanges {
 
   totalPrice: number = 0;
   quantity: number = 0;
+  token = localStorage.getItem("token")
 
   cartItemRequest: ICartItem ={
     id: 1,
