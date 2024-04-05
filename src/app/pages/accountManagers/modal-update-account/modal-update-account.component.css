@@ -1,5 +1,5 @@
 .modal_title{
-    color: #3c7265;
+    color: #dd8706;
     padding: 2vw 5vw;
     font-size: 5vw;
     font-weight: 600;
@@ -22,10 +22,20 @@
     font-weight: bold;
 }
 
-.content_info>input {
-    border: 1px solid gray;
+.input {
+    height: 5vw;
     font-size: 3.5vw;
-    width: 100%;
+}
+
+::ng-deep .ant-select-selector {
+    height: 6vw !important;
+    font-size: 3.5vw;
+}
+
+.select_option {
+    height: 5vw;
+    font-size: 3.5vw;
+    background-color: #d14444;
 }
 
 .add_submit {
@@ -50,3 +60,4 @@
     color: white;
     border: none;
 }
+

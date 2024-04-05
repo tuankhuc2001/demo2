@@ -14,7 +14,6 @@
 }
 
 .card_img {
-    aspect-ratio: 1/0.9;
     padding: 1vw 0;
     display: flex;
     justify-content: center;
@@ -24,9 +23,8 @@
 }
 
 .card_img>img {
-
-    width: 80%;
-    height: 95%;
+    aspect-ratio: 1/1;
+    width: 70%;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -38,9 +36,11 @@
 .content_info {
     display: flex;
     padding: 1vw;
+    font-size: 3.5vw;
 }
 
 .content_info>label {
     font-weight: bold;
     margin-right: 1vw;
 }
+
