@@ -1,4 +1,7 @@
-<nz-spin [nzSpinning]="isLoading">
+<div *ngIf="isLoading" class="loading-overlay">
+  <div class="spinner"></div>
+</div>
+  
   <div class="main">
     <div class="main-signIn">
       <div class="img">
@@ -71,6 +74,5 @@
       </span>
     </div>
   </div>
-</nz-spin>
 
 <router-outlet></router-outlet>

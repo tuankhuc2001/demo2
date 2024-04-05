@@ -27,9 +27,6 @@ export class SideBarComponent implements OnInit {
 
   sideDrawerVisible = false;
   currentSubMenu: string | null = null;
-  nameUser: string = this.user.fullname
-  role: string = this.user.role
-  phone: string = this.user.phone
   textSearch: string = ""
 
   handleSearch(e: any) {
@@ -52,9 +49,8 @@ export class SideBarComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUser().subscribe({
       next: (res: IUser) => {
-        this.user = res
+        this.user = res 
       }
     })
-
   }
 }
