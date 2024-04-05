@@ -9,6 +9,9 @@ import { IProduct } from '../../../types/product';
 export class CardImportWarehouseComponent implements OnInit {
   @Input() listCard: IProduct[] = [];
   @Output() onClickCard: EventEmitter<IProduct> = new EventEmitter()
+
+  token = localStorage.getItem("token")
+
   handleOnClickDetail(item: IProduct){ 
     this.onClickCard.emit(item)
   }
