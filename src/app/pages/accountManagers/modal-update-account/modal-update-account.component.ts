@@ -4,7 +4,7 @@ import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, Valida
 import { Router } from '@angular/router';
 
 import { UserService } from '../../../services/user.service';
-import { IAddUser, IUser, IUserRequest } from '../../../types/user';
+import { ItemUser } from '../../../types/user';
 
 @Component({
   selector: 'app-modal-update-account',
@@ -23,11 +23,9 @@ export class ModalUpdateAccountComponent implements OnChanges {
     handleCloseModal() {
     this.closeModal.emit();
   }
-  @Input() idUser: number =0;
 
-  selectedValue = 'ROLE_SALE';
-
-  IUserRequest: IUserRequest ={
+  @Input() itemUser: ItemUser ={
+    id: 0,
     phone: "string",
     password: "string",
     address:"string",
@@ -35,28 +33,25 @@ export class ModalUpdateAccountComponent implements OnChanges {
     role:"s"
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['itemUser'] && !changes['itemUser'].firstChange) {
+      this.itemUser = changes['itemUser'].currentValue;
+    }
+  }
+
+  selectedValue = this.itemUser.role
   passwordVisible = false;
 
   handleChangeRole(event: string) {
     this.selectedValue = event
-    console.log(this.selectedValue);
-    
   }
 
   handleUpdateAccount(){
-
     if (this.validateFormAddUser.valid) {
-      // const updateAccount = {
-      //   password: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
-      //   phone: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
-      //   address: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
-      //   fullname: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
-      //   role: this.selectedValue
-      // }
-      this.IUserRequest.password = this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
-      this.IUserRequest.role = this.selectedValue
+      this.itemUser.password = this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
+      this.itemUser.role = this.selectedValue
       
-      this.userService.updateAccount(this.idUser, this.IUserRequest).subscribe({
+      this.userService.updateAccount(this.itemUser.id, this.itemUser).subscribe({
         next: (v: any) => {
           if (v.status == false) {
             this.notification.create('error', `${v.message}`, '')
@@ -83,11 +78,6 @@ export class ModalUpdateAccountComponent implements OnChanges {
       newPassword: "",
     })
   }
-
-
-  ngOnChanges() {
-  }
-
 
   validateFormAddUser: FormGroup<{
     password: FormControl<string>;

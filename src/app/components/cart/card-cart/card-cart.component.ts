@@ -1,11 +1,8 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { notificationEnum } from '../../../utils/notificationEnum';
 
-import { ICart } from '../../../types/cart';
-import { CartItemRequest, ICartItem } from '../../../types/cart-item';
-import {IProduct} from '../../../types/product'
+import { ICartItem } from '../../../types/cart-item';
 import { CartItemService } from '../../../services/cart-item.service';
 @Component({
   selector: 'app-card-cart',
@@ -47,8 +44,7 @@ export class CardCartComponent implements OnChanges {
     rate: 4,
     plus: false,
     editPrice: 1,
-    isDisable: false,
-  
+    disable: true,
   }
 
   onInputQuantity(item: any, event: any) {
@@ -123,7 +119,6 @@ export class CardCartComponent implements OnChanges {
     }
     item.quantity = (item.quantity ?? 0) - 1;
     this.cartItemRequest.quantity = item.quantity;
-    
     this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
       next: (res) => {
         this.calculateTotalPrice();
@@ -158,7 +153,6 @@ export class CardCartComponent implements OnChanges {
     })
   } 
 
-
   handleRateBlur(item: any, event: any) {
     const value = event.target.value;
     item.showRateError = !value;
@@ -179,7 +173,6 @@ export class CardCartComponent implements OnChanges {
         this.getCart.emit();
       }
     })
-    
   }
 
   handleQuantityBlur(item: any, event: any) {
@@ -197,7 +190,6 @@ export class CardCartComponent implements OnChanges {
         return;
       }
       this.cartItemRequest.quantity = newValue;
-  
       this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
         next: (res) => {
           item.originalQuantity = newValue;

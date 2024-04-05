@@ -24,9 +24,22 @@
     margin-top: 24px;
 }
 
-.title-add-customer {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4vw;
+}
+
+.title_add_customer {
+    font-size: 5vw;
     font-weight: bold;
-    font-size: 16px;
+}
+
+.close_btn {
+    border: none;
+    color: #3d7165;
+    box-shadow: none;
 }
 
 .input-control {
@@ -47,9 +60,11 @@
 }
 
 .btn-add-customer {
+    width: 60vw;
     padding: 8px;
     background-color: #3d7165;
     color: white;
+    font-size: 4.5vw;
     border-radius: 4px;
     border: none;
     cursor: pointer;
@@ -62,33 +77,21 @@
     align-items: center;
 }
 
-.button-close {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    height: 30px;
-    width: 40px;
-    background-color: rgb(189, 89, 89);
-    font-weight: bold;
-}
-
 .width-90{
     width: 90%;
 }
 
-.margin-top-30{
-    margin-top: 30px;
-}
-
 .input-edit{
     border-radius: 5px;
+    padding: 2vw;
+    font-size: 4vw;
+    margin-bottom: 8vw;
 }
 
 .input-label{
-    margin-bottom: 2px;
-    font-weight: 600;
+    font-size: 5vw;
 }
 
-.cover{
-    padding: 20px;
+.container{
+    padding: 0 4vw 6vw 4vw;
 }

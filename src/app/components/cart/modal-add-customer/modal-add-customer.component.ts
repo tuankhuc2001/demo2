@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ICustomerRequest } from '../../../types/customer';
 import { CustomerService } from '../../../services/customer.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';

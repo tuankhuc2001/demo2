@@ -56,43 +56,43 @@
 }
 
 .codeOder-card {
-  font-size: 4vw;
+  font-size: 5vw;
   font-weight: 700;
   color: #3d7165;
 }
 
 .nameCustomer-card {
-  font-size: 4vw;
+  font-size: 5vw;
   font-weight: 700;
 }
 
 .textOder-card {
-  font-size: 3.5vw;
+  font-size: 4vw;
   color: #afafaf;
 }
 
 .IconOder-card {
   color: #afafaf;
-  font-size: 3vw;
+  font-size: 4vw;
   display: flex;
   align-items: center;
   margin-right: 2vw;
 }
 
 .totalPrice-card {
-  font-size: 4vw;
+  font-size: 5vw;
   font-weight: 700;
   margin-bottom: 1.5vw;
 }
 
 .totalDetail-card {
-  font-size: 3.5vw;
+  font-size: 4vw;
   font-weight: 700;
   margin-bottom: 1.5vw;
 }
 
 .status-card {
-  font-size: 3vw;
+  font-size: 4vw;
 }
 
 .flex-end {

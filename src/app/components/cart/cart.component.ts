@@ -1,15 +1,13 @@
-import { Component, Input, OnDestroy, OnInit, } from '@angular/core';
-import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { Component, OnDestroy, OnInit, } from '@angular/core';
+import { Subject } from 'rxjs';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { CartService } from '../../services/cart.service';
 
 import { Router } from '@angular/router';
 import { routerNames } from '../../constant/router';
 import { ICartItem } from '../../types/cart-item';
-import { IProduct } from '../../types/product';
 import { ICart } from '../../types/cart';
 import { IOrder } from '../../types/order';
-import { ICustomer } from '../../types/customer';
 import { IUser } from '../../types/user';
 import { UserService } from '../../services/user.service';
 
@@ -29,7 +27,7 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   isVisibleModalCustomer: boolean = false;
-  isLoading: boolean = false;
+  isLoading: boolean = true;
   isVisibleDeleteAll: boolean = false;
   isVisibleDeleteSingle: boolean = false;
   isVisibleAddOrder: boolean = false;
@@ -40,7 +38,6 @@ export class CartComponent implements OnDestroy, OnInit {
   idCartCustomer: number = 0;
 
   listCard: any[] = [];
-  listCart: ICart[] = [];
   itemCartItem: ICartItem = {
     id: 1,
     productResponse: {
@@ -63,7 +60,7 @@ export class CartComponent implements OnDestroy, OnInit {
     rate: 1,
     plus: false,
     editPrice: 1,
-    isDisable: false,
+    disable: false,
   };
   listCustomer: any[] = [];
   addOrder: IOrder ={
@@ -111,10 +108,6 @@ export class CartComponent implements OnDestroy, OnInit {
     this.router.navigate([routerNames.homePage + "/" + routerNames.productSalePage]);
   }
 
-  handleValidate(): void {
-
-  }
-
   handleOpenModalDeleteAll(idCart: number) {
     this.isVisibleDeleteAll = true;
     this.idCartDelete = idCart;
@@ -149,7 +142,6 @@ export class CartComponent implements OnDestroy, OnInit {
       next: (res) => {
         this.isLoading = false
         this.listCard = res.content.list
-        this.listCart = res.content.list
         this.listCustomer = res?.content.list      
       },
       error: (error) => {
@@ -160,8 +152,6 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   handleOpenModelCustomer(){
-    console.log(this.listCard, "list customer");
-    
     this.idCartCustomer = this.listCard[0].id;
     this.isVisibleModalCustomer = true;
   }

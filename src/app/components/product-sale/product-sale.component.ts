@@ -7,8 +7,9 @@ import { ProductService } from '../../services/product.service';
 import { SearchService } from '../../services/search.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
-import { IUser } from '../../types/user';
 import { UserService } from '../../services/user.service';
+import { IUser } from '../../types/user';
+import { routerNames } from '../../constant/router';
 
 @Component({
   selector: 'app-product-sale',
@@ -18,15 +19,28 @@ import { UserService } from '../../services/user.service';
 export class ProductSaleComponent implements OnDestroy, OnInit {
   listProduct: IProduct[] = []
   totalCartItem: number = 0
-  isLoading: boolean = false
+  isLoading: boolean = true
   private destroyed$ = new Subject()
 
-  constructor( private notification: NzNotificationService,
-    private searchService: SearchService, 
+  constructor(
+    private notification: NzNotificationService,
+    private searchService: SearchService,
     private productService: ProductService,
     private router: Router,
-    private userService: UserService
-  ) {}
+    private userService: UserService) {
+  }
+
+  textSearch: string = ""
+  user: IUser = {
+    id: 0,
+    phone: "",
+    email: "",
+    fullname: "",
+    avatar: "",
+    role: "",
+    token: "",
+    refreshToken: ""
+  }
 
   isVisibleModalAddCartItem: boolean = false
   productDetail: IProduct = {
@@ -45,17 +59,6 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
     imageUrl: ""
   }
 
-  user: IUser = {
-    id: 0,
-    phone: "",
-    email: "",
-    fullname: "",
-    avatar: "",
-    role: "",
-    token: "",
-    refreshToken: ""
-  }
-
   ngOnInit(): void {
     this.searchService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
       next: value => {
@@ -71,14 +74,24 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
   }
 
   handleSearch(value: string) {
-    this.productService.getProductSale(this.user.id, value).subscribe({
+    this.textSearch = value
+    this.handleGetProductSale(this.user.id, value)
+  }
+
+  handleGetProductSale(userId: number, textSearch: string) {
+    this.isLoading = true
+    this.productService.getProductSale(userId, textSearch).subscribe({
       next: (res) => {
         this.listProduct = res.content.list
         this.totalCartItem = res.content.totalCartItem
-        console.log(res)
+        this.isLoading = false
       },
       error: (error) => {
-        this.createNotification('error', error)
+        this.isLoading = false
+        if (error.status == 403) {
+          this.router.navigate([routerNames.signInPage]);
+          this.createNotification('error', "Phiên đăng nhập hết hạn")
+        }
       }
     })
   }

@@ -4,12 +4,12 @@
 <cCard *ngFor="let item of listProduct">
   <Content>
     <div nz-row class="main-card" (click)="handleProductIdEmit(item)">
-      <div nz-col nzSpan="6" class="card-img">
+      <div nz-col nzSpan="7" class="card-img">
         <img nz-image
          nzSrc="http://{{item.imageUrl}}" 
-         alt="songay" nzDisablePreview="true" />
+         alt="Picture" nzDisablePreview="true" />
       </div>
-      <div nz-col nzSpan="12" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div nz-col nzSpan="11" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div nz-row>
           <span class="nameProduct-card">{{item.nameProduct}}</span>
         </div>
@@ -28,7 +28,7 @@
           <span class="floorPrice-card">{{item.floorPrice | number}}</span>
         </div>
         <div nz-row class="flex-end">
-          <span class="textProduct-card">{{item.expiredDate | date: "dd/MM/yyyy"}}</span>
+          <span class="textProduct-card">{{item.expiredDate}}</span>
         </div>
         <div nz-row class="flex-end">
           <span class="textProduct-card">{{item.quantityProduct}}</span>

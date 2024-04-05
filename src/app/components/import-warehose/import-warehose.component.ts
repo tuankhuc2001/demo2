@@ -18,6 +18,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     this.router.navigate(['/addProduct']);
   }
 
+  isLoading: boolean = true
   listProduct: IProduct[] = [];
   totalCartItem: number = 0;
   private destroyed$ = new Subject();
@@ -62,12 +63,15 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
   textSearch :string = ""
 
   handleSearch(value: string) {
+    this.isLoading = true
     this.productService.getProductWareHouse(this.user.id, value).subscribe({
       next: (res) => {
         this.listProduct = res.content.list;
+        this.isLoading = false
       },
       error: (error) => { 
         this.createNotification('error', error);
+        this.isLoading = false
       },
     });
   }
@@ -88,8 +92,6 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     this.userService.getUser().subscribe({
       next: (res: IUser) => {
         this.user = res
-        console.log(res,"resres");
-        
       }
     })
     this.searchService

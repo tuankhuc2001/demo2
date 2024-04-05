@@ -5,6 +5,7 @@ import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { SearchService } from '../../services/search.service';
 import { routerNames } from '../../constant/router';
 import { OrderService } from '../../services/order.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { IOrder } from '../../types/order';
 
 @Component({
@@ -14,6 +15,7 @@ import { IOrder } from '../../types/order';
 })
 export class OrderComponent implements OnInit, OnDestroy {
   constructor(
+    private notification: NzNotificationService,
     private searchService: SearchService,
     private orderService: OrderService,
     private router: Router) { }
@@ -21,7 +23,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   private $destroy = new Subject()
 
   listOrder: IOrder[] = []
-  isLoading: boolean = false
+  isLoading: boolean = true
 
   ngOnInit(): void {
     this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({
@@ -42,14 +44,27 @@ export class OrderComponent implements OnInit, OnDestroy {
       next: (res) => {
         this.listOrder = res.content.list
         this.isLoading = false
-        console.log(res)
+      },
+      error: (error) => {
+        this.isLoading = false
+        if (error.status == 403) {
+          this.router.navigate([routerNames.signInPage]);
+          this.createNotification('error', "Phiên đăng nhập hết hạn")
+        }
       }
     })
   }
 
+  createNotification(type: string, content: string): void {
+    this.notification.create(
+      type,
+      `${content}`,
+      ''
+    );
+  }
+
   handleGetOrderDetail(id: number) {
     this.orderService.setOrderDetail(id)
-    console.log("idOrder", id),
     this.router.navigate([routerNames.orderDetailPage]);
   }
 }

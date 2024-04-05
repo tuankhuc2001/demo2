@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 
-
 import { UserService } from '../../services/user.service';
 import { IUser } from '../../types/user';
 
@@ -31,11 +30,10 @@ export class AccountManagersComponent implements OnInit {
     refreshToken: ""
   }
 
-  listUser: any
+  listUser: any;
 
   handOpenModalAddAccount(){
     this.isVisibleModalAccount = true;
-
   }
 
   handleCloseModelAddAccount(){
@@ -63,7 +61,6 @@ export class AccountManagersComponent implements OnInit {
       ''
     );
   }
-
   ngOnInit() {
     this.userService.getUser().subscribe({
       next: (res: IUser) => {
@@ -71,7 +68,6 @@ export class AccountManagersComponent implements OnInit {
       }
     })
     this.handleGetAllAccount();
-
   }
 
 }

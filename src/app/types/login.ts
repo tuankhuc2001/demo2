@@ -3,7 +3,7 @@ export interface ILoginResponse {
     phone: string,
     password: string,
     email: string,
-    fullName: string,
+    fullname: string,
     avatar: string,
     role: string,
     token: string,

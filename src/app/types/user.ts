@@ -9,6 +9,15 @@ export interface IUser {
   refreshToken: string
 }
 
+export interface ItemUser {
+  id: number;
+  phone: string;
+  password: string ;
+  address: string;
+  fullname: string;
+  role: string;
+}
+
 export interface IUserRequest {
   phone: string;
   password: string ;
