@@ -25,14 +25,14 @@
         (totalPriceChanged)="handleTotalPriceChanged($event)" (getCart)="handleGetCart()"></app-card-cart>
     </div>
 
-    <div style="height: 40vw;"></div>
+    <div class="div__below"></div>
   </div>
 
   <app-modal-delete-single [isVisible]="isVisibleDeleteSingle" (closeModal)="handleCloseModalDeleteSingle()"
     (getCart)="handleGetCart()" [cartItem]="itemCartItem"></app-modal-delete-single>
 
   <div class="footer__cart">
-    <div nz-row style="height: 19vw; padding-left: 3vw;">
+    <div nz-row class="footer_customer">
       <div nz-col nzSpan="3" class="customer_img">
         <img nz-image width="80%" 
           nzSrc="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
@@ -46,7 +46,7 @@
         <span class="info_address">
           {{ listCustomer[0]?.customerResponse?.address }}
         </span>
-        <p *ngIf="listCard[0]?.customerResponse == null">Chọn khách hàng</p>
+        <p class="click_customer" *ngIf="listCard[0]?.customerResponse == null">Chọn khách hàng</p>
       </div>
 
       <div nz-col nzSpan ="8" class="customer_click">
@@ -77,7 +77,7 @@
           (click)="handleOpenModelAddOrder()">
           Tạo đơn
         </button>
-        <app-modal-add-order [isVisible]="isVisibleAddOrder" (closeModal)="handleCloseModelAddOrder()"
+        <app-modal-add-order [isVisible]="isVisibleAddOrder" (getProductSale)="handleBackProductSale()" (closeModal)="handleCloseModelAddOrder()"
           (getCart)="handleGetCart()" [idCart]="idCartOrder" [orderRequest]="addOrder"></app-modal-add-order>
           <app-modal-customer [isVisibleModalAddCustomer]="isVisibleModalCustomer" [idCart]="idCartCustomer" (closeModal)="handleCloseModelCustomer()">
           </app-modal-customer>
