@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Location } from '@angular/common';
 
 import { IOrderAndOrderDetail } from '../../types/order';
 import { OrderService } from '../../services/order.service';
@@ -21,7 +20,7 @@ export class OrderDetailComponent {
     private notification: NzNotificationService,
     private orderService: OrderService,
     private orderDetailService: OrderDetailService,
-    private location: Location) { }
+  ) { }
 
   private $destroy = new Subject()
 
@@ -59,6 +58,13 @@ export class OrderDetailComponent {
       next: (res) => {
         this.listOrderAndDetail = res.content.list
         this.listCardOrderDetail = res.content.list[0]
+      },
+      error: (error) => {
+        this.isLoading = false
+        if (error.status == 403) {
+          this.router.navigate([routerNames.signInPage]);
+          this.createNotification('error', "Phiên đăng nhập hết hạn")
+        }
       }
     })
   }
@@ -67,13 +73,6 @@ export class OrderDetailComponent {
     this.orderService.getOrderDetails().subscribe({
       next: (value: number) => {
         this.handleGetOrderDetail(value)
-      },
-      error: (error) => {
-        this.isLoading = false
-        if (error.status == 403) {
-          this.router.navigate([routerNames.signInPage]);
-          this.createNotification('error', "Phiên đăng nhập hết hạn")
-        }
       }
     })
   }
@@ -87,7 +86,7 @@ export class OrderDetailComponent {
   }
 
   handleBackOrder() {
-    this.location.back()
+    this.router.navigate([routerNames.homePage + "/" + routerNames.orderPage]);
   }
 
   ngOnDestroy(): void {
