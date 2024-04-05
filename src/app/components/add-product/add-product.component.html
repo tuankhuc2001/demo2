@@ -114,12 +114,9 @@
             </nz-form-item>
             <nz-form-item nz-col [nzSpan]="7">
               <nz-form-control [nzErrorTip]="expiredDateValidate">
-                <nz-input-group [nzPrefix]="prefixTemplateExpiredDate">
+                <nz-input-group>
                   <input class="input" nz-input formControlName="expiredDate" placeholder="HSD:" />
                 </nz-input-group>
-                <ng-template #prefixTemplateExpiredDate>
-
-                </ng-template>
                 <ng-template #expiredDateValidate let-control>
                   @if (control.errors?.['required']) {
                   Vui lòng nhập hạn sử dụng ngăn cách bởi dấu ( / )
@@ -133,7 +130,7 @@
             <nz-form-item nz-col [nzSpan]="7">
               <nz-form-control [nzErrorTip]="providePriceValidator">
                 <nz-input-group [nzPrefix]="prefixTemplateProvidePrice">
-                  <input type="number" nz-input formControlName="providePrice" placeholder="Giá cung:" />
+                  <input class="input" type="number" nz-input formControlName="providePrice" placeholder="Giá cung:" />
                 </nz-input-group>
                 <ng-template #prefixTemplateProvidePrice></ng-template>
                 <ng-template #providePriceValidator let-control>

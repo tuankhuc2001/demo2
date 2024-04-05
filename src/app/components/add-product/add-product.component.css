@@ -63,10 +63,6 @@
   background-color: #e7dcdc;
 }
 
-.codeProduct:disabled{
-  background-color: aqua;
-}
-
 .container {
   padding: 3vw;
 }
