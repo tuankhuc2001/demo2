@@ -70,6 +70,10 @@
     z-index: 1;
 }
 
+::ng-deep .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-top > div > .ant-tabs-nav::before {
+    background-color: #158c37;
+}
+
 .block-tab {
     height: 12vw;
 }

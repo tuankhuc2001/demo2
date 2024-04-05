@@ -196,7 +196,7 @@ nz-drawer {
 
 @media (min-width: 768px) {
   nz-content {
-    margin-top: 12vw;
+    margin-top: 13vw;
   }
 
   .header-menu {
@@ -222,9 +222,5 @@ nz-drawer {
 
   .inputSearch-header {
     font-size: 3.5vw;
-  }
-
-  .title-menuItem {
-    font-size: 15vw;
   }
 }
