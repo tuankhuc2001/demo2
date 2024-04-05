@@ -2,12 +2,14 @@
   font-family: Arial, Helvetica, sans-serif !important;
   width: 100%;
 }
-.main{
+
+.main {
   position: relative;
   width: 100%;
   height: 100%;
 }
-.btn-Add{
+
+.btn-Add {
   width: 15vw;
   height: 15vw;
   position: fixed;
@@ -20,19 +22,17 @@
 }
 
 .icon {
-  font-size:8vw;
+  font-size: 8vw;
   color: #fff;
 }
- 
 
-.btn-addProduct:focus{
+.btn-addProduct:focus {
   background-color: aqua;
 }
 
-.btn-addProduct:hover{
+.btn-addProduct:hover {
   background-color: blue;
 }
-
 
 .loading-overlay {
   position: fixed;
@@ -40,17 +40,21 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white background */
+  background-color: rgba(255, 255, 255, 0.8);
+  /* semi-transparent white background */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Ensure it's on top of other elements */
+  z-index: 9999;
+  /* Ensure it's on top of other elements */
 }
 
 .spinner {
   /* Add your loading spinner styles here */
-  border: 4px solid #f3f3f3; /* Light grey */
-  border-top: 4px solid #3498db; /* Blue */
+  border: 4px solid #f3f3f3;
+  /* Light grey */
+  border-top: 4px solid #3498db;
+  /* Blue */
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -58,6 +62,21 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .btn-Add {
+    width: 13vw;
+    height: 13vw;
+    position: fixed;
+    bottom: 10vw;
+    right: 5vw;
+  }
 }
