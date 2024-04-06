@@ -42,10 +42,8 @@ export class CardAccountComponent implements OnChanges {
   }
 
   handleOpenUpdateAccount(item: ItemUser){
-    if(item.role !== 'ROLE_ADMIN') {
       this.isVisibleModalUpdateAccount = true;
       this.itemAccount = item;
-    }
   }
   
   ngOnChanges(changes: SimpleChanges) {
