@@ -127,10 +127,6 @@ nz-drawer {
   padding: 0px !important;
 }
 
-.information-Avatar {
-  margin: 20px;
-}
-
 .header-sideBar {
   display: flex;
 }
@@ -142,10 +138,21 @@ nz-drawer {
   margin-left: 2%;
 }
 
+.information-Avatar {
+  margin: 20px;
+  width: 64px;
+}
+
+.avatar-img {
+  aspect-ratio: 1/1;
+  width: 100%;
+  border-radius: 50%;
+}
+
 .name-User {
   color: #3d7165;
   font-size: 1.8em;
-  font-weight: 600px;
+  font-weight: bold;
 }
 
 .role-Phone {
@@ -222,5 +229,45 @@ nz-drawer {
 
   .inputSearch-header {
     font-size: 3.5vw;
+  }
+
+  .information-Avatar {
+    margin: 2vw;
+    width: 15vw;
+  }
+
+  .avatar-img {
+    aspect-ratio: 1/1;
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  .name-User {
+    font-size: 4vw;
+    font-weight: bold;
+  }
+  
+  .role-Phone {
+    font-size: 2.5vw;
+  }
+
+  ::ng-deep .ant-menu-inline.ant-menu-root .ant-menu-submenu-title > .ant-menu-title-content {
+    font-size: 3vw;
+  }
+
+  ::ng-deep .ant-menu-inline.ant-menu-root .ant-menu-item > *, .ant-menu-inline.ant-menu-root .ant-menu-submenu-title > * {
+    font-size: 3vw;
+  }
+
+  ::ng-deep .ant-menu-item .ant-menu-item-icon, .ant-menu-item .anticon, .ant-menu-submenu-title .ant-menu-item-icon, .ant-menu-submenu-title .anticon {
+    font-size: 3vw;
+  }
+
+  .title-menuItem {
+    padding: 4vw 0;
+  }
+
+  .li-sideBar {
+    padding: 2vw 0;
   }
 }
