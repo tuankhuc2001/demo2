@@ -37,10 +37,12 @@
   transition: all 0.3s, padding 0s;
   color: #fff;
   margin-right: 15px;
+  border-radius: 4px;
 }
 
-.trigger:hover {
-  background-color: rgb(224, 244, 242) !important;
+.header-trigger:hover {
+  color: #3c7265;
+  background-color: white;
 }
 
 nz-header {
@@ -49,7 +51,6 @@ nz-header {
   position: fixed;
   z-index: 2;
   background-color: #3c7265;
-
 }
 
 .app-header {
@@ -195,7 +196,7 @@ nz-drawer {
 
 @media (min-width: 768px) {
   nz-content {
-    margin-top: 12vw;
+    margin-top: 13vw;
   }
 
   .header-menu {
@@ -221,9 +222,5 @@ nz-drawer {
 
   .inputSearch-header {
     font-size: 3.5vw;
-  }
-
-  .title-menuItem {
-    font-size: 15vw;
   }
 }

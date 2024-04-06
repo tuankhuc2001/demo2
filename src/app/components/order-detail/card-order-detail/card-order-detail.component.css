@@ -32,7 +32,7 @@
 .quantity {
     display: flex;
     justify-content: flex-end;
-    font-size: 4.5vw;
+    font-size: 4vw;
     font-weight: bold;
     color: #1E5993;
 }
