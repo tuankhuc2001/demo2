@@ -27,6 +27,7 @@
 
 .tag__title{
     font-size: 5vw;
+    font-weight: 700;
     display: flex;
     justify-content: center;
 }
@@ -184,11 +185,12 @@
   }
 
   @media (min-width: 768px) {
+    .header__cart {
+        top: -1vw;
+    }
 
     .footer__cart{
-        position: fixed;
-        background-color: white;
-        bottom: 0px;
+        bottom: -1vw;
         margin-bottom: 1vw;
     }
 
