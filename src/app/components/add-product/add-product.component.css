@@ -52,6 +52,10 @@
   transition: margin-bottom .3s 17ms linear;
 }
 
+.margin-top{
+  top: 10px;
+}
+
 .input {
   font-size: 4vw;
   border-radius: 5px;
@@ -72,7 +76,6 @@
   align-items: center;
   border-bottom: #d9d9d9 1px solid;
   position: fixed;
-  top: -1px;
   z-index: 1;
   background-color: #ffffff;
   width: 100%;
