@@ -1,6 +1,7 @@
 * {
   font-family: Arial, Helvetica, sans-serif !important;
 }
+
 :host {
   display: flex;
   text-rendering: optimizeLegibility;
@@ -9,8 +10,9 @@
 }
 
 .app-layout {
-  height: 100vh; 
+  height: 100vh;
 }
+
 /* .header-menu {
   height: 100px !important;
 }
@@ -35,10 +37,12 @@
   transition: all 0.3s, padding 0s;
   color: #fff;
   margin-right: 15px;
+  border-radius: 4px;
 }
 
-.trigger:hover {
-  background-color: rgb(224, 244, 242) !important; 
+.header-trigger:hover {
+  color: #3c7265;
+  background-color: white;
 }
 
 nz-header {
@@ -47,7 +51,6 @@ nz-header {
   position: fixed;
   z-index: 2;
   background-color: #3c7265;
-
 }
 
 .app-header {
@@ -63,18 +66,23 @@ nz-header {
   margin-left: 10px;
   margin-right: 10px;
 }
+
 .input-search {
   border-radius: 25px !important;
   background-color: #25403b;
   border: none;
+  padding: 1.3vw;
 }
+
 .icon-search {
   color: #fff !important;
 }
+
 .inputSearch-header {
   background-color: #25403b;
   color: #fff;
 }
+
 ::ng-deep .ant-drawer-body {
   padding: 0px;
 }
@@ -82,6 +90,7 @@ nz-header {
 ::ng-deep.ant-menu-sub.ant-menu-inline {
   background-color: #fff;
 }
+
 /* ::ng-deep .ant-menu-submenu-selected {
   background-color: #25403b;
 } */
@@ -96,27 +105,26 @@ nz-content {
 }
 
 a {
-  color: #000; /* default color */
+  color: #000;
+  /* default color */
   text-decoration: none;
-  padding: 5px; /* add some padding for better hover effect */
-  transition: color 0.3s ease; /* smooth transition effect */
+  padding: 5px;
+  /* add some padding for better hover effect */
+  transition: color 0.3s ease;
+  /* smooth transition effect */
 }
 
 a:hover {
-  background-color: rgb(224, 244, 242) !important; 
+  background-color: rgb(224, 244, 242) !important;
 }
 
 a.router-link-active {
   font-weight: bold;
-  background-color: rgb(224, 244, 242); 
+  background-color: rgb(224, 244, 242);
 }
 
 nz-drawer {
   padding: 0px !important;
-}
-.information-Avatar {
-  margin: 20px;
-
 }
 
 .header-sideBar {
@@ -129,11 +137,24 @@ nz-drawer {
   justify-content: center;
   margin-left: 2%;
 }
+
+.information-Avatar {
+  margin: 20px;
+  width: 64px;
+}
+
+.avatar-img {
+  aspect-ratio: 1/1;
+  width: 100%;
+  border-radius: 50%;
+}
+
 .name-User {
   color: #3d7165;
   font-size: 1.8em;
-  font-weight: 600px;
+  font-weight: bold;
 }
+
 .role-Phone {
   color: #3d7165;
 }
@@ -156,15 +177,15 @@ nz-drawer {
 }
 
 .title-menuItem.router-link-active {
-  background-color: rgb(224, 244, 242); 
+  background-color: rgb(224, 244, 242);
   font-size: 10px !important;
   font-weight: bold !important;
   /* border-radius: 10%; */
   /* color: #fa0000 !important; */
 }
 
-.li-sideBar{
-    background-color: #fff !important;
+.li-sideBar {
+  background-color: #fff !important;
 }
 
 .ant-menu-sub.ant-menu-inline {
@@ -172,13 +193,81 @@ nz-drawer {
 }
 
 .ant-menu-submenu-title:hover {
-  background-color: rgb(224, 244, 242); 
+  background-color: rgb(224, 244, 242);
   /* color:  !important; */
 }
 
-.logout{
+.logout {
   color: #ff0000;
 }
-@media only screen and (max-width: 400px) {
 
+@media (min-width: 768px) {
+  nz-content {
+    margin-top: 13vw;
+  }
+
+  .header-menu {
+    padding: 2vw;
+    height: fit-content;
+  }
+
+  .icon-search {
+    font-size: 4vw;
+  }
+
+  .menu-btn {
+    align-self: flex-end;
+  }
+
+  .header-trigger {
+    font-size: 3vw;
+  }
+
+  .icon-menu {
+    font-size: 4vw;
+  }
+
+  .inputSearch-header {
+    font-size: 3.5vw;
+  }
+
+  .information-Avatar {
+    margin: 2vw;
+    width: 15vw;
+  }
+
+  .avatar-img {
+    aspect-ratio: 1/1;
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  .name-User {
+    font-size: 4vw;
+    font-weight: bold;
+  }
+  
+  .role-Phone {
+    font-size: 2.5vw;
+  }
+
+  ::ng-deep .ant-menu-inline.ant-menu-root .ant-menu-submenu-title > .ant-menu-title-content {
+    font-size: 3vw;
+  }
+
+  ::ng-deep .ant-menu-inline.ant-menu-root .ant-menu-item > *, .ant-menu-inline.ant-menu-root .ant-menu-submenu-title > * {
+    font-size: 3vw;
+  }
+
+  ::ng-deep .ant-menu-item .ant-menu-item-icon, .ant-menu-item .anticon, .ant-menu-submenu-title .ant-menu-item-icon, .ant-menu-submenu-title .anticon {
+    font-size: 3vw;
+  }
+
+  .title-menuItem {
+    padding: 4vw 0;
+  }
+
+  .li-sideBar {
+    padding: 2vw 0;
+  }
 }

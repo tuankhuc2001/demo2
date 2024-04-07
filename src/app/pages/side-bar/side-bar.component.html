@@ -2,11 +2,8 @@
   <nz-header class="header-menu">
     <div class="searchInput">
       <div nz-row class="col-menu">
-        <div nz-col nzSpan="3">
-          <a
-            class="header-trigger"
-            (click)="sideDrawerVisible = !sideDrawerVisible"
-          >
+        <div nz-col nzSpan="3" class="menu-btn">
+          <a class="header-trigger" (click)="sideDrawerVisible = !sideDrawerVisible">
             <span nz-icon [nzType]="'menu'" class="icon-menu"></span>
           </a>
         </div>
@@ -41,16 +38,12 @@
       <ng-container *nzDrawerContent>
         <div class="header-sideBar">
           <div class="information-Avatar">
-            <nz-avatar
-              [nzSize]="64"
-              nzSrc="https://genk.mediacdn.vn/thumb_w/640/2019/7/8/1-15625474669018688730.jpg"
-            ></nz-avatar>
+            <img class="avatar-img" src="https://genk.mediacdn.vn/thumb_w/640/2019/7/8/1-15625474669018688730.jpg" alt="">
+            <!-- <nz-avatar  [nzSize]="64" nzSrc="https://genk.mediacdn.vn/thumb_w/640/2019/7/8/1-15625474669018688730.jpg"></nz-avatar> -->
           </div>
           <div class="information-User">
-            <span class="name-User"
-              ><strong>{{ user.fullname }}</strong></span
-            >
-            <span class="role-Phone">{{ user.role }}-{{ user.phone }}</span>
+            <span class="name-User">{{ user.fullname }}</span>
+            <span class="role-Phone">{{ user.role }} - {{ user.phone }}</span>
           </div>
         </div>
         <ul nz-menu nzTheme="light" nzMode="inline" class="ul-sideBar">
@@ -76,7 +69,7 @@
               </li>
             </ul>
           </li>
-          <li nz-submenu nzTitle="Quản lý kho" nzIcon="shop">
+          <li nz-submenu nzTitle="Quản lý kho" nzIcon="shop" class="li-sideBar">
             <ul>
               <li
                 nz-menu-item
@@ -108,27 +101,27 @@
             <span nz-icon nzType="bell" nzTheme="fill"></span>
             <span>Quản lý tài khoản</span>
           </li>
-          <li nz-menu-item>
+          <li nz-menu-item class="title-menuItem">
             <span nz-icon nzType="bell" nzTheme="fill"></span>
             <span>Thông báo</span>
           </li>
-          <li nz-menu-item nzTitle="Cài đặt" nzIcon="setting">
+          <li nz-menu-item class="title-menuItem" nzTitle="Cài đặt" nzIcon="setting">
             <span nz-icon nzType="setting" nzTheme="fill"></span>
             <span>Cài đặt</span>
           </li>
-          <li nz-menu-item>
+          <li nz-menu-item class="title-menuItem">
             <span nz-icon nzType="info-circle"></span>
             <span>Điều khoản sử dụng</span>
           </li>
-          <li nz-menu-item>
+          <li nz-menu-item class="title-menuItem">
             <span nz-icon nzType="info-circle"></span>
             <span>Thông tin chuyên ngành</span>
           </li>
-          <li nz-menu-item>
+          <li nz-menu-item class="title-menuItem">
             <span nz-icon nzType="info-circle"></span>
             <span>Câu hỏi thường gặp</span>
           </li>
-          <li nz-menu-item (click)="handleLogOut()">
+          <li nz-menu-item class="title-menuItem" (click)="handleLogOut()">
             <span nz-icon nzType="logout" class="logout"></span>
             <span class="logout">Đăng xuất</span>
           </li>

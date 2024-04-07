@@ -47,3 +47,21 @@
     justify-content: center;
     align-items: center;
 }
+
+@media (min-width: 768px) {
+    .main-card {
+        padding: 2vw;
+    }
+    
+    .nameProduct-card {
+        font-size: 4vw;
+    }
+
+    .textProduct-card {
+        font-size: 3.5vw;
+    }
+
+    .floorPrice-card {
+        font-size: 4vw;
+    }
+}
