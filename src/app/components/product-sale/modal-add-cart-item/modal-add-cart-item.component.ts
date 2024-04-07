@@ -117,11 +117,9 @@ export class ModalAddCartItemComponent implements OnChanges {
   handleSubmit() {
     if (this.validateAddCartForm.valid) {
       this.isLoading = true
-      this.userService.getUser().subscribe({
-        next: (res: IUser) => {
-          this.userId = res.id
-        }
-      })
+      const user = this.userService.getUser();
+      this.userId = user.id;
+
       const requestdObject: ICartItemRequest = {
         quantity: this.validateAddCartForm.value.quantity ? this.validateAddCartForm.value.quantity : 0,
         rate: this.validateAddCartForm.value.rate ? this.validateAddCartForm.value.rate : 0,

@@ -66,11 +66,7 @@ export class WarehouseComponent implements OnInit, OnDestroy {
         }
       })
 
-    this.userService.getUser().subscribe({
-      next: (res: IUser) => {
-        this.user = res
-      }
-    })
+      this.user = this.userService.getUser()
   }
 
   handleGetProduct(textSearch: string) {
@@ -86,9 +82,9 @@ export class WarehouseComponent implements OnInit, OnDestroy {
         this.isLoading = false
       },
       error: (error) => {
+        this.isLoading = false
         error.error.messageError.map((e: string) => {
           this.notification.create("error", `${e}`, "");
-          this.isLoading = false
         })
       }
     })
