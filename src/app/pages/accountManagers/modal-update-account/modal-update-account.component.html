@@ -3,8 +3,8 @@
     <h3 class="modal_title">Sửa nhân viên</h3>
     <div class="modal_content">
       <div class="content_info" nz-row>
-        <label nz-col [nzSpan]="8" for="">Mật khẩu mới: </label>
-        <form nz-col [nzSpan]="16" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
+        <label nz-col [nzSpan]="10" for="">Mật khẩu mới: </label>
+        <form nz-col [nzSpan]="14" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
         <nz-form-item class="form-item" >
           <nz-form-control nzErrorTip="Please input your Password!">
             <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate" nzErrorTip="Please input your Password!">
@@ -13,7 +13,7 @@
                 formControlName="password"
                 nz-input
                 placeholder="Password"
-                class="input-login"
+                class="input"
               />
             </nz-input-group>
             <ng-template #suffixTemplate>
@@ -29,8 +29,8 @@
       </div>
 
       <div class="content_info" nz-row>
-        <label nz-col [nzSpan]="8" for="">Nhâp lại mật khẩu mới: </label>
-        <form nz-col [nzSpan]="16" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
+        <label nz-col [nzSpan]="10" for="" class="newPassword_label">Xác nhận mật khẩu: </label>
+        <form nz-col [nzSpan]="14" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
         <nz-form-item class="form-item" >
           <nz-form-control nzErrorTip="Please input your Password!">
             <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate" nzErrorTip="Please input your Password!">
@@ -39,7 +39,7 @@
                 formControlName="newPassword"
                 nz-input
                 placeholder="newPassword"
-                class="input-login"
+                class="input"
               />
             </nz-input-group>
             <ng-template #suffixTemplate>
@@ -53,14 +53,14 @@
         </nz-form-item>
       </form>
       </div>
-      <div class="content_info" nz-row>
-        <label nz-col nzSpan="8" for="">Chức vụ:</label>
-        <nz-select class="content_select" nz-col nzSpan="16"
+      <div class="content_info" nz-row >
+        <label nz-col nzSpan="10" for="">Chức vụ:</label>
+        <nz-select class="content_select" nz-col nzSpan="14"
          [ngModel]="selectedValue"
          (ngModelChange)="handleChangeRole($event)"
         >
-          <nz-option nzValue="ROLE_SALE" nzLabel="Sale"></nz-option>
-          <nz-option nzValue="ROLE_WAREHOUSE" nzLabel="WareHouse"></nz-option>
+          <nz-option class="select_option" nzValue="ROLE_SALE" nzLabel="Sale"></nz-option>
+          <nz-option class="select_option" nzValue="ROLE_WAREHOUSE" nzLabel="WareHouse"></nz-option>
         </nz-select>
       </div>
     </div>

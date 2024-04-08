@@ -90,6 +90,7 @@ nz-badge {
   z-index: 10;
   border: none;
   padding: 0;
+  border-radius: 27px;
 }
 
 .cart-button {
@@ -139,9 +140,8 @@ nz-badge {
 }
 
 .spinner {
-  /* Add your loading spinner styles here */
-  border: 4px solid #f3f3f3; /* Light grey */
-  border-top: 4px solid #3498db; /* Blue */
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -151,4 +151,38 @@ nz-badge {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@media (min-width: 768px) {
+  .cart-navigate {
+    width: 30vw;
+    height: 10.5vw;
+    bottom: 5%;
+    right: 8%;
+    border-radius: 9vw;
+  }
+
+  .cart-button {
+    font-size: 4vw;
+    padding: 2vw;
+    border-radius: 9vw;
+  }
+  
+  .cart-text {
+    width: auto;
+  }
+
+  .cart-icon {
+    font-size: 5vw;
+    padding: 0 1vw;
+    width: auto;
+  }
+
+  .item-count {
+    top: -30%;
+    right: 0.1vw;
+    width: 6vw;
+    height: 6vw;
+    font-size: 3vw;
+  }
 }

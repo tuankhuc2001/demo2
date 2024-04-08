@@ -1,23 +1,31 @@
 .content {
-    padding: 12px;
+    padding: 3vw;
 }
 
 .image-container{
-    aspect-ratio: 1/1;
-    padding-right: 5px;
-    padding-bottom: 5px;
+    padding-right: 1vw;
+    align-self: center;
 }
 
-.responsive-input {
-    padding: 0.5vw 1vw;
-    font-size: 3.0vw;
+.image-container img{
+    aspect-ratio: 1/1;
+    width: 100%;
+}
+
+::ng-deep .ant-input-affix-wrapper {
+    padding: 0.3vw;
+}
+
+.input {
+    padding: 0.5vw;
+    font-size: 3vw;
 }
 
 .productName {
-    margin-bottom: 2px;
     color: rgb(82, 82, 82);
     font-size: 5vw;
     font-weight: bold;
+    line-height: normal;
 }
 
 .floorPrice {
@@ -34,9 +42,8 @@
 }
 
 .detailButton {
-    min-height: 50px;
-    height: 5vw;
-    font-size: 3vw;
+    height: 9vw;
+    font-size: 3.2vw;
     border-radius: 25px;
     width: 100%;
     background-color: rgb(30, 89, 147);
@@ -44,9 +51,8 @@
 }
 
 .cancelButton {
-    min-height: 50px;
-    height: 5vw;
-    font-size: 3vw;
+    height: 9vw;
+    font-size: 3.2vw;
     border-radius: 25px;
     width: 100%;
     background-color: rgb(199, 56, 69);
@@ -54,9 +60,8 @@
 }
 
 .submitButton {
-    min-height: 50px;
-    height: 5vw;
-    font-size: 3vw;
+    height: 9vw;
+    font-size: 3.2vw;
     border-radius: 25px;
     width: 100%;
     background-color: rgb(12, 111, 99);
@@ -69,8 +74,8 @@
 
 .minusRate {
     background-color: rgb(199, 56, 69);
-    min-width: 50px;
-    min-height: 40px;
+    min-width: 40px;
+    min-height: 30px;
     width: 100%;
     height: 100%;
     margin-right: 20px;
@@ -79,8 +84,8 @@
 
 .plusRate {
     background-color: rgb(12, 111, 99);
-    min-width: 50px;
-    min-height: 40px;
+    min-width: 40px;
+    min-height: 30px;
     width: 100%;
     height: 100%;
     margin-right: 20px;
@@ -95,4 +100,69 @@
 
 .mg-l-8{
  margin-left: 8px;
+}
+
+@media (min-width: 768px) {
+    .content {
+        padding: 3vw;
+    }
+
+    .image-container{
+        align-self: center;
+    }
+    
+    .image-container img{
+        aspect-ratio: 1/1;
+        width: 80%;
+        border-radius: 5%;
+    }
+
+    .productName {
+        font-size: 4.5vw;
+    }
+
+    .floorPrice {
+        font-size: 4vw;
+    }
+
+    ::ng-deep .ant-input-affix-wrapper {
+        padding: 1vw;
+        font-size: 3vw;
+    }
+
+    .minusRate {
+        min-width: 70px;
+        min-height: 60px;
+    }
+    
+    .plusRate {
+        min-width: 70px;
+        min-height: 60px;
+    }
+
+    .input {
+        font-size: 3vw;
+    }
+
+    .detailButton {
+        height: 7vw;
+        font-size: 3.2vw;
+        border-radius: 30px;
+    }
+    
+    .cancelButton {
+        height: 7vw;
+        font-size: 3.2vw;
+        border-radius: 30px; 
+    }
+    
+    .submitButton {
+        height: 7vw;
+        font-size: 3.2vw;
+        border-radius: 30px;   
+    }
+
+    .descriptionContent {
+        font-size: 3vw;
+    }
 }

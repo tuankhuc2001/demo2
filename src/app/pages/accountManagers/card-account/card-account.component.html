@@ -2,14 +2,17 @@
   <Content>
     <div class="main_card" nz-row>
       <div nz-col nzSpan="8" class="card_img">
-        <img nz-image width="80%" 
+        <img nz-image 
         nzSrc="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
         nzDisablePreview="true" />
       </div>
       <div nz-col nzSpan="16" class="card_content">
-        <div class="content_info"> 
-          <label for="">Họ và tên:</label>
+        <div class="content_infoName"> 
           <p>{{item.fullname}}</p>
+        </div>
+        <div class="content_info"> 
+          <label for="">Chức vụ:</label>
+          <p>{{ formatRole(item.role) }}</p>
         </div>
         <div class="content_info"> 
           <label for="">Địa chỉ:</label>
@@ -18,10 +21,6 @@
         <div class="content_info"> 
           <label for="">Số điện thoại:</label>
           <p>{{item.phone}}</p>
-        </div>
-        <div class="content_info"> 
-          <label for="">Chức vụ:</label>
-          <p>{{ formatRole(item.role) }}</p>
         </div>
       </div>
     </div>

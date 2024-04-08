@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
@@ -99,7 +99,7 @@ export class AddProductComponent {
   ): { [s: string]: boolean } => {
     if (control.value === null) {
       return { required: true };
-    } else if (control.value <= 0) {
+    } else if (control.value <= 0 || control.value > 10000) {
       return { confirm: true, error: true };
     }
     return {};

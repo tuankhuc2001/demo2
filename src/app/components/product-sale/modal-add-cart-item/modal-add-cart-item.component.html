@@ -1,7 +1,7 @@
 <cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" width="90%" [isCentered]="true" [footer]="false">
     <Content>
         <div class="content">
-            <div nz-row>
+            <div nz-row style="padding-bottom: 3vw;">
                 <div nz-col nzSpan="12" class="image-container">
                     <img nz-image width="100%" height="100%"
                         nzSrc="http://{{ProductDetail.imageUrl}}"
@@ -15,8 +15,8 @@
                         <nz-form-item>
                             <nz-form-control [nzErrorTip]="editPriceValidate">
                                 <nz-input-group [nzPrefix]="prefixTemplate" style="width: 100%;">
-                                    <input type="number" nz-input formControlName="editPrice"
-                                        class="responsive-input"/>
+                                    <input class="input" type="number" nz-input formControlName="editPrice"
+                                        class="input"/>
                                 </nz-input-group>
                                 <ng-template #prefixTemplate>
                                     <div class="responsive-input">Sửa giá:</div>
@@ -34,7 +34,7 @@
                         <nz-form-item>
                             <nz-form-control nzRequired [nzErrorTip]="rateValidator">
                                 <nz-input-group [nzPrefix]="prefixTemplateRate" style="width: 100%; padding: 0;">
-                                    <input type="number" nz-input formControlName="rate" class="responsive-input" />
+                                    <input type="number" nz-input formControlName="rate" class="input"/>
                                 </nz-input-group>
 
                                 <ng-template #prefixTemplateRate>
@@ -59,7 +59,7 @@
                         <nz-form-item>
                             <nz-form-control [nzErrorTip]="quantityValidate">
                                 <nz-input-group [nzPrefix]="prefixTemplateQuantity">
-                                    <input type="number" nz-input formControlName="quantity" class="responsive-input" />
+                                    <input type="number" nz-input formControlName="quantity" class="input"/>
                                 </nz-input-group>
                                 <ng-template #prefixTemplateQuantity>
                                     <div class="responsive-input">

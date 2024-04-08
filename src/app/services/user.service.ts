@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { apiUser, objectApi } from '../constant/api';
+import { apiUser } from '../constant/api';
 import { ILoginResponse } from '../types/login';
 import { IAddUser, IGetUser, IUpdateUser, IUser, IUserRequest, IUserRequestUpdate } from '../types/user';
 
@@ -9,23 +9,13 @@ import { IAddUser, IGetUser, IUpdateUser, IUser, IUserRequest, IUserRequestUpdat
 export class UserService {
     constructor(private http: HttpClient) { }
 
-    user = new BehaviorSubject<IUser>({
-        id: 1,
-        phone: "",
-        email: "",
-        fullname: "",
-        avatar: "",
-        role: "",
-        token: "",
-        refreshToken: ""
-    })
-
-    getUser(): BehaviorSubject<IUser> {
-        return this.user
+    getUser(): IUser {
+        const userDataString = localStorage.getItem('user')
+        return userDataString ? JSON.parse(userDataString) : null;
     }
 
     setUser(value: ILoginResponse): void {
-        this.user.next({
+        localStorage.setItem('user', JSON.stringify({
             id: value.id,
             phone: value.phone,
             email: value.email,
@@ -34,7 +24,7 @@ export class UserService {
             role: value.role,
             token: value.token,
             refreshToken: value.refreshToken
-        })
+        }));
     }
 
     header(): HttpHeaders {
@@ -75,9 +65,9 @@ export class UserService {
         return this.http.post<IAddUser>(`${apiUser.addAccount}`, accountRequest, {headers})
     }
 
-    updateAccount(idUser: number, accountRequest: IUserRequest): Observable<IUpdateUser> {
+    updateAccount(idUser: number, accountRequest: IUserRequestUpdate): Observable<IUpdateUser> {
         const headers = this.header()
-        return this.http.put<IAddUser>(`${apiUser.updateAccount}${idUser}`, accountRequest, {headers})
+        return this.http.put<IUpdateUser>(`${apiUser.updateAccount}${idUser}`, accountRequest, {headers})
     }
 
     loginRefreshToken(refreshToken: string) : Observable<ILoginResponse> {

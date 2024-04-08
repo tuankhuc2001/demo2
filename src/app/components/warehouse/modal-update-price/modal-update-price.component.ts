@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { IProduct } from '../../../types/product';
-import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { CurrencyPipe } from '@angular/common';

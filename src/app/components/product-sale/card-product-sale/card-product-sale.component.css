@@ -38,3 +38,25 @@
     display: flex;
     justify-content: flex-end;
 }
+
+@media (min-width: 768px) {
+    .main-card {
+        padding: 2vw;
+    }
+    
+    .card-img img {
+        width: 90%;
+    }
+
+    .nameProduct-card {
+        font-size: 3.5vw;
+    }
+    
+    .textProduct-card {
+        font-size: 3vw;
+    }
+    
+    .floorPrice-card {
+        font-size: 3.5vw;
+    }
+}
