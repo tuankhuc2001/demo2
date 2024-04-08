@@ -90,9 +90,6 @@ nz-header {
 ::ng-deep.ant-menu-sub.ant-menu-inline {
   background-color: #fff;
 }
-::ng-deep .ant-menu-inline.ant-menu-root .ant-menu-submenu-title > *{
-  font-size: 3vw;
-}
 
 nz-content {
   margin-top: 64px;

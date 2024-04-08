@@ -47,8 +47,8 @@
 .footer__cart {
     position: fixed;
     background-color: white;
-    bottom: 0px;
-    margin-bottom: 3vw;
+    bottom: 0;
+    margin-bottom: -3vw;
 }
 
 .footer_customer {
@@ -58,7 +58,6 @@
 
 .customer_img {
     align-self: center;
-
 }
 
 .customer_img>img {
@@ -105,8 +104,8 @@
 }
 
 .below_price {
-    border-top: 1px #afafaf solid;
-    padding: 3vw 0 3vw 3vw;
+    border-top: 1px #d9d9d9 solid;
+    padding: 3vw 0 3.5vw 3vw;
 }
 
 .shipPrice {
@@ -193,10 +192,6 @@
     .footer__cart {
         bottom: -1vw;
         margin-bottom: 1vw;
-    }
-
-    .footer_customer {
-        height: 14vw;
     }
 
     .click_customer {
