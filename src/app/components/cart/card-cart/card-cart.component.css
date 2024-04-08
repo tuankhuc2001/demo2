@@ -141,6 +141,13 @@
     color: #c7393c;
 }
 
+.finalPrice_text {
+    padding: 0 2vw;
+    text-overflow:ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap;
+}
+
 .content_editQuantity {
     display: flex;
     flex-direction: column;
@@ -153,7 +160,7 @@
     padding: 1.5vw 2.5vw;
     font-size: 3.5vw;
     border-radius: 1vw;
-    margin-bottom: 4vw;
+    margin-bottom: 5.8vw;
 }
 
 .editQuantity_up_disable {

@@ -10,7 +10,7 @@ export class CardProductSaleComponent {
 
   @Output() onClickCard: EventEmitter<IProduct> = new EventEmitter()
 
-  token = localStorage.getItem("token")
+  token = localStorage.getItem('token');
 
   handleOnClickDetail(item: IProduct){
     this.onClickCard.emit(item)
