@@ -5,6 +5,8 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { ICustomer } from '../../../types/customer';
 import { ICart, IUpdateCart } from '../../../types/cart';
+import { routerNames } from '../../../constant/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-customer',
@@ -28,6 +30,7 @@ export class ModalCustomerComponent {
     private customerService: CustomerService,
     private cartService: CartService,
     private notification: NzNotificationService,
+    private router: Router,
   ) { }
 
   private destroyed$ = new Subject();
@@ -48,8 +51,11 @@ export class ModalCustomerComponent {
         next: (res) => {
           this.listCustomer = res.content.list
         },
-        error: (error) => {
-          this.createNotification('error', error)
+        error: (v) => {
+          if (v.status === 403) {
+            this.router.navigate([routerNames.signInPage]);
+            this.createNotification('error', "Phiên đăng nhập hết hạn")
+          }
         }
       })
     }, 1000)
@@ -60,6 +66,12 @@ export class ModalCustomerComponent {
     this.customerService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
       next: value => {
         this.handleSearch(value)
+      },
+      error: (v) => {
+        if (v.status === 403) {
+          this.router.navigate([routerNames.signInPage]);
+          this.createNotification('error', "Phiên đăng nhập hết hạn")
+        }
       }
     })
   }
@@ -73,6 +85,12 @@ export class ModalCustomerComponent {
           this.textSearch = value
           this.handleSearch(value);
         },
+        error: (v) => {
+          if (v.status === 403) {
+            this.router.navigate([routerNames.signInPage]);
+            this.createNotification('error', "Phiên đăng nhập hết hạn")
+          }
+        }
       });
   }
 
@@ -86,6 +104,12 @@ export class ModalCustomerComponent {
           this.notification.create('success', `${v.message}`, '')
           this.handleCloseModalCustomer()
           this.getCart.emit()
+        }
+      },
+      error: (v) => {
+        if (v.status === 403) {
+          this.router.navigate([routerNames.signInPage]);
+          this.createNotification('error', "Phiên đăng nhập hết hạn")
         }
       }
     });
@@ -132,7 +156,7 @@ export class ModalCustomerComponent {
           } else {
             this.listCustomer = v.content.list
           }
-        }
+        },
       }
     )
   }

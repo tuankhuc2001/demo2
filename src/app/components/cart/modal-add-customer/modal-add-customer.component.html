@@ -13,14 +13,14 @@
                         <nz-form-control [nzSpan]="24" [nzErrorTip]="phoneCustomerValidator">
                             <nz-input-group>
                                 <label class="input-label">Số điện thoại</label>
-                                <input class="input-edit" placeholder="Số điện thoại..." nz-input formControlName="phoneCustomer" />
+                                <input class="input-edit" type="number" placeholder="Số điện thoại..." nz-input formControlName="phoneCustomer" />
                             </nz-input-group>
                             <ng-template #phoneCustomerValidator let-control>
                                 @if (control.errors?.['required']) {
                                 Vui lòng nhập SĐT!
                                 }
                                 @if (control.errors?.['confirm']) {
-                                SĐT không được vượt quá 11 số!
+                                Vui lòng nhập đúng định dạng số điện thoại!
                                 }
                             </ng-template>
                         </nz-form-control>
@@ -36,7 +36,7 @@
                                 Vui lòng nhập tên khách hàng!
                                 }
                                 @if (control.errors?.['confirm']) {
-                                Tên khách hàng không được vượt quá 255 ký tự!
+                                Tên khách hàng không được dưới 3 hoặc vượt quá 255 ký tự!
                                 }
                             </ng-template>
                         </nz-form-control>
@@ -52,7 +52,7 @@
                                 Vui lòng nhập địa chỉ!
                                 }
                                 @if (control.errors?.['confirm']) {
-                                Địa chỉ không được vượt quá 255 ký tự!
+                                Địa chỉ không được dưới 3 hoặc vượt quá 255 ký tự!
                                 }
                             </ng-template>
                         </nz-form-control>
