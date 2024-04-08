@@ -148,10 +148,7 @@
   border-radius: 5px;
   padding: 3vw;
   border-color: #d9d9d9;
-}
-
-.description :focus-visible{
-  border-color: red;
+  resize: none;
 }
 
 .button-add-product {
