@@ -5,7 +5,6 @@ import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, Valida
 import { Router } from '@angular/router';
 import { routerNames } from '../../../constant/router';
 
-
 @Component({
   selector: 'app-modal-add-customer',
   templateUrl: './modal-add-customer.component.html',
@@ -17,6 +16,7 @@ export class ModalAddCustomerComponent {
     private customerService: CustomerService,
     private notification: NzNotificationService,
     private fb: NonNullableFormBuilder, private router: Router,
+    private myForm: FormGroup,
   ) { }
 
   @Input() isVisible: boolean = false;
@@ -32,15 +32,16 @@ export class ModalAddCustomerComponent {
 
   handleResetState() {
     this.validateFormAddCustomer.setValue({
-      nameCustomer: "",
-      phoneCustomer: "",
-      address: "",
+      nameCustomer: " ",
+      phoneCustomer: " ",
+      address: " ",
     })
   }
 
   handleCloseAddCustomer() {
     this.handleResetState();
     this.closeModal.emit();
+    this.clearValidation();
   }
 
   handleAddCustomer() {
@@ -58,6 +59,7 @@ export class ModalAddCustomerComponent {
             this.notification.create('success', `${v.message}`, '')
             this.handleResetState();
             this.handleCloseAddCustomer();
+            this.clearValidation();
           }
         },
         error: (v) => {
@@ -122,4 +124,10 @@ export class ModalAddCustomerComponent {
     phoneCustomer: ["", [Validators.required, this.phoneCustomerValidator]],
     address: ["", [Validators.required, this.addressValidator]],
   })
+
+  clearValidation(): void {
+    this.myForm.get('nameCustomer')?.setErrors(null);
+    this.myForm.get('phoneCustomer')?.setErrors(null);
+    this.myForm.get('address')?.setErrors(null);
+  }
 }

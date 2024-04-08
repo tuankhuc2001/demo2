@@ -149,6 +149,11 @@
   padding: 3vw;
   border-color: #d9d9d9;
   resize: none;
+  outline: none;
+}
+
+.description :focus {
+  background-color: red;
 }
 
 .button-add-product {
