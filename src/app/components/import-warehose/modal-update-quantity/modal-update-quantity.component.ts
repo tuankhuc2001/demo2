@@ -40,7 +40,7 @@ export class ModalUpdateQuantityComponent {
     providePrice: 0,
     floorPrice: 0,
     phoneProvider: '',
-    imageUrl: ""
+    imageUrl: "" 
   };
   isLoading: boolean = false;
 
@@ -51,6 +51,8 @@ export class ModalUpdateQuantityComponent {
       return { required: true };
     } else if (control.value <= 0) {
       return { confirm: true, error: true };
+    } else if ((control.value + this.ProductDetail.quantityProduct) > 10000) {
+      return { quantityValid: true, error: true };
     }
     return {};
   };
