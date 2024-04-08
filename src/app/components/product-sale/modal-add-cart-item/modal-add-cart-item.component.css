@@ -5,11 +5,13 @@
 .image-container{
     padding-right: 1vw;
     align-self: center;
+    padding-right: 2vw;
 }
 
 .image-container img{
     aspect-ratio: 1/1;
     width: 100%;
+    border-radius: 5px;
 }
 
 ::ng-deep .ant-input-affix-wrapper {
