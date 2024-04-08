@@ -75,14 +75,8 @@ export class ModalAddAccountComponent implements OnInit {
   }
 
   handleResetState() {
-    this.validateFormAddUser.setValue({
-      fullname: "",
-      phone: "",
-      address: "",
-      password: "",
-    })
+    this.validateFormAddUser.reset()
   }
-
 
   ngOnInit() {
   }
