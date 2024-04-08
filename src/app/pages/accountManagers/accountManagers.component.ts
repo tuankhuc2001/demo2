@@ -3,6 +3,8 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 import { UserService } from '../../services/user.service';
 import { IUser } from '../../types/user';
+import { Router } from '@angular/router';
+import { routerNames } from '../../constant/router';
 
 @Component({
   selector: 'app-accountManagers',
@@ -14,6 +16,7 @@ export class AccountManagersComponent implements OnInit {
   constructor(
     private userService: UserService,
     private notification: NzNotificationService,
+    private router: Router
   ) { }
   
 
@@ -49,7 +52,10 @@ export class AccountManagersComponent implements OnInit {
       },
       error: (error) => {
         this.isLoading = false
-        this.createNotification('error', error)
+        if (error.status == 403) {
+          this.router.navigate([routerNames.signInPage]);
+          this.createNotification('error', "Phiên đăng nhập hết hạn")
+        }
       }
     })
   }
