@@ -66,11 +66,7 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
       }
     })
 
-    this.userService.getUser().subscribe({
-      next: (res: IUser) => {
-        this.user = res
-      }
-    })
+    this.user = this.userService.getUser()
   }
 
   handleSearch(value: string) {

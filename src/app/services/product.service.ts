@@ -17,15 +17,7 @@ export class ProductService {
   }
 
   uploadImage(formData: FormData, header: HttpHeaders): Observable<any> {
-    const req = new HttpRequest(
-      'POST',
-      'http://localhost:8080/upload',
-      formData,
-      {
-        headers: header,
-      }
-    );
-
+    const req = new HttpRequest('POST','http://localhost:8080/upload',formData,{  headers: header });
     return this.http
       .request(req)
       .pipe(filter((e) => e instanceof HttpResponse));
