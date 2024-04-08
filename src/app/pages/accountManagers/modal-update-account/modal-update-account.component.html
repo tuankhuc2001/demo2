@@ -1,4 +1,4 @@
-<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()">
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal(); handleResetState()">
   <Content>
     <h3 class="modal_title">Sửa nhân viên</h3>
     <div class="modal_content">
@@ -53,7 +53,7 @@
   <Footer>
     <div style="margin-right: 2vw;">
       <button class="add_submit" (click)="handleUpdateAccount()">Xác nhận</button>
-      <button class="add_cancel" (click)="handleCloseModal()">Hủy</button>
+      <button class="add_cancel" (click)="handleCloseModal(); handleResetState()">Hủy</button>
     </div>
   </Footer>
 </cModal>

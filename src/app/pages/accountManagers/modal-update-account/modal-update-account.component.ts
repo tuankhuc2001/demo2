@@ -79,10 +79,7 @@ export class ModalUpdateAccountComponent implements OnChanges {
   }
 
   handleResetState() {
-    this.validateFormAddUser.setValue({
-      password: "",
-      newPassword: "",
-    })
+    this.validateFormAddUser.reset()
   }
 
   validateFormAddUser: FormGroup<{
