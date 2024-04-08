@@ -68,9 +68,20 @@
   color: #fff;
   border-radius: 50px;
 }
+.btn-submit:disabled {
+  width: 55%;
+  height: 10vw;
+  font-size: 3.5vw;
+  background-color: #ccc;
+  color: #fff;
+  border-radius: 50px;
+}
 .input-number {
   padding: 0.5vw 1vw;
   font-size: 3.5vw;
   border-radius: 5%;
   width: 100%;
+}
+::ng-deep .ant-form-item-explain-error {
+  font-size: 3vw;
 }
