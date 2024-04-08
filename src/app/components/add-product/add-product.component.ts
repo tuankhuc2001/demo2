@@ -88,11 +88,11 @@ export class AddProductComponent {
 
     this.productService.uploadImage(formData, header).subscribe(
       () => {
-        this.msg.error('Upload Failed.');
+        this.msg.error('Tải ảnh lên thất bại.');
       },
       () => {
         this.fileList = [];
-        this.msg.success('upload successfully');
+        this.msg.success('Tải ảnh lên thành công');
       }
     );
   }
@@ -250,7 +250,7 @@ export class AddProductComponent {
       this.productService.uploadImage(formData, header).subscribe(
         (v) => {
           this.fileList = [];
-          this.msg.success('upload successfully');
+          this.msg.success('Tải ảnh lên thành công');
           addProduct.imageUrl = v.body.message
           this.productService.addProduct(addProduct).subscribe({
             next: (res) => {
@@ -267,7 +267,7 @@ export class AddProductComponent {
           });
         },
         (error) => {
-          this.msg.error('Upload Failed.');
+          this.msg.error('Tải ảnh lên thất bại');
           if (error.status === 403) {
             this.router.navigate([routerNames.signInPage]);
             this.createNotification('error', "Phiên đăng nhập hết hạn")            
