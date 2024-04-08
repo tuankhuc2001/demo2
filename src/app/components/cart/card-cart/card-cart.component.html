@@ -41,8 +41,8 @@
                 <input  nz-input type="number" class="rate" [disabled]="item.disable === false ? false : true" [ngModel] = "item?.rate" (blur)="handleRateBlur(item, $event)" (input)="onInputRate(item, $event)" />
                 <span *ngIf="item.showRateError" class="showRateError">Vui lòng nhập giá chênh lệch.</span>
               </div>
-              <div nz-col nzSpan="10" class="finalPrice">
-                <p>{{(item.plus ? (item.editPrice + item.rate) * item.quantity : (item.editPrice - item.rate) * item.quantity) | number}}</p>
+              <div nz-col nzSpan="10"  class="finalPrice">
+                <p class="finalPrice_text">{{(item.plus ? (item.editPrice + item.rate) * item.quantity : (item.editPrice - item.rate) * item.quantity) | number}}</p>
               </div>
             </div>
           </div>
