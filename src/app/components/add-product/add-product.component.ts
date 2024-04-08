@@ -271,7 +271,7 @@ export class AddProductComponent {
           this.msg.error('Upload Failed.');
           if (error.status === 403) {
             this.router.navigate([routerNames.signInPage]);
-            this.createNotification('error', "Phiên đăng nhập hết hạn")
+            this.createNotification('error', "Phiên đăng nhập hết hạn")            
           }
 
         }

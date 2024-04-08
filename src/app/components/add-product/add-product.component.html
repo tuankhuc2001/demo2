@@ -7,7 +7,7 @@
       <span class="title-text">Thêm sản phẩm</span>
     </div>
   </div>
-  <section class="dflex">
+  <section class="dflex" style="margin-top: 8vw;">
     <div nz-col nzSpan="10" class="center-upload">
       <nz-upload nzName="avatar" nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
         nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1"
@@ -82,7 +82,7 @@
           <nz-form-item>
             <nz-form-control [nzSpan]="24" [nzErrorTip]="nameProductValidate">
               <nz-input-group>
-                <input class="input" nz-input formControlName="nameProduct" placeholder="Tên SP: (*)" />
+                <input class="input" type="text" nz-input formControlName="nameProduct" placeholder="Tên SP: (*)" />
               </nz-input-group>
               <ng-template #nameProductValidate let-control>
                 @if (control.errors?.['required']) {
@@ -100,7 +100,7 @@
             <nz-form-item nz-col [nzSpan]="9">
               <nz-form-control [nzErrorTip]="unitValidate">
                 <nz-input-group>
-                  <input class="input" nz-input formControlName="unit" placeholder="Đơn vị tính: (*)" />
+                  <input class="input" type="text" nz-input formControlName="unit" placeholder="Đơn vị tính: (*)" />
                 </nz-input-group>
                 <ng-template #unitValidate let-control>
                   @if (control.errors?.['required']) {
@@ -115,7 +115,7 @@
             <nz-form-item nz-col [nzSpan]="7">
               <nz-form-control [nzErrorTip]="expiredDateValidate">
                 <nz-input-group>
-                  <input class="input" nz-input formControlName="expiredDate" placeholder="HSD:" />
+                  <input type="text" class="input" nz-input formControlName="expiredDate" placeholder="HSD:" />
                 </nz-input-group>
                 <ng-template #expiredDateValidate let-control>
                   @if (control.errors?.['required']) {
@@ -130,7 +130,7 @@
             <nz-form-item nz-col [nzSpan]="7">
               <nz-form-control [nzErrorTip]="providePriceValidator">
                 <nz-input-group [nzPrefix]="prefixTemplateProvidePrice">
-                  <input class="input" type="number" nz-input formControlName="providePrice" placeholder="Giá cung:" />
+                  <input type="number" nz-input formControlName="providePrice" placeholder="Giá cung:" />
                 </nz-input-group>
                 <ng-template #prefixTemplateProvidePrice></ng-template>
                 <ng-template #providePriceValidator let-control>
@@ -149,7 +149,7 @@
           <nz-form-item>
             <nz-form-control [nzSpan]="24" [nzErrorTip]="originValidate">
               <nz-input-group>
-                <input class="input" nz-input formControlName="origin" placeholder="Xuất xứ:" />
+                <input type="text" class="input" nz-input formControlName="origin" placeholder="Xuất xứ:" />
               </nz-input-group>
               <ng-template #originValidate let-control>
                 @if (control.errors?.['required']) {
@@ -166,7 +166,7 @@
           <nz-form-item nz-col [nzSpan]="15">
             <nz-form-control [nzErrorTip]="providerValidate">
               <nz-input-group>
-                <input class="input" nz-input formControlName="provider" placeholder="Nguồn cung:" />
+                <input type="text" class="input" nz-input formControlName="provider" placeholder="Nguồn cung:" />
               </nz-input-group>
               <ng-template #providerValidate let-control>
                 @if (control.errors?.['required']) {
