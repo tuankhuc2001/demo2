@@ -57,7 +57,7 @@ export class ModalUpdateAccountComponent implements OnChanges {
     if (this.validateFormAddUser.valid) {
       this.itemUser.password = this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
         this.itemUser.role = this.selectedValue
-      this.userService.updateAccount(2, this.itemUser).subscribe({
+      this.userService.updateAccount(this.itemUser.id, this.itemUser).subscribe({
         next: (v: any) => {
           if (v.status == false) {
             this.notification.create('error', `${v.message}`, '')
@@ -79,10 +79,7 @@ export class ModalUpdateAccountComponent implements OnChanges {
   }
 
   handleResetState() {
-    this.validateFormAddUser.setValue({
-      password: "",
-      newPassword: "",
-    })
+    this.validateFormAddUser.reset()
   }
 
   validateFormAddUser: FormGroup<{

@@ -1,4 +1,8 @@
-<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()">
+<<<<<<< HEAD
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" [footer]="false">
+=======
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal(); handleResetState()">
+>>>>>>> ade39fc6907f1a811560bf2a6322eddc482ac75e
   <Content>
     <h3 class="modal_title">Sửa nhân viên</h3>
     <div class="modal_content">
@@ -47,13 +51,11 @@
           <nz-option class="select_option" nzValue="ROLE_WAREHOUSE" nzLabel="WareHouse"></nz-option>
         </nz-select>
       </div>
+      <div nz-row class="flex-end" style="margin-right: 2vw;">
+        <button class="add_submit" (click)="handleUpdateAccount()">Xác nhận</button>
+        <button class="add_cancel" (click)="handleCloseModal()">Hủy</button>
+      </div>
     </div>
-
+    
   </Content>
-  <Footer>
-    <div style="margin-right: 2vw;">
-      <button class="add_submit" (click)="handleUpdateAccount()">Xác nhận</button>
-      <button class="add_cancel" (click)="handleCloseModal()">Hủy</button>
-    </div>
-  </Footer>
 </cModal>

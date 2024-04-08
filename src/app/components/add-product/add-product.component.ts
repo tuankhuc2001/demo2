@@ -15,6 +15,8 @@ import { IProduct } from '../../types/product';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { notificationEnum } from '../../utils/notificationEnum';
 import { Location } from '@angular/common';
+import { routerNames } from '../../constant/router';
+import { Router } from '@angular/router';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -38,6 +40,7 @@ export class AddProductComponent {
     private fb: NonNullableFormBuilder,
     private notification: NzNotificationService,
     private location: Location,
+    private router: Router,
   ) { }
 
   listProduct: IProduct[] = [];
@@ -85,7 +88,7 @@ export class AddProductComponent {
 
     this.productService.uploadImage(formData, header).subscribe(
       () => {
-        this.msg.error('upload failed.');
+        this.msg.error('Upload Failed.');
       },
       () => {
         this.fileList = [];
@@ -200,7 +203,7 @@ export class AddProductComponent {
   }
 
   codeProductValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
-    if (control.value.length < 17 || control.value.length > 17 ) {
+    if (control.value.length < 17 || control.value.length > 17) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -257,11 +260,20 @@ export class AddProductComponent {
             },
             error: (error) => {
               this.createNotification(notificationEnum.error, error.message);
+              if (error.status === 403) {
+                this.router.navigate([routerNames.signInPage]);
+                this.createNotification('error', "Phiên đăng nhập hết hạn")
+              }
             },
           });
         },
-        () => {
-          this.msg.error('upload failed.');
+        (error) => {
+          this.msg.error('Upload Failed.');
+          if (error.status === 403) {
+            this.router.navigate([routerNames.signInPage]);
+            this.createNotification('error', "Phiên đăng nhập hết hạn")
+          }
+
         }
       );
 
@@ -319,7 +331,7 @@ export class AddProductComponent {
     }
   }
 
-  createNotification(type: notificationEnum, content: string): void {
+  createNotification(type: string, content: string): void {
     this.notification.create(type, `${content}`, '');
   }
 }
