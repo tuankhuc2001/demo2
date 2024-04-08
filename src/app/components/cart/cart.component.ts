@@ -6,7 +6,6 @@ import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
 import { routerNames } from '../../constant/router';
 import { ICartItem } from '../../types/cart-item';
-import { ICart } from '../../types/cart';
 import { IOrder } from '../../types/order';
 import { IUser } from '../../types/user';
 import { UserService } from '../../services/user.service';
