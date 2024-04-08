@@ -7,6 +7,8 @@ import { routerNames } from '../../constant/router';
 import { OrderService } from '../../services/order.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { IOrder } from '../../types/order';
+import { IUser } from '../../types/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-order',
@@ -18,9 +20,21 @@ export class OrderComponent implements OnInit, OnDestroy {
     private notification: NzNotificationService,
     private searchService: SearchService,
     private orderService: OrderService,
+    private userService: UserService,
     private router: Router) { }
 
   private $destroy = new Subject()
+
+  user: IUser = {
+    id: 0,
+    phone: "",
+    email: "",
+    fullname: "",
+    avatar: "",
+    role: "",
+    token: "",
+    refreshToken: ""
+  }
 
   listOrder: IOrder[] = []
   isLoading: boolean = true
@@ -31,6 +45,7 @@ export class OrderComponent implements OnInit, OnDestroy {
         this.handleSearch(value)
       }
     })
+    this.user = this.userService.getUser()
   }
 
   ngOnDestroy(): void {

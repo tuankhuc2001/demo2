@@ -7,6 +7,8 @@ import { OrderDetailService } from '../../services/order-detail.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
 import { routerNames } from '../../constant/router';
+import { IUser } from '../../types/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -20,6 +22,7 @@ export class OrderDetailComponent {
     private notification: NzNotificationService,
     private orderService: OrderService,
     private orderDetailService: OrderDetailService,
+    private userService: UserService
   ) { }
 
   private $destroy = new Subject()
@@ -50,7 +53,16 @@ export class OrderDetailComponent {
     },
     orderDetailResponseList: []
   };
-
+  user: IUser = {
+    id: 0,
+    phone: "",
+    email: "",
+    fullname: "",
+    avatar: "",
+    role: "",
+    token: "",
+    refreshToken: ""
+  }
   isLoading: boolean = false
 
   handleGetOrderDetail(value: number) {
@@ -75,6 +87,7 @@ export class OrderDetailComponent {
         this.handleGetOrderDetail(value)
       }
     })
+    this.user = this.userService.getUser()
   }
 
   createNotification(type: string, content: string): void {
