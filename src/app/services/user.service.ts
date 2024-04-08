@@ -35,6 +35,14 @@ export class UserService {
         return headers
     }
 
+    // headerRefreshToken(): HttpHeaders {
+    //     const headers = new HttpHeaders({
+    //         'Content-Type': 'application/json',
+    //         'Authorization': `Bearer ${localStorage.setItem("token", this.user.value.refreshToken)}`
+    //     });
+    //     return headers
+    // }
+
     headerUpload(): HttpHeaders {
         const headers = new HttpHeaders({
             'Content-Type': 'multipart/form-data',
@@ -61,6 +69,10 @@ export class UserService {
         const headers = this.header()
         return this.http.put<IUpdateUser>(`${apiUser.updateAccount}${idUser}`, accountRequest, {headers})
     }
-    
 
+    // loginRefreshToken(refreshToken: string) : Observable<ILoginResponse> {
+    //     const headers = this.headerRefreshToken()
+    //     return this.http.post<ILoginResponse>(`${objectApi.loginRefreshToken}`,{token:refreshToken}, {headers})
+    // }
+    
 }

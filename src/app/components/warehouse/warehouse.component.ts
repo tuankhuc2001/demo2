@@ -6,6 +6,9 @@ import { ProductService } from '../../services/product.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { IUser } from '../../types/user';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
+import { ILoginResponse } from '../../types/login';
+import { routerNames } from '../../constant/router';
 
 @Component({
   selector: 'app-warehouse',
@@ -18,7 +21,8 @@ export class WarehouseComponent implements OnInit, OnDestroy {
     private searchService: SearchService,
     private producService: ProductService,
     private notification: NzNotificationService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   private $destroy = new Subject()
@@ -82,10 +86,15 @@ export class WarehouseComponent implements OnInit, OnDestroy {
         this.isLoading = false
       },
       error: (error) => {
-        this.isLoading = false
-        error.error.messageError.map((e: string) => {
-          this.notification.create("error", `${e}`, "");
-        })
+        if(error.status == 403){
+          this.router.navigate([routerNames.signInPage]);
+          this.notification.create("error", `Hết hạn đăng nhập!`, "Mời đăng nhập lại");
+        }else{
+          error.error.messageError.map((e: string) => {
+            this.notification.create("error", `${e}`, "");
+            this.isLoading = false
+          })
+        }
       }
     })
   }
@@ -116,4 +125,25 @@ export class WarehouseComponent implements OnInit, OnDestroy {
   handleSetIsVisibleClose() {
     this.isVisibleModalUpdatePrice = false;
   }
+
+  handleNavigate(): void {
+    this.router.navigate(['singIn']);
+  }
+
+  // handleRefreshToken(): void {
+  //   this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+  //     next: (v:ILoginResponse) => {
+  //       this.userService.setUser(v)
+  //       localStorage.setItem("token",v.token)
+  //       this.user = v
+  //       this.router.navigate(['/home'])
+  //     },
+  //     error: (error) => {
+  //       if (error.status == 403) {
+  //         this.notification.create('error', "Phiên đăng nhập hết hạn", "")
+  //       }
+  //     }
+  //   })
+  // }
+
 }
