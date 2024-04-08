@@ -40,15 +40,10 @@ export class CardAccountComponent implements OnChanges {
 
   handleOpenUpdateAccount(item: IUserRequestUpdate){
       this.isVisibleModalUpdateAccount = true;
-      this.itemAccount = item;
-      console.log(this.listUser, "danh dânh");
-      
+      this.itemAccount = item;      
   }
   
   ngOnChanges(changes: SimpleChanges) {
-    
-
-  }
-  ngOnInit() {
+    if (changes.itemAccount && changes.itemAccount.currentValue) {}
   }
 }
