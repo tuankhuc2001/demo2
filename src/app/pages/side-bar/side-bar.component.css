@@ -90,10 +90,10 @@ nz-header {
 ::ng-deep.ant-menu-sub.ant-menu-inline {
   background-color: #fff;
 }
+::ng-deep .ant-menu-inline.ant-menu-root .ant-menu-submenu-title > *{
+  font-size: 3vw;
+}
 
-/* ::ng-deep .ant-menu-submenu-selected {
-  background-color: #25403b;
-} */
 nz-content {
   margin-top: 64px;
 }
@@ -260,6 +260,10 @@ nz-drawer {
   }
 
   ::ng-deep .ant-menu-item .ant-menu-item-icon, .ant-menu-item .anticon, .ant-menu-submenu-title .ant-menu-item-icon, .ant-menu-submenu-title .anticon {
+    font-size: 3vw;
+  }
+
+  ::ng-deep .ant-menu-inline.ant-menu-root .ant-menu-submenu-title > * {
     font-size: 3vw;
   }
 
