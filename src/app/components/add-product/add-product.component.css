@@ -152,10 +152,6 @@
   outline: none;
 }
 
-.description :focus {
-  background-color: red;
-}
-
 .button-add-product {
   margin-top: 25px;
   border: none;
