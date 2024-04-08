@@ -123,3 +123,9 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+@media (min-width: 768px) {
+  .note {
+    font-size: 25px;
+  }
+}
