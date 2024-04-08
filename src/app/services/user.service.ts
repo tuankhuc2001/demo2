@@ -57,9 +57,9 @@ export class UserService {
         return this.http.post<IAddUser>(`${apiUser.addAccount}`, accountRequest, {headers})
     }
 
-    updateAccount(idUser: number, accountRequest: IUserRequest): Observable<IUpdateUser> {
+    updateAccount(idUser: number, accountRequest: IUserRequestUpdate): Observable<IUpdateUser> {
         const headers = this.header()
-        return this.http.put<IAddUser>(`${apiUser.updateAccount}${idUser}`, accountRequest, {headers})
+        return this.http.put<IUpdateUser>(`${apiUser.updateAccount}${idUser}`, accountRequest, {headers})
     }
     
 
