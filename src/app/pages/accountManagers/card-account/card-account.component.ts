@@ -41,7 +41,6 @@ export class CardAccountComponent implements OnChanges {
   handleOpenUpdateAccount(item: IUserRequestUpdate){
       this.isVisibleModalUpdateAccount = true;
       this.itemAccount = item;
-      
   }
   
   ngOnChanges(changes: SimpleChanges) {

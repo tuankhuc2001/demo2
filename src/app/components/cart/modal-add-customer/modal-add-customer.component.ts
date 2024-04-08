@@ -3,6 +3,7 @@ import { CustomerService } from '../../../services/customer.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { routerNames } from '../../../constant/router';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class ModalAddCustomerComponent {
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
 
-  ngOnInIt(){
+  ngOnInIt() {
     this.validateFormAddCustomer.setValue({
       nameCustomer: "1",
       phoneCustomer: "2",
@@ -58,6 +59,12 @@ export class ModalAddCustomerComponent {
             this.handleResetState();
             this.handleCloseAddCustomer();
           }
+        },
+        error: (v) => {
+          if (v.status === 403) {
+            this.router.navigate([routerNames.signInPage]);
+            this.createNotification('error', "Phiên đăng nhập hết hạn")
+          }
         }
       })
     } else {
@@ -70,8 +77,12 @@ export class ModalAddCustomerComponent {
     }
   }
 
+  createNotification(type: string, content: string): void {
+    this.notification.create(type, `${content}`, '');
+  }
+
   nameCustomerValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -82,7 +93,7 @@ export class ModalAddCustomerComponent {
   }
 
   addressValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
-    if (control.value.length > 255) {
+    if (control.value.length > 255 || control.value.length < 3) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
@@ -93,12 +104,13 @@ export class ModalAddCustomerComponent {
   }
 
   phoneCustomerValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
-    if (control.value.length > 11) {
+    if (control.value.toString().length > 9) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
-    }
-    else {
+    } else if (control.value.toString().length <= 8) {
+      return { confirm: true, error: true };
+    } else {
       return {}
     }
   }
