@@ -20,7 +20,7 @@
 
 .content_info> label{
     width: 100%;
-    font-size: 3vw;
+    font-size: 3.5vw;
     font-weight: bold;
 }
 
@@ -90,5 +90,11 @@
     ::ng-deep .ant-select-selector{
         height: fit-content !important;
         padding: 11px 4px !important;
+    }
+
+    .content_info> label{
+        width: 100%;
+        font-size: 3vw;
+        font-weight: bold;
     }
 }
