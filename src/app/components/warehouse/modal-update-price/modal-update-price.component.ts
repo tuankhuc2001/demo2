@@ -4,6 +4,8 @@ import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@ang
 import { ProductService } from '../../../services/product.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { CurrencyPipe } from '@angular/common';
+import { Router } from '@angular/router';
+import { routerNames } from '../../../constant/router';
 
 @Component({
   selector: 'app-modal-update-price',
@@ -16,6 +18,7 @@ export class ModalUpdatePriceComponent {
     private fb: NonNullableFormBuilder,
     private producService: ProductService,
     private notification: NzNotificationService,
+    private router : Router
   ) {
   }
 
@@ -26,15 +29,15 @@ export class ModalUpdatePriceComponent {
   @Output() isVisibleChange: EventEmitter<void> = new EventEmitter<void>();
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
 
-
+  token = localStorage.getItem("token")
 
   handleSetIsVisisble() {
     this.isVisibleChange.emit();
+    this.validateForm.value.priceFloor = this.formatCurrencyValue(this.productItem.floorPrice);
   }
 
   handleCloseModal(){
     this.closeModal.emit();
-    this.validateForm.setValue({ priceFloor: this.productItem.floorPrice })
   }
 
   @Input() productItem: IProduct = {
@@ -57,12 +60,12 @@ export class ModalUpdatePriceComponent {
     if (changes['productItem'] && !changes['productItem'].firstChange) {
       this.validateForm.setValue({
         priceFloor: this.formatCurrencyValue(this.productItem.floorPrice),
-      })
+      })      
     }
   }
 
   validateForm: FormGroup = this.fb.group({
-    priceFloor: [null, [Validators.required]],
+    priceFloor: [this.formatCurrencyValue(this.productItem.floorPrice), [Validators.required]],
   });
 
   handleUpdatePrice() {
@@ -82,9 +85,14 @@ export class ModalUpdatePriceComponent {
             }
           },
           error: (error) => {
-            error.error.messageError.map((e: string) => {
-              this.notification.create("error", `${e}`, "");
-            })
+            if(error.status == 403){
+              this.router.navigate([routerNames.signInPage]);
+              this.notification.create("error", `Hết hạn đăng nhập!`, "Mời đăng nhập lại");
+            } else{
+              error.error.messageError.map((e: string) => {
+                this.notification.create("error", `${e}`, "");
+              })
+            }
           }
         })
       }
