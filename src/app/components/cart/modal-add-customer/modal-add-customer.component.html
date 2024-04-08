@@ -13,7 +13,7 @@
                         <nz-form-control [nzSpan]="24" [nzErrorTip]="phoneCustomerValidator">
                             <nz-input-group>
                                 <label class="input-label">Số điện thoại</label>
-                                <input class="input-edit" type="number" placeholder="Số điện thoại..." nz-input formControlName="phoneCustomer" />
+                                <input class="input-edit" type="text" placeholder="Số điện thoại..." nz-input formControlName="phoneCustomer" />
                             </nz-input-group>
                             <ng-template #phoneCustomerValidator let-control>
                                 @if (control.errors?.['required']) {
@@ -29,7 +29,7 @@
                         <nz-form-control [nzSpan]="24" [nzErrorTip]="nameCustomerValidator">
                             <nz-input-group>
                                 <label class="input-label">Họ và tên</label>
-                                <input class="input-edit"placeholder="Họ và tên..." nz-input formControlName="nameCustomer" />
+                                <input class="input-edit" type="text" placeholder="Họ và tên..." nz-input formControlName="nameCustomer" />
                             </nz-input-group>
                             <ng-template #nameCustomerValidator let-control>
                                 @if (control.errors?.['required']) {
@@ -45,7 +45,7 @@
                         <nz-form-control [nzSpan]="24" [nzErrorTip]="addressValidator">
                             <nz-input-group>
                                 <label class="input-label">Địa chỉ</label>
-                                <input class="input-edit" placeholder="Địa chỉ..." nz-input formControlName="address" />
+                                <input class="input-edit" type="text" placeholder="Địa chỉ..." nz-input formControlName="address" />
                             </nz-input-group>
                             <ng-template #addressValidator let-control>
                                 @if (control.errors?.['required']) {

@@ -147,7 +147,11 @@
   width: 100%;
   border-radius: 5px;
   padding: 3vw;
-  border-color: #eeecec;
+  border-color: #d9d9d9;
+}
+
+.description :focus-visible{
+  border-color: red;
 }
 
 .button-add-product {

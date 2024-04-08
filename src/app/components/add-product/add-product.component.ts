@@ -191,12 +191,11 @@ export class AddProductComponent {
   };
 
   phoneNumberValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
-    if (control.value.toString().length > 9) {
+    const phonePattern = /^(0\d{9})$/;
+    if (!phonePattern.test(control.value)) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
-    } else if (control.value.toString().length <= 8) {
-      return { confirm: true, error: true };
     } else {
       return {}
     }
