@@ -31,6 +31,9 @@ export class ModalUpdateAccountComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    if (changes.itemUser && changes.itemUser.currentValue) {
+      this.selectedValue = changes.itemUser.currentValue.role;
+    }
   }
 
   selectedValue = this.itemUser.role
