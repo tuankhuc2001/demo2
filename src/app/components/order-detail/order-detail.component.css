@@ -46,7 +46,7 @@
 .header_direction {
     width: 100%;
     position: fixed;
-    top: 0;
+    top: -0.5vw;
     display: flex;
     align-items: center;
     padding: 2vw 4vw;
@@ -75,26 +75,29 @@
 }
 
 .block-tab {
-    height: 12vw;
+    height: 11vw;
 }
 
 .block-top-card {
-    height: 15vw;
+    height: 16vw;
 }
 
 .footer_orderDetail {
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding: 5vw 5vw 10vw 5vw;
     background-color: white;
 }
 
 .customer {
     display: flex;
+    padding: 5vw 5vw 3vw;
     align-items: center;
-    padding-bottom: 1vw;
     border-bottom: 1px #afafaf solid;
+}
+
+.price {
+    padding: 2vw 5vw 7vw;
 }
 
 .customer_avatar {
@@ -114,7 +117,7 @@
 .ship_price {
     display: flex;
     justify-content: space-between;
-    margin-top: 3vw;
+    margin-top: 2vw;
     font-size: 4.5vw;
 }
 
