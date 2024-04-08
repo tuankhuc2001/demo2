@@ -104,7 +104,7 @@ export class ModalCustomerComponent {
   }
 
   heightModalNoData: {} = {
-    height: '20vh'
+    height: '200px'
   }
 
   customerItem: ICustomer = {
