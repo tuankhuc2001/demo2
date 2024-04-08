@@ -16,7 +16,6 @@ export class ModalAddCustomerComponent {
     private customerService: CustomerService,
     private notification: NzNotificationService,
     private fb: NonNullableFormBuilder, private router: Router,
-    private myForm: FormGroup,
   ) { }
 
   @Input() isVisible: boolean = false;
@@ -31,17 +30,12 @@ export class ModalAddCustomerComponent {
   }
 
   handleResetState() {
-    this.validateFormAddCustomer.setValue({
-      nameCustomer: " ",
-      phoneCustomer: " ",
-      address: " ",
-    })
+    this.validateFormAddCustomer.reset()
   }
 
   handleCloseAddCustomer() {
     this.handleResetState();
     this.closeModal.emit();
-    this.clearValidation();
   }
 
   handleAddCustomer() {
@@ -59,7 +53,6 @@ export class ModalAddCustomerComponent {
             this.notification.create('success', `${v.message}`, '')
             this.handleResetState();
             this.handleCloseAddCustomer();
-            this.clearValidation();
           }
         },
         error: (v) => {
@@ -125,9 +118,4 @@ export class ModalAddCustomerComponent {
     address: ["", [Validators.required, this.addressValidator]],
   })
 
-  clearValidation(): void {
-    this.myForm.get('nameCustomer')?.setErrors(null);
-    this.myForm.get('phoneCustomer')?.setErrors(null);
-    this.myForm.get('address')?.setErrors(null);
-  }
 }
