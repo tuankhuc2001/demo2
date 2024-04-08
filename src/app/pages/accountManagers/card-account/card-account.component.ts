@@ -1,5 +1,5 @@
 import { Component, Input, Output, SimpleChanges, OnChanges, EventEmitter } from '@angular/core';
-import { ItemUser } from '../../../types/user';
+import { IUserRequestUpdate, ItemUser } from '../../../types/user';
 
 @Component({
   selector: 'app-card-account',
@@ -13,12 +13,9 @@ export class CardAccountComponent implements OnChanges {
   constructor() { }
 
   @Input() listUser :any;
-  itemAccount: ItemUser = {
+  itemAccount: IUserRequestUpdate = {
     id: 1,
-    phone: "string",
     password: "string" ,
-    address: "string",
-    fullname: "string",
     role: "string",
   }
   isVisibleModalUpdateAccount: boolean = false;
@@ -41,17 +38,15 @@ export class CardAccountComponent implements OnChanges {
     this.isVisibleModalUpdateAccount = false;
   }
 
-  handleOpenUpdateAccount(item: ItemUser){
+  handleOpenUpdateAccount(item: IUserRequestUpdate){
       this.isVisibleModalUpdateAccount = true;
       this.itemAccount = item;
+      console.log(this.listUser, "danh dânh");
+      
   }
   
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.listUser && changes.listUser.currentValue) {
-      this.listUser.forEach((user: any) => {
-        user.role = this.formatRole(user.role);
-      });
-    }
+    
 
   }
   ngOnInit() {

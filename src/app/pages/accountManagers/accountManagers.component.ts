@@ -64,7 +64,7 @@ export class AccountManagersComponent implements OnInit {
   ngOnInit() {
     this.userService.getUser().subscribe({
       next: (res: IUser) => {
-        this.user = res
+        this.listUser = res
       }
     })
     this.handleGetAllAccount();
