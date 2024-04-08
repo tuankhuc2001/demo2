@@ -8,6 +8,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { IUser } from '../../types/user';
+import { routerNames } from '../../constant/router';
 @Component({
   selector: 'app-import-warehose',
   templateUrl: './import-warehose.component.html',
@@ -69,9 +70,13 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
         this.listProduct = res.content.list;
         this.isLoading = false
       },
-      error: (error) => { 
+      error: (error) => {  
         this.createNotification('error', error);
         this.isLoading = false
+        if (error.status == 403) {
+          this.router.navigate([routerNames.signInPage]);
+          this.createNotification('error', "Phiên đăng nhập hết hạn")
+        }
       },
     });
   }

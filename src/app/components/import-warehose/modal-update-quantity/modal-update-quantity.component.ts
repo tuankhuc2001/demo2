@@ -79,7 +79,7 @@ export class ModalUpdateQuantityComponent {
             this.getProduct.emit();
             this.createNotification('success', `${v.message}`);
             this.isLoading = false;
-          },
+          }, 
           error: (error) => {
             error.error.messageError.map((e: string) => {
               this.notification.create("error", `${e}`, "");
