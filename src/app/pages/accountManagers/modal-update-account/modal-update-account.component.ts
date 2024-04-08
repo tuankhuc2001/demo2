@@ -20,14 +20,14 @@ export class ModalUpdateAccountComponent implements OnChanges {
   ) { }
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
-    handleCloseModal() {
+  handleCloseModal() {
     this.closeModal.emit();
   }
 
-  @Input() itemUser: IUserRequestUpdate ={
+  @Input() itemUser: IUserRequestUpdate = {
     id: 1,
     password: "string",
-    role:"s"
+    role: "s"
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -36,17 +36,27 @@ export class ModalUpdateAccountComponent implements OnChanges {
     }
   }
 
+
   selectedValue = this.itemUser.role
   passwordVisible = false;
+  newPasswordVisible = false;
+
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
+  toggleNewPasswordVisibility() {
+    this.newPasswordVisible = !this.newPasswordVisible;
+  }
 
   handleChangeRole(event: string) {
     this.selectedValue = event
   }
 
-  handleUpdateAccount(){
+  handleUpdateAccount() {
     if (this.validateFormAddUser.valid) {
       this.itemUser.password = this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
-      this.itemUser.role = this.selectedValue
+        this.itemUser.role = this.selectedValue
       this.userService.updateAccount(2, this.itemUser).subscribe({
         next: (v: any) => {
           if (v.status == false) {
@@ -68,7 +78,6 @@ export class ModalUpdateAccountComponent implements OnChanges {
     }
   }
 
-
   handleResetState() {
     this.validateFormAddUser.setValue({
       password: "",
@@ -80,8 +89,8 @@ export class ModalUpdateAccountComponent implements OnChanges {
     password: FormControl<string>;
     newPassword: FormControl<string>;
   }> = this.fb.group({
-    password:[""],
-    newPassword:[""]
+    password: [""],
+    newPassword: [""]
   })
 
 }
