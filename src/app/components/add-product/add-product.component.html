@@ -9,12 +9,22 @@
   </div>
   <section class="dflex" style="margin-top: 8vw;">
     <div nz-col nzSpan="10" class="center-upload">
-      <nz-upload nzName="avatar" nzAction="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+      <nz-upload nzName="avatar" nzAction="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
         nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1"
         [nzPreview]="handlePreview" style="display: flex; margin-top: 14vw;">
         <div>
           <span class="upload_icon" nz-icon nzType="camera" nzTheme="fill"></span>
         </div>
+        <nz-modal
+        [nzVisible]="previewVisible"
+        [nzContent]="modalContent"
+        [nzFooter]="null"
+        (nzOnCancel)="previewVisible = false"
+      >
+        <ng-template #modalContent>
+          <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+        </ng-template>
+      </nz-modal>
       </nz-upload>
     </div>
     <div nz-col nzSpan="14" class="center">
