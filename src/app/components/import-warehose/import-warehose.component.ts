@@ -89,11 +89,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe({
-      next: (res: IUser) => {
-        this.user = res
-      }
-    })
+    this.user = this.userService.getUser();
     this.searchService
       .getSearchInput()
       .pipe(takeUntil(this.destroyed$), debounceTime(1000))

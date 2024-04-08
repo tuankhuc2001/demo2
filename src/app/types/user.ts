@@ -27,6 +27,7 @@ export interface IUserRequest {
 }
 
 export interface IUserRequestUpdate {
+  id: number;
   password: string ;
   role: string;
 }
