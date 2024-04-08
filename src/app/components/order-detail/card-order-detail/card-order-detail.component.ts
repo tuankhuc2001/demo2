@@ -8,6 +8,7 @@ import { IOrderAndOrderDetail } from '../../../types/order';
 })
 
 export class CardOrderDetailComponent implements OnInit {
+  constructor() { }
 
   @Input() listCardOrderDetail: IOrderAndOrderDetail = {
     id: 0,
@@ -35,9 +36,7 @@ export class CardOrderDetailComponent implements OnInit {
     orderDetailResponseList: []
   };
 
-  constructor() { }
+  token = localStorage.getItem("token")
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
