@@ -120,7 +120,6 @@ export class CartComponent implements OnDestroy, OnInit {
   handleOpenModalDeleteSingle(event: ICartItem) {
     this.isVisibleDeleteSingle = true;
     this.itemCartItem = event;
-    
   }
 
   handleCloseModalDeleteSingle(): void {
@@ -148,7 +147,10 @@ export class CartComponent implements OnDestroy, OnInit {
       },
       error: (error) => {
         this.isLoading = false
-        this.createNotification('error', error)
+        if (error.status == 403) {
+          this.router.navigate([routerNames.signInPage]);
+          this.createNotification('error', "Phiên đăng nhập hết hạn")
+        }
       }
     })
   }
@@ -165,7 +167,6 @@ export class CartComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.getUser();
-
     this.handleGetCart();
   }
 
