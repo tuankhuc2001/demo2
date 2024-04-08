@@ -11,6 +11,9 @@ import {
 import { IProduct } from '../../../types/product';
 import { ProductService } from '../../../services/product.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { Router } from '@angular/router';
+import { routerNames } from '../../../constant/router';
+
 @Component({
   selector: 'app-modal-update-quantity',
   templateUrl: './modal-update-quantity.component.html',
@@ -24,7 +27,8 @@ export class ModalUpdateQuantityComponent {
   constructor(
     private fb: NonNullableFormBuilder,
     private productService: ProductService,
-    private notification: NzNotificationService
+    private notification: NzNotificationService,
+    private router: Router
   ) {}
 
   @Input() ProductDetail: IProduct = {
@@ -76,12 +80,16 @@ export class ModalUpdateQuantityComponent {
             this.getProduct.emit();
             this.createNotification('success', `${v.message}`);
             this.isLoading = false;
-          },
+          }, 
           error: (error) => {
             error.error.messageError.map((e: string) => {
               this.notification.create("error", `${e}`, "");
               this.isLoading = false;
             })
+            if (error.status == 403) {
+              this.router.navigate([routerNames.signInPage]);
+              this.createNotification('error', "Phiên đăng nhập hết hạn")
+            }
           },
         });
     } else {
