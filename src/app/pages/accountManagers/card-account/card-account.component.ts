@@ -46,9 +46,6 @@ export class CardAccountComponent implements OnChanges {
   }
   
   ngOnChanges(changes: SimpleChanges) {
-    
-
-  }
-  ngOnInit() {
+    if (changes.itemAccount && changes.itemAccount.currentValue) {}
   }
 }
