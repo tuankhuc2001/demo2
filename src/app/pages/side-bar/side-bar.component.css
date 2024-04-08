@@ -263,6 +263,10 @@ nz-drawer {
     font-size: 3vw;
   }
 
+  ::ng-deep .ant-menu-inline.ant-menu-root .ant-menu-submenu-title > * {
+    font-size: 3vw;
+  }
+
   .title-menuItem {
     padding: 4vw 0;
   }
