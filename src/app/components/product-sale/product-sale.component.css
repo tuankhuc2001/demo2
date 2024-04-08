@@ -23,6 +23,7 @@
 .icon-menu {
   font-size: 30px;
 }
+
 .header-trigger {
   cursor: pointer;
   color: #fff;
@@ -85,7 +86,7 @@ nz-badge {
   width: 35%;
   height: 14vw;
   position: fixed;
-  bottom: 5%;
+  bottom: 10%;
   right: 8%;
   z-index: 10;
   border: none;

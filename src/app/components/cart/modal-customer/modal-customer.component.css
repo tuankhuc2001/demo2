@@ -47,6 +47,7 @@
     right: 20px;
     background-color: #fff;
     left: 20px;
+    margin-top: 1px;
 }
 
 .input-search {
@@ -103,7 +104,6 @@
 .modal-custom {
     overflow-y: scroll;
     height: 40vh; 
-    overflow: hidden;
 }
 
 .btn-add-customer {

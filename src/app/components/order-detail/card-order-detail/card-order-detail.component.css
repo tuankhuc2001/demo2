@@ -4,7 +4,7 @@
 }
 
 .main-card {
-    padding: 3vw;
+    padding: 2vw;
     display: flex;
     align-items: center;
 }
@@ -51,7 +51,7 @@
 }
 
 .margin-bot {
-    margin-bottom: 3vw;
+    margin-bottom: 2vw;
 }
 
 @media  (min-width: 768px) {
