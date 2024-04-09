@@ -133,6 +133,15 @@
     z-index: 99;
 }
 
+.showRateExceed {
+    color: red;
+    font-size: 2.5vw;
+    position: absolute;
+    top: 7vw;
+    left: -0.2vw;
+    width: 30vw;
+    z-index: 99;
+}
 
 .finalPrice {
     text-align: center;
@@ -236,6 +245,16 @@
     }
 
     .showRateError {
+        color: red;
+        font-size: 2.5vw;
+        position: absolute;
+        top: 6vw;
+        left: -0.2vw;
+        width: 35vw;
+        z-index: 99;
+    }
+
+    .showRateExceed {
         color: red;
         font-size: 2.5vw;
         position: absolute;
