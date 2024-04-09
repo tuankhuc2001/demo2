@@ -272,7 +272,6 @@ export class AddProductComponent {
             this.router.navigate([routerNames.signInPage]);
             this.createNotification('error', "Phiên đăng nhập hết hạn")            
           }
-
         }
       );
 
