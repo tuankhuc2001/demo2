@@ -4,6 +4,7 @@ import { notificationEnum } from '../../../utils/notificationEnum';
 
 import { ICartItem } from '../../../types/cart-item';
 import { CartItemService } from '../../../services/cart-item.service';
+import { debounceTime } from 'rxjs';
 @Component({
   selector: 'app-card-cart',
   templateUrl: './card-cart.component.html',
