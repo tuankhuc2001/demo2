@@ -3,6 +3,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
 import { HttpClient } from '@angular/common/http';
+import { differenceInCalendarDays } from 'date-fns';
 import {
   AbstractControl,
   FormControl,
@@ -50,7 +51,7 @@ export class AddProductComponent {
     id: 0,
     nameProduct: '',
     quantityProduct: 0,
-    expiredDate: 'new Date()',
+    expiredDate: '',
     provider: '',
     unit: '',
     origin: '',
@@ -61,6 +62,9 @@ export class AddProductComponent {
     phoneProvider: '',
     imageUrl: '',
   };
+  today = new Date();
+
+  dataDate = new Date();
 
   fileList: NzUploadFile[] = [];
 
@@ -69,6 +73,13 @@ export class AddProductComponent {
   previewImage: string | undefined = '';
   previewVisible = false;
 
+  onChange(result: Date): void  {debugger
+    console.log('onChange: ', result);
+    this.dataDate = result
+    console.log(this.dataDate,"dddddd");
+    
+  }
+
   handlePreview = async (file: NzUploadFile): Promise<void> => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj!);
@@ -76,6 +87,9 @@ export class AddProductComponent {
     this.previewImage = file.url || file.preview;
     this.previewVisible = true;
   };
+  disabledDate = (current: Date): boolean =>
+    // Can not select days before today and today
+    differenceInCalendarDays(current, this.today) < 0;
 
   handleCallApiImage(): void {
     const formData = new FormData();
@@ -298,9 +312,7 @@ export class AddProductComponent {
         unit: this.validateAddProductForm.value.unit
           ? this.validateAddProductForm.value.unit
           : '',
-        expiredDate: this.validateAddProductForm.value.expiredDate
-          ? this.validateAddProductForm.value.expiredDate
-          : '',
+        expiredDate: this.product.description,
         codeProduct: this.validateAddProductForm.value.codeProduct
           ? this.validateAddProductForm.value.codeProduct
           : '',
