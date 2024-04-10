@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { Subject } from 'rxjs';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { CartService } from '../../services/cart.service';
-import { trigger, transition, animate, style } from '@angular/animations';
 
 import { Router } from '@angular/router';
 import { routerNames } from '../../constant/router';
@@ -15,14 +14,6 @@ import { UserService } from '../../services/user.service';
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
-  animations: [
-    trigger('slideInLeft', [
-      transition(':enter', [
-        style({ transform: 'translateX(100%)' }), // Bắt đầu từ phải
-        animate('0.5s ease-in-out', style({ transform: 'translateX(0)' })), // Di chuyển sang trái
-      ]),
-    ]),
-  ]
 })
 export class CartComponent implements OnDestroy, OnInit {
   private destroyed$ = new Subject()
