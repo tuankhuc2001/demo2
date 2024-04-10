@@ -52,7 +52,7 @@ export class CardCartComponent implements OnChanges {
     disable: true,
   }
 
-  onInputQuantity(item: any, event: any) {
+  onInputQuantity(idCart: number, item: any, event: any) {
     const inputQuantity = event.target.value;
     const availableQuantity = item.productResponse.quantityProduct;
 
@@ -149,15 +149,38 @@ export class CardCartComponent implements OnChanges {
       return;
     }
     const sateQuantity = item.productResponse.quantityProduct;
+    const maxQuantity = this.getMaxQuantityForItem(item.productResponse.id) ;
+    
+    if (maxQuantity >= item.productResponse.quantityProduct) {
+      item.showErrorQuantityExceed = true;
+      setTimeout(() => {
+        item.showErrorQuantityExceed = false;
+      }, 1000);
+      return
+    }  
     item.quantity = (item.quantity ?? 0) + 1;
     if (item.quantity > item.productResponse.quantityProduct) {
       item.showErrorQuantityExceed = true;
+      item.quantity = sateQuantity;
       setTimeout(() => {
-        item.quantity = sateQuantity;
         item.showErrorQuantityExceed = false;
       }, 1000);
     }
     this.plusQuantitySubject.next(item);
+    this.calculateTotalPrice();
+  }
+
+  
+  getMaxQuantityForItem(productId: number): number {
+    let maxQuantity = 0;
+    this.listCard.forEach((card: any) => {
+      card.cartItemResponseSet.forEach((item: any) => {
+        if (item.productResponse.id === productId) {
+          maxQuantity += item.quantity;
+        }
+      });
+    });
+    return maxQuantity;
   }
 
   handleMinusQuantity(item: any) {
