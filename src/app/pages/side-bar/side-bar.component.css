@@ -177,8 +177,18 @@ nz-drawer {
   background-color: rgb(224, 244, 242);
   font-size: 10px !important;
   font-weight: bold !important;
-  /* border-radius: 10%; */
-  /* color: #fa0000 !important; */
+}
+
+::ng-deep .ant-menu-light .ant-menu-submenu-title:hover {
+  color: #A5A5A5 !important;
+}
+
+::ng-deep .ant-menu-submenu > .ant-menu-submenu-title > .ant-menu-submenu-arrow {
+  color: #A5A5A5 !important;
+}
+
+::ng-deep .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow {
+  color: #A5A5A5 !important;
 }
 
 .li-sideBar {
