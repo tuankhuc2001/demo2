@@ -46,7 +46,7 @@
           </div>
           <div class="content_editQuantity" nz-col nzSpan="4" >
             <div>
-              <span [class]="item.disable ? 'editQuantity_up_disable' : 'editQuantity_up'" nz-icon nzType="caret-up" nzTheme="outline" (click)="handlePlusQuantity(item)"></span>
+              <span [class]="item.disable === true? 'editQuantity_up_disable' : 'editQuantity_up'" nz-icon nzType="caret-up" nzTheme="outline" (click)="!item.disable && handlePlusQuantity(item)"></span>
             </div>
             <div>
               <span [class]="item.disable === true? 'editQuantity_down_disable':'editQuantity_down'" nz-icon nzType="caret-down" nzTheme="outline" (click)="!item.disable && handleMinusQuantity(item)"></span>
