@@ -4,7 +4,9 @@ import { notificationEnum } from '../../../utils/notificationEnum';
 
 import { ICartItem } from '../../../types/cart-item';
 import { CartItemService } from '../../../services/cart-item.service';
-import { debounceTime } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
+import { Subject, timer } from 'rxjs';
+
 @Component({
   selector: 'app-card-cart',
   templateUrl: './card-cart.component.html',
@@ -14,7 +16,8 @@ export class CardCartComponent implements OnChanges {
   constructor (
     private cartItemService: CartItemService,
     private notification: NzNotificationService,
-    ) {}
+  ) {}
+
   @Input() listCard :any;
   @Output() onClickDeleteSingle: EventEmitter<ICartItem> = new EventEmitter();
   @Output() totalPriceChanged: EventEmitter<number> = new EventEmitter();
@@ -61,7 +64,7 @@ export class CardCartComponent implements OnChanges {
     } else if (inputQuantity > availableQuantity) {
         item.showErrorQuantityExceed = true;
     }
-}
+  }
 
   onInputRate(item: any, event: any) {
     const value = event.target.value;
@@ -98,31 +101,63 @@ export class CardCartComponent implements OnChanges {
     this.onClickDeleteSingle.emit(item)
   }
 
+
+  private plusQuantitySubject = new Subject<any>();
+  private minusQuantitySubject = new Subject<any>();
+  private destroy$ = new Subject<void>();
+
+  ngOnInit() {
+    this.plusQuantitySubject.pipe(
+      debounceTime(500),
+      takeUntil(this.destroy$)
+    ).subscribe((item: any) => {
+      this.cartItemRequest.quantity = item.quantity;
+      this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
+        next: (res) => {
+          this.calculateTotalPrice();
+        },
+        error: (error) => {
+          error.error.messageError.map((e: string) => {
+            this.createNotification(notificationEnum.error, e);
+          });
+          this.getCart.emit();
+        }
+      });
+    });
+
+    this.minusQuantitySubject.pipe(
+      debounceTime(500),
+      takeUntil(this.destroy$)
+    ).subscribe((item: any) => {
+      this.cartItemRequest.quantity = item.quantity;
+      this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
+        next: (res) => {
+          this.calculateTotalPrice();
+        },
+        error: (error) => {
+          error.error.messageError.map((e: string) => {
+            this.createNotification(notificationEnum.error, e);
+          });
+          this.getCart.emit();
+        }
+      });
+    });
+  }
+
   handlePlusQuantity(item: any) {
-    const sateQuantity = item.productResponse.quantityProduct
     if (!item) {
       return;
     }
+    const sateQuantity = item.productResponse.quantityProduct;
     item.quantity = (item.quantity ?? 0) + 1;
-    if(item.quantity > item.productResponse.quantityProduct) {
+    if (item.quantity > item.productResponse.quantityProduct) {
       item.showErrorQuantityExceed = true;
       setTimeout(() => {
-        item.quantity = sateQuantity
+        item.quantity = sateQuantity;
         item.showErrorQuantityExceed = false;
-      },2000)
+      }, 1000);
     }
-    this.cartItemRequest.quantity = item.quantity;
-    this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
-      next: (res) => {
-        this.calculateTotalPrice(); 
-      },
-      error: (error) => {
-        error.error.messageError.map((e: string) => {
-          this.createNotification(notificationEnum.error, e)
-        })
-        this.getCart.emit();
-      }
-    })
+    this.plusQuantitySubject.next(item);
   }
 
   handleMinusQuantity(item: any) {
@@ -133,19 +168,8 @@ export class CardCartComponent implements OnChanges {
       return;
     }
     item.quantity = (item.quantity ?? 0) - 1;
-    this.cartItemRequest.quantity = item.quantity;
-    this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
-      next: (res) => {
-        this.calculateTotalPrice();
-      },
-      error: (error) => {
-        error.error.messageError.map((e: string) => {
-          this.createNotification(notificationEnum.error, e)
-        })
-        this.getCart.emit();
-      }
-    })
-  } 
+    this.minusQuantitySubject.next(item);
+  }
 
   handlePlus(item: any) {
     if (!item) {
@@ -153,7 +177,7 @@ export class CardCartComponent implements OnChanges {
     }
     this.cartItemRequest.plus = !item.plus
     this.cartItemService.updateIsPlus(item.id, this.cartItemRequest).subscribe({
-      next: (res) => {
+      next: () => {
         item.plus = !item.plus;
         this.calculateTotalPrice();
       },
@@ -180,7 +204,7 @@ export class CardCartComponent implements OnChanges {
     }
     this.cartItemRequest.rate = newValue;
     this.cartItemService.updateRate(item.id, this.cartItemRequest).subscribe({
-      next: (res) => {
+      next: () => {
         item.originalRate = newValue;
         this.calculateTotalPrice();
         this.getCart.emit();
@@ -209,7 +233,7 @@ export class CardCartComponent implements OnChanges {
       }
       this.cartItemRequest.quantity = newValue;
       this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
-        next: (res) => {
+        next: () => {
           item.originalQuantity = newValue;
           this.calculateTotalPrice();
           this.getCart.emit();
@@ -224,7 +248,7 @@ export class CardCartComponent implements OnChanges {
       });
     }
   }
-
+  
   createNotification(type: string, content: string): void {
     this.notification.create(
       type,
@@ -232,5 +256,4 @@ export class CardCartComponent implements OnChanges {
       ''
     );
   }
-
 }
