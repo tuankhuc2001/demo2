@@ -4,6 +4,8 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { routerNames } from '../../../constant/router';
+import { IUser } from '../../../types/user';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-modal-add-customer',
@@ -15,17 +17,30 @@ export class ModalAddCustomerComponent {
   constructor(
     private customerService: CustomerService,
     private notification: NzNotificationService,
-    private fb: NonNullableFormBuilder, private router: Router,
+    private fb: NonNullableFormBuilder, 
+    private router: Router,
+    private userService: UserService,
   ) { }
 
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
 
+
+  user: IUser = {
+    id: 0,
+    phone: "",
+    email: "",
+    fullname: "",
+    avatar: "",
+    role: "",
+    token: "",
+    refreshToken: ""
+  }
   ngOnInIt() {
     this.validateFormAddCustomer.setValue({
-      nameCustomer: "1",
-      phoneCustomer: "2",
-      address: "3",
+      nameCustomer: "",
+      phoneCustomer: "",
+      address: "",
     })
   }
 
@@ -57,8 +72,16 @@ export class ModalAddCustomerComponent {
         },
         error: (v) => {
           if (v.status === 403) {
-            this.router.navigate([routerNames.signInPage]);
-            this.createNotification('error', "Phiên đăng nhập hết hạn")
+            this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+              next: value => {
+                this.userService.setUser(value)
+                localStorage.setItem("token", value.refreshToken)
+              },
+              error: error => {
+                this.router.navigate([routerNames.signInPage]);
+                this.createNotification('error', "Phiên đăng nhập hết hạn")
+              }
+            })
           }
         }
       })
