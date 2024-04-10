@@ -13,12 +13,12 @@ import { Subject, timer } from 'rxjs';
   styleUrl: './card-cart.component.css',
 })
 export class CardCartComponent implements OnChanges {
-  constructor (
+  constructor(
     private cartItemService: CartItemService,
     private notification: NzNotificationService,
-  ) {}
+  ) { }
 
-  @Input() listCard :any;
+  @Input() listCard: any;
   @Output() onClickDeleteSingle: EventEmitter<ICartItem> = new EventEmitter();
   @Output() totalPriceChanged: EventEmitter<number> = new EventEmitter();
   @Output() getCart: EventEmitter<void> = new EventEmitter();
@@ -27,7 +27,7 @@ export class CardCartComponent implements OnChanges {
   quantity: number = 0;
   token = localStorage.getItem("token")
 
-  cartItemRequest: ICartItem ={
+  cartItemRequest: ICartItem = {
     id: 1,
     productResponse: {
       id: 0,
@@ -52,17 +52,17 @@ export class CardCartComponent implements OnChanges {
     disable: true,
   }
 
-  onInputQuantity(idCart: number, item: any, event: any) {
+  onInputQuantity( item: any, event: any) {
     const inputQuantity = event.target.value;
-    const availableQuantity = item.productResponse.quantityProduct;
+    const availableQuantity = item.productResponse.quantityProduct - this.getTotalQuantityOfOtherItems(item);
 
     item.showErrorQuantityNoEnter = false;
     item.showErrorQuantityExceed = false;
 
     if (!inputQuantity || inputQuantity <= 0) {
-        item.showErrorQuantityNoEnter = true;
+      item.showErrorQuantityNoEnter = true;
     } else if (inputQuantity > availableQuantity) {
-        item.showErrorQuantityExceed = true;
+      item.showErrorQuantityExceed = true;
     }
   }
 
@@ -70,13 +70,13 @@ export class CardCartComponent implements OnChanges {
     const value = event.target.value;
     item.showRateError = false;
     item.showRateExceed = false;
-    if(!value || value <= 0){
+    if (!value || value < 0) {
       item.showRateError = true;
-    } else if(value > item.rate){
+    } else if (value > (item.editPrice*0.1)) {
       item.showRateExceed = true;
     }
   }
-  
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes.listCard) {
       this.calculateTotalPrice();
@@ -97,7 +97,7 @@ export class CardCartComponent implements OnChanges {
     this.totalPriceChanged.emit(this.totalPrice);
   }
 
-  handleOpenDeleteSingle(item:ICartItem){
+  handleOpenDeleteSingle(item: ICartItem) {
     this.onClickDeleteSingle.emit(item)
   }
 
@@ -148,29 +148,33 @@ export class CardCartComponent implements OnChanges {
     if (!item) {
       return;
     }
-    const sateQuantity = item.productResponse.quantityProduct;
-    const maxQuantity = this.getMaxQuantityForItem(item.productResponse.id) ;
-    
-    if (maxQuantity >= item.productResponse.quantityProduct) {
+    const maxQuantity = item.productResponse.quantityProduct - this.getTotalQuantityOfOtherItems(item);
+    if (item.quantity >= maxQuantity) {
+      item.quantity = item.quantity + 1;
       item.showErrorQuantityExceed = true;
       setTimeout(() => {
         item.showErrorQuantityExceed = false;
-      }, 1000);
-      return
-    }  
-    item.quantity = (item.quantity ?? 0) + 1;
-    if (item.quantity > item.productResponse.quantityProduct) {
-      item.showErrorQuantityExceed = true;
-      item.quantity = sateQuantity;
-      setTimeout(() => {
-        item.showErrorQuantityExceed = false;
-      }, 1000);
+        item.quantity = maxQuantity
+        this.plusQuantitySubject.next(item);
+      }, 5000);
     }
-    this.plusQuantitySubject.next(item);
-    this.calculateTotalPrice();
+    else{ item.quantity = item.quantity + 1;
+      this.plusQuantitySubject.next(item);
+      this.calculateTotalPrice();}
   }
 
-  
+  getTotalQuantityOfOtherItems(item: any): number {
+    let totalQuantity = 0;
+    this.listCard.forEach((card: any) => {
+      card.cartItemResponseSet.forEach((cartItem: any) => {
+        if (cartItem.productResponse.id === item.productResponse.id && cartItem !== item) {
+          totalQuantity += cartItem.quantity;
+        }
+      });
+    });
+    return totalQuantity;
+  }
+
   getMaxQuantityForItem(productId: number): number {
     let maxQuantity = 0;
     this.listCard.forEach((card: any) => {
@@ -207,49 +211,50 @@ export class CardCartComponent implements OnChanges {
       error: (error) => {
         error.error.messageError.map((e: string) => {
           this.createNotification(notificationEnum.error, e)
-        }) 
+        })
         this.getCart.emit();
       }
     })
-  } 
+  }
 
   handleRateBlur(item: any, event: any) {
     const newValue = event.target.value;
     if (item.showRateError || item.showRateExceed) {
-      event.target.value = item.rate; 
+      event.target.value = item.rate;
       setTimeout(() => {
         item.showRateError = false;
         item.showRateExceed = false;
-    }, 1000);
+      }, 1000);
     } else {
-    if (!item) {
-      return;
-    }
-    this.cartItemRequest.rate = newValue;
-    this.cartItemService.updateRate(item.id, this.cartItemRequest).subscribe({
-      next: () => {
-        item.originalRate = newValue;
-        this.calculateTotalPrice();
-        this.getCart.emit();
-      },
-      error: (error) => {
-        event.target.value = item.onInputRate;
-        error.error.messageError.map((e: string) => {
-          this.createNotification(notificationEnum.error, e)
-        }) 
-        this.getCart.emit();
+      if (!item) {
+        return;
       }
-    })}
+      this.cartItemRequest.rate = newValue;
+      this.cartItemService.updateRate(item.id, this.cartItemRequest).subscribe({
+        next: () => {
+          item.originalRate = newValue;
+          this.calculateTotalPrice();
+          this.getCart.emit();
+        },
+        error: (error) => {
+          event.target.value = item.onInputRate;
+          error.error.messageError.map((e: string) => {
+            this.createNotification(notificationEnum.error, e)
+          })
+          this.getCart.emit();
+        }
+      })
+    }
   }
 
   handleQuantityBlur(item: any, event: any) {
     const newValue = event.target.value;
     if (item.showErrorQuantityNoEnter || item.showErrorQuantityExceed) {
-      event.target.value = item.quantity; 
+      event.target.value = item.quantity;
       setTimeout(() => {
         item.showErrorQuantityNoEnter = false;
         item.showErrorQuantityExceed = false;
-    }, 1000);
+      }, 1000);
     } else {
       if (!item) {
         return;
@@ -271,7 +276,7 @@ export class CardCartComponent implements OnChanges {
       });
     }
   }
-  
+
   createNotification(type: string, content: string): void {
     this.notification.create(
       type,
