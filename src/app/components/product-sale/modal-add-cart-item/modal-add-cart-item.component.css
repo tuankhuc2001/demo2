@@ -84,6 +84,10 @@
     font-size: 3.0vw;
 }
 
+.minusRate :disabled {
+    background-color: rgb(197, 123, 129);
+}
+
 .plusRate {
     background-color: rgb(12, 111, 99);
     min-width: 40px;
@@ -92,6 +96,11 @@
     height: 100%;
     margin-right: 20px;
     font-size: 3.0vw;
+}
+
+.plusRate :disabled {
+    background-color: rgb(49, 122, 113);
+    
 }
 
 .descriptionContent {

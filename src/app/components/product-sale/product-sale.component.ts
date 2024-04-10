@@ -85,8 +85,16 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
       error: (error) => {
         this.isLoading = false
         if (error.status == 403) {
-          this.router.navigate([routerNames.signInPage]);
-          this.createNotification('error', "Phiên đăng nhập hết hạn")
+          this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+            next: value => {
+              this.userService.setUser(value)
+              localStorage.setItem("token", value.refreshToken)
+            },
+            error: error => {
+              this.router.navigate([routerNames.signInPage]);
+              this.createNotification('error', "Phiên đăng nhập hết hạn")
+            }
+          })
         }
       }
     })

@@ -38,10 +38,10 @@
                                 </nz-input-group>
 
                                 <ng-template #prefixTemplateRate>
-                                    <button *ngIf="plus === false" class="minusRate" nz-button (click)="handlePlusRate()">
+                                    <button [disabled]="validateAddCartForm.value.rate === 0" *ngIf="plus === false" class="minusRate" nz-button (click)="handlePlusRate()">
                                         <span style="color: white;" nz-icon nzType="minus"></span>
                                     </button>
-                                    <button *ngIf="plus === true" class="plusRate"  nz-button (click)="handlePlusRate()">
+                                    <button [disabled]="validateAddCartForm.value.rate === 0" *ngIf="plus === true" class="plusRate"  nz-button (click)="handlePlusRate()">
                                         <span style="color: white;" nz-icon nzType="plus"></span>
                                     </button>
                                 </ng-template>
