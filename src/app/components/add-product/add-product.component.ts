@@ -31,8 +31,8 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   animations: [
     trigger('slideInLeft', [
       transition(':enter', [
-        style({ transform: 'translateX(100%)' }), // Bắt đầu từ phải
-        animate('0.5s ease-in-out', style({ transform: 'translateX(0)' })), // Di chuyển sang trái
+        style({ transform: 'translateX(100%)' }),
+        animate('0.5s ease-in-out', style({ transform: 'translateX(0)' })),
       ]),
     ]),
   ]
@@ -277,16 +277,8 @@ export class AddProductComponent {
             error: (error) => {
               this.createNotification(notificationEnum.error, error.message);
               if (error.status === 403) {
-                this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
-                  next: value => {
-                    this.userService.setUser(value)
-                    localStorage.setItem("token", value.refreshToken)
-                  },
-                  error: error => {
-                    this.router.navigate([routerNames.signInPage]);
-                    this.createNotification('error', "Phiên đăng nhập hết hạn")
-                  }
-                })
+                this.router.navigate([routerNames.signInPage]);
+                this.createNotification('error', "Phiên đăng nhập hết hạn")
               }
             },
           });
@@ -294,16 +286,8 @@ export class AddProductComponent {
         (error) => {
           this.msg.error('Tải ảnh lên thất bại');
           if (error.status === 403) {
-            this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
-              next: value => {
-                this.userService.setUser(value)
-                localStorage.setItem("token", value.refreshToken)
-              },
-              error: error => {
-                this.router.navigate([routerNames.signInPage]);
-                this.createNotification('error', "Phiên đăng nhập hết hạn")
-              }
-            })
+            this.router.navigate([routerNames.signInPage]);
+            this.createNotification('error', "Phiên đăng nhập hết hạn")
           }
         },
       );

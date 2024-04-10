@@ -27,8 +27,6 @@
               </div>
               <div nz-col nzSpan="9" >
                 <input nz-input type="number"class="quantity" [disabled]="item.disable === false ? false : true" [ngModel] = "item?.quantity" (blur)="handleQuantityBlur(item, $event)" (input)="onInputQuantity(item, $event)" />
-               
-
               </div>
             </div>
             <div nz-row class="card_bolow" >
@@ -37,9 +35,9 @@
                 <span nz-icon nzType="minus" nzTheme="outline" *ngIf="item.plus == false" style="color: red;" (click)="!item.disable && handlePlus(item)"></span>
               </div>
               <div nz-col nzSpan="9">
-                <input  nz-input type="number" class="rate" [disabled]="item.disable === false ? false : true" [ngModel] = "item?.rate" (blur)="handleRateBlur(item, $event)" (input)="onInputRate(item, $event)" />
+                <input nz-input type="number" class="rate" [disabled]="item.disable === false ? false : true" [ngModel] = "item?.rate" (blur)="handleRateBlur(item, $event)" (input)="onInputRate(item, $event)" />
               </div>
-              <div nz-col nzSpan="10"  class="finalPrice">
+              <div nz-col nzSpan="10" class="finalPrice">
                 <p class="finalPrice_text">{{(item.plus ? (item.editPrice + item.rate) * item.quantity : (item.editPrice - item.rate) * item.quantity) | number}}</p>
               </div>
             </div>
