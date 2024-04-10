@@ -7,6 +7,8 @@ import { ICustomer } from '../../../types/customer';
 import { ICart, IUpdateCart } from '../../../types/cart';
 import { routerNames } from '../../../constant/router';
 import { Router } from '@angular/router';
+import { IUser } from '../../../types/user';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-modal-customer',
@@ -31,11 +33,24 @@ export class ModalCustomerComponent {
     private cartService: CartService,
     private notification: NzNotificationService,
     private router: Router,
+    private userService: UserService,
   ) { }
 
   private destroyed$ = new Subject();
   textSearch: string = "";
   isVisibleAddCustomer: boolean = false;
+
+  user: IUser = {
+    id: 0,
+    phone: "",
+    email: "",
+    fullname: "",
+    avatar: "",
+    role: "",
+    token: "",
+    refreshToken: ""
+  }
+
 
   createNotification(type: string, content: string): void {
     this.notification.create(
@@ -53,8 +68,16 @@ export class ModalCustomerComponent {
         },
         error: (v) => {
           if (v.status === 403) {
-            this.router.navigate([routerNames.signInPage]);
-            this.createNotification('error', "Phiên đăng nhập hết hạn")
+            this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+              next: value => {
+                this.userService.setUser(value)
+                localStorage.setItem("token", value.refreshToken)
+              },
+              error: error => {
+                this.router.navigate([routerNames.signInPage]);
+                this.createNotification('error', "Phiên đăng nhập hết hạn")
+              }
+            })
           }
         }
       })
@@ -69,8 +92,16 @@ export class ModalCustomerComponent {
       },
       error: (v) => {
         if (v.status === 403) {
-          this.router.navigate([routerNames.signInPage]);
-          this.createNotification('error', "Phiên đăng nhập hết hạn")
+          this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+            next: value => {
+              this.userService.setUser(value)
+              localStorage.setItem("token", value.refreshToken)
+            },
+            error: error => {
+              this.router.navigate([routerNames.signInPage]);
+              this.createNotification('error', "Phiên đăng nhập hết hạn")
+            }
+          })
         }
       }
     })
@@ -87,8 +118,16 @@ export class ModalCustomerComponent {
         },
         error: (v) => {
           if (v.status === 403) {
-            this.router.navigate([routerNames.signInPage]);
-            this.createNotification('error', "Phiên đăng nhập hết hạn")
+            this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+              next: value => {
+                this.userService.setUser(value)
+                localStorage.setItem("token", value.refreshToken)
+              },
+              error: error => {
+                this.router.navigate([routerNames.signInPage]);
+                this.createNotification('error', "Phiên đăng nhập hết hạn")
+              }
+            })
           }
         }
       });
@@ -108,8 +147,16 @@ export class ModalCustomerComponent {
       },
       error: (v) => {
         if (v.status === 403) {
-          this.router.navigate([routerNames.signInPage]);
-          this.createNotification('error', "Phiên đăng nhập hết hạn")
+          this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+            next: value => {
+              this.userService.setUser(value)
+              localStorage.setItem("token", value.refreshToken)
+            },
+            error: error => {
+              this.router.navigate([routerNames.signInPage]);
+              this.createNotification('error', "Phiên đăng nhập hết hạn")
+            }
+          })
         }
       }
     });
