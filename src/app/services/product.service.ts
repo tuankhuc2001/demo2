@@ -36,8 +36,6 @@ export class ProductService {
 
   addProduct(product: IRequestProduct): Observable<IResponseProduct> {
     const headers = this.userService.header();
-    console.log(product,"aaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    
     return this.http.post<IResponseProduct>(
       `${apiProduct.addProduct}`,
       product,
