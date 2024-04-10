@@ -26,7 +26,7 @@
               X
               </div>
               <div nz-col nzSpan="9" >
-                <input nz-input type="number"class="quantity" [disabled]="item.disable === false ? false : true" [ngModel] = "item?.quantity" (blur)="handleQuantityBlur(item, $event)" (input)="onInputQuantity(item, $event)" />
+                <input nz-input type="number"class="quantity" [disabled]="item.disable === false ? false : true" [ngModel] = "item?.quantity" (blur)="handleQuantityBlur(item, $event)" (input)="onInputQuantity(item.id, item, $event)" />
                 <span *ngIf="item.showErrorQuantityNoEnter" class="showErrorQuantityNoEnter">Vui lòng nhập số lượng.</span>
                 <span *ngIf="item.showErrorQuantityExceed" class="showErrorQuantityExceed">Số lương vượt quá cho phép.</span>
 
@@ -40,6 +40,7 @@
               <div nz-col nzSpan="9">
                 <input  nz-input type="number" class="rate" [disabled]="item.disable === false ? false : true" [ngModel] = "item?.rate" (blur)="handleRateBlur(item, $event)" (input)="onInputRate(item, $event)" />
                 <span *ngIf="item.showRateError" class="showRateError">Vui lòng nhập giá chênh lệch.</span>
+                <span *ngIf="item.showRateExceed" class="showRateExceed">Giá vượt quá cho phép.</span>
               </div>
               <div nz-col nzSpan="10"  class="finalPrice">
                 <p class="finalPrice_text">{{(item.plus ? (item.editPrice + item.rate) * item.quantity : (item.editPrice - item.rate) * item.quantity) | number}}</p>
@@ -48,7 +49,8 @@
           </div>
           <div class="content_editQuantity" nz-col nzSpan="4" >
             <div>
-              <span [class]="item.disable === true? 'editQuantity_up_disable': 'editQuantity_up'" nz-icon nzType="caret-up" nzTheme="outline" (click)="!item.disable && handlePlusQuantity(item)"></span>
+              <!-- <span [class]="item.disable === true? 'editQuantity_up_disable': 'editQuantity_up'" nz-icon nzType="caret-up" nzTheme="outline" (click)="!item.disable && handlePlusQuantity(item)"></span> -->
+              <span [class]="item.disable ? 'editQuantity_up_disable' : 'editQuantity_up'" nz-icon nzType="caret-up" nzTheme="outline" (click)="handlePlusQuantity(item)"></span>
             </div>
             <div>
               <span [class]="item.disable === true? 'editQuantity_down_disable':'editQuantity_down'" nz-icon nzType="caret-down" nzTheme="outline" (click)="!item.disable && handleMinusQuantity(item)"></span>

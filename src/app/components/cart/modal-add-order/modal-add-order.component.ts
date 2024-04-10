@@ -54,7 +54,8 @@ export class ModalAddOrderComponent {
         this.createNotification('success', res.message)
         this.closeModal.emit();
         this.getCart.emit();
-        this.getProductSale.emit();
+        if(res.status == true){
+        this.getProductSale.emit();}
       },
       error: (error) => {
         this.createNotification('error', error)

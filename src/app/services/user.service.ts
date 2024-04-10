@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { apiUser } from '../constant/api';
+import { Observable } from 'rxjs';
+import { apiUser, objectApi } from '../constant/api';
 import { ILoginResponse } from '../types/login';
 import { IAddUser, IGetUser, IUpdateUser, IUser, IUserRequest, IUserRequestUpdate } from '../types/user';
 
@@ -35,13 +35,13 @@ export class UserService {
         return headers
     }
 
-    // headerRefreshToken(): HttpHeaders {
-    //     const headers = new HttpHeaders({
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `Bearer ${localStorage.setItem("token", this.user.value.refreshToken)}`
-    //     });
-    //     return headers
-    // }
+    headerRefreshToken(refreshToken: string): HttpHeaders {
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${refreshToken}`
+        });
+        return headers
+    }
 
     headerUpload(): HttpHeaders {
         const headers = new HttpHeaders({
@@ -66,13 +66,13 @@ export class UserService {
     }
 
     updateAccount(idUser: number, accountRequest: IUserRequestUpdate): Observable<IUpdateUser> {
-        const headers = this.header()
+        const headers = this.header()   
         return this.http.put<IUpdateUser>(`${apiUser.updateAccount}${idUser}`, accountRequest, {headers})
     }
 
-    // loginRefreshToken(refreshToken: string) : Observable<ILoginResponse> {
-    //     const headers = this.headerRefreshToken()
-    //     return this.http.post<ILoginResponse>(`${objectApi.loginRefreshToken}`,{token:refreshToken}, {headers})
-    // }
+    loginRefreshToken(refreshToken: string) : Observable<ILoginResponse> {
+        const headers = this.headerRefreshToken(refreshToken)
+        return this.http.post<ILoginResponse>(`${objectApi.loginRefreshToken}`,{token:refreshToken}, {headers})
+    }
     
 }

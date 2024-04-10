@@ -148,7 +148,7 @@ import { CurrencyPipe } from '@angular/common';
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
-    CurrencyPipe
+    CurrencyPipe,
   ],
   bootstrap: [AppComponent]
 })
