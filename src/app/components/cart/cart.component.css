@@ -22,7 +22,7 @@
     justify-content: space-between;
     padding: 2vw 5vw;
     align-items: center;
-    border-bottom: 1px rgb(144, 144, 144) solid;
+    border-bottom: 1px #d9d9d9 solid;
 }
 
 .tag__back {
@@ -31,7 +31,7 @@
 
 .tag__title {
     font-size: 5vw;
-    font-weight: 700;
+    font-weight: 400;
     display: flex;
     justify-content: center;
 }

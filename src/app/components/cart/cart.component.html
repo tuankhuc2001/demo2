@@ -1,8 +1,8 @@
-<div *ngIf="isLoading" class="loading-overlay">
+<!-- <div *ngIf="isLoading" class="loading-overlay">
   <div class="spinner"></div>
-</div>
+</div> -->
 
-<div *ngIf="!isLoading" class="cart_container">
+<div *ngIf="!isLoading" class="cart_container" [@slideInLeft]>
   <div [class]="'header__cart'" nz-row>
     <div nz-col nzSpan="8" (click)="handleBackProductSale()">
       <span class="tag__back" nz-icon nzType="left" nzTheme="outline"></span>
@@ -19,7 +19,7 @@
     </div>
   </div>
   <div>
-    <div style="height: 12vw;"></div>
+    <div style="height: 11.3vw;"></div>
     <div >
       <app-card-cart [listCard]="listCard" (onClickDeleteSingle)="handleOpenModalDeleteSingle($event)"
         (totalPriceChanged)="handleTotalPriceChanged($event)" (getCart)="handleGetCart()"></app-card-cart>
