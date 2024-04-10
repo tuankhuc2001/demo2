@@ -150,7 +150,6 @@ export class CardCartComponent implements OnChanges {
     }
     const sateQuantity = item.productResponse.quantityProduct;
     const maxQuantity = this.getMaxQuantityForItem(item.productResponse.id) ;
-    console.log(maxQuantity,"so kkk");
     
     if (maxQuantity >= item.productResponse.quantityProduct) {
       item.showErrorQuantityExceed = true;
