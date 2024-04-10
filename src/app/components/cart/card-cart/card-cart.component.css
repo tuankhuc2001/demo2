@@ -133,12 +133,28 @@
     z-index: 99;
 }
 
+.showRateExceed {
+    color: red;
+    font-size: 2.5vw;
+    position: absolute;
+    top: 7vw;
+    left: -0.2vw;
+    width: 30vw;
+    z-index: 99;
+}
 
 .finalPrice {
     text-align: center;
     align-self: center;
     font-size: 4vw;
     color: #c7393c;
+}
+
+.finalPrice_text {
+    padding: 0 2vw;
+    text-overflow:ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap;
 }
 
 .content_editQuantity {
@@ -153,7 +169,7 @@
     padding: 1.5vw 2.5vw;
     font-size: 3.5vw;
     border-radius: 1vw;
-    margin-bottom: 4vw;
+    margin-bottom: 5.8vw;
 }
 
 .editQuantity_up_disable {
@@ -229,6 +245,16 @@
     }
 
     .showRateError {
+        color: red;
+        font-size: 2.5vw;
+        position: absolute;
+        top: 6vw;
+        left: -0.2vw;
+        width: 35vw;
+        z-index: 99;
+    }
+
+    .showRateExceed {
         color: red;
         font-size: 2.5vw;
         position: absolute;

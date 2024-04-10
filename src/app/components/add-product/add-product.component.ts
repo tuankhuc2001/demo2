@@ -88,11 +88,11 @@ export class AddProductComponent {
 
     this.productService.uploadImage(formData, header).subscribe(
       () => {
-        this.msg.error('Upload Failed.');
+        this.msg.error('Tải ảnh lên thất bại.');
       },
       () => {
         this.fileList = [];
-        this.msg.success('upload successfully');
+        this.msg.success('Tải ảnh lên thành công');
       }
     );
   }
@@ -191,12 +191,11 @@ export class AddProductComponent {
   };
 
   phoneNumberValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
-    if (control.value.toString().length > 9) {
+    const phonePattern = /^(0\d{9})$/;
+    if (!phonePattern.test(control.value)) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
-    } else if (control.value.toString().length <= 8) {
-      return { confirm: true, error: true };
     } else {
       return {}
     }
@@ -225,9 +224,9 @@ export class AddProductComponent {
     codeProduct: FormControl<string>;
   }> = this.fb.group({
     nameProduct: ['', [Validators.required, this.nameProductValidator]],
-    floorPrice: [0, [Validators.required, this.floorPriceValidator]],
-    quantityProduct: [0, [Validators.required, this.quantityValidator]],
-    providePrice: [0, [Validators.required, this.providePriceValidator]],
+    floorPrice: [1, [Validators.required, this.floorPriceValidator]],
+    quantityProduct: [1, [Validators.required, this.quantityValidator]],
+    providePrice: [1, [Validators.required, this.providePriceValidator]],
     provider: ['', [Validators.required, this.providerValidator]],
     origin: ['', [Validators.required, this.originValidator]],
     unit: ['', [Validators.required, this.unitValidator]],
@@ -251,7 +250,7 @@ export class AddProductComponent {
       this.productService.uploadImage(formData, header).subscribe(
         (v) => {
           this.fileList = [];
-          this.msg.success('upload successfully');
+          this.msg.success('Tải ảnh lên thành công');
           addProduct.imageUrl = v.body.message
           this.productService.addProduct(addProduct).subscribe({
             next: (res) => {
@@ -268,10 +267,10 @@ export class AddProductComponent {
           });
         },
         (error) => {
-          this.msg.error('Upload Failed.');
+          this.msg.error('Tải ảnh lên thất bại');
           if (error.status === 403) {
             this.router.navigate([routerNames.signInPage]);
-            this.createNotification('error', "Phiên đăng nhập hết hạn")
+            this.createNotification('error', "Phiên đăng nhập hết hạn")            
           }
 
         }

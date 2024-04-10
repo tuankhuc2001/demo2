@@ -16,7 +16,8 @@ export class ModalUpdateAccountComponent implements OnChanges {
   constructor(
     private userService: UserService,
     private notification: NzNotificationService,
-    private fb: NonNullableFormBuilder, private router: Router,
+    private fb: NonNullableFormBuilder, 
+    private router: Router,
   ) { }
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
@@ -54,28 +55,34 @@ export class ModalUpdateAccountComponent implements OnChanges {
   }
 
   handleUpdateAccount() {
-    if (this.validateFormAddUser.valid) {
-      this.itemUser.password = this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
-        this.itemUser.role = this.selectedValue
-      this.userService.updateAccount(this.itemUser.id, this.itemUser).subscribe({
-        next: (v: any) => {
-          if (v.status == false) {
-            this.notification.create('error', `${v.message}`, '')
-          } else {
-            this.notification.create('success', `${v.message}`, '')
-            this.handleResetState();
-            this.handleCloseModal();
+
+      if(this.validateFormAddUser.value.password != this.validateFormAddUser.value.newPassword) {
+        this.handleResetState();
+      }else{
+        if (this.validateFormAddUser.valid) {
+          this.itemUser.password = this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
+          this.itemUser.role = this.selectedValue
+        this.userService.updateAccount(this.itemUser.id, this.itemUser).subscribe({
+          next: (v: any) => {
+            if (v.status == false) {
+              this.notification.create('error', `${v.message}`, '')
+            } else {
+              this.notification.create('success', `${v.message}`, '')
+              this.handleResetState();
+              this.handleCloseModal();
+            }
           }
-        }
-      })
-    } else {
-      Object.values(this.validateFormAddUser.controls).forEach(control => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
-    }
+        })
+      } else {
+        Object.values(this.validateFormAddUser.controls).forEach(control => {
+          if (control.invalid) {
+            control.markAsDirty();
+            control.updateValueAndValidity({ onlySelf: true });
+          }
+        });
+      }
+      }
+
   }
 
   handleResetState() {

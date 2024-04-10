@@ -5,7 +5,7 @@
             <div class="form-control">
                 <div class="d-flex jct-bw al-item-ct container-input">
                     <span (click)="handleSearch(textSearch)" nz-icon nzType="search" nzTheme="outline"
-                        class="font-size-3vw icon-search" style="padding-right: 8px;"></span>
+                        class="font-size-3vw" style="padding-right: 8px;"></span>
                     <input (ngModelChange)="handleSearch($event)" (keyup.enter)="handleSearch(textSearch)" type="text" placeholder="Tìm kiếm ..."
                         class="input-search" nz-input style="border: none;" [(ngModel)]="textSearch">
                     <span nz-icon nzType="close" nzTheme="outline" class="font-size-3vw  icon-search"

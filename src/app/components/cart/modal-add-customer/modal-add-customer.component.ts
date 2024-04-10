@@ -5,7 +5,6 @@ import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, Valida
 import { Router } from '@angular/router';
 import { routerNames } from '../../../constant/router';
 
-
 @Component({
   selector: 'app-modal-add-customer',
   templateUrl: './modal-add-customer.component.html',
@@ -31,11 +30,7 @@ export class ModalAddCustomerComponent {
   }
 
   handleResetState() {
-    this.validateFormAddCustomer.setValue({
-      nameCustomer: "",
-      phoneCustomer: "",
-      address: "",
-    })
+    this.validateFormAddCustomer.reset()
   }
 
   handleCloseAddCustomer() {
@@ -97,19 +92,17 @@ export class ModalAddCustomerComponent {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
-    }
-    else {
+    } else {
       return {}
     }
   }
 
   phoneCustomerValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
-    if (control.value.toString().length > 9) {
+    const phonePattern = /^(0\d{9})$/;
+    if (!phonePattern.test(control.value)) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
-    } else if (control.value.toString().length <= 8) {
-      return { confirm: true, error: true };
     } else {
       return {}
     }
@@ -124,4 +117,5 @@ export class ModalAddCustomerComponent {
     phoneCustomer: ["", [Validators.required, this.phoneCustomerValidator]],
     address: ["", [Validators.required, this.addressValidator]],
   })
+
 }

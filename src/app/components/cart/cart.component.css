@@ -8,11 +8,15 @@
     position: relative;
 }
 
+.cart_container.keyboard-active {
+    z-index: 9999;
+  }
+
 .header__cart {
     display: flex;
     position: fixed;
     background-color: white;
-    top: 0px;
+    top: -0.8vw;
     z-index: 99;
     width: 100%;
     justify-content: space-between;
@@ -48,7 +52,7 @@
     position: fixed;
     background-color: white;
     bottom: 0;
-    margin-bottom: -3vw;
+    padding-bottom: 2vw;
 }
 
 .footer_customer {
@@ -139,6 +143,9 @@
     font-size: 4.5vw;
     font-weight: bold;
     color: #c7393c;
+    text-overflow:ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap;
 }
 
 .customer_submit {
