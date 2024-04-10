@@ -11,7 +11,7 @@
 }
 
 .red {
-    color: #b31312
+    color: red
 }
 
 .blue {
@@ -75,11 +75,11 @@
 }
 
 .block-tab {
-    height: 11vw;
+    height: 11.5vw;
 }
 
 .block-top-card {
-    height: 16vw;
+    height: 16.5vw;
 }
 
 .footer_orderDetail {
@@ -122,6 +122,18 @@
 }
 
 @media (min-width: 768px)  {
+    .font_size_3vw {
+        font-size: 2.5vw
+    }
+    
+    .font_size_4vw {
+        font-size: 3vw
+    }
+    
+    .font_size_5vw {
+        font-size: 4vw
+    }
+
     .header_title {
         font-size: 4.5vw;
         font-weight: 700;
@@ -144,6 +156,14 @@
         bottom: 0;
         padding: 3vw;
         background-color: white;
+    }
+
+    .customer {
+        padding: 0 0 1vw 0;
+    }
+    
+    .price {
+        padding: 0;
     }
 
     ::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
