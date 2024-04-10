@@ -47,14 +47,14 @@
     justify-content: flex-end;
     font-size: 4.5vw;
     font-weight: bold;
-    color: #b31312;
+    color: red;
 }
 
 .margin-bot {
     margin-bottom: 2vw;
 }
 
-@media  (min-width: 768px) {
+@media (min-width: 768px) {
     .main-card {
         padding: 2vw 4vw;
     }
@@ -65,7 +65,7 @@
 
     .image_product img {
         width: 80%;
-        }
+    }
 
     .nameProduct {
         font-size: 3.5vw;
