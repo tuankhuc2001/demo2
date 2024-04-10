@@ -100,13 +100,13 @@ export class CardCartComponent implements OnChanges {
     this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
       next: (res) => {
         this.calculateTotalPrice();
-        this.getCart.emit();
+        // this.getCart.emit();
       },
       error: (error) => {
         error.error.messageError.map((e: string) => {
           this.createNotification(notificationEnum.error, e)
         })
-        this.getCart.emit();
+        // this.getCart.emit();
       }
     })
   }
@@ -123,13 +123,13 @@ export class CardCartComponent implements OnChanges {
     this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
       next: (res) => {
         this.calculateTotalPrice();
-        this.getCart.emit();
+        // this.getCart.emit();
       },
       error: (error) => {
         error.error.messageError.map((e: string) => {
           this.createNotification(notificationEnum.error, e)
         })
-        this.getCart.emit();
+        // this.getCart.emit();
       }
     })
   } 
@@ -143,13 +143,13 @@ export class CardCartComponent implements OnChanges {
       next: (res) => {
         this.createNotification('success', res.message) 
         this.calculateTotalPrice();
-        this.getCart.emit();
+        // this.getCart.emit();
       },
       error: (error) => {
         error.error.messageError.map((e: string) => {
           this.createNotification(notificationEnum.error, e)
         }) 
-        this.getCart.emit();
+        // this.getCart.emit();
       }
     })
   } 
@@ -165,13 +165,13 @@ export class CardCartComponent implements OnChanges {
       next: (res) => {
         this.createNotification('success', res.message) 
         this.calculateTotalPrice();
-        this.getCart.emit();
+        // this.getCart.emit();
       },
       error: (error) => {
         error.error.messageError.map((e: string) => {
           this.createNotification(notificationEnum.error, e)
         }) 
-        this.getCart.emit();
+        // this.getCart.emit();
       }
     })
   }
@@ -184,7 +184,7 @@ export class CardCartComponent implements OnChanges {
       setTimeout(() => {
         item.showErrorQuantityNoEnter = false;
         item.showErrorQuantityExceed = false;
-        this.getCart.emit();
+        // this.getCart.emit();
     }, 1000);
     } else {
       if (!item) {
@@ -195,14 +195,14 @@ export class CardCartComponent implements OnChanges {
         next: (res) => {
           item.originalQuantity = newValue;
           this.calculateTotalPrice();
-          this.getCart.emit();
+          // this.getCart.emit();
         },
         error: (error) => {
           event.target.value = item.originalQuantity;
           error.error.messageError.map((e: string) => {
             this.createNotification(notificationEnum.error, e)
           })
-          this.getCart.emit();
+          // this.getCart.emit();
         }
       });
     }

@@ -80,15 +80,15 @@ export class ModalUpdateQuantityComponent {
             this.createNotification('success', `${v.message}`);
             this.isLoading = false;
           }, 
-          error: (error) => {
-            error.error.messageError.map((e: string) => {
-              this.notification.create("error", `${e}`, "");
-              this.isLoading = false;
-            })
+          error: (error) => {   
             if (error.status === 403) {
               this.router.navigate([routerNames.signInPage]);
               this.createNotification('error', "Phiên đăng nhập hết hạn")
             }
+            error.error.messageError.map((e: string) => {
+              this.notification.create("error", `${e}`, "");
+              this.isLoading = false;
+            })
           },
         });
     } else {

@@ -33,7 +33,7 @@ export class CartComponent implements OnDestroy, OnInit {
   isVisibleAddOrder: boolean = false;
   reloadCustomer: boolean = false;
 
-  idCartDelete: number = 0;
+  idCartDelete: number = 0; 
   idCartOrder: number = 0;
   idCartCustomer: number = 0;
 
@@ -64,7 +64,7 @@ export class CartComponent implements OnDestroy, OnInit {
   };
   listCustomer: any[] = [];
   addOrder: IOrder ={
-    id: 1,    
+    id: 1,     
     totalPrice: 1,    
     status: "string",
     createdAt: new Date(),
@@ -97,7 +97,7 @@ export class CartComponent implements OnDestroy, OnInit {
     role: "",
     token: "",
     refreshToken: ""
-  }
+  } 
 
 
   handleTotalPriceChanged(totalPrice: number) {
