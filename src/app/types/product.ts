@@ -37,4 +37,5 @@ export interface IRequestProduct {
   providePrice: number,
   floorPrice: number,
   imageUrl: string;
+  phoneProvider: string;
 }

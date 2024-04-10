@@ -189,12 +189,12 @@
             </nz-form-control>
           </nz-form-item>
           <nz-form-item nz-col [nzSpan]="8">
-            <nz-form-control [nzErrorTip]="originPhoneNumber">
+            <nz-form-control [nzErrorTip]="originPhoneProvider">
               <nz-input-group>
-                <input class="input" type="text" inputmode="decimal" nz-input formControlName="phoneNumber"
+                <input class="input" type="text" inputmode="decimal" nz-input formControlName="phoneProvider"
                   placeholder="SĐT:" />
               </nz-input-group>
-              <ng-template #originPhoneNumber let-control>
+              <ng-template #originPhoneProvider let-control>
                 @if (control.errors?.['required']) {
                 Vui lòng nhập số điện thoại!
                 }
