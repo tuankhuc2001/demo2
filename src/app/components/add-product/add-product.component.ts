@@ -3,14 +3,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
 import { HttpClient } from '@angular/common/http';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  NonNullableFormBuilder,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
+import { trigger, transition, animate, style } from '@angular/animations';
+
 import { IProduct } from '../../types/product';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { notificationEnum } from '../../utils/notificationEnum';
@@ -33,6 +28,14 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css',
+  animations: [
+    trigger('slideInLeft', [
+      transition(':enter', [
+        style({ transform: 'translateX(100%)' }), // Bắt đầu từ phải
+        animate('0.5s ease-in-out', style({ transform: 'translateX(0)' })), // Di chuyển sang trái
+      ]),
+    ]),
+  ]
 })
 export class AddProductComponent {
   constructor(

@@ -6,7 +6,6 @@ import { CartItemService } from '../../../services/cart-item.service';
 import { UserService } from '../../../services/user.service';
 import { ICartItemRequest } from '../../../types/cart-item';
 import { notificationEnum } from '../../../utils/notificationEnum';
-import { IUser } from '../../../types/user';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({ 
