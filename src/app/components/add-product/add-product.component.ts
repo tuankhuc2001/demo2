@@ -264,7 +264,6 @@ export class AddProductComponent {
       });
       this.loading = true;
       const header = this.productService.headerUpload();
-      console.log(header,"header");
       this.productService.uploadImage(formData, header).subscribe(
         (v) => {
           this.fileList = [];
