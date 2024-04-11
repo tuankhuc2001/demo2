@@ -8,6 +8,15 @@
     box-sizing: border-box;
 }
 
+.no-data {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .card_img {
     padding: 1vw 0;
     align-self: center;
