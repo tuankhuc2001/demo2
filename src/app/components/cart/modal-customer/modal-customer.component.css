@@ -111,7 +111,7 @@
 
 .modal-custom {
     overflow-y: scroll;
-    height: 40vh; 
+    /* height: 40vh;  */
 }
 
 .btn-add-customer {
