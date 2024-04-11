@@ -18,13 +18,21 @@
 
     <div class="header_tab">
         <nz-tabset nzCentered nzSize="large" [nzSelectedIndex]="1">
-            <nz-tab nzTitle="Liên biến động"></nz-tab>
+            <nz-tab nzTitle="Liên biến động">
+                <div class="no-data">
+                    <Span>Không có dữ liệu</Span>
+                </div>
+            </nz-tab>
             <nz-tab nzTitle="Liên giao">
                 <div class="block-top-card"></div>
                 <app-card-order-detail [listCardOrderDetail]="listCardOrderDetail"></app-card-order-detail>
                 <div style="height: 55vw;"></div>
             </nz-tab>
-            <nz-tab nzTitle="Liên nhận"></nz-tab>
+            <nz-tab nzTitle="Liên nhận">
+                <div class="no-data">
+                    <Span>Không có dữ liệu</Span>
+                </div>
+            </nz-tab>
         </nz-tabset>
     </div>
 

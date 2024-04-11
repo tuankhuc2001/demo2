@@ -79,7 +79,15 @@
 }
 
 .block-top-card {
-    height: 16.5vw;
+    height: 14.4vw;
+}
+
+.no-data {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 40%;
 }
 
 .footer_orderDetail {
