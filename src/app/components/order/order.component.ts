@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
-
 import { SearchService } from '../../services/search.service';
 import { routerNames } from '../../constant/router';
 import { OrderService } from '../../services/order.service';
@@ -15,6 +14,7 @@ import { UserService } from '../../services/user.service';
   templateUrl: './order.component.html',
   styleUrl: './order.component.css',
 })
+
 export class OrderComponent implements OnInit, OnDestroy {
   constructor(
     private notification: NzNotificationService,

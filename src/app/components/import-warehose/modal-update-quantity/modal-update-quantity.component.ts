@@ -1,13 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  NonNullableFormBuilder,
-  ValidatorFn,
-  Validators,
-  NgControl,
-} from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { IProduct } from '../../../types/product';
 import { ProductService } from '../../../services/product.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
@@ -20,6 +12,7 @@ import { IUser } from '../../../types/user';
   templateUrl: './modal-update-quantity.component.html',
   styleUrl: './modal-update-quantity.component.css',
 })
+
 export class ModalUpdateQuantityComponent {
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
@@ -48,6 +41,7 @@ export class ModalUpdateQuantityComponent {
     phoneProvider: '',
     imageUrl: "" 
   };
+
   isLoading: boolean = false;
   user: IUser = {
     id: 0,
@@ -127,6 +121,7 @@ export class ModalUpdateQuantityComponent {
   createNotification(type: string, content: string): void {
     this.notification.create(type, `${content}`, '');
   }
+  
   handleCloseModal() {
     this.validateAddCartForm.setValue({ quantity: 1 });
     this.closeModal.emit();

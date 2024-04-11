@@ -74,7 +74,7 @@ export class ModalAddCartItemComponent implements OnChanges {
       this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: 0})
       this.enableDescription = false
       this.plus = true
-}
+    }
   }
 
   editPriceValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
@@ -106,6 +106,7 @@ export class ModalAddCartItemComponent implements OnChanges {
     }
     return null;
   }
+  
   validateAddCartForm: FormGroup<{
     quantity: FormControl<number>;
     editPrice: FormControl<number>;

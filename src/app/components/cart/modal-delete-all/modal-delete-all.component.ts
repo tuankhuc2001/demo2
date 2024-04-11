@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-
 import { CartItemService } from '../../../services/cart-item.service';
 
 @Component({
@@ -36,6 +35,7 @@ export class ModalDeleteAllComponent {
       }
     })
   }
+  
   createNotification(type: string, content: string): void {
     this.notification.create(
       type,

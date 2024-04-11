@@ -87,6 +87,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
       },
     });
   }
+  
   createNotification(type: string, content: string): void {
     this.notification.create(type, `${content}`, '');
   }
