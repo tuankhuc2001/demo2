@@ -1,5 +1,9 @@
 <div *ngIf="isLoading" class="loading-overlay">
     <div class="spinner"></div>
 </div>
+<div class="warning" *ngIf="listOrder.length == 0">
+    <span nz-icon nzType="warning" nzTheme="outline"></span>
+    <p>Không có sản phẩm nào!</p>
+</div>
 <app-card-oder *ngIf="!isLoading" [listCard]="listOrder" (onClickCard)="handleGetOrderDetail($event)"></app-card-oder>
 <div style="height: 20px;"></div>
