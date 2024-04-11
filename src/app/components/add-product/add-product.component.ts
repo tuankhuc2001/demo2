@@ -85,6 +85,9 @@ export class AddProductComponent {
 
   previewImage: string | undefined = '';
   previewVisible = false;
+  handleMaintain() {
+    this.createNotification(notificationEnum.warning, "Chức năng đang phát triển");
+  }
 
   handlePreview = async (file: NzUploadFile): Promise<void> => {
     if (!file.url && !file.preview) {
