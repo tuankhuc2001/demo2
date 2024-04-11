@@ -21,6 +21,10 @@
     margin-bottom: 3vw;
 }
 
+.warning{
+    font-size: 3.5vw;
+}
+
 .header__cart {
     display: flex;
     position: fixed;
