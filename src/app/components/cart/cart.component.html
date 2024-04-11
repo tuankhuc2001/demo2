@@ -2,6 +2,8 @@
   <div class="spinner"></div>
 </div>
 
+
+
 <div *ngIf="!isLoading" class="cart_container">
   <div [class]="'header__cart'" nz-row>
     <div nz-col nzSpan="8" (click)="handleBackProductSale()">
@@ -20,6 +22,9 @@
   </div>
   <div>
     <div style="height: 11.3vw;"></div>
+    <div class="warning" *ngIf="listCard[0].cartItemResponseSet.length == 0">
+      <span nz-icon nzType="warning" nzTheme="outline"></span>
+      <p>Không có sản phẩm nào!</p> </div>
     <div >
       <app-card-cart [listCard]="listCard" (onClickDeleteSingle)="handleOpenModalDeleteSingle($event)"
         (totalPriceChanged)="handleTotalPriceChanged($event)" (getCart)="handleGetCart()"></app-card-cart>
@@ -68,7 +73,7 @@
         </div>
         <div class="totalPrice">
           <span class="totalPrice_text">Tổng tạm tính:</span>
-          <span class="totalPrice_number">{{ (addOrder.totalPrice + 50000) | number }}</span>
+          <span class="totalPrice_number">{{ (addOrder.totalPrice + 0) | number }}</span>
         </div>
       </div>
       <div nz-col nzSpan="8" class="customer_submit">

@@ -29,17 +29,23 @@
     justify-content: space-between;
     align-items: center;
     padding: 4vw;
+    padding-bottom: 2vw;
 }
 
 .title_add_customer {
-    font-size: 5vw;
-    font-weight: bold;
+    font-size: 4.5vw;
+    font-weight: 600;
 }
 
 .close_btn {
+    padding-top: 1vw;
     border: none;
     color: #3d7165;
     box-shadow: none;
+}
+
+.nz_control {
+    margin-bottom: 5vw;
 }
 
 .input-control {
@@ -60,14 +66,18 @@
 }
 
 .btn-add-customer {
-    width: 60vw;
-    padding: 8px;
+    width: 55vw;
+    padding: 7px 6vw;
     background-color: #3d7165;
     color: white;
-    font-size: 4.5vw;
+    font-size: 3.5vw;
     border-radius: 4px;
     border: none;
     cursor: pointer;
+}
+
+.btn-add-customer>span {
+    font-size: 4vw;
 }
 
 .center {
@@ -82,14 +92,26 @@
 }
 
 .input-edit{
+    margin-top: 1vw;
     border-radius: 5px;
-    padding: 2vw;
-    font-size: 4vw;
+    padding: 1.5vw;
+    font-size: 3.5vw;
     margin-bottom: 2vw;
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+}
+
+.input-edit:hover {
+    border-color: #eeeeee;
+}
+
+.input-edit:focus {
+    border-color: #eeeeee;
+    box-shadow: 0 0 0 0.2vw rgba(16, 28, 40, 0.8);
 }
 
 .input-label{
-    font-size: 5vw;
+    font-size: 4vw;
 }
 
 .container{

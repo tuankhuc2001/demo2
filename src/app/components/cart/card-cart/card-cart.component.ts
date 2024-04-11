@@ -199,7 +199,7 @@ export class CardCartComponent implements OnChanges {
   }
 
   handlePlus(item: any) {
-    if (!item) {
+    if (!item || item.rate == 0) {
       return;
     }
     this.cartItemRequest.plus = !item.plus

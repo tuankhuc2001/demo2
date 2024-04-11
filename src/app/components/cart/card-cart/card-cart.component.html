@@ -31,7 +31,7 @@
             </div>
             <div nz-row class="card_bolow" >
               <div nz-col nzSpan="5" [class]="item.disable === true || item.rate == 0? 'isPlus_disable':'isPlus'">
-                <span nz-icon nzType="plus" nzTheme="outline" *ngIf="item.plus == true" (click)="!item.disable || item.rate == 0 && handlePlus(item)" ></span>
+                <span nz-icon nzType="plus" nzTheme="outline" *ngIf="item.plus == true" (click)="!item.disable && handlePlus(item)" ></span>
                 <span nz-icon nzType="minus" nzTheme="outline" *ngIf="item.plus == false" style="color: red;" (click)="!item.disable && handlePlus(item)"></span>
               </div>
               <div nz-col nzSpan="9">
