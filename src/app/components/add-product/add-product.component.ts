@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 import { routerNames } from '../../constant/router';
 import { Router } from '@angular/router';
 import { IUser } from '../../types/user';
+import { UserService } from '../../services/user.service';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -43,6 +44,7 @@ export class AddProductComponent {
     private notification: NzNotificationService,
     private location: Location,
     private router: Router,
+    private userService: UserService
   ) { }
 
   listProduct: IProduct[] = [];
@@ -260,6 +262,7 @@ export class AddProductComponent {
       });
       this.loading = true;
       const header = this.productService.headerUpload();
+      console.log(header,"header");
       this.productService.uploadImage(formData, header).subscribe(
         (v) => {
           this.fileList = [];
@@ -273,8 +276,17 @@ export class AddProductComponent {
             error: (error) => {
               this.createNotification(notificationEnum.error, error.message);
               if (error.status === 403) {
-                this.router.navigate([routerNames.signInPage]);
-                this.createNotification('error', "Phiên đăng nhập hết hạn")
+                this.user = this.userService.getUser()
+                this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+                  next: value => {
+                    this.userService.setUser(value)
+                    localStorage.setItem("token", value.refreshToken)
+                  },
+                  error: error => {
+                    this.router.navigate([routerNames.signInPage]);
+                    this.createNotification('error', error)
+                  }
+                })
               }
             },
           });
@@ -282,8 +294,17 @@ export class AddProductComponent {
         (error) => {
           this.msg.error('Tải ảnh lên thất bại');
           if (error.status === 403) {
-            this.router.navigate([routerNames.signInPage]);
-            this.createNotification('error', "Phiên đăng nhập hết hạn")
+            this.user = this.userService.getUser()
+            this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+              next: value => {
+                this.userService.setUser(value)
+                localStorage.setItem("token", value.refreshToken)
+              },
+              error: error => {
+                this.router.navigate([routerNames.signInPage]);
+                this.createNotification('error', 'Phiên đăng nhập hết hạn')
+              }
+            })
           }
         },
       );

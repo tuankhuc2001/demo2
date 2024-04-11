@@ -1,6 +1,6 @@
 <div *ngIf="listProduct.length == 0" class="no-data">
   <img width="80%" nz-image nzSrc="../../../../assets/images/no-data.png" alt="No-Data" nzDisablePreview="true" />
-</div>
+</div> 
 <cCard *ngFor="let item of listProduct">
   <Content>
     <div nz-row class="main-card" (click)="handleProductIdEmit(item)">
