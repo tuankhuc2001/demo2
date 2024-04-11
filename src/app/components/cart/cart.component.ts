@@ -22,7 +22,7 @@ export class CartComponent implements OnDestroy, OnInit {
     private cartService: CartService,
     private router: Router,
     private userService: UserService
-    ) {
+  ) {
   }
 
   isVisibleModalCustomer: boolean = false;
@@ -62,12 +62,12 @@ export class CartComponent implements OnDestroy, OnInit {
     disable: false,
   };
   listCustomer: any[] = [];
-  addOrder: IOrder ={
-    id: 1,    
-    totalPrice: 1,    
+  addOrder: IOrder = {
+    id: 1,
+    totalPrice: 1,
     status: "string",
     createdAt: new Date(),
-    totalCartItem: 1,    
+    totalCartItem: 1,
     codeOrder: "string",
     User: {
       id: 0,
@@ -83,7 +83,7 @@ export class CartComponent implements OnDestroy, OnInit {
       id: 1,
       nameCustomer: "string",
       phoneCustomer: "string",
-      address: "string",  
+      address: "string",
     }
   };
 
@@ -125,12 +125,12 @@ export class CartComponent implements OnDestroy, OnInit {
     this.isVisibleDeleteSingle = false
   }
 
-  handleOpenModelAddOrder(): void{
+  handleOpenModelAddOrder(): void {
     this.isVisibleAddOrder = true;
     this.idCartOrder = this.user.id;
   }
 
-  handleCloseModelAddOrder(): void{
+  handleCloseModelAddOrder(): void {
     this.isVisibleAddOrder = false;
   }
 
@@ -140,15 +140,17 @@ export class CartComponent implements OnDestroy, OnInit {
       next: (res) => {
         this.isLoading = false
         this.listCard = res.content.list
-        this.listCustomer = res?.content.list      
+        this.listCustomer = res?.content.list
       },
       error: (error) => {
         this.isLoading = false
         if (error.status == 403) {
+          this.user = this.userService.getUser()
           this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
             next: value => {
               this.userService.setUser(value)
               localStorage.setItem("token", value.refreshToken)
+              this.handleGetCart()
             },
             error: error => {
               this.router.navigate([routerNames.signInPage]);
@@ -160,12 +162,12 @@ export class CartComponent implements OnDestroy, OnInit {
     })
   }
 
-  handleOpenModelCustomer(){
+  handleOpenModelCustomer() {
     this.idCartCustomer = this.listCard[0].id;
     this.isVisibleModalCustomer = true;
   }
 
-  handleCloseModelCustomer(): void{
+  handleCloseModelCustomer(): void {
     this.isVisibleModalCustomer = false
     this.handleGetCart()
   }
