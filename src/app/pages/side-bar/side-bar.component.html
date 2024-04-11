@@ -46,7 +46,7 @@
           </div>
         </div>
         <ul nz-menu nzTheme="light" nzMode="inline" class="ul-sideBar">
-          <li nz-submenu nzTitle="Hàng xuất" nzIcon="export" class="li-sideBar">
+          <li *ngIf="user.role !== 'ROLE_WAREHOUSE'" nz-submenu nzTitle="Hàng xuất" nzIcon="export" class="li-sideBar">
             <ul>
               <li
                 nz-menu-item
@@ -68,7 +68,7 @@
               </li>
             </ul>
           </li>
-          <li nz-submenu nzTitle="Quản lý kho" nzIcon="shop" class="li-sideBar">
+          <li *ngIf="user.role !== 'ROLE_SALE'"nz-submenu nzTitle="Quản lý kho" nzIcon="shop" class="li-sideBar">
             <ul>
               <li
                 nz-menu-item

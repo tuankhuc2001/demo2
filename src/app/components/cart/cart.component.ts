@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { Subject } from 'rxjs';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { CartService } from '../../services/cart.service';
-import { trigger, transition, animate, style } from '@angular/animations';
 
 import { Router } from '@angular/router';
 import { routerNames } from '../../constant/router';
@@ -15,14 +14,6 @@ import { UserService } from '../../services/user.service';
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
-  animations: [
-    trigger('slideInLeft', [
-      transition(':enter', [
-        style({ transform: 'translateX(100%)' }), // Bắt đầu từ phải
-        animate('0.5s ease-in-out', style({ transform: 'translateX(0)' })), // Di chuyển sang trái
-      ]),
-    ]),
-  ]
 })
 export class CartComponent implements OnDestroy, OnInit {
   private destroyed$ = new Subject()
@@ -31,7 +22,7 @@ export class CartComponent implements OnDestroy, OnInit {
     private cartService: CartService,
     private router: Router,
     private userService: UserService
-    ) {
+  ) {
   }
 
   isVisibleModalCustomer: boolean = false;
@@ -71,12 +62,12 @@ export class CartComponent implements OnDestroy, OnInit {
     disable: false,
   };
   listCustomer: any[] = [];
-  addOrder: IOrder ={
-    id: 1,    
-    totalPrice: 1,    
+  addOrder: IOrder = {
+    id: 1,
+    totalPrice: 1,
     status: "string",
     createdAt: new Date(),
-    totalCartItem: 1,    
+    totalCartItem: 1,
     codeOrder: "string",
     User: {
       id: 0,
@@ -92,7 +83,7 @@ export class CartComponent implements OnDestroy, OnInit {
       id: 1,
       nameCustomer: "string",
       phoneCustomer: "string",
-      address: "string",  
+      address: "string",
     }
   };
 
@@ -134,12 +125,12 @@ export class CartComponent implements OnDestroy, OnInit {
     this.isVisibleDeleteSingle = false
   }
 
-  handleOpenModelAddOrder(): void{
+  handleOpenModelAddOrder(): void {
     this.isVisibleAddOrder = true;
     this.idCartOrder = this.user.id;
   }
 
-  handleCloseModelAddOrder(): void{
+  handleCloseModelAddOrder(): void {
     this.isVisibleAddOrder = false;
   }
 
@@ -149,15 +140,17 @@ export class CartComponent implements OnDestroy, OnInit {
       next: (res) => {
         this.isLoading = false
         this.listCard = res.content.list
-        this.listCustomer = res?.content.list      
+        this.listCustomer = res?.content.list
       },
       error: (error) => {
         this.isLoading = false
         if (error.status == 403) {
+          this.user = this.userService.getUser()
           this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
             next: value => {
               this.userService.setUser(value)
               localStorage.setItem("token", value.refreshToken)
+              this.handleGetCart()
             },
             error: error => {
               this.router.navigate([routerNames.signInPage]);
@@ -169,12 +162,12 @@ export class CartComponent implements OnDestroy, OnInit {
     })
   }
 
-  handleOpenModelCustomer(){
+  handleOpenModelCustomer() {
     this.idCartCustomer = this.listCard[0].id;
     this.isVisibleModalCustomer = true;
   }
 
-  handleCloseModelCustomer(): void{
+  handleCloseModelCustomer(): void {
     this.isVisibleModalCustomer = false
     this.handleGetCart()
   }

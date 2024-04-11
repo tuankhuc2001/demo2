@@ -6,8 +6,9 @@ import { CartItemService } from '../../../services/cart-item.service';
 import { UserService } from '../../../services/user.service';
 import { ICartItemRequest } from '../../../types/cart-item';
 import { notificationEnum } from '../../../utils/notificationEnum';
-import { IUser } from '../../../types/user';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Router } from '@angular/router';
+import { routerNames } from '../../../constant/router';
 
 @Component({ 
   selector: 'app-modal-add-cart-item',
@@ -40,6 +41,7 @@ export class ModalAddCartItemComponent implements OnChanges {
     , private cartItemService: CartItemService
     , private userService: UserService
     , private changeDetection: ChangeDetectorRef
+    , private router: Router
     ) { }
 
   isLoading: boolean = false
@@ -135,9 +137,22 @@ export class ModalAddCartItemComponent implements OnChanges {
               this.handleCloseModal()
         },
         error: (error) => {
-          error.error.messageError.map((e: string) => {
-            this.createNotification(notificationEnum.error, e)
-          })
+          if (error.status == 403) {
+            this.userService.loginRefreshToken(user.refreshToken).subscribe({
+              next: value => {
+                this.userService.setUser(value)
+                localStorage.setItem("token", value.refreshToken)
+              },
+              error: () => {
+                this.router.navigate([routerNames.signInPage]);
+                this.createNotification(notificationEnum.error, "Phiên đăng nhập hết hạn")
+              }
+            })
+          }else{
+            error.error.messageError.map((e: string) => {
+              this.createNotification(notificationEnum.error, e)
+            })
+          }
           this.isLoading = false
         }
       })

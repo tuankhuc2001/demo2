@@ -1,16 +1,11 @@
-import { Component, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
 import { HttpClient } from '@angular/common/http';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  NonNullableFormBuilder,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
+import { trigger, transition, animate, style } from '@angular/animations';
+
 import { IProduct } from '../../types/product';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { notificationEnum } from '../../utils/notificationEnum';
@@ -33,6 +28,14 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css',
+  animations: [
+    trigger('slideInLeft', [
+      transition(':enter', [
+        style({ transform: 'translateX(100%)' }),
+        animate('0.5s ease-in-out', style({ transform: 'translateX(0)' })),
+      ]),
+    ]),
+  ]
 })
 export class AddProductComponent {
   constructor(
@@ -261,6 +264,7 @@ export class AddProductComponent {
       });
       this.loading = true;
       const header = this.productService.headerUpload();
+      console.log(header,"header");
       this.productService.uploadImage(formData, header).subscribe(
         (v) => {
           this.fileList = [];
@@ -274,6 +278,7 @@ export class AddProductComponent {
             error: (error) => {
               this.createNotification(notificationEnum.error, error.message);
               if (error.status === 403) {
+                this.user = this.userService.getUser()
                 this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
                   next: value => {
                     this.userService.setUser(value)
@@ -281,7 +286,7 @@ export class AddProductComponent {
                   },
                   error: error => {
                     this.router.navigate([routerNames.signInPage]);
-                    this.createNotification('error', "Phiên đăng nhập hết hạn")
+                    this.createNotification('error', error)
                   }
                 })
               }
@@ -291,6 +296,7 @@ export class AddProductComponent {
         (error) => {
           this.msg.error('Tải ảnh lên thất bại');
           if (error.status === 403) {
+            this.user = this.userService.getUser()
             this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
               next: value => {
                 this.userService.setUser(value)
@@ -298,7 +304,7 @@ export class AddProductComponent {
               },
               error: error => {
                 this.router.navigate([routerNames.signInPage]);
-                this.createNotification('error', "Phiên đăng nhập hết hạn")
+                this.createNotification('error', 'Phiên đăng nhập hết hạn')
               }
             })
           }

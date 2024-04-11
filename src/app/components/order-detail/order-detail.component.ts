@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
-
+import { trigger, transition, animate, style } from '@angular/animations';
 import { IOrderAndOrderDetail } from '../../types/order';
 import { OrderService } from '../../services/order.service';
 import { OrderDetailService } from '../../services/order-detail.service';
@@ -13,7 +13,15 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-order-detail',
   templateUrl: './order-detail.component.html',
-  styleUrl: './order-detail.component.css'
+  styleUrl: './order-detail.component.css',
+  animations: [
+    trigger('slideInLeft', [
+      transition(':enter', [
+        style({ transform: 'translateX(100%)' }),
+        animate('0.5s ease-in-out', style({ transform: 'translateX(0)' })),
+      ]),
+    ]),
+  ]
 })
 export class OrderDetailComponent {
 
