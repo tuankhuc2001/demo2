@@ -9,7 +9,7 @@
                     <input (ngModelChange)="handleSearch($event)" (keyup.enter)="handleSearch(textSearch)" type="text" placeholder="Tìm kiếm ..."
                         class="input-search" nz-input style="border: none;" [(ngModel)]="textSearch">
                     <span nz-icon nzType="close" nzTheme="outline" class="font-size-3vw  icon-search"
-                        style="cursor: pointer;" (click)="handleCloseModalCustomer()"></span>
+                        style="cursor: pointer; color: #3c7265;" (click)="handleCloseModalCustomer()"></span>
                 </div>
             </div>
             <div style="padding-top: 7vw;">
@@ -27,10 +27,14 @@
                 </div>
             </div>
             <div class="btn-container" [style]="listCustomer.length > 0 ? displayNone:displayBlock">
+                <div class="warning" *ngIf="listCustomer.length == 0">
+                    <span nz-icon nzType="warning" nzTheme="outline"></span>
+                    <p>Không tìm thấy dữ liệu!</p> 
+                </div>
                 <div class="btn-cover">
                     <button class="btn-add-customer" (click)="handleOpenAddCustomer()">
                         <span nz-icon nzType="user-add" nzTheme="outline"></span>
-                        Thêm khách hàng</button>
+                        Thêm khách hàng mới</button>
                 </div>
             </div>
         </div>
