@@ -1,7 +1,8 @@
 <div *ngIf="listCard.length == 0" class="no-data">
-  <img nz-image width="80%" 
-          nzSrc="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
-          nzDisablePreview="true" />
+  <div style="display: flex; flex-direction: column;">
+    <span nz-icon nzType="warning" nzTheme="outline" style="font-size: 16vw;color: #a3a3a3;"></span>
+    <span style="margin-top: 8%;color: #515151; font-size: 4vw;">Không tìm thấy dữ liệu</span>
+  </div>
 </div>
 <cCard *ngFor="let item of listCard" (click)="handleClickCard(item.id)">
   <Content>

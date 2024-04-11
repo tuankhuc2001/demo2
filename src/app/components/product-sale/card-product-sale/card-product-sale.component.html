@@ -1,11 +1,8 @@
 <div *ngIf="listCard.length == 0" class="no-data">
-  <img
-    width="80%"
-    nz-image
-    nzSrc="../../../../assets/images/no-data.png"
-    alt="No-Data"
-    nzDisablePreview="true"
-  />
+  <div style="display: flex; flex-direction: column;">
+    <span nz-icon nzType="warning" nzTheme="outline" style="font-size: 16vw;color: #a3a3a3;"></span>
+    <span style="margin-top: 8%;color: #515151; font-size: 4vw;">Không tìm thấy dữ liệu</span>
+  </div>
 </div>
 <cCard *ngFor="let item of listCard" (click)="handleOnClickDetail(item)">
   <Content>

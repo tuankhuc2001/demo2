@@ -1,17 +1,6 @@
 <div *ngIf="isLoading" class="loading-overlay">
   <div class="spinner"></div>
 </div>
-  
-<div>
-  <div class="warning" *ngIf="listProduct.length == 0">
-    <span nz-icon nzType="warning" nzTheme="outline"></span>
-    <p>Không có sản phẩm nào!</p>
-</div>
-  <app-card-warehouse [listProduct]="listProduct" (productIdEmit)="handleOpenModalUpdatePrice($event)" ></app-card-warehouse>
-  <app-modal-update-price [isVisible]="isVisibleModalUpdatePrice"
-   (closeModal)="handleCloseModalUpdatePrice()"
-    [productItem]="productItem"
-    (isVisibleChange)="handleSetIsVisibleClose()"
-    >
-  </app-modal-update-price>
-</div> 
+
+<app-card-warehouse [listProduct]="listProduct" (productIdEmit)="handleOpenModalUpdatePrice($event)"></app-card-warehouse>
+<app-modal-update-price [isVisible]="isVisibleModalUpdatePrice" (closeModal)="handleCloseModalUpdatePrice()" [productItem]="productItem" (isVisibleChange)="handleSetIsVisibleClose()"></app-modal-update-price>
