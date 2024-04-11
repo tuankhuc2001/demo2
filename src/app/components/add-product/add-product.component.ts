@@ -1,8 +1,7 @@
-import { Component, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
-import { HttpClient } from '@angular/common/http';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { trigger, transition, animate, style } from '@angular/animations';
 
@@ -13,7 +12,6 @@ import { Location } from '@angular/common';
 import { routerNames } from '../../constant/router';
 import { Router } from '@angular/router';
 import { IUser } from '../../types/user';
-import { UserService } from '../../services/user.service';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -41,12 +39,10 @@ export class AddProductComponent {
   constructor(
     private productService: ProductService,
     private msg: NzMessageService,
-    private http: HttpClient,
     private fb: NonNullableFormBuilder,
     private notification: NzNotificationService,
     private location: Location,
     private router: Router,
-    private userService: UserService,
   ) { }
 
   listProduct: IProduct[] = [];
@@ -325,14 +321,14 @@ export class AddProductComponent {
           : '',
         description: this.product.description,
         imageUrl: this.product.imageUrl
-      };
+      }
     } else {
       Object.values(this.validateAddProductForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
         }
-      });
+      })
     }
   }
 
@@ -343,13 +339,13 @@ export class AddProductComponent {
       Object.values(this.validateAddProductForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
+          control.updateValueAndValidity({ onlySelf: true })
         }
       });
     }
   }
 
   createNotification(type: string, content: string): void {
-    this.notification.create(type, `${content}`, '');
+    this.notification.create(type, `${content}`, '')
   }
 }
