@@ -99,6 +99,7 @@ export class ModalUpdateQuantityComponent {
               this.isLoading = false;
             })
             if (error.status == 403) {
+              this.user = this.userService.getUser()
               this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
                 next: value => {
                   this.userService.setUser(value)
