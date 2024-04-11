@@ -18,13 +18,13 @@
   margin-top: 5%;
 }
 .mf-left {
-  width: 30vw;
+  width: 38vw;
   display: flex;
   flex-direction: column;
   font-size: 3.5vw;
 }
 .mf-right {
-  width: 30vw;
+  width: 38vw;
   display: flex;
   flex-direction: column;
   font-size: 3.5vw;
@@ -32,9 +32,8 @@
 .mf2 {
   display: flex;
   justify-content: space-between;
-  margin-top: 5%;
 }
-.mf3 {
+.mf3 { 
   display: flex;
   justify-content: space-between;
   margin-top: 5%;

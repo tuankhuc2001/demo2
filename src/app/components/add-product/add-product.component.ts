@@ -1,4 +1,4 @@
-import { Component, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
@@ -264,6 +264,7 @@ export class AddProductComponent {
       });
       this.loading = true;
       const header = this.productService.headerUpload();
+      console.log(header,"header");
       this.productService.uploadImage(formData, header).subscribe(
         (v) => {
           this.fileList = [];
@@ -277,8 +278,17 @@ export class AddProductComponent {
             error: (error) => {
               this.createNotification(notificationEnum.error, error.message);
               if (error.status === 403) {
-                this.router.navigate([routerNames.signInPage]);
-                this.createNotification('error', "Phiên đăng nhập hết hạn")
+                this.user = this.userService.getUser()
+                this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+                  next: value => {
+                    this.userService.setUser(value)
+                    localStorage.setItem("token", value.refreshToken)
+                  },
+                  error: error => {
+                    this.router.navigate([routerNames.signInPage]);
+                    this.createNotification('error', error)
+                  }
+                })
               }
             },
           });
@@ -286,8 +296,17 @@ export class AddProductComponent {
         (error) => {
           this.msg.error('Tải ảnh lên thất bại');
           if (error.status === 403) {
-            this.router.navigate([routerNames.signInPage]);
-            this.createNotification('error', "Phiên đăng nhập hết hạn")
+            this.user = this.userService.getUser()
+            this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+              next: value => {
+                this.userService.setUser(value)
+                localStorage.setItem("token", value.refreshToken)
+              },
+              error: error => {
+                this.router.navigate([routerNames.signInPage]);
+                this.createNotification('error', 'Phiên đăng nhập hết hạn')
+              }
+            })
           }
         },
       );

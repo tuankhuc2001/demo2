@@ -13,16 +13,6 @@
   height: 100vh;
 }
 
-/* .header-menu {
-  height: 100px !important;
-}
-.col-menu {
-  height: 100vw;
-}
-.icon-menu {
-  font-size: 50px;
-} */
-
 .menu-sidebar {
   position: relative;
   z-index: 10;
@@ -31,18 +21,22 @@
 }
 
 .header-trigger {
-  height: 64px;
-  font-size: 20px;
+  font-size: 6.5vw;
   cursor: pointer;
   transition: all 0.3s, padding 0s;
   color: #fff;
-  margin-right: 15px;
+  margin-right: 1vw;
   border-radius: 4px;
+  font-weight: 700;
 }
 
 .header-trigger:hover {
   color: #3c7265;
   background-color: white;
+}
+
+.menu-btn {
+  align-self: center;
 }
 
 nz-header {
@@ -53,32 +47,29 @@ nz-header {
   background-color: #3c7265;
 }
 
-.app-header {
-  position: fixed;
-  height: 64px;
-  padding: 0;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-}
-
 .searchInput {
   text-align: center;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.input-search {
+.input {
+  height: max-content;
+}
+
+.input-group {
   border-radius: 25px !important;
   background-color: #25403b;
   border: none;
-  padding: 1.3vw 2vw;
+  padding: 1.3vw 4vw;
 }
 
 .icon-search {
   color: #fff !important;
+  font-size: 4.5vw;
 }
 
-.inputSearch-header {
+.input-search {
   background-color: #25403b;
   color: #fff;
 }
@@ -103,12 +94,9 @@ nz-content {
 
 a {
   color: #000;
-  /* default color */
   text-decoration: none;
   padding: 5px;
-  /* add some padding for better hover effect */
   transition: color 0.3s ease;
-  /* smooth transition effect */
 }
 
 a:hover {
@@ -136,7 +124,7 @@ nz-drawer {
 }
 
 .information-Avatar {
-  margin: 20px;
+  margin: 4vw 2vw 4vw 4vw;
   width: 64px;
 }
 
@@ -148,12 +136,13 @@ nz-drawer {
 
 .name-User {
   color: #3d7165;
-  font-size: 1.8em;
+  font-size: 4vw;
   font-weight: bold;
 }
 
 .role-Phone {
-  color: #3d7165;
+  font-size: 3.5vw;
+  color: #afafaf;
 }
 
 .ul-sideBar {
@@ -201,7 +190,6 @@ nz-drawer {
 
 .ant-menu-submenu-title:hover {
   background-color: rgb(224, 244, 242);
-  /* color:  !important; */
 }
 
 .logout {
@@ -214,7 +202,19 @@ nz-drawer {
   }
 
   .header-menu {
-    padding: 2vw;
+    padding: 2.5vw 2vw 0vw;
+    align-items: center;
+    height: fit-content;
+  }
+
+  .input-group {
+    border-radius: 30px !important;
+    padding: 1vw 4vw;
+    height: fit-content;
+  }
+
+  .input-search {
+    font-size: 3vw;
     height: fit-content;
   }
 
@@ -222,20 +222,16 @@ nz-drawer {
     font-size: 4vw;
   }
 
-  .menu-btn {
-    align-self: flex-end;
+  .name-User {
+    font-size: 5vw;
   }
-
-  .header-trigger {
-    font-size: 3vw;
-  }
-
-  .icon-menu {
+  
+  .role-Phone {
     font-size: 4vw;
   }
 
-  .inputSearch-header {
-    font-size: 3.5vw;
+  .icon-menu {
+    font-size: 5vw;
   }
 
   .information-Avatar {

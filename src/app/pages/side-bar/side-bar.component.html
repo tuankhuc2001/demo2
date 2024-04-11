@@ -7,13 +7,13 @@
             <span nz-icon [nzType]="'menu'" class="icon-menu"></span>
           </a>
         </div>
-        <div nz-col nzSpan="21">
-          <nz-input-group [nzSuffix]="suffixIconSearch" class="input-search">
+        <div nz-col nzSpan="21" class="input">
+          <nz-input-group [nzSuffix]="suffixIconSearch" class="input-group">
             <input
               nz-input
               type="text"
               placeholder="Tìm kiếm"
-              class="inputSearch-header"
+              class="input-search"
               [(ngModel)]="textSearch"
               (ngModelChange)="handleSearch($event)"
             />
@@ -42,7 +42,11 @@
           </div>
           <div class="information-User">
             <span class="name-User">{{ user.fullname }}</span>
-            <span class="role-Phone">{{ user.role }} - {{ user.phone }}</span>
+            <div>
+              <span class="role-Phone" *ngIf="user.role === 'ROLE_ADMIN'">Admin</span>
+              <span class="role-Phone" *ngIf="user.role === 'ROLE_SALE'">Sale</span>
+              <span class="role-Phone"> - {{ user.phone }}</span>
+            </div>
           </div>
         </div>
         <ul nz-menu nzTheme="light" nzMode="inline" class="ul-sideBar">
