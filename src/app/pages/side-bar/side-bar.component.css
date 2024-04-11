@@ -203,11 +203,10 @@ nz-drawer {
 
 @media (min-width: 768px) {
   nz-content {
-    margin-top: 13vw;
+    margin-top: 11vw;
   }
 
   .header-menu {
-    /* padding: 2.5vw 2vw 0vw; */
     padding: 2vw;
     align-items: center;
     height: fit-content;
