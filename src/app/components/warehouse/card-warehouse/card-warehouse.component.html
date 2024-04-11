@@ -1,4 +1,4 @@
-<div *ngIf="listProduct.length == 0" class="no-data">
+<div *ngIf="listProduct.length == 0 && loading == false" class="no-data">
   <div style="display: flex; flex-direction: column;">
     <span nz-icon nzType="warning" nzTheme="outline" style="font-size: 16vw;color: #a3a3a3;"></span>
     <span style="margin-top: 8%;color: #515151; font-size: 4vw;">Không tìm thấy dữ liệu</span>

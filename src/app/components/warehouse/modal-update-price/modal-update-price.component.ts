@@ -120,7 +120,7 @@ export class ModalUpdatePriceComponent {
 
   formatPrice(event: any) {
     let value: string | null = event.target.value;
-    value = value || '0';
+    value = value || '1';
     value = value.replace(/\D/g, '');
     if (!isNaN(Number(value))) {
       const numericValue = Number(value)
