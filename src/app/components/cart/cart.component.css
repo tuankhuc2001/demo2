@@ -15,13 +15,13 @@
     align-items: center;
 }
 
-.warning> span {
+.warning>span {
     font-size: 13vw;
     color: #d9d9d9;
     margin-bottom: 3vw;
 }
 
-.warning{
+.warning>p {
     font-size: 3.5vw;
 }
 
@@ -114,7 +114,8 @@
 .customer_click>button {
     background-color: #1E5993;
     color: white;
-    padding: 1vw 0vw;
+    width: 30vw;
+    height: 11vw;
     border-radius: 1vw;
     font-size: 4.5vw;
     font-weight: 500;
@@ -170,8 +171,8 @@
 
 .customer_submit>.btn_submit {
     background-color: #ff4e00;
-    width: 84%;
-    height: 72%;
+    width: 27vw;
+    height: 11vw;
     color: white;
     border-radius: 1vw;
     font-size: 4.5vw;
