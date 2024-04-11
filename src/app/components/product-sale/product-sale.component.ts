@@ -89,6 +89,7 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
             next: value => {
               this.userService.setUser(value)
               localStorage.setItem("token", value.refreshToken)
+              this.handleGetProductSale(userId, textSearch)
             },
             error: error => {
               this.router.navigate([routerNames.signInPage]);
