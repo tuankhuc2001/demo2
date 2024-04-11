@@ -2,6 +2,7 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
+import { HttpClient } from '@angular/common/http';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { trigger, transition, animate, style } from '@angular/animations';
 
@@ -40,11 +41,12 @@ export class AddProductComponent {
   constructor(
     private productService: ProductService,
     private msg: NzMessageService,
+    private http: HttpClient,
     private fb: NonNullableFormBuilder,
     private notification: NzNotificationService,
     private location: Location,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
   ) { }
 
   listProduct: IProduct[] = [];
@@ -342,14 +344,14 @@ export class AddProductComponent {
           : '',
         description: this.product.description,
         imageUrl: this.product.imageUrl
-      }
+      };
     } else {
       Object.values(this.validateAddProductForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
         }
-      })
+      });
     }
   }
 
@@ -360,13 +362,13 @@ export class AddProductComponent {
       Object.values(this.validateAddProductForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true })
+          control.updateValueAndValidity({ onlySelf: true });
         }
       });
     }
   }
 
   createNotification(type: string, content: string): void {
-    this.notification.create(type, `${content}`, '')
+    this.notification.create(type, `${content}`, '');
   }
 }
