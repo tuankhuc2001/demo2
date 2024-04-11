@@ -87,7 +87,8 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    margin-top: 40%;
+    margin-top: 50%;
+    font-size: 4vw;
 }
 
 .footer_orderDetail {
@@ -157,7 +158,12 @@
 
     .block-top-card {
         height: 10vw;
-    }    
+    }
+
+    .no-data {
+        margin-top: 50%;
+        font-size: 4vw;
+    }
 
     .footer_orderDetail {
         position: fixed;
