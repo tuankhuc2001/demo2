@@ -56,7 +56,9 @@
 .editPrice {
     font-size: 4vw;
     color: #1E5993;
-
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .unit {
@@ -133,8 +135,8 @@
 
 .finalPrice_text {
     padding: 0 2vw;
-    text-overflow:ellipsis; 
-    overflow: hidden; 
+    text-overflow: ellipsis;
+    overflow: hidden;
     white-space: nowrap;
 }
 
@@ -189,7 +191,7 @@
         padding-bottom: 0vw;
     }
 
-    .content_nameProduct{
+    .content_nameProduct {
         font-size: 3.5vw;
     }
 
@@ -246,12 +248,12 @@
         opacity: 0.5;
         margin-bottom: 4.8vw;
     }
-    
+
     .editQuantity_down {
         padding: 1.5vw 2vw;
         font-size: 3vw;
     }
-    
+
     .editQuantity_down_disable {
         padding: 1.5vw 2vw;
         font-size: 3vw;

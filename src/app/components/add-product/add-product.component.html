@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container" [@slideInLeft]>
   <div class="header">
     <div class="icon-back">
       <span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
@@ -140,7 +140,7 @@
             <nz-form-item nz-col [nzSpan]="7">
               <nz-form-control [nzErrorTip]="providePriceValidator">
                 <nz-input-group [nzPrefix]="prefixTemplateProvidePrice">
-                  <input type="number" nz-input formControlName="providePrice" placeholder="Giá cung:" />
+                  <input type="number" class="input" nz-input formControlName="providePrice" placeholder="Giá cung:" />
                 </nz-input-group>
                 <ng-template #prefixTemplateProvidePrice></ng-template>
                 <ng-template #providePriceValidator let-control>
