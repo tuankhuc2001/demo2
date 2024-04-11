@@ -17,10 +17,10 @@
                             </nz-input-group>
                             <ng-template #phoneCustomerValidator let-control>
                                 @if (control.errors?.['required']) {
-                                Vui lòng nhập SĐT!
+                                Vui lòng nhập SĐT
                                 }
                                 @if (control.errors?.['confirm']) {
-                                Vui lòng nhập đúng định dạng số điện thoại!
+                                Số điện thoại không đúng định dạng
                                 }
                             </ng-template>
                         </nz-form-control>
@@ -33,10 +33,10 @@
                             </nz-input-group>
                             <ng-template #nameCustomerValidator let-control>
                                 @if (control.errors?.['required']) {
-                                Vui lòng nhập tên khách hàng!
+                                Vui lòng nhập tên khách hàng
                                 }
                                 @if (control.errors?.['confirm']) {
-                                Tên khách hàng không được dưới 3 hoặc vượt quá 255 ký tự!
+                                Tên khách hàng là trường bắt buộc nhập
                                 }
                             </ng-template>
                         </nz-form-control>
@@ -49,10 +49,10 @@
                             </nz-input-group>
                             <ng-template #addressValidator let-control>
                                 @if (control.errors?.['required']) {
-                                Vui lòng nhập địa chỉ!
+                                Vui lòng nhập địa chỉ
                                 }
                                 @if (control.errors?.['confirm']) {
-                                Địa chỉ không được dưới 3 hoặc vượt quá 255 ký tự!
+                                Địa chỉ không được dưới 3 hoặc vượt quá 255 ký tự
                                 }
                             </ng-template>
                         </nz-form-control>
