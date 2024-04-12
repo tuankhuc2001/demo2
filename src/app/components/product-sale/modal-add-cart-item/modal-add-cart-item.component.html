@@ -13,13 +13,12 @@
                     <div class="quantityProduct mg-l-8">Tồn kho: {{ProductDetail.quantityProduct}}</div>
                     <form nz-form [formGroup]="validateAddCartForm">
                         <nz-form-item>
-                            <nz-form-control [nzErrorTip]="editPriceValidate">
+                            <nz-form-control [nzErrorTip]="editPriceValidate" class="mg-l-8">
                                 <nz-input-group [nzPrefix]="prefixTemplate" style="width: 100%;">
-                                    <input class="input" type="number" nz-input formControlName="editPrice"
-                                        class="input"/>
+                                    <input class="input" type="number" nz-input formControlName="editPrice"/>
                                 </nz-input-group>
-                                <ng-template #prefixTemplate>
-                                    <div class="responsive-input">Sửa giá:</div>
+                                <ng-template #prefixTemplate [nzAutofocus]="false">
+                                    <div class="input-name">Sửa giá:</div>
                                 </ng-template>
                                 <ng-template #editPriceValidate let-control>
                                     @if (control.errors?.['required']) {
@@ -32,16 +31,20 @@
                             </nz-form-control>
                         </nz-form-item>
                         <nz-form-item>
-                            <nz-form-control nzRequired [nzErrorTip]="rateValidator">
+                            <nz-form-control nzRequired [nzErrorTip]="rateValidator" class="mg-l-8">
                                 <nz-input-group [nzPrefix]="prefixTemplateRate" style="width: 100%; padding: 0;">
                                     <input type="number" nz-input formControlName="rate" class="input"/>
                                 </nz-input-group>
 
                                 <ng-template #prefixTemplateRate>
-                                    <button [disabled]="validateAddCartForm.value.rate === 0" *ngIf="plus === false" class="minusRate" nz-button (click)="handlePlusRate()">
+                                    <button [disabled]="validateAddCartForm.value.rate === 0 || validateAddCartForm.value.rate == null"
+                                     [style]="{'opacity' : validateAddCartForm.value.rate === 0 || validateAddCartForm.value.rate == null ? 0.3 : 1}"
+                                     *ngIf="plus === false" class="minusRate" nz-button (click)="handlePlusRate()">
                                         <span style="color: white;" nz-icon nzType="minus"></span>
                                     </button>
-                                    <button [disabled]="validateAddCartForm.value.rate === 0" *ngIf="plus === true" class="plusRate"  nz-button (click)="handlePlusRate()">
+                                    <button [disabled]="validateAddCartForm.value.rate === 0 || validateAddCartForm.value.rate == null"
+                                     [style]="{'opacity' : validateAddCartForm.value.rate === 0 || validateAddCartForm.value.rate == null ? 0.3 : 1}"
+                                    *ngIf="plus === true" class="plusRate"  nz-button (click)="handlePlusRate()">
                                         <span style="color: white;" nz-icon nzType="plus"></span>
                                     </button>
                                 </ng-template>
@@ -57,12 +60,12 @@
                             </nz-form-control>
                         </nz-form-item>
                         <nz-form-item>
-                            <nz-form-control [nzErrorTip]="quantityValidate">
+                            <nz-form-control [nzErrorTip]="quantityValidate" class="mg-l-8">
                                 <nz-input-group [nzPrefix]="prefixTemplateQuantity">
                                     <input type="number" nz-input formControlName="quantity" class="input"/>
                                 </nz-input-group>
                                 <ng-template #prefixTemplateQuantity>
-                                    <div class="responsive-input">
+                                    <div class="input-name">
                                         Số lượng:
                                     </div>
                                 </ng-template>
