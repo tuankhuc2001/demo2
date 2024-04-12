@@ -45,7 +45,7 @@ nz-header {
   width: 100%;
   position: fixed;
   z-index: 2;
-  background-color: #3c7265;
+  background-color: #0E6F64;
 }
 
 .col-menu {
@@ -64,7 +64,7 @@ nz-header {
 
 .input-group {
   border-radius: 25px !important;
-  background-color: #25403b;
+  background-color: #153E39;
   border: none;
   padding: 1.3vw 4vw;
 }
@@ -75,7 +75,7 @@ nz-header {
 }
 
 .input-search {
-  background-color: #25403b;
+  background-color: #153E39;
   color: #fff;
 }
 
