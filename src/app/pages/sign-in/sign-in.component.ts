@@ -49,7 +49,7 @@ export class SignInComponent {
       ''
     );
   }
- 
+
   handleLogin(): void {
     this.isLoading = true
     this.userService.login(
@@ -59,22 +59,26 @@ export class SignInComponent {
       next: (res: ILoginResponse) => {
         this.userService.setUser(res)
         this.isLoading = false
-        localStorage.setItem("token",res.token)
+        localStorage.setItem("token", res.token)
         this.createNotification("success", "Đăng nhập thành công")
-        this.handleNavigate()
-      }, 
+          this.handleNavigate(res.role)
+      },
       error: (error: Error) => {
         this.isLoading = false
         console.log(error);
-        
+
         this.createNotification("error", "Sai tài khoản hoặc mật khẩu")
       }
     })
   }
 
-  handleNavigate(): void {
+  handleNavigate(role: string): void {
     this.isLoading = false
-    this.router.navigate(['/home']);
+    if(role === 'ROLE_WAREHOUSE'){
+      this.router.navigate(['/home/warehouse']);
+    }else{
+      this.router.navigate(['/home']);
+    }
   }
 
   constructor(

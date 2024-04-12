@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CustomerService } from '../../../services/customer.service';
 import { CartService } from '../../../services/cart.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
@@ -15,11 +15,12 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './modal-customer.component.html',
   styleUrl: './modal-customer.component.css'
 })
-export class ModalCustomerComponent {
+export class ModalCustomerComponent implements OnInit{
 
   @Input() isVisibleModalAddCustomer: boolean = false;
   @Input() isVisibleCustomer: boolean = false;
   @Input() idCart: number = 0;
+  @Input() listCustomerProp: ICustomer[] = []
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
   @Output() getCart: EventEmitter<void> = new EventEmitter();
   listCustomer: ICustomer[] = [];
@@ -51,6 +52,9 @@ export class ModalCustomerComponent {
     refreshToken: ""
   }
 
+  ngOnInit():void {
+    this.listCustomer = this.listCustomerProp
+  }
 
   createNotification(type: string, content: string): void {
     this.notification.create(
@@ -83,28 +87,6 @@ export class ModalCustomerComponent {
       })
     }, 1000)
     
-  }
-
-  ngOnInit(): void {
-    this.customerService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
-      next: value => {
-        this.handleSearch(value)
-      },
-      error: (v) => {
-        if (v.status === 403) {
-          this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
-            next: value => {
-              this.userService.setUser(value)
-              localStorage.setItem("token", value.refreshToken)
-            },
-            error: error => {
-              this.router.navigate([routerNames.signInPage]);
-              this.createNotification('error', "Phiên đăng nhập hết hạn")
-            }
-          })
-        }
-      }
-    })
   }
 
   getCustomer(): void {
