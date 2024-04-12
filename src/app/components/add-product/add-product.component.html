@@ -8,12 +8,12 @@
     </div>
   </div>
   <section class="dflex" style="margin-top: 8vw;">
-    <div nz-col nzSpan="10" class="center-upload">
+    <div nz-col nzSpan="10" >
       <nz-upload nzName="avatar" nzAction="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
         nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1"
-        [nzPreview]="handlePreview" style="display: flex; margin-top: 14vw;">
+        [nzPreview]="handlePreview" style="display: flex; margin-top: 0px;">
         <div>
-          <span class="upload_icon" nz-icon nzType="camera" nzTheme="fill"></span>
+          <span class="upload_icon" nz-icon nzType="camera" nzTheme="fill" ></span>
         </div>
         <nz-modal
         [nzVisible]="previewVisible"
@@ -71,7 +71,7 @@
             <ng-template #quantityValidator let-control>
               @if (control.errors?.['required']) {
               Vui lòng nhập số lượng tồn!
-              }
+              } 
               @if (control.errors?.['confirm']) {
               Số lượng tồn phải lớn hơn 0 và bé hơn 10000!
               }

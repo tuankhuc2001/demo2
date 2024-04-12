@@ -1,76 +1,83 @@
 .main-card {
-    display: flex;
+  display: flex;
 }
 
 ::ng-deep.ant-card-body {
-    padding: 6px !important;
+  padding: 6px !important;
+}
+
+.hidenText {
+  white-space: nowrap;
+  width: 50vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-img {
-    display: flex;
-    align-items: center;
-    padding-right: 3vw;
+  display: flex;
+  align-items: center;
+  padding-right: 3vw;
 }
 
 .card-img img {
-    aspect-ratio: 1/1;
-    width: 100%;
+  aspect-ratio: 1/1;
+  width: 100%;
 }
 
 .nameProduct-card {
-    font-size: 5vw;
-    font-weight: 700;
-    color: #25403b;
+  font-size: 5vw;
+  font-weight: 700;
+  color: #25403b;
 }
 
 .textProduct-card {
-    font-size: 4vw;
-    color: #afafaf;
+  font-size: 4vw;
+  color: #afafaf;
 }
 
 .floorPrice-card {
-    font-size: 5vw;
-    font-weight: 700;
-    color: #B31312;
+  font-size: 5vw;
+  font-weight: 700;
+  color: #b31312;
 }
 
 .flex-end {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .no-data {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
-    .main-card {
-        padding: 1.5vw;
-    }
+  .main-card {
+    padding: 1.5vw;
+  }
 
-    .card-img {
-        align-items: center;
-        padding: 0;
-    }
-    
-    .card-img img {
-        width: 80%;
-    }
-    
-    .nameProduct-card {
-        font-size: 3vw;
-    }
+  .card-img {
+    align-items: center;
+    padding: 0;
+  }
 
-    .textProduct-card {
-        font-size: 2.8vw;
-    }
+  .card-img img {
+    width: 80%;
+  }
 
-    .floorPrice-card {
-        font-size: 3vw;
-    }
+  .nameProduct-card {
+    font-size: 3vw;
+  }
+
+  .textProduct-card {
+    font-size: 2.8vw;
+  }
+
+  .floorPrice-card {
+    font-size: 3vw;
+  }
 }
