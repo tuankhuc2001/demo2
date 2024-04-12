@@ -140,20 +140,20 @@ nz-drawer {
 }
 
 .name-User {
-  color: #3d7165;
+  color: #0E6F64;
   font-size: 4vw;
   font-weight: bold;
 }
 
 .role-Phone {
   font-size: 3.5vw;
-  color: #afafaf;
+  color: #0E6F64;
 }
 
 .ul-sideBar {
   border: none !important;
   padding: 0px !important;
-  color: #A5A5A5 !important;
+  color: #0E6F64 !important;
 }
 
 .ul-sideBar li {
@@ -164,7 +164,7 @@ nz-drawer {
 .title-menuItem {
   font-size: 10px !important;
   font-weight: 300 !important;
-  color: #A5A5A5 !important;
+  color: #0E6F64 !important;
 }
 
 .title-menuItem.router-link-active {
@@ -174,15 +174,15 @@ nz-drawer {
 }
 
 ::ng-deep .ant-menu-light .ant-menu-submenu-title:hover {
-  color: #A5A5A5 !important;
+  color: #0E6F64 !important;
 }
 
 ::ng-deep .ant-menu-submenu > .ant-menu-submenu-title > .ant-menu-submenu-arrow {
-  color: #A5A5A5 !important;
+  color: #0E6F64 !important;
 }
 
 ::ng-deep .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow {
-  color: #A5A5A5 !important;
+  color: #0E6F64 !important;
 }
 
 .li-sideBar {
@@ -198,7 +198,7 @@ nz-drawer {
 }
 
 .logout {
-  color: #ff0000;
+  color: #C7393C;
 }
 
 @media (min-width: 768px) {
