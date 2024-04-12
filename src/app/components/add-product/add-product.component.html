@@ -44,7 +44,7 @@
               Vui lòng nhập giá sàn!
               }
               @if (control.errors?.['confirm']) {
-              Giá sàn phải lớn hơn 0!
+              Giá sàn phải lớn hơn 0 và bé hơn 1000000000!
               }
             </ng-template>
           </nz-form-control>
@@ -88,7 +88,7 @@
                 Vui lòng nhập tên sản phẩm!
                 }
                 @if (control.errors?.['confirm']) {
-                Tên sản phẩm không được dưới 3 hoặc vượt quá 255 ký tự!
+                Tên sản phẩm không được dưới 3 hoặc vượt quá 250 ký tự!
                 }
               </ng-template>
             </nz-form-control>
@@ -103,10 +103,10 @@
                 </nz-input-group>
                 <ng-template #unitValidate let-control>
                   @if (control.errors?.['required']) {
-                  Vui lòng nhập đơn vị!
+                  Vui lòng nhập đơn vị tính!
                   }
                   @if (control.errors?.['confirm']) {
-                  Đơn vị tính không được dưới 3 hoặc vượt quá 255 ký tự!
+                  Đơn vị tính không được dưới 2 hoặc vượt quá 50 ký tự!
                   }
                 </ng-template>
               </nz-form-control>
@@ -121,7 +121,7 @@
                   Vui lòng nhập hạn sử dụng!
                   }
                   @if (control.errors?.['confirm']) {
-                  Hạn sử dụng không được dưới 3 hoặc vượt quá 255 ký tự!
+                  Hạn sử dụng không được dưới 8 hoặc vượt quá 50 ký tự!
                   }
                 </ng-template>
               </nz-form-control>
@@ -155,7 +155,7 @@
                 Vui lòng nhập xuất xứ!
                 }
                 @if (control.errors?.['confirm']) {
-                Xuất xứ không được dưới 3 hoặc vượt quá 255 ký tự!
+                Xuất xứ không được dưới 3 hoặc vượt quá 50 ký tự!
                 }
               </ng-template>
             </nz-form-control>
@@ -172,7 +172,7 @@
                 Vui lòng nhập nguồn cung!
                 }
                 @if (control.errors?.['confirm']) {
-                Nguồn cung không được dưới 3 hoặc vượt quá 255 ký tự!
+                Nguồn cung không được dưới 8 hoặc vượt quá 100 ký tự!
                 }
               </ng-template>
             </nz-form-control>
@@ -196,7 +196,7 @@
         </div>
       </form>
     </div>
-    <textarea nz-input [(ngModel)]="product.description" class="description" placeholder="Mô tả:"></textarea>
+    <textarea nz-input [(ngModel)]="product.description" class="description" maxlength="4000" placeholder="Mô tả:"></textarea>
     <div class="center">
       <button class="button-add-product" (click)="handleAddProduct()">Thêm</button>
     </div>
