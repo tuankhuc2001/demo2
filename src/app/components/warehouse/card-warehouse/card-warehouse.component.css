@@ -5,6 +5,13 @@
 ::ng-deep.ant-card-body {
     padding: 6px !important;
 }
+.hidenText {
+    white-space: nowrap;
+    width: 50vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
 
 .no-data {
     width: 100%;
