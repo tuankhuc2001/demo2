@@ -8,12 +8,13 @@
   <Content>
     <div class="main-card">
       <div nz-col nzSpan="7" class="card-img">
-        <img nz-image nzSrc="http://{{item.imageUrl}}__{{token}}"
-          alt="" nzDisablePreview="true" />
+        <img nz-image nzSrc="http://{{item.imageUrl}}__{{token}}" alt="" nzDisablePreview="true" />
       </div>
       <div nz-col nzSpan="11" style="display: flex; flex-direction: column;justify-content: space-between;">
         <div nz-row>
-          <span class="nameProduct-card">{{item.nameProduct}}</span>
+          <span class="nameProduct-card">
+            {{item.nameProduct}}
+          </span>
         </div>
         <div nz-row>
           <span class="textProduct-card">{{item.unit}}</span>
