@@ -269,7 +269,7 @@ export class AddProductComponent {
           this.productService.addProduct(addProduct).subscribe({
             next: (res) => {
               this.createNotification(notificationEnum.success, res.message);
-              this.router.navigate([routerNames.importWarehousePage]);
+              this.handleNavigate();
             },
             error: (error) => {
               this.createNotification(notificationEnum.error, error.message);
@@ -290,7 +290,6 @@ export class AddProductComponent {
           });
         },
         (error) => {
-          this.msg.error('Tải ảnh lên thất bại');
           if (error.status === 403) {
             this.user = this.userService.getUser()
             this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
@@ -303,6 +302,8 @@ export class AddProductComponent {
                 this.createNotification('error', 'Phiên đăng nhập hết hạn')
               }
             })
+          }else{
+            this.createNotification('error', error)
           }
         },
       );
