@@ -1,9 +1,9 @@
 .success .codeOder-card {
-  color: #158c37
+  color: #1A9804
 }
 
 .fail .codeOder-card {
-  color: #b31312
+  color: #C7393C
 }
 
 .pending .codeOder-card {
@@ -11,11 +11,11 @@
 }
 
 .success .card-status {
-  background-color: #158c37
+  background-color: #1A9804
 }
 
 .fail .card-status {
-  background-color: #b31312
+  background-color: #C7393C
 }
 
 .pending .card-status {
