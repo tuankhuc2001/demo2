@@ -81,7 +81,7 @@
         </button>
         <app-modal-add-order [isVisible]="isVisibleAddOrder" (getProductSale)="handleBackProductSale()" (closeModal)="handleCloseModelAddOrder()"
           (getCart)="handleGetCart()" [idCart]="idCartOrder" [orderRequest]="addOrder"></app-modal-add-order>
-          <app-modal-customer [isVisibleModalAddCustomer]="isVisibleModalCustomer" [idCart]="idCartCustomer" (closeModal)="handleCloseModelCustomer()">
+          <app-modal-customer [listCustomerProp]="listCustomerProps" [isVisibleModalAddCustomer]="isVisibleModalCustomer" [idCart]="idCartCustomer" (closeModal)="handleCloseModelCustomer()">
           </app-modal-customer>
       </div>
     </div>
