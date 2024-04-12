@@ -85,6 +85,9 @@ export class AddProductComponent {
 
   previewImage: string | undefined = '';
   previewVisible = false;
+  handleMaintain() {
+    this.createNotification(notificationEnum.warning, "Chức năng đang phát triển");
+  }
 
   handlePreview = async (file: NzUploadFile): Promise<void> => {
     if (!file.url && !file.preview) {
@@ -264,7 +267,6 @@ export class AddProductComponent {
       });
       this.loading = true;
       const header = this.productService.headerUpload();
-      console.log(header,"header");
       this.productService.uploadImage(formData, header).subscribe(
         (v) => {
           this.fileList = [];

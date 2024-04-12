@@ -11,7 +11,7 @@
 }
 
 .red {
-    color: red
+    color: #b31312
 }
 
 .blue {
@@ -79,7 +79,16 @@
 }
 
 .block-top-card {
-    height: 16.5vw;
+    height: 14.4vw;
+}
+
+.no-data {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 50%;
+    font-size: 4vw;
 }
 
 .footer_orderDetail {
@@ -149,7 +158,12 @@
 
     .block-top-card {
         height: 10vw;
-    }    
+    }
+
+    .no-data {
+        margin-top: 50%;
+        font-size: 4vw;
+    }
 
     .footer_orderDetail {
         position: fixed;

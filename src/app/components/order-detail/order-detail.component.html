@@ -18,20 +18,28 @@
 
     <div class="header_tab">
         <nz-tabset nzCentered nzSize="large" [nzSelectedIndex]="1">
-            <nz-tab nzTitle="Liên biến động"></nz-tab>
+            <nz-tab nzTitle="Liên biến động">
+                <div class="no-data">
+                    <Span>Không có dữ liệu</Span>
+                </div>
+            </nz-tab>
             <nz-tab nzTitle="Liên giao">
                 <div class="block-top-card"></div>
                 <app-card-order-detail [listCardOrderDetail]="listCardOrderDetail"></app-card-order-detail>
                 <div style="height: 55vw;"></div>
             </nz-tab>
-            <nz-tab nzTitle="Liên nhận"></nz-tab>
+            <nz-tab nzTitle="Liên nhận">
+                <div class="no-data">
+                    <Span>Không có dữ liệu</Span>
+                </div>
+            </nz-tab>
         </nz-tabset>
     </div>
 
     <div class="footer_orderDetail">
         <div nz-row class="customer">
             <div nz-col nzSpan="3" class="customer_avatar">
-                <img src="https://hoanghamobile.com/tin-tuc/wp-content/webp-express/webp-images/uploads/2023/09/hinh-nen-may-tinh-4k-cong-nghe-4.jpg.webp" alt="picture">
+                <img nz-image nzSrc="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" nzDisablePreview="true" />
             </div>
             <div nz-col nzSpan="21" class="customer_infor">
                 <div class="font_size_5vw bold">{{listCardOrderDetail.customerResponse.nameCustomer}}</div>

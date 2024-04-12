@@ -1,4 +1,5 @@
-<cModal [width]="'90%'" [isVisible]="isVisibleModalAddCustomer" (closeModal)="handleCloseModalCustomer()" [footer]="false">
+<cModal [width]="'90%'" [isVisible]="isVisibleModalAddCustomer" (closeModal)="handleCloseModalCustomer()"
+    [footer]="false">
     <Content>
         <div class="pd-4 modal-custom" style="height: 100%;"
             [style]="listCustomer.length > 0 ? heightModalData : heightModalNoData">
@@ -6,8 +7,9 @@
                 <div class="d-flex jct-bw al-item-ct container-input">
                     <span (click)="handleSearch(textSearch)" nz-icon nzType="search" nzTheme="outline"
                         class="font-size-3vw" style="padding-right: 8px;"></span>
-                    <input (ngModelChange)="handleSearch($event)" (keyup.enter)="handleSearch(textSearch)" type="text" placeholder="Tìm kiếm ..."
-                        class="input-search" nz-input style="border: none;" [(ngModel)]="textSearch">
+                    <input (ngModelChange)="handleSearch($event)" (keyup.enter)="handleSearch(textSearch)" type="text"
+                        placeholder="Tìm kiếm ..." class="input-search" nz-input style="border: none;"
+                        [(ngModel)]="textSearch">
                     <span nz-icon nzType="close" nzTheme="outline" class="font-size-3vw  icon-search"
                         style="cursor: pointer; color: #3c7265;" (click)="handleCloseModalCustomer()"></span>
                 </div>
@@ -16,8 +18,9 @@
                 <div class="d-flex" style="padding: 1.5vw 0 1.5vw 0; border-bottom: 1px solid #ccc;"
                     *ngFor="let item of listCustomer" (click)="handleUpdateCartCustomer(item.id)">
                     <div nz-col [nzSpan]="6" class="d-flex jct-ct">
-                        <img nz-image nzSrc="../../../assets/images/gai.jpg" class="img-customer"
-                            nzDisablePreview="true" width="100%">
+                        <img nz-image width="100%"
+                            nzSrc="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
+                            nzDisablePreview="true" class="img-customer"/>
                     </div>
                     <div style="padding-left: 8px;" class="d-flex jct-bw flex-direction">
                         <span nz-row class="text_customer-name">{{item.nameCustomer}}</span>
@@ -29,12 +32,13 @@
             <div class="btn-container" [style]="listCustomer.length > 0 ? displayNone:displayBlock">
                 <div class="warning" *ngIf="listCustomer.length == 0">
                     <span nz-icon nzType="warning" nzTheme="outline"></span>
-                    <p>Không tìm thấy dữ liệu!</p> 
+                    <p>Không tìm thấy dữ liệu!</p>
                 </div>
                 <div class="btn-cover">
                     <button class="btn-add-customer" (click)="handleOpenAddCustomer()">
                         <span nz-icon nzType="user-add" nzTheme="outline"></span>
-                        Thêm khách hàng mới</button>
+                        Thêm khách hàng mới
+                    </button>
                 </div>
             </div>
         </div>

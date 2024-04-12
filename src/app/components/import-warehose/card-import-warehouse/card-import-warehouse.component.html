@@ -1,7 +1,14 @@
 <div *ngIf="listCard.length == 0" class="no-data">
-  <div style="display: flex; flex-direction: column;">
-    <span nz-icon nzType="warning" nzTheme="outline" style="font-size: 16vw;color: #a3a3a3;"></span>
-    <span style="margin-top: 8%;color: #515151; font-size: 4vw;">Không tìm thấy dữ liệu</span>
+  <div style="display: flex; flex-direction: column">
+    <span
+      nz-icon
+      nzType="warning"
+      nzTheme="outline"
+      style="font-size: 16vw; color: #a3a3a3"
+    ></span>
+    <span style="margin-top: 8%; color: #515151; font-size: 4vw"
+      >Không tìm thấy dữ liệu</span
+    >
   </div>
 </div>
 <cCard *ngFor="let item of listCard" (click)="handleOnClickDetail(item)">
@@ -11,7 +18,7 @@
         <img
           nz-image
           width="80%"
-          nzSrc="http://{{item.imageUrl}}__{{token}}"
+          nzSrc="http://{{ item.imageUrl }}__{{ token }}"
           alt=""
           nzDisablePreview="true"
         />
@@ -26,7 +33,7 @@
         "
       >
         <div nz-row>
-          <span class="nameProduct-card">{{ item.nameProduct }}</span>
+          <span class="nameProduct-card hidenText">{{ item.nameProduct }}</span>
         </div>
         <div nz-row>
           <span class="textProduct-card">{{ item.unit }}</span>
@@ -38,7 +45,15 @@
           <span class="textProduct-card">{{ item.codeProduct }}</span>
         </div>
       </div>
-      <div nz-col nzSpan="6" style="display: flex; flex-direction: column;justify-content: space-between;">
+      <div
+        nz-col
+        nzSpan="6"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        "
+      >
         <div nz-row class="flex-end">
           <span class="floorPrice-card">{{ item.floorPrice | number }}</span>
         </div>
