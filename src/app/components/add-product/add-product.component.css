@@ -64,11 +64,8 @@
   z-index: 3;
   top:3vw;
   left: -1vw;
-
 }
 
-/* ::ng-deep .ant-upload-list {
-} */
 
 .color-red{
   color: red;
