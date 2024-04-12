@@ -8,23 +8,19 @@
     </div>
   </div>
   <section class="dflex" style="margin-top: 8vw;">
-    <div nz-col nzSpan="10" >
+    <div nz-col nzSpan="10">
       <nz-upload nzName="avatar" nzAction="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
         nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1"
         [nzPreview]="handlePreview" style="display: flex; margin-top: 0px;">
         <div>
-          <span class="upload_icon" nz-icon nzType="camera" nzTheme="fill" ></span>
+          <span class="upload_icon" nz-icon nzType="camera" nzTheme="fill"></span>
         </div>
-        <nz-modal
-        [nzVisible]="previewVisible"
-        [nzContent]="modalContent"
-        [nzFooter]="null"
-        (nzOnCancel)="previewVisible = false"
-      >
-        <ng-template #modalContent>
-          <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
-        </ng-template>
-      </nz-modal>
+        <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
+          (nzOnCancel)="previewVisible = false">
+          <ng-template #modalContent>
+            <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+          </ng-template>
+        </nz-modal>
       </nz-upload>
     </div>
     <div nz-col nzSpan="14" class="center">
@@ -32,7 +28,7 @@
         <nz-form-item>
           <nz-form-control [nzSpan]="24" class="margin-tb-quantity">
             <nz-input-group [nzPrefix]="prefixTemplateCodeProduct">
-              <input class="input" nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly/>
+              <input class="input" nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly />
             </nz-input-group>
             <ng-template #prefixTemplateCodeProduct let-control>Mã:</ng-template>
           </nz-form-control>
@@ -48,7 +44,7 @@
               Vui lòng nhập giá sàn!
               }
               @if (control.errors?.['confirm']) {
-              Giá sàn không được nhỏ hơn hoặc bằng 0
+              Giá sàn phải lớn hơn 0!
               }
             </ng-template>
           </nz-form-control>
@@ -64,7 +60,7 @@
             <ng-template #quantityValidator let-control>
               @if (control.errors?.['required']) {
               Vui lòng nhập số lượng tồn!
-              } 
+              }
               @if (control.errors?.['confirm']) {
               Số lượng tồn phải lớn hơn 0 và bé hơn 10000!
               }
@@ -122,7 +118,7 @@
                 </nz-input-group>
                 <ng-template #expiredDateValidate let-control>
                   @if (control.errors?.['required']) {
-                  Vui lòng nhập hạn sử dụng ngăn cách bởi dấu ( / )
+                  Vui lòng nhập hạn sử dụng!
                   }
                   @if (control.errors?.['confirm']) {
                   Hạn sử dụng không được dưới 3 hoặc vượt quá 255 ký tự!
@@ -141,7 +137,7 @@
                   Vui lòng nhập giá cung!
                   }
                   @if (control.errors?.['confirm']) {
-                  Giá cung không được nhỏ hơn hoặc bằng 0
+                  Giá cung phải lớn hơn 0 và bé hơn 1000000000!
                   }
                 </ng-template>
               </nz-form-control>
@@ -189,7 +185,7 @@
               </nz-input-group>
               <ng-template #originPhoneProvider let-control>
                 @if (control.errors?.['required']) {
-                Vui lòng nhập số điện thoại!
+                Vui lòng nhập đúng định dạng số điện thoại!
                 }
                 @if (control.errors?.['confirm']) {
                 Vui lòng nhập đúng định dạng số điện thoại!

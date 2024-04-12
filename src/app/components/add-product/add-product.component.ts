@@ -150,11 +150,11 @@ export class AddProductComponent {
     return {};
   };
 
-  nameProductValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+  nameProductValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
       return { confirm: true, error: true };
+    } else if (control.value.length > 0 && control.value.length < 3) {
+      return { confirm: true, error: true }
     } else if (control.value === null) {
       return { required: true };
     } else {
@@ -162,11 +162,11 @@ export class AddProductComponent {
     }
   };
 
-  originValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+  originValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
       return { confirm: true, error: true };
+    } else if (control.value.length > 0 && control.value.length < 3) {
+      return { confirm: true, error: true }
     } else if (control.value === null) {
       return { required: true };
     } else {
@@ -174,11 +174,11 @@ export class AddProductComponent {
     }
   };
 
-  unitValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+  unitValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
       return { confirm: true, error: true };
+    } else if (control.value.length > 0 && control.value.length < 2) {
+      return { confirm: true, error: true }
     } else if (control.value === null) {
       return { required: true };
     } else {
@@ -186,11 +186,11 @@ export class AddProductComponent {
     }
   };
 
-  providerValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+  providerValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
       return { confirm: true, error: true };
+    } else if (control.value.length > 0 && control.value.length < 3) {
+      return { confirm: true, error: true }
     } else if (control.value === null) {
       return { required: true };
     } else {
@@ -198,13 +198,13 @@ export class AddProductComponent {
     }
   };
 
-  expireDateValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+  expireDateValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
+    } else if (control.value.length > 0 && control.value.length < 3) {
+      return { confirm: true, error: true }
     } else {
       return {};
     }
@@ -213,7 +213,7 @@ export class AddProductComponent {
   phoneProviderValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
     const phonePattern = /^(0\d{9})$/;
     if (!phonePattern.test(control.value)) {
-      return { confirm: true, error: true };
+      return { required: true, error: true };
     } else if (control.value === null) {
       return { required: true };
     } else {
