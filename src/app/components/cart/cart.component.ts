@@ -9,6 +9,8 @@ import { ICartItem } from '../../types/cart-item';
 import { IOrder } from '../../types/order';
 import { IUser } from '../../types/user';
 import { UserService } from '../../services/user.service';
+import { CustomerService } from '../../services/customer.service';
+import { ICustomer } from '../../types/customer';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +23,8 @@ export class CartComponent implements OnDestroy, OnInit {
     private notification: NzNotificationService,
     private cartService: CartService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private customerService: CustomerService
   ) {
   }
 
@@ -98,6 +101,7 @@ export class CartComponent implements OnDestroy, OnInit {
     refreshToken: ""
   }
 
+  listCustomerProps: ICustomer[] = []
 
   handleTotalPriceChanged(totalPrice: number) {
     this.addOrder.totalPrice = totalPrice;
@@ -136,6 +140,11 @@ export class CartComponent implements OnDestroy, OnInit {
 
   handleGetCart(): void {
     this.isLoading = true
+    this.customerService.getCustomer("").subscribe({
+      next: res => {
+        this.listCustomerProps = res.content.list
+      }
+    })
     this.cartService.getCart(this.user.id).subscribe({
       next: (res) => {
         this.isLoading = false
