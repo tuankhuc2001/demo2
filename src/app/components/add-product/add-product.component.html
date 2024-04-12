@@ -36,7 +36,7 @@
         <nz-form-item>
           <nz-form-control [nzSpan]="24" [nzErrorTip]="floorPriceValidate" class="margin-tb-quantity">
             <nz-input-group [nzPrefix]="prefixTemplate">
-              <input class="input" type="number" nz-input formControlName="floorPrice" width="100px" />
+              <input class="input color-red" type="number" nz-input formControlName="floorPrice" width="100px" />
             </nz-input-group>
             <ng-template #prefixTemplate>Giá sàn:</ng-template>
             <ng-template #floorPriceValidate let-control>

@@ -269,7 +269,7 @@ export class AddProductComponent {
           this.productService.addProduct(addProduct).subscribe({
             next: (res) => {
               this.createNotification(notificationEnum.success, res.message);
-              this.handleNavigate();
+              this.router.navigate([routerNames.importWarehousePage]);
             },
             error: (error) => {
               this.createNotification(notificationEnum.error, error.message);
