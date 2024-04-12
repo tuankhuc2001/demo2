@@ -34,8 +34,6 @@ export class ModalUpdatePriceComponent {
   handleSetIsVisisble() {
     this.isVisibleChange.emit();
     this.validateForm.setValue({priceFloor: this.formatCurrencyValue(this.productItem.floorPrice)});
-    console.log(this.validateForm.value.priceFloor, "122312312312");
-    
   }
 
   handleCloseModal(){

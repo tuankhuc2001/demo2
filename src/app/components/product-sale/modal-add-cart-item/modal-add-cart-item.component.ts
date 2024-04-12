@@ -10,28 +10,28 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Router } from '@angular/router';
 import { routerNames } from '../../../constant/router';
 
-@Component({ 
+@Component({
   selector: 'app-modal-add-cart-item',
   templateUrl: './modal-add-cart-item.component.html',
   styleUrl: './modal-add-cart-item.component.css',
   animations: [
     trigger('slideInOut', [
       state('void', style({
-          height: '0',
-          opacity: '0'
+        height: '0',
+        opacity: '0'
       })),
       state('*', style({
-          height: '*',
-          opacity: '1'
+        height: '*',
+        opacity: '1'
       })),
       transition(':enter', [
-          animate('0.2s ease-out')
+        animate('0.2s ease-out')
       ]),
       transition(':leave', [
-          animate('0.2s ease-in')
+        animate('0.2s ease-in')
       ])
-  ])
-]
+    ])
+  ]
 })
 
 export class ModalAddCartItemComponent implements OnChanges {
@@ -42,7 +42,7 @@ export class ModalAddCartItemComponent implements OnChanges {
     , private userService: UserService
     , private changeDetection: ChangeDetectorRef
     , private router: Router
-    ) { }
+  ) { }
 
   isLoading: boolean = false
   userId: number = 1;
@@ -54,7 +54,7 @@ export class ModalAddCartItemComponent implements OnChanges {
     id: 1,
     nameProduct: 'mockProduct',
     quantityProduct: 200,
-    expiredDate:" new Date",
+    expiredDate: " new Date",
     provider: 'Factory ABC',
     unit: 'Box(es)',
     origin: 'Ha Noi',
@@ -71,7 +71,7 @@ export class ModalAddCartItemComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ProductDetail'] && !changes['ProductDetail'].firstChange) {
-      this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: 0})
+      this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: 0 })
       this.enableDescription = false
       this.plus = true
     }
@@ -101,12 +101,12 @@ export class ModalAddCartItemComponent implements OnChanges {
     const editPrice = this.validateAddCartForm ? this.validateAddCartForm.value.editPrice : null;
     if (control.value === null) {
       return { required: true };
-    } else if (editPrice && (control.value > editPrice/10)) {
+    } else if (editPrice && (control.value > editPrice / 10)) {
       return { confirm: true, error: true };
     }
     return null;
   }
-  
+
   validateAddCartForm: FormGroup<{
     quantity: FormControl<number>;
     editPrice: FormControl<number>;
@@ -133,9 +133,9 @@ export class ModalAddCartItemComponent implements OnChanges {
       this.cartItemService.addCartItem(this.ProductDetail.id, requestdObject, this.userId).subscribe({
         next: (res) => {
           this.isLoading = false
-            this.createNotification( res.status === true ? notificationEnum.success : notificationEnum.error, res.message)
-              this.callBackGetProductSale.emit()
-              this.handleCloseModal()
+          this.createNotification(res.status === true ? notificationEnum.success : notificationEnum.error, res.message)
+          this.callBackGetProductSale.emit()
+          this.handleCloseModal()
         },
         error: (error) => {
           if (error.status == 403) {
@@ -149,7 +149,7 @@ export class ModalAddCartItemComponent implements OnChanges {
                 this.createNotification(notificationEnum.error, "Phiên đăng nhập hết hạn")
               }
             })
-          }else{
+          } else {
             error.error.messageError.map((e: string) => {
               this.createNotification(notificationEnum.error, e)
             })
@@ -185,6 +185,9 @@ export class ModalAddCartItemComponent implements OnChanges {
   }
 
   handleCloseModal() {
+    this.validateAddCartForm.setValue({ quantity: 1, editPrice: this.ProductDetail.floorPrice, rate: 0 })
+    this.enableDescription = false
+    this.plus = true
     this.closeModal.emit()
   }
 
