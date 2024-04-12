@@ -25,12 +25,17 @@
 .card-img img {
     aspect-ratio: 1/1;
     width: 100%;
+    object-fit: fill;
 }
 
 .nameProduct-card {
     font-size: 5vw;
     font-weight: 700;
     color: #25403b;
+    white-space: nowrap;
+    width: 50vw;
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .textProduct-card {
