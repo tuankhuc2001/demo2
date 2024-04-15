@@ -23,14 +23,17 @@
 }
 
 .card-img {
+    padding-right: 3vw;
     display: flex;
     align-items: center;
-    padding-right: 3vw;
-}
-
-.card-img>img {
     aspect-ratio: 1/1;
     width: 100%;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .nameProduct-card {
