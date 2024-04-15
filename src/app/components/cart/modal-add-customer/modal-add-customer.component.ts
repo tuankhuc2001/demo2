@@ -17,7 +17,7 @@ export class ModalAddCustomerComponent {
   constructor(
     private customerService: CustomerService,
     private notification: NzNotificationService,
-    private fb: NonNullableFormBuilder, 
+    private fb: NonNullableFormBuilder,
     private router: Router,
     private userService: UserService,
   ) { }
@@ -100,18 +100,21 @@ export class ModalAddCustomerComponent {
   }
 
   nameCustomerValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+    if (control.value.length > 255) {
+      return { confirm: true, error: true };
+    } else if (control.value.length < 3 && control.value.length > 0) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
-    }
-    else {
+    } else {
       return {}
     }
   }
 
   addressValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+    if (control.value.length > 255) {
+      return { confirm: true, error: true };
+    } else if (control.value.length < 3 && control.value.length > 0) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };

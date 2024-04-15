@@ -64,21 +64,16 @@
   z-index: 3;
   top:3vw;
   left: -1vw;
-
 }
 
-/* ::ng-deep .ant-upload-list {
-} */
+
+.color-red{
+  color: red;
+}
 
 .input {
   font-size: 4vw;
   border-radius: 5px;
-}
-
-.codeProduct {
-  padding: 2vw 1vw;
-  font-size: 3.5vw;
-  background-color: #e7dcdc;
 }
 
 .container {

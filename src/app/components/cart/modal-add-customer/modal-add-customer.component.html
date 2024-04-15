@@ -17,10 +17,10 @@
                             </nz-input-group>
                             <ng-template #phoneCustomerValidator let-control>
                                 @if (control.errors?.['required']) {
-                                Vui lòng nhập SĐT
+                                Vui lòng nhập SĐT!
                                 }
                                 @if (control.errors?.['confirm']) {
-                                Số điện thoại không đúng định dạng
+                                Số điện thoại không đúng định dạng!
                                 }
                             </ng-template>
                         </nz-form-control>
@@ -36,7 +36,7 @@
                                 Vui lòng nhập tên khách hàng
                                 }
                                 @if (control.errors?.['confirm']) {
-                                Tên khách hàng là trường bắt buộc nhập
+                                    Không được dưới 3 hoặc vượt quá 255 ký tự!
                                 }
                             </ng-template>
                         </nz-form-control>
@@ -52,7 +52,7 @@
                                 Vui lòng nhập địa chỉ
                                 }
                                 @if (control.errors?.['confirm']) {
-                                Địa chỉ không được dưới 3 hoặc vượt quá 255 ký tự
+                                Không được dưới 3 hoặc vượt quá 255 ký tự!
                                 }
                             </ng-template>
                         </nz-form-control>

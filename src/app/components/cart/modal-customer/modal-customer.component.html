@@ -20,7 +20,7 @@
                     <div nz-col [nzSpan]="6" class="d-flex jct-ct">
                         <img nz-image width="100%"
                             nzSrc="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
-                            nzDisablePreview="true" class="img-customer"/>
+                            nzDisablePreview="true" class="img-customer" />
                     </div>
                     <div style="padding-left: 8px;" class="d-flex jct-bw flex-direction">
                         <span nz-row class="text_customer-name">{{item.nameCustomer}}</span>
@@ -29,16 +29,18 @@
                     </div>
                 </div>
             </div>
-            <div class="btn-container" [style]="listCustomer.length > 0 ? displayNone:displayBlock">
-                <div class="warning" *ngIf="listCustomer.length == 0">
-                    <span nz-icon nzType="warning" nzTheme="outline"></span>
-                    <p>Không tìm thấy dữ liệu!</p>
-                </div>
-                <div class="btn-cover">
-                    <button class="btn-add-customer" (click)="handleOpenAddCustomer()">
-                        <span nz-icon nzType="user-add" nzTheme="outline"></span>
-                        Thêm khách hàng mới
-                    </button>
+            <div>
+                <div class="btn-container" [style]="listCustomer.length > 0 ? displayNone:displayBlock">
+                    <div class="warning" *ngIf="listCustomer.length == 0">
+                        <span nz-icon nzType="warning" nzTheme="outline"></span>
+                        <p>Không tìm thấy dữ liệu!</p>
+                    </div>
+                    <div class="btn-cover">
+                        <button class="btn-add-customer" (click)="handleOpenAddCustomer()">
+                            <span nz-icon nzType="user-add" nzTheme="outline"></span>
+                            Thêm khách hàng mới
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

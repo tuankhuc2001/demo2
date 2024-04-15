@@ -43,6 +43,10 @@
 .content_nameProduct {
     font-size: 4.5vw;
     font-weight: 500;
+    white-space: nowrap;
+    width: 50vw;
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .content_delete {
