@@ -7,13 +7,13 @@
             <span nz-icon [nzType]="'menu'" class="icon-menu"></span>
           </a>
         </div>
-        <div nz-col nzSpan="21">
-          <nz-input-group [nzSuffix]="suffixIconSearch" class="input-search">
+        <div nz-col nzSpan="21" class="input">
+          <nz-input-group [nzSuffix]="suffixIconSearch" class="input-group">
             <input
               nz-input
               type="text"
               placeholder="Tìm kiếm"
-              class="inputSearch-header"
+              class="input-search"
               [(ngModel)]="textSearch"
               (ngModelChange)="handleSearch($event)"
             />
@@ -42,11 +42,16 @@
           </div>
           <div class="information-User">
             <span class="name-User">{{ user.fullname }}</span>
-            <span class="role-Phone">{{ user.role }} - {{ user.phone }}</span>
+            <div>
+              <span class="role-Phone" *ngIf="user.role === 'ROLE_ADMIN'">Admin</span>
+              <span class="role-Phone" *ngIf="user.role === 'ROLE_SALE'">Sale</span>
+              <span class="role-Phone" *ngIf="user.role === 'ROLE_WAREHOUSE'">Warehouse</span>
+              <span class="role-Phone"> - {{ user.phone }}</span>
+            </div>
           </div>
         </div>
         <ul nz-menu nzTheme="light" nzMode="inline" class="ul-sideBar">
-          <li nz-submenu nzTitle="Hàng xuất" nzIcon="export" class="li-sideBar">
+          <li *ngIf="user.role !== 'ROLE_WAREHOUSE'" nz-submenu nzTitle="Hàng xuất" nzIcon="export" class="li-sideBar">
             <ul>
               <li
                 nz-menu-item
@@ -68,7 +73,7 @@
               </li>
             </ul>
           </li>
-          <li nz-submenu nzTitle="Quản lý kho" nzIcon="shop" class="li-sideBar">
+          <li *ngIf="user.role !== 'ROLE_SALE'"nz-submenu nzTitle="Quản lý kho" nzIcon="shop" class="li-sideBar">
             <ul>
               <li
                 nz-menu-item
@@ -96,8 +101,9 @@
           routerLinkActive="router-link-active"
           class="title-menuItem"
           (click)="handleSideDrawerClose()"
+          *ngIf="user.role == 'ROLE_ADMIN'"
           >
-            <span nz-icon nzType="bell" nzTheme="fill"></span>
+            <span nz-icon nzType="user" nzTheme="outline"></span>
             <span>Quản lý tài khoản</span>
           </li>
           <li nz-menu-item class="title-menuItem">

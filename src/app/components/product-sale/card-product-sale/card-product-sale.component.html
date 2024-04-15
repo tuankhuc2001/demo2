@@ -1,22 +1,20 @@
 <div *ngIf="listCard.length == 0" class="no-data">
-  <img
-    width="80%"
-    nz-image
-    nzSrc="../../../../assets/images/no-data.png"
-    alt="No-Data"
-    nzDisablePreview="true"
-  />
+  <div style="display: flex; flex-direction: column;">
+    <span nz-icon nzType="warning" nzTheme="outline" style="font-size: 16vw;color: #a3a3a3;"></span>
+    <span style="margin-top: 8%;color: #515151; font-size: 4vw;">Không tìm thấy dữ liệu</span>
+  </div>
 </div>
 <cCard *ngFor="let item of listCard" (click)="handleOnClickDetail(item)">
   <Content>
     <div class="main-card">
       <div nz-col nzSpan="7" class="card-img">
-        <img nz-image nzSrc="http://{{item.imageUrl}}__{{token}}"
-          alt="" nzDisablePreview="true" />
+        <img nz-image nzSrc="http://{{item.imageUrl}}__{{token}}" alt="" nzDisablePreview="true" />
       </div>
       <div nz-col nzSpan="11" style="display: flex; flex-direction: column;justify-content: space-between;">
         <div nz-row>
-          <span class="nameProduct-card">{{item.nameProduct}}</span>
+          <span class="nameProduct-card">
+            {{item.nameProduct}}
+          </span>
         </div>
         <div nz-row>
           <span class="textProduct-card">{{item.unit}}</span>

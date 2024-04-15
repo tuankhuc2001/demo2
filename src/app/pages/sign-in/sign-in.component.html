@@ -26,7 +26,7 @@
           (ngSubmit)="submitForm()"
         >
           <nz-form-item class="form-item">
-            <nz-form-control nzErrorTip="Tài khoản hoặc mật khẩu không đúng!">
+            <nz-form-control nzErrorTip="Vui lòng điền tài khoản để đăng nhập!">
               <nz-input-group nzPrefixIcon="user" >
                 <input
                 nz-input
@@ -39,7 +39,7 @@
             </nz-form-control>
           </nz-form-item>
           <nz-form-item class="form-item">
-            <nz-form-control nzErrorTip="Tài khoản hoặc mật khẩu không đúng!">
+            <nz-form-control nzErrorTip="Vui lòng điền mật khẩu để đăng nhập!">
               <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate" nzErrorTip="Vui Lòng nhập mật khẩu!">
                 <input
                   [type]="passwordVisible ? 'text' : 'password'"

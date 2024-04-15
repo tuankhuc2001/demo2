@@ -6,36 +6,41 @@
   width: 0%;
 }
 
-::ng-deep .avatar-uploader>.ant-upload {
+::ng-deep .avatar-uploader > .ant-upload {
   width: 25vw;
   height: 15vh;
   margin-left: 7vw;
+}
+::ng-deep .ant-upload-list-picture-card-container {
+  margin-left: 8vw;
+  margin-top: 5vh;
+  width: 24.5vw;
+  height: 24.5vw;
 }
 
 ::ng-deep .ant-upload.ant-upload-select-picture-card {
   width: 24.5vw;
   height: 24.5vw;
-  margin-right: 8px;
-  margin-bottom: 8px;
+  margin-left: 8vw;
+  margin-top: 5vh;
   text-align: center;
   vertical-align: top;
-  background-color: #fafafa;
-  border: 1px dashed #d9d9d9;
+  background-color: #fff;
+  border: 1px dashed #fff;
   border-radius: 2px;
   cursor: pointer;
-  transition: border-color .3s;
+  transition: border-color 100s;
 }
 
 ::ng-deep .ant-input-affix-wrapper {
   position: relative;
   width: 100%;
   min-width: 0;
-  padding: 1vw;
-  color: rgba(0, 0, 0, .85);
+  color: rgba(0, 0, 0, 0.85);
   line-height: 1.5715;
   background-image: none;
   border: 1px solid #d9d9d9;
-  transition: all .3s;
+  transition: all 0.3s;
   display: inline-flex;
   font-size: 4vw;
 }
@@ -48,18 +53,29 @@
   list-style: none;
   font-feature-settings: "tnum";
   vertical-align: top;
-  transition: margin-bottom .3s 17ms linear;
+  transition: margin-bottom 0.3s 17ms linear;
+}
+::ng-deep .ant-upload-list-picture-card .ant-upload-list-item-error {
+  border-color: #fff;
+  width: 40vw;
+  height: 30vh;
+  position: absolute;
+  z-index: 3;
+  top:3vw;
+  left: -1vw;
+}
+
+.padding-1{
+  padding: 1vw;
+}
+
+.color-red{
+  color: red;
 }
 
 .input {
   font-size: 4vw;
   border-radius: 5px;
-}
-
-.codeProduct {
-  padding: 2vw 1vw;
-  font-size: 3.5vw;
-  background-color: #e7dcdc;
 }
 
 .container {
@@ -120,7 +136,7 @@
   width: 21vw;
   height: 10vw;
   border-radius: 20px;
-  background-color: #1E5993;
+  background-color: #1e5993;
   color: white;
 }
 
@@ -128,7 +144,7 @@
   width: 26vw;
   height: 10vw;
   border-radius: 20px;
-  background-color: #0E6F64;
+  background-color: #0e6f64;
   color: white;
   border: none;
 }
@@ -158,7 +174,7 @@
   border-radius: 40px;
   width: 60vw;
   height: 10vw;
-  background-color: #0E6F64;
+  background-color: #0e6f64;
   color: white;
   font-size: 4vw;
   font-weight: bold;
@@ -189,7 +205,7 @@
     width: 21vw;
     height: 6vw;
     border-radius: 20px;
-    background-color: #1E5993;
+    background-color: #1e5993;
     color: white;
   }
 
@@ -197,7 +213,7 @@
     width: 26vw;
     height: 6vw;
     border-radius: 20px;
-    background-color: #0E6F64;
+    background-color: #0e6f64;
     color: white;
     border: none;
   }
@@ -210,7 +226,7 @@
     list-style: none;
     font-feature-settings: "tnum";
     vertical-align: top;
-    transition: margin-bottom .3s 17ms linear;
+    transition: margin-bottom 0.3s 17ms linear;
   }
 
   .title-text {

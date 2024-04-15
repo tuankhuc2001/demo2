@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
-
+import { trigger, transition, animate, style } from '@angular/animations';
 import { IOrderAndOrderDetail } from '../../types/order';
 import { OrderService } from '../../services/order.service';
 import { OrderDetailService } from '../../services/order-detail.service';
@@ -13,7 +13,15 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-order-detail',
   templateUrl: './order-detail.component.html',
-  styleUrl: './order-detail.component.css'
+  styleUrl: './order-detail.component.css',
+  animations: [
+    trigger('slideInLeft', [
+      transition(':enter', [
+        style({ transform: 'translateX(100%)' }),
+        animate('0.5s ease-in-out', style({ transform: 'translateX(0)' })),
+      ]),
+    ]),
+  ]
 })
 export class OrderDetailComponent {
 
@@ -27,6 +35,7 @@ export class OrderDetailComponent {
 
   private $destroy = new Subject()
 
+  isLoading: boolean = false
   listOrderAndDetail: IOrderAndOrderDetail[] = []
   listCardOrderDetail: IOrderAndOrderDetail = {
     id: 0,
@@ -63,7 +72,15 @@ export class OrderDetailComponent {
     token: "",
     refreshToken: ""
   }
-  isLoading: boolean = false
+  
+  ngOnInit(): void {
+    this.orderService.getOrderDetails().subscribe({
+      next: (value: number) => {
+        this.handleGetOrderDetail(value)
+      }
+    })
+    this.user = this.userService.getUser()
+  }
 
   handleGetOrderDetail(value: number) {
     this.orderDetailService.getOrderDetail(value).subscribe({
@@ -74,20 +91,19 @@ export class OrderDetailComponent {
       error: (error) => {
         this.isLoading = false
         if (error.status == 403) {
-          this.router.navigate([routerNames.signInPage]);
-          this.createNotification('error', "Phiên đăng nhập hết hạn")
+          this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+            next: value => {
+              this.userService.setUser(value)
+              localStorage.setItem("token", value.refreshToken)
+            },
+            error: error => {
+              this.router.navigate([routerNames.signInPage]);
+              this.createNotification('error', "Phiên đăng nhập hết hạn")
+            }
+          })
         }
       }
     })
-  }
-
-  ngOnInit(): void {
-    this.orderService.getOrderDetails().subscribe({
-      next: (value: number) => {
-        this.handleGetOrderDetail(value)
-      }
-    })
-    this.user = this.userService.getUser()
   }
 
   createNotification(type: string, content: string): void {

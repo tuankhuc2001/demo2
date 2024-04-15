@@ -86,7 +86,7 @@ nz-badge {
   width: 35%;
   height: 14vw;
   position: fixed;
-  bottom: 10%;
+  bottom: 5%;
   right: 4%;
   z-index: 10;
   border: none;
@@ -99,7 +99,7 @@ nz-badge {
   width: 100%;
   height: 100%;
   padding: 2vw;
-  background-color: #3c7265;
+  background-color: #0E6F64;
   color: #fff;
   align-items: center;
   border-radius: 27px;
@@ -110,7 +110,7 @@ nz-badge {
   position: absolute;
   top: -25%;
   right: 2%;
-  background-color: red;
+  background-color: #C7393C;
   color: white;
   border-radius: 50%;
   width: 7vw;

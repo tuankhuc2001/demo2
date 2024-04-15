@@ -69,8 +69,7 @@ export class WarehouseComponent implements OnInit, OnDestroy {
           this.handleSearch(value)
         }
       })
-
-      this.user = this.userService.getUser()
+    this.user = this.userService.getUser()
   }
 
   handleGetProduct(textSearch: string) {
@@ -86,10 +85,10 @@ export class WarehouseComponent implements OnInit, OnDestroy {
         this.isLoading = false
       },
       error: (error) => {
-        if(error.status == 403){
+        if (error.status == 403) {
           this.router.navigate([routerNames.signInPage]);
           this.notification.create("error", `Hết hạn đăng nhập!`, "Mời đăng nhập lại");
-        }else{
+        } else {
           error.error.messageError.map((e: string) => {
             this.notification.create("error", `${e}`, "");
             this.isLoading = false
@@ -129,21 +128,4 @@ export class WarehouseComponent implements OnInit, OnDestroy {
   handleNavigate(): void {
     this.router.navigate(['singIn']);
   }
-
-  // handleRefreshToken(): void {
-  //   this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
-  //     next: (v:ILoginResponse) => {
-  //       this.userService.setUser(v)
-  //       localStorage.setItem("token",v.token)
-  //       this.user = v
-  //       this.router.navigate(['/home'])
-  //     },
-  //     error: (error) => {
-  //       if (error.status == 403) {
-  //         this.notification.create('error', "Phiên đăng nhập hết hạn", "")
-  //       }
-  //     }
-  //   })
-  // }
-
 }

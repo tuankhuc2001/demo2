@@ -9,11 +9,13 @@ import { ICartItem } from '../../types/cart-item';
 import { IOrder } from '../../types/order';
 import { IUser } from '../../types/user';
 import { UserService } from '../../services/user.service';
+import { CustomerService } from '../../services/customer.service';
+import { ICustomer } from '../../types/customer';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrl: './cart.component.css',
 })
 export class CartComponent implements OnDestroy, OnInit {
   private destroyed$ = new Subject()
@@ -21,8 +23,9 @@ export class CartComponent implements OnDestroy, OnInit {
     private notification: NzNotificationService,
     private cartService: CartService,
     private router: Router,
-    private userService: UserService
-    ) {
+    private userService: UserService,
+    private customerService: CustomerService
+  ) {
   }
 
   isVisibleModalCustomer: boolean = false;
@@ -62,12 +65,12 @@ export class CartComponent implements OnDestroy, OnInit {
     disable: false,
   };
   listCustomer: any[] = [];
-  addOrder: IOrder ={
-    id: 1,    
-    totalPrice: 1,    
+  addOrder: IOrder = {
+    id: 1,
+    totalPrice: 1,
     status: "string",
     createdAt: new Date(),
-    totalCartItem: 1,    
+    totalCartItem: 1,
     codeOrder: "string",
     User: {
       id: 0,
@@ -83,7 +86,7 @@ export class CartComponent implements OnDestroy, OnInit {
       id: 1,
       nameCustomer: "string",
       phoneCustomer: "string",
-      address: "string",  
+      address: "string",
     }
   };
 
@@ -98,6 +101,7 @@ export class CartComponent implements OnDestroy, OnInit {
     refreshToken: ""
   }
 
+  listCustomerProps: ICustomer[] = []
 
   handleTotalPriceChanged(totalPrice: number) {
     this.addOrder.totalPrice = totalPrice;
@@ -125,39 +129,54 @@ export class CartComponent implements OnDestroy, OnInit {
     this.isVisibleDeleteSingle = false
   }
 
-  handleOpenModelAddOrder(): void{
+  handleOpenModelAddOrder(): void {
     this.isVisibleAddOrder = true;
     this.idCartOrder = this.user.id;
   }
 
-  handleCloseModelAddOrder(): void{
+  handleCloseModelAddOrder(): void {
     this.isVisibleAddOrder = false;
   }
 
   handleGetCart(): void {
     this.isLoading = true
+    this.customerService.getCustomer("").subscribe({
+      next: res => {
+        this.listCustomerProps = res.content.list
+      }
+    })
     this.cartService.getCart(this.user.id).subscribe({
       next: (res) => {
         this.isLoading = false
         this.listCard = res.content.list
-        this.listCustomer = res?.content.list      
+        this.listCustomer = res?.content.list
       },
       error: (error) => {
         this.isLoading = false
         if (error.status == 403) {
-          this.router.navigate([routerNames.signInPage]);
-          this.createNotification('error', "Phiên đăng nhập hết hạn")
+          this.user = this.userService.getUser()
+          this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+            next: value => {
+              this.userService.setUser(value)
+              localStorage.setItem("token", value.refreshToken)
+              this.handleGetCart()
+            },
+            error: error => {
+              this.router.navigate([routerNames.signInPage]);
+              this.createNotification('error', "Phiên đăng nhập hết hạn")
+            }
+          })
         }
       }
     })
   }
 
-  handleOpenModelCustomer(){
+  handleOpenModelCustomer() {
     this.idCartCustomer = this.listCard[0].id;
     this.isVisibleModalCustomer = true;
   }
 
-  handleCloseModelCustomer(): void{
+  handleCloseModelCustomer(): void {
     this.isVisibleModalCustomer = false
     this.handleGetCart()
   }

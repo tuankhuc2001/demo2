@@ -8,9 +8,22 @@
     position: relative;
 }
 
-.cart_container.keyboard-active {
-    z-index: 9999;
-  }
+.warning {
+    margin-top: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.warning>span {
+    font-size: 13vw;
+    color: #d9d9d9;
+    margin-bottom: 3vw;
+}
+
+.warning>p {
+    font-size: 3.5vw;
+}
 
 .header__cart {
     display: flex;
@@ -22,7 +35,7 @@
     justify-content: space-between;
     padding: 2vw 5vw;
     align-items: center;
-    border-bottom: 1px rgb(144, 144, 144) solid;
+    border-bottom: 1px #d9d9d9 solid;
 }
 
 .tag__back {
@@ -31,7 +44,7 @@
 
 .tag__title {
     font-size: 5vw;
-    font-weight: 700;
+    font-weight: 400;
     display: flex;
     justify-content: center;
 }
@@ -56,8 +69,8 @@
 }
 
 .footer_customer {
-    height: 19vw;
     padding-left: 3vw;
+    padding-bottom: 3vw;
 }
 
 .customer_img {
@@ -73,17 +86,18 @@
 .customer_info {
     display: flex;
     flex-direction: column;
-    padding-left: 1vw;
+    padding-left: 4vw;
 }
 
 .customer_info>p {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 4.5vw;
 }
 
 .info_phone {
     color: #c7393c;
     font-size: 4vw;
+    line-height: normal;
 }
 
 .info_address {
@@ -100,7 +114,8 @@
 .customer_click>button {
     background-color: #1E5993;
     color: white;
-    padding: 1vw 0vw;
+    width: 30vw;
+    height: 11vw;
     border-radius: 1vw;
     font-size: 4.5vw;
     font-weight: 500;
@@ -116,7 +131,7 @@
     display: flex;
     justify-content: space-between;
     padding-left: 1vw;
-    margin-bottom: 2vw;
+    margin-bottom: 1vw;
 }
 
 .shipPrice_text {
@@ -135,16 +150,16 @@
 
 .totalPrice_text {
     font-size: 4.5vw;
-    font-weight: bold;
+    font-weight: 500;
     color: #1E5993;
 }
 
 .totalPrice_number {
     font-size: 4.5vw;
-    font-weight: bold;
+    font-weight: 500;
     color: #c7393c;
-    text-overflow:ellipsis; 
-    overflow: hidden; 
+    text-overflow: ellipsis;
+    overflow: hidden;
     white-space: nowrap;
 }
 
@@ -156,8 +171,8 @@
 
 .customer_submit>.btn_submit {
     background-color: #ff4e00;
-    width: 82%;
-    height: 72%;
+    width: 27vw;
+    height: 11vw;
     color: white;
     border-radius: 1vw;
     font-size: 4.5vw;
@@ -166,7 +181,7 @@
 }
 
 .customer_submit>.btn_submit:disabled {
-    background-color: rgb(120, 114, 106);
+    opacity: 0.4;
 }
 
 .loading-overlay {
@@ -219,7 +234,6 @@
 
     .shipPrice {
         padding-left: 0.5vw;
-        margin-bottom: 1vw;
     }
 
     .totalPrice {
@@ -237,10 +251,7 @@
         font-weight: bold;
         color: #c7393c;
     }
-/* 
-    .customer_click>button {
-        height: 45%;
-    } */
+
 }
 
 @keyframes spin {

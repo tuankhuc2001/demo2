@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CustomerService } from '../../../services/customer.service';
 import { CartService } from '../../../services/cart.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
@@ -7,17 +7,20 @@ import { ICustomer } from '../../../types/customer';
 import { ICart, IUpdateCart } from '../../../types/cart';
 import { routerNames } from '../../../constant/router';
 import { Router } from '@angular/router';
+import { IUser } from '../../../types/user';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-modal-customer',
   templateUrl: './modal-customer.component.html',
   styleUrl: './modal-customer.component.css'
 })
-export class ModalCustomerComponent {
+export class ModalCustomerComponent implements OnInit{
 
   @Input() isVisibleModalAddCustomer: boolean = false;
   @Input() isVisibleCustomer: boolean = false;
   @Input() idCart: number = 0;
+  @Input() listCustomerProp: ICustomer[] = []
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
   @Output() getCart: EventEmitter<void> = new EventEmitter();
   listCustomer: ICustomer[] = [];
@@ -31,11 +34,27 @@ export class ModalCustomerComponent {
     private cartService: CartService,
     private notification: NzNotificationService,
     private router: Router,
+    private userService: UserService,
   ) { }
 
   private destroyed$ = new Subject();
   textSearch: string = "";
   isVisibleAddCustomer: boolean = false;
+
+  user: IUser = {
+    id: 0,
+    phone: "",
+    email: "",
+    fullname: "",
+    avatar: "",
+    role: "",
+    token: "",
+    refreshToken: ""
+  }
+
+  ngOnInit():void {
+    this.listCustomer = this.listCustomerProp
+  }
 
   createNotification(type: string, content: string): void {
     this.notification.create(
@@ -53,27 +72,21 @@ export class ModalCustomerComponent {
         },
         error: (v) => {
           if (v.status === 403) {
-            this.router.navigate([routerNames.signInPage]);
-            this.createNotification('error', "Phiên đăng nhập hết hạn")
+            this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+              next: value => {
+                this.userService.setUser(value)
+                localStorage.setItem("token", value.refreshToken)
+              },
+              error: error => {
+                this.router.navigate([routerNames.signInPage]);
+                this.createNotification('error', "Phiên đăng nhập hết hạn")
+              }
+            })
           }
         }
       })
     }, 1000)
     
-  }
-
-  ngOnInit(): void {
-    this.customerService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
-      next: value => {
-        this.handleSearch(value)
-      },
-      error: (v) => {
-        if (v.status === 403) {
-          this.router.navigate([routerNames.signInPage]);
-          this.createNotification('error', "Phiên đăng nhập hết hạn")
-        }
-      }
-    })
   }
 
   getCustomer(): void {
@@ -87,8 +100,16 @@ export class ModalCustomerComponent {
         },
         error: (v) => {
           if (v.status === 403) {
-            this.router.navigate([routerNames.signInPage]);
-            this.createNotification('error', "Phiên đăng nhập hết hạn")
+            this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+              next: value => {
+                this.userService.setUser(value)
+                localStorage.setItem("token", value.refreshToken)
+              },
+              error: error => {
+                this.router.navigate([routerNames.signInPage]);
+                this.createNotification('error', "Phiên đăng nhập hết hạn")
+              }
+            })
           }
         }
       });
@@ -108,8 +129,16 @@ export class ModalCustomerComponent {
       },
       error: (v) => {
         if (v.status === 403) {
-          this.router.navigate([routerNames.signInPage]);
-          this.createNotification('error', "Phiên đăng nhập hết hạn")
+          this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+            next: value => {
+              this.userService.setUser(value)
+              localStorage.setItem("token", value.refreshToken)
+            },
+            error: error => {
+              this.router.navigate([routerNames.signInPage]);
+              this.createNotification('error', "Phiên đăng nhập hết hạn")
+            }
+          })
         }
       }
     });
