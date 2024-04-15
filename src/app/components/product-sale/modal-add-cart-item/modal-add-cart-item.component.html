@@ -37,14 +37,12 @@
                                 </nz-input-group>
 
                                 <ng-template #prefixTemplateRate>
-                                    <button [disabled]="validateAddCartForm.value.rate === 0 || validateAddCartForm.value.rate == null"
-                                     [style]="{'opacity' : validateAddCartForm.value.rate === 0 || validateAddCartForm.value.rate == null ? 0.3 : 1}"
-                                     *ngIf="plus === false" class="minusRate" nz-button (click)="handlePlusRate()">
+                                    <button
+                                     *ngIf="plus === false" [class]="validateAddCartForm.value.rate === 0 || validateAddCartForm.value.rate == null ? 'minusRate_disable' : 'minusRate'" nz-button (click)="validateAddCartForm.value.rate !== 0 && validateAddCartForm.value.rate != null && handlePlusRate()">
                                         <span style="color: white;" nz-icon nzType="minus"></span>
                                     </button>
-                                    <button [disabled]="validateAddCartForm.value.rate === 0 || validateAddCartForm.value.rate == null"
-                                     [style]="{'opacity' : validateAddCartForm.value.rate === 0 || validateAddCartForm.value.rate == null ? 0.3 : 1}"
-                                    *ngIf="plus === true" class="plusRate"  nz-button (click)="handlePlusRate()">
+                                    <button
+                                    *ngIf="plus === true" [class]="validateAddCartForm.value.rate === 0 || validateAddCartForm.value.rate == null ? 'plusRate_disable' : 'plusRate'"  nz-button (click)="validateAddCartForm.value.rate !== 0 && validateAddCartForm.value.rate != null && handlePlusRate()">
                                         <span style="color: white;" nz-icon nzType="plus"></span>
                                     </button>
                                 </ng-template>
@@ -103,7 +101,7 @@
                     <button nz-button class="cancelButton" (click)="handleCloseModal()"> Hủy </button>
                 </div>
                 <div nz-col nzSpan="6">
-                    <button nz-button class="submitButton" [disabled]="validateAddCartForm.invalid" (click)="handleSubmit()">Thêm</button>
+                    <button nz-button [class]="validateAddCartForm.invalid ? 'submitButton_disable':'submitButton'" (click)="!validateAddCartForm.invalid&&handleSubmit()">Thêm</button>
                 </div>
             </div>
         </div>
