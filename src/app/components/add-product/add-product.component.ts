@@ -5,7 +5,7 @@ import { ProductService } from '../../services/product.service';
 import { HttpClient } from '@angular/common/http';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { trigger, transition, animate, style } from '@angular/animations';
-
+import { differenceInCalendarDays, setHours } from 'date-fns';
 import { IProduct } from '../../types/product';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { notificationEnum } from '../../utils/notificationEnum';
@@ -92,6 +92,8 @@ export class AddProductComponent {
     this.createNotification(notificationEnum.warning, "Chức năng đang phát triển");
   }
 
+  disabledDate = (current: Date): boolean => differenceInCalendarDays(current, this.today) < 0;
+
   onChange(result: Date): void  {debugger
     console.log('onChange: ', result);
     this.dataDate = result
@@ -106,9 +108,6 @@ export class AddProductComponent {
     this.previewImage = file.url || file.preview;
     this.previewVisible = true;
   };
-  disabledDate = (current: Date): boolean =>
-    // Can not select days before today and today
-    differenceInCalendarDays(current, this.today) < 0;
 
   handleCallApiImage(): void {
     const formData = new FormData();

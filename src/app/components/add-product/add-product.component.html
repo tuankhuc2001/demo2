@@ -37,7 +37,7 @@
       <form nz-form [formGroup]="validateAddProductForm">
         <nz-form-item>
           <nz-form-control [nzSpan]="24" class="margin-tb-quantity">
-            <nz-input-group [nzPrefix]="prefixTemplateCodeProduct">
+            <nz-input-group [nzPrefix]="prefixTemplateCodeProduct" class="pading-1">
               <input class="input" nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly />
             </nz-input-group>
             <ng-template #prefixTemplateCodeProduct let-control>Mã:</ng-template>
@@ -143,18 +143,16 @@
             </nz-form-item>
             <nz-form-item nz-col [nzSpan]="7">
               <nz-form-control [nzErrorTip]="expiredDateValidate">
-                <nz-input-group>
                   <!-- <input type="text" class="input" nz-input formControlName="expiredDate" placeholder="HSD:" /> -->
                   <nz-date-picker
                     [(ngModel)]="product.expiredDate"
                     (ngModelChange)="onChange($event)"
                     [nzFormat]="'dd/MM/yyyy'"
-                    [nzPlacement]="'bottomRight'"
-                    [nzDisabledDate]="disabledDate"
                     [nzSize]="'default'"
-                    class="input"
+                    [nzDisabledDate]="disabledDate"
+                    [nzPlaceHolder]="'HSD'"
+                    class="datePicker"
                   ></nz-date-picker>
-                </nz-input-group>
                 <ng-template #expiredDateValidate let-control>
                   @if (control.errors?.['required']) {
                   Vui lòng nhập hạn sử dụng!
