@@ -32,6 +32,10 @@
   transition: border-color 100s;
 }
 
+.pading-1 {
+  padding: 1vw;
+}
+
 ::ng-deep .ant-input-affix-wrapper {
   position: relative;
   width: 100%;
@@ -65,9 +69,11 @@
   left: -1vw;
 }
 
-.padding-1{
-  padding: 1vw;
+::ng-deep #cdk-overlay-0 {
+  top: 50 !important;
+  right: 15vw !important;
 }
+
 
 .color-red{
   color: red;
@@ -76,6 +82,16 @@
 .input {
   font-size: 4vw;
   border-radius: 5px;
+}
+.datePicker {
+  font-size: 6.5vw;
+}
+::ng-deep .ant-picker-input > input {
+  font-size: 3vw;
+}
+
+::ng-deep .ant-picker-input > input:placeholder-shown {
+  font-size: 3.5vw;
 }
 
 .container {

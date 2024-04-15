@@ -33,7 +33,7 @@ export class CardCartComponent implements OnChanges {
       id: 0,
       nameProduct: "abc",
       quantityProduct: 0,
-      expiredDate: "new Date",
+      expiredDate: new Date,
       provider: "abc",
       unit: "abc",
       origin: "abc",
@@ -226,13 +226,12 @@ export class CardCartComponent implements OnChanges {
         item.showRateExceed = false;
       }, 1000);
     } else {
-      if (!item) {
-        return;
-      }
-      this.cartItemRequest.rate = newValue;
+    if (!item) {
+      return;
+    }
+    this.cartItemRequest.rate = newValue;
       this.cartItemService.updateRate(item.id, this.cartItemRequest).subscribe({
         next: () => {
-          item.originalRate = newValue;
           this.calculateTotalPrice();
           this.getCart.emit();
         },
@@ -264,14 +263,14 @@ export class CardCartComponent implements OnChanges {
         next: () => {
           item.originalQuantity = newValue;
           this.calculateTotalPrice();
-          this.getCart.emit();
+          // this.getCart.emit();
         },
         error: (error) => {
           event.target.value = item.originalQuantity;
           error.error.messageError.map((e: string) => {
             this.createNotification(notificationEnum.error, e)
           })
-          this.getCart.emit();
+          // this.getCart.emit();
         }
       });
     }
