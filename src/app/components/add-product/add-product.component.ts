@@ -117,9 +117,7 @@ export class AddProductComponent {
     );
   }
 
-  quantityValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } => {
+  quantityValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
     if (control.value === null) {
       return { required: true };
     } else if (control.value <= 0 || control.value > 10000) {
@@ -128,33 +126,29 @@ export class AddProductComponent {
     return {};
   };
 
-  floorPriceValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } => {
+  floorPriceValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
     if (control.value === null) {
       return { required: true };
-    } else if (control.value <= 0) {
+    } else if (control.value <= 0 || control.value > 1000000000) {
       return { confirm: true, error: true };
     }
     return {};
   };
 
-  providePriceValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } => {
+  providePriceValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
     if (control.value === null) {
       return { required: true };
-    } else if (control.value <= 0) {
+    } else if (control.value <= 0 || control.value > 1000000000) {
       return { confirm: true, error: true };
     }
     return {};
   };
 
-  nameProductValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+  nameProductValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 250) {
       return { confirm: true, error: true };
+    } else if (control.value.length > 0 && control.value.length < 3) {
+      return { confirm: true, error: true }
     } else if (control.value === null) {
       return { required: true };
     } else {
@@ -162,11 +156,11 @@ export class AddProductComponent {
     }
   };
 
-  originValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+  originValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 50) {
       return { confirm: true, error: true };
+    } else if (control.value.length > 0 && control.value.length < 3) {
+      return { confirm: true, error: true }
     } else if (control.value === null) {
       return { required: true };
     } else {
@@ -174,11 +168,11 @@ export class AddProductComponent {
     }
   };
 
-  unitValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+  unitValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 50) {
       return { confirm: true, error: true };
+    } else if (control.value.length > 0 && control.value.length < 2) {
+      return { confirm: true, error: true }
     } else if (control.value === null) {
       return { required: true };
     } else {
@@ -186,11 +180,11 @@ export class AddProductComponent {
     }
   };
 
-  providerValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+  providerValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 100) {
       return { confirm: true, error: true };
+    } else if (control.value.length > 0 && control.value.length < 3) {
+      return { confirm: true, error: true }
     } else if (control.value === null) {
       return { required: true };
     } else {
@@ -198,13 +192,13 @@ export class AddProductComponent {
     }
   };
 
-  expireDateValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [s: string]: boolean } | null => {
-    if (control.value.length > 255 || control.value.length < 3) {
+  expireDateValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 50) {
       return { confirm: true, error: true };
     } else if (control.value === null) {
       return { required: true };
+    } else if (control.value.length > 0 && control.value.length < 8) {
+      return { confirm: true, error: true }
     } else {
       return {};
     }
@@ -213,7 +207,7 @@ export class AddProductComponent {
   phoneProviderValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
     const phonePattern = /^(0\d{9})$/;
     if (!phonePattern.test(control.value)) {
-      return { confirm: true, error: true };
+      return { required: true, error: true };
     } else if (control.value === null) {
       return { required: true };
     } else {
@@ -296,7 +290,6 @@ export class AddProductComponent {
           });
         },
         (error) => {
-          this.msg.error('Tải ảnh lên thất bại');
           if (error.status === 403) {
             this.user = this.userService.getUser()
             this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
@@ -309,6 +302,8 @@ export class AddProductComponent {
                 this.createNotification('error', 'Phiên đăng nhập hết hạn')
               }
             })
+          }else{
+            this.createNotification('error', error)
           }
         },
       );
