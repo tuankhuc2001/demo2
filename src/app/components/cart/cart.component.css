@@ -58,7 +58,7 @@
 }
 
 .div__below {
-    height: 40vw;
+    height: 46vw;
 }
 
 .footer__cart {
@@ -71,6 +71,7 @@
 .footer_customer {
     padding-left: 3vw;
     padding-bottom: 3vw;
+    padding-top: 2vw;
 }
 
 .customer_img {

@@ -13,7 +13,7 @@
 }
 
 ::ng-deep.ant-card-body {
-    padding: 6px !important;
+    padding: 2vw;
 }
 
 .card-img {

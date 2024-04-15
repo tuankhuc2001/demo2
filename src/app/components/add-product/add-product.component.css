@@ -36,7 +36,6 @@
   position: relative;
   width: 100%;
   min-width: 0;
-  padding: 1vw;
   color: rgba(0, 0, 0, 0.85);
   line-height: 1.5715;
   background-image: none;
@@ -66,16 +65,17 @@
   left: -1vw;
 }
 
+.padding-1{
+  padding: 1vw;
+}
+
+.color-red{
+  color: red;
+}
 
 .input {
   font-size: 4vw;
   border-radius: 5px;
-}
-
-.codeProduct {
-  padding: 2vw 1vw;
-  font-size: 3.5vw;
-  background-color: #e7dcdc;
 }
 
 .container {

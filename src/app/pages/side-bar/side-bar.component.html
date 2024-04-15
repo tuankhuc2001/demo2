@@ -101,6 +101,7 @@
           routerLinkActive="router-link-active"
           class="title-menuItem"
           (click)="handleSideDrawerClose()"
+          *ngIf="user.role == 'ROLE_ADMIN'"
           >
             <span nz-icon nzType="user" nzTheme="outline"></span>
             <span>Quản lý tài khoản</span>

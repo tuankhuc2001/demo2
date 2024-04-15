@@ -43,6 +43,10 @@
 .content_nameProduct {
     font-size: 4.5vw;
     font-weight: 500;
+    white-space: nowrap;
+    width: 50vw;
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .content_delete {
@@ -157,35 +161,39 @@
 }
 
 .editQuantity_up {
-    border: 1px gray solid;
+    border: 1px #e0dfdf solid;
     padding: 1.5vw 2.5vw;
     font-size: 3.5vw;
     border-radius: 1vw;
     margin-bottom: 4.9vw;
+    color: #1E5993;
 }
 
 .editQuantity_up_disable {
-    border: 1px gray solid;
+    border: 1px #e0dfdf solid;
     padding: 1.5vw 2.5vw;
     font-size: 3.5vw;
     border-radius: 1vw;
     margin-bottom: 4.8vw;
     opacity: 0.5;
+    color: #1E5993;
 }
 
 .editQuantity_down {
-    border: 1px gray solid;
+    border: 1px #e0dfdf solid;
     padding: 1.5vw 2.5vw;
     font-size: 3.5vw;
     border-radius: 1vw;
+    color: #1E5993;
 }
 
 .editQuantity_down_disable {
-    border: 1px gray solid;
+    border: 1px #e0dfdf solid;
     padding: 1.5vw 2.5vw;
     font-size: 3.5vw;
     border-radius: 1vw;
     opacity: 0.5;
+    color: #1E5993;
 }
 
 
