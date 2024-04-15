@@ -87,7 +87,7 @@
   font-size: 6.5vw;
 }
 ::ng-deep .ant-picker-input > input {
-  font-size: 3vw;
+  font-size: 3.2vw;
 }
 
 ::ng-deep .ant-picker-input > input:placeholder-shown {
