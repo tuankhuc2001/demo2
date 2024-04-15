@@ -77,7 +77,7 @@
           <nz-form-item>
             <nz-form-control [nzSpan]="24" [nzErrorTip]="nameProductValidate">
               <nz-input-group>
-                <input class="input" type="text" nz-input formControlName="nameProduct" placeholder="Tên SP: (*)" />
+                <input class="input" type="text" nz-input formControlName="nameProduct" placeholder="Tên SP: " />
               </nz-input-group>
               <ng-template #nameProductValidate let-control>
                 @if (control.errors?.['required']) { Vui lòng nhập tên sản phẩm!
@@ -92,7 +92,7 @@
             <nz-form-item nz-col [nzSpan]="8">
               <nz-form-control [nzErrorTip]="unitValidate">
                 <nz-input-group>
-                  <input class="input" type="text" nz-input formControlName="unit" placeholder="Đơn vị tính: (*)" />
+                  <input class="input" type="text" nz-input formControlName="unit" placeholder="Đơn vị tính: " />
                 </nz-input-group>
                 <ng-template #unitValidate let-control>
                   @if (control.errors?.['required']) { Vui lòng nhập đơn vị
