@@ -8,12 +8,12 @@
                         alt="No Image or Image is broken" />
                 </div>
                 <div nz-col nzSpan="12">
-                    <div class="productName mg-l-8">{{ProductDetail.nameProduct}}</div>
-                    <div class="floorPrice mg-l-8">{{ProductDetail.floorPrice | number}}</div>
-                    <div class="quantityProduct mg-l-8">Tồn kho: {{ProductDetail.quantityProduct}}</div>
+                    <div class="productName">{{ProductDetail.nameProduct}}</div>
+                    <div class="floorPrice">{{ProductDetail.floorPrice | number}}</div>
+                    <div class="quantityProduct">Tồn kho: {{ProductDetail.quantityProduct}}</div>
                     <form nz-form [formGroup]="validateAddCartForm">
                         <nz-form-item>
-                            <nz-form-control [nzErrorTip]="editPriceValidate" class="mg-l-8">
+                            <nz-form-control [nzErrorTip]="editPriceValidate">
                                 <nz-input-group [nzPrefix]="prefixTemplate" style="width: 100%;">
                                     <input class="input" type="number" nz-input formControlName="editPrice"/>
                                 </nz-input-group>
@@ -31,7 +31,7 @@
                             </nz-form-control>
                         </nz-form-item>
                         <nz-form-item>
-                            <nz-form-control nzRequired [nzErrorTip]="rateValidator" class="mg-l-8">
+                            <nz-form-control nzRequired [nzErrorTip]="rateValidator">
                                 <nz-input-group [nzPrefix]="prefixTemplateRate" style="width: 100%; padding: 0;">
                                     <input type="number" nz-input formControlName="rate" class="input"/>
                                 </nz-input-group>
@@ -58,7 +58,7 @@
                             </nz-form-control>
                         </nz-form-item>
                         <nz-form-item>
-                            <nz-form-control [nzErrorTip]="quantityValidate" class="mg-l-8">
+                            <nz-form-control [nzErrorTip]="quantityValidate">
                                 <nz-input-group [nzPrefix]="prefixTemplateQuantity">
                                     <input type="number" nz-input formControlName="quantity" class="input"/>
                                 </nz-input-group>

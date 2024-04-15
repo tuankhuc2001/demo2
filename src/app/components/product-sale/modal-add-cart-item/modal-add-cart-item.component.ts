@@ -132,10 +132,10 @@ export class ModalAddCartItemComponent implements OnChanges {
       }
       this.cartItemService.addCartItem(this.ProductDetail.id, requestdObject, this.userId).subscribe({
         next: (res) => {
-          this.isLoading = false
-          this.createNotification(res.status === true ? notificationEnum.success : notificationEnum.error, res.message)
           this.callBackGetProductSale.emit()
           this.handleCloseModal()
+          this.isLoading = false
+          this.createNotification(res.status === true ? notificationEnum.success : notificationEnum.error, res.message)
         },
         error: (error) => {
           if (error.status == 403) {
