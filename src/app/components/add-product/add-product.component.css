@@ -84,8 +84,10 @@
   border-radius: 5px;
 }
 .datePicker {
-  /* width: 50vw; */
   font-size: 6.5vw;
+}
+::ng-deep .ant-picker-input > input {
+  font-size: 3vw;
 }
 
 ::ng-deep .ant-picker-input > input:placeholder-shown {

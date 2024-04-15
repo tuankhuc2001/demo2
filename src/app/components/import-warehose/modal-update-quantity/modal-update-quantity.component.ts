@@ -30,7 +30,7 @@ export class ModalUpdateQuantityComponent {
     id: 1,
     nameProduct: '',
     quantityProduct: 0,
-    expiredDate: "",
+    expiredDate: new Date,
     provider: '',
     unit: '',
     origin: '',

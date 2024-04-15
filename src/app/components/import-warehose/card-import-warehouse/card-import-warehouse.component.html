@@ -58,7 +58,7 @@
           <span class="floorPrice-card">{{ item.floorPrice | number }}</span>
         </div>
         <div nz-row class="flex-end">
-          <span class="textProduct-card">{{ item.expiredDate }}</span>
+          <span class="textProduct-card">{{ item.expiredDate | date: 'MM/dd/yyyy' }}</span>
         </div>
         <div nz-row class="flex-end">
           <span class="textProduct-card">{{ item.quantityProduct }}</span>

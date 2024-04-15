@@ -44,7 +44,7 @@ export class ModalUpdatePriceComponent {
     id: 0,
     nameProduct: "",
     quantityProduct: 0,
-    expiredDate: "",
+    expiredDate: new Date,
     provider: "",
     unit: "",
     origin: "",
