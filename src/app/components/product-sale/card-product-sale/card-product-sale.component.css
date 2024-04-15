@@ -13,19 +13,21 @@
 }
 
 ::ng-deep.ant-card-body {
-    padding: 6px !important;
+    padding: 2vw;
 }
 
 .card-img {
     padding-right: 3vw;
     display: flex;
     align-items: center;
+    aspect-ratio: 1/1;
+    width: 100%;
 }
 
 .card-img img {
-    aspect-ratio: 1/1;
     width: 100%;
-    object-fit: fill;
+    height: 100%;
+    object-fit: contain;
 }
 
 .nameProduct-card {
