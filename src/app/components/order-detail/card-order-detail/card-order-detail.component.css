@@ -15,19 +15,18 @@
 
 .image_product img {
     width: 100%;
-    object-fit: contain;
+    aspect-ratio: 1/1;
 }
 
 .nameProduct {
-    display: flex;
-    justify-content: end;
     font-size: 4.5vw;
-    text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .editPrice {
-    font-size: 4vw;
+    font-size: 4.5vw;
     color: #1E5993;
 }
 
@@ -35,21 +34,21 @@
     display: flex;
     justify-content: flex-end;
     font-size: 4vw;
-    font-weight: 700;
+    font-weight: bold;
     color: #1E5993;
 }
 
 .unit {
-    font-size: 3.6vw;
+    font-size: 4.2vw;
     color: #afafaf;
 }
 
 .totalPriceProduct {
     display: flex;
     justify-content: flex-end;
-    font-size: 4.1vw;
-    font-weight: 600;
-    color: #C7393C;
+    font-size: 4.5vw;
+    font-weight: bold;
+    color: #b31312;
 }
 
 .margin-bot {
