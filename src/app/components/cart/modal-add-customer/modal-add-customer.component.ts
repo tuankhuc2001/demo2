@@ -126,7 +126,7 @@ export class ModalAddCustomerComponent {
   phoneCustomerValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
     const phonePattern = /^(0\d{9})$/;
     if (!phonePattern.test(control.value)) {
-      return { confirm: true, error: true };
+      return { required: true, error: true };
     } else if (control.value === null) {
       return { required: true };
     } else {

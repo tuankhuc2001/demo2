@@ -27,7 +27,7 @@
       <form nz-form [formGroup]="validateAddProductForm">
         <nz-form-item>
           <nz-form-control [nzSpan]="24" class="margin-tb-quantity">
-            <nz-input-group [nzPrefix]="prefixTemplateCodeProduct">
+            <nz-input-group class="padding-1" [nzPrefix]="prefixTemplateCodeProduct">
               <input class="input" nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly />
             </nz-input-group>
             <ng-template #prefixTemplateCodeProduct let-control>Mã:</ng-template>
