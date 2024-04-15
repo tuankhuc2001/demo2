@@ -27,10 +27,11 @@
 }
 
 .productName {
-    color: rgb(82, 82, 82);
-    font-size: 5vw;
-    font-weight: bold;
+    color: #707070;
+    font-size: 4.8vw;
+    font-weight: 400;
     line-height: normal;
+    font-family: Roboto, "Helvetica Sans", sans-serif;
 }
 
 .floorPrice {
@@ -42,7 +43,7 @@
 
 .quantityProduct{
     /* margin-bottom: 8px; */
-    color: rgb(82, 82, 82);
+    color: #707070;
     font-size: 3vw;
 }
 
@@ -130,9 +131,11 @@
 }
 
 .descriptionContent {
+    color: #707070;
     margin-top: 4px;
     margin-bottom: 20px;
-    font-size: 4.4vw;
+    font-size: 4vw;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .mg-l-8{
