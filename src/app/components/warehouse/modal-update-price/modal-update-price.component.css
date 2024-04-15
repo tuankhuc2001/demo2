@@ -18,12 +18,20 @@
     padding-left: 12px;
 }
 
+.mg-t-12{
+    margin-top: 12px;
+}
+
+.mg-t-3vw{
+    margin-top: 3vw;
+}
+
 .text--grey{
     opacity: 0.6;
 }
 
 .text--red{
-    color: red;
+    color: #C7393C;
 }
 
 .text--bold{
@@ -31,7 +39,11 @@
 }
 
 .text--size-3{
-    font-size: 3vw;
+    font-size: 4vw;
+}
+
+.text--size-4 {
+    font-size: 5vw;
 }
 
 .d-flex {
@@ -39,7 +51,7 @@
 }
 
 .jct-bw{
-    justify-content: space-between;
+    justify-content: space-between; 
 }
 
 .width-100{

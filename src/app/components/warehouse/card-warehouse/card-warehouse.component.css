@@ -5,6 +5,13 @@
 ::ng-deep.ant-card-body {
     padding: 6px !important;
 }
+.hidenText {
+    white-space: nowrap;
+    width: 50vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
 
 .no-data {
     width: 100%;
@@ -40,7 +47,7 @@
 .floorPrice-card {
     font-size: 5vw;
     font-weight: 700;
-    color: #B31312;
+    color: #C7393C;
 }
 
 .flex-end {

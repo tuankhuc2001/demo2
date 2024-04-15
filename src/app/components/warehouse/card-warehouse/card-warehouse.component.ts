@@ -9,6 +9,7 @@ import { IProduct } from '../../../types/product';
 export class CardWarehouseComponent {
 
   @Input() listProduct: IProduct[] = [];
+  @Input() loading: boolean = false;
   @Input() productItem: IProduct = {
     id: 0,
     nameProduct: "abc",

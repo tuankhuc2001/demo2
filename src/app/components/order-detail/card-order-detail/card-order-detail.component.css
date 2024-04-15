@@ -19,9 +19,10 @@
 }
 
 .nameProduct {
-    display: flex;
-    justify-content: end;
     font-size: 4.5vw;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .editPrice {
@@ -54,7 +55,7 @@
     margin-bottom: 2vw;
 }
 
-@media  (min-width: 768px) {
+@media (min-width: 768px) {
     .main-card {
         padding: 2vw 4vw;
     }
@@ -65,7 +66,7 @@
 
     .image_product img {
         width: 80%;
-        }
+    }
 
     .nameProduct {
         font-size: 3.5vw;

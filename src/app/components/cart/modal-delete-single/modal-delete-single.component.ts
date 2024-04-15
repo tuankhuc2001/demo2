@@ -65,6 +65,7 @@ export class ModalDeleteSingleComponent implements OnChanges {
       }
     })
   }
+  
   createNotification(type: string, content: string): void {
     this.notification.create(
       type,

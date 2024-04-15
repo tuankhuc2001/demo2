@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
-
 import { SearchService } from '../../services/search.service';
 import { routerNames } from '../../constant/router';
 import { OrderService } from '../../services/order.service';
@@ -15,6 +14,7 @@ import { UserService } from '../../services/user.service';
   templateUrl: './order.component.html',
   styleUrl: './order.component.css',
 })
+
 export class OrderComponent implements OnInit, OnDestroy {
   constructor(
     private notification: NzNotificationService,
@@ -63,8 +63,16 @@ export class OrderComponent implements OnInit, OnDestroy {
       error: (error) => {
         this.isLoading = false
         if (error.status == 403) {
-          this.router.navigate([routerNames.signInPage]);
-          this.createNotification('error', "Phiên đăng nhập hết hạn")
+          this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+            next: value => {
+              this.userService.setUser(value)
+              localStorage.setItem("token", value.refreshToken)
+            },
+            error: error => {
+              this.router.navigate([routerNames.signInPage]);
+              this.createNotification('error', "Phiên đăng nhập hết hạn")
+            }
+          })
         }
       }
     })

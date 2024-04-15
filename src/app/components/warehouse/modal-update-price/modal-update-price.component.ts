@@ -34,8 +34,6 @@ export class ModalUpdatePriceComponent {
   handleSetIsVisisble() {
     this.isVisibleChange.emit();
     this.validateForm.setValue({priceFloor: this.formatCurrencyValue(this.productItem.floorPrice)});
-    console.log(this.validateForm.value.priceFloor, "122312312312");
-    
   }
 
   handleCloseModal(){
@@ -120,7 +118,7 @@ export class ModalUpdatePriceComponent {
 
   formatPrice(event: any) {
     let value: string | null = event.target.value;
-    value = value || '0';
+    value = value || '1';
     value = value.replace(/\D/g, '');
     if (!isNaN(Number(value))) {
       const numericValue = Number(value)
@@ -129,6 +127,4 @@ export class ModalUpdatePriceComponent {
     }
     return event.target.value;
   }
-
-  
 }

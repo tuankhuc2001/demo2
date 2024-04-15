@@ -1,9 +1,9 @@
 .success .codeOder-card {
-  color: #158c37
+  color: #1A9804
 }
 
 .fail .codeOder-card {
-  color: #b31312
+  color: #C7393C
 }
 
 .pending .codeOder-card {
@@ -11,11 +11,11 @@
 }
 
 .success .card-status {
-  background-color: #158c37
+  background-color: #1A9804
 }
 
 .fail .card-status {
-  background-color: #b31312
+  background-color: #C7393C
 }
 
 .pending .card-status {
@@ -62,12 +62,12 @@
 }
 
 .nameCustomer-card {
-  font-size: 5vw;
+  font-size: 4.4vw;
   font-weight: 700;
 }
 
 .textOder-card {
-  font-size: 4vw;
+  font-size: 3.8vw;
   color: #afafaf;
 }
 
@@ -86,13 +86,13 @@
 }
 
 .totalDetail-card {
-  font-size: 4vw;
+  font-size: 4.4vw;
   font-weight: 700;
   margin-bottom: 1.5vw;
 }
 
 .status-card {
-  font-size: 4vw;
+  font-size: 3.8vw;
 }
 
 .flex-end {
@@ -106,11 +106,11 @@
   }
   
   .nameCustomer-card {
-    font-size: 3.5vw;
+    font-size: 3.2vw;
   }
   
   .textOder-card {
-    font-size: 3vw;
+    font-size: 2.8vw;
   }
   
   .IconOder-card {
@@ -122,10 +122,10 @@
   }
   
   .totalDetail-card {
-    font-size: 3.5vw;
+    font-size: 3.2vw;
   }
   
   .status-card {
-    font-size: 3vw;
+    font-size: 2.8vw;
   }
 }

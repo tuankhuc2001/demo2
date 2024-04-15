@@ -2,4 +2,4 @@
     <div class="spinner"></div>
 </div>
 <app-card-oder *ngIf="!isLoading" [listCard]="listOrder" (onClickCard)="handleGetOrderDetail($event)"></app-card-oder>
-<div style="height: 20px;"></div>
+<div *ngIf="listOrder.length != 0" style="height: 20px;"></div>

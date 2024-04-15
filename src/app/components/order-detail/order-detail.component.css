@@ -11,7 +11,7 @@
 }
 
 .red {
-    color: #b31312
+    color: #C7393C
 }
 
 .blue {
@@ -19,28 +19,21 @@
 }
 
 .green {
-    color: #158c37
+    color: #0E6F64
 }
 
 .bold {
     font-weight: bold
 }
 
+.line-height-100 {
+    line-height: 100%
+}
+
 .content_orderDetail {
     position: relative;
     width: 100%;
     height: 100%;
-}
-
-::ng-deep .ant-tabs-nav {
-    margin: 0 !important;
-}
-
-::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    color: #158c37;
-    font-weight: 600;
-    font-size: 4vw;
-    transition: 0.1s;
 }
 
 .header_direction {
@@ -59,8 +52,8 @@
     display: flex;
     justify-content: center;
     font-size: 5vw;
-    font-weight: 700;
-    color: #3d7165;
+    font-weight: 600;
+    color: #0E6F64;
 }
 
 ::ng-deep .ant-tabs-nav-wrap {
@@ -70,16 +63,40 @@
     z-index: 1;
 }
 
+::ng-deep .ant-tabs-nav {
+    margin: 0 !important;
+}
+
+::ng-deep .ant-tabs-tab.ant-tabs-tab .ant-tabs-tab-btn {
+    font-size: 4.5vw;
+    color: #adadad
+}
+
+::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    font-weight: 500;
+    transition: 0.1s;
+    color: #0E6F64;
+}
+
 ::ng-deep .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-top > div > .ant-tabs-nav::before {
-    background-color: #158c37;
+    background-color: #0E6F64;
 }
 
 .block-tab {
-    height: 11vw;
+    height: 11.5vw;
 }
 
 .block-top-card {
-    height: 16vw;
+    height: 16.7vw;
+}
+
+.no-data {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 50%;
+    font-size: 4vw;
 }
 
 .footer_orderDetail {
@@ -87,17 +104,26 @@
     bottom: 0;
     width: 100%;
     background-color: white;
+    padding: 3vw;
 }
 
 .customer {
     display: flex;
-    padding: 5vw 5vw 3vw;
+    padding: 0 3vw 3vw;
     align-items: center;
-    border-bottom: 1px #afafaf solid;
+    border-bottom: 1px #d9d9d9 solid;
+}
+
+.nameCustomer {
+    font-weight: 600;
+}
+
+.phoneCustomer {
+    margin: 1vw 0;
 }
 
 .price {
-    padding: 2vw 5vw 7vw;
+    padding: 3vw;
 }
 
 .customer_avatar {
@@ -117,11 +143,30 @@
 .ship_price {
     display: flex;
     justify-content: space-between;
+    font-size: 4vw;
+}
+
+.total_price {
+    display: flex;
+    justify-content: space-between;
     margin-top: 2vw;
+    font-weight: 600;
     font-size: 4.5vw;
 }
 
 @media (min-width: 768px)  {
+    .font_size_3vw {
+        font-size: 2.5vw
+    }
+    
+    .font_size_4vw {
+        font-size: 3vw
+    }
+    
+    .font_size_5vw {
+        font-size: 4vw
+    }
+
     .header_title {
         font-size: 4.5vw;
         font-weight: 700;
@@ -137,13 +182,26 @@
 
     .block-top-card {
         height: 10vw;
-    }    
+    }
+
+    .no-data {
+        margin-top: 50%;
+        font-size: 4vw;
+    }
 
     .footer_orderDetail {
         position: fixed;
         bottom: 0;
         padding: 3vw;
         background-color: white;
+    }
+
+    .customer {
+        padding: 0 0 1vw 0;
+    }
+    
+    .price {
+        padding: 0;
     }
 
     ::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {

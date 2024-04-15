@@ -18,5 +18,4 @@ export class CardImportWarehouseComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
-
 }
