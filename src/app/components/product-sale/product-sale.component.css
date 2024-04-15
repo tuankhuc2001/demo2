@@ -2,6 +2,7 @@
   font-family: Arial, Helvetica, sans-serif !important;
   width: 100%;
 }
+
 :host {
   display: flex;
   text-rendering: optimizeLegibility;
@@ -13,21 +14,6 @@
   width: 100vw;
   position: relative;
 }
-.menu-sidebar {
-  position: relative;
-  z-index: 10;
-  min-height: 100vh;
-  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
-}
-
-.icon-menu {
-  font-size: 30px;
-}
-
-.header-trigger {
-  cursor: pointer;
-  color: #fff;
-}
 
 .header-menu {
   width: 100vw;
@@ -36,28 +22,21 @@
   background-color: #3c7265;
   padding: 1% 0px 2% 0px;
 }
+
 .on-top {
   width: 100vw;
   margin-top: 10vh;
 }
 
-.searchInput {
-  text-align: center;
-  padding: 10px 10px 0px 10px;
-  margin-top: 3%;
-}
-.input-search {
-  border-radius: 25px !important;
-  background-color: #25403b;
-  border: none;
-}
 .icon-search {
   color: #fff !important;
 }
+
 .inputSearch-header {
   background-color: #25403b;
   color: #fff;
 }
+
 @media only screen and (max-width: 400px) {
   .icon-menu {
     font-size: 24px;
@@ -104,6 +83,7 @@ nz-badge {
   align-items: center;
   border-radius: 27px;
   font-size: 5vw;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 10px 20px -5px;
 }
 
 .item-count {
