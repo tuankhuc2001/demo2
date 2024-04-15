@@ -6,12 +6,15 @@
     padding-right: 1vw;
     align-self: center;
     padding-right: 2vw;
+    aspect-ratio: 1/1;
+    width: 100%;
+    height: 100%;
 }
 
 .image-container img{
-    aspect-ratio: 1/1;
     width: 100%;
     border-radius: 5px;
+    object-fit: cover;
 }
 
 ::ng-deep .ant-input-affix-wrapper {
