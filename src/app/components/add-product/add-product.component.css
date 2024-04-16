@@ -9,6 +9,7 @@
 ::ng-deep .avatar-uploader > .ant-upload {
   width: 25vw;
   height: 15vh;
+  /* height: 25vw; */
   margin-left: 7vw;
 }
 ::ng-deep .ant-upload-list-picture-card-container {
@@ -30,6 +31,10 @@
   border-radius: 2px;
   cursor: pointer;
   transition: border-color 100s;
+}
+
+.pading-1 {
+  padding: 1vw;
 }
 
 ::ng-deep .ant-input-affix-wrapper {
@@ -58,16 +63,19 @@
 ::ng-deep .ant-upload-list-picture-card .ant-upload-list-item-error {
   border-color: #fff;
   width: 40vw;
-  height: 30vh;
+  /* height: 30vh; */
+  height: 50vw;
   position: absolute;
   z-index: 3;
   top:3vw;
   left: -1vw;
 }
 
-.padding-1{
-  padding: 1vw;
+::ng-deep #cdk-overlay-0 {
+  top: 50 !important;
+  right: 15vw !important;
 }
+
 
 .color-red{
   color: red;
@@ -76,6 +84,16 @@
 .input {
   font-size: 4vw;
   border-radius: 5px;
+}
+.datePicker {
+  font-size: 6.5vw;
+}
+::ng-deep .ant-picker-input > input {
+  font-size: 3.2vw;
+}
+
+::ng-deep .ant-picker-input > input:placeholder-shown {
+  font-size: 3.5vw;
 }
 
 .container {

@@ -46,8 +46,8 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
   productDetail: IProduct = {
     id: 0,
     nameProduct: "undefined",
-    quantityProduct: 1,
-    expiredDate: "new Date",
+    quantityProduct: 0,
+    expiredDate: new Date,
     provider: '',
     unit: '',
     origin: '',

@@ -30,7 +30,7 @@ export class ModalUpdateQuantityComponent {
     id: 1,
     nameProduct: '',
     quantityProduct: 0,
-    expiredDate: "",
+    expiredDate: new Date,
     provider: '',
     unit: '',
     origin: '',
@@ -105,6 +105,10 @@ export class ModalUpdateQuantityComponent {
                 }
               })
             }
+            error.error.messageError.map((e: string) => {
+              this.notification.create("error", `${e}`, "");
+              this.isLoading = false;
+            })
           },
         });
     } else {

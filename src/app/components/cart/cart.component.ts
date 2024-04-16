@@ -35,7 +35,7 @@ export class CartComponent implements OnDestroy, OnInit {
   isVisibleAddOrder: boolean = false;
   reloadCustomer: boolean = false;
 
-  idCartDelete: number = 0;
+  idCartDelete: number = 0; 
   idCartOrder: number = 0;
   idCartCustomer: number = 0;
 
@@ -46,7 +46,7 @@ export class CartComponent implements OnDestroy, OnInit {
       id: 1,
       nameProduct: "String",
       quantityProduct: 1,
-      expiredDate: "new Date",
+      expiredDate: new Date,
       provider: "string",
       unit: "string",
       origin: "string",
@@ -99,7 +99,7 @@ export class CartComponent implements OnDestroy, OnInit {
     role: "",
     token: "",
     refreshToken: ""
-  }
+  } 
 
   listCustomerProps: ICustomer[] = []
 

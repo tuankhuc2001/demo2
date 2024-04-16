@@ -4,7 +4,7 @@ export interface IProduct {
   id: number;
   nameProduct: String;
   quantityProduct: number;
-  expiredDate: string;
+  expiredDate: Date;
   provider: string;
   unit: string;
   origin: string;
@@ -28,7 +28,7 @@ export interface IResponseProduct {
 export interface IRequestProduct {
   nameProduct: string,
   quantityProduct: number,
-  expiredDate: string,
+  expiredDate: Date,
   provider: string,
   unit: string,
   origin: string,
