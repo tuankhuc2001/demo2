@@ -39,8 +39,8 @@
 }
 
 .title-bonbon {
-  font-size: 60px;
-  font-weight: 700;
+  font-size: 6vw;
+  font-weight: 500;
   color: #3c7265;
   text-shadow: 0.5px 0.5px 1.5px #3c7265;
   margin-top: 5%;
@@ -51,16 +51,16 @@
 }
 
 .title-slogen {
-  font-size: 30px;
-  font-weight: 500;
+  font-size: 3vw;
+  font-weight: 300;
   color: #3c7265;
 }
 
 .note {
-  text-align: center;
-  font-size: 20px;
-  font-weight: 500;
-  color: #3c7265;
+  text-align: left;
+  font-size: 3vw;
+  font-weight: 400;
+  color: #0E6F64;
   padding: 4%;
 }
 
@@ -95,11 +95,11 @@
   }
 
   .title-bonbon {
-    font-size: 7vw;
+    font-size: 6vw;
   }
 
   .title-slogen {
-    font-size: 6vw;
+    font-size: 3vw;
   }
 
   .note {
