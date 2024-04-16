@@ -72,7 +72,7 @@
     color: #adadad
 }
 
-::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+/* ::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     font-weight: 500;
     transition: 0.1s;
     color: #0E6F64;
@@ -80,6 +80,27 @@
 
 :host ::ng-deep .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-top > div > .ant-tabs-nav::before {
     background-color: #0E6F64;
+} */
+
+/* your-component.component.css */
+
+/* :host {
+    --active-tab-color: #1E5993;
+    --ink-bar-color: #1E5993;
+} */
+
+
+/* Thiết lập màu cho tab active */
+/* Sử dụng các biến đã được cập nhật */
+::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: var(--active-tab-color);
+}
+
+:host ::ng-deep .ant-tabs-top>.ant-tabs-nav .ant-tabs-ink-bar,
+.ant-tabs-top>.ant-tabs-nav::before,
+.ant-tabs-top>div>.ant-tabs-nav .ant-tabs-ink-bar,
+.ant-tabs-top>div>.ant-tabs-nav::before {
+    background-color: var(--ink-bar-color);
 }
 
 .block-tab {
@@ -154,15 +175,15 @@
     font-size: 4.5vw;
 }
 
-@media (min-width: 768px)  {
+@media (min-width: 768px) {
     .font_size_3vw {
         font-size: 2.5vw
     }
-    
+
     .font_size_4vw {
         font-size: 3vw
     }
-    
+
     .font_size_5vw {
         font-size: 4vw
     }
@@ -199,7 +220,7 @@
     .customer {
         padding: 0 0 1vw 0;
     }
-    
+
     .price {
         padding: 0;
     }

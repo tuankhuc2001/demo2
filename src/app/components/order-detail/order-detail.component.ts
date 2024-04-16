@@ -26,7 +26,7 @@ import { UserService } from '../../services/user.service';
 export class OrderDetailComponent {
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private notification: NzNotificationService,
     private orderService: OrderService,
     private orderDetailService: OrderDetailService,
@@ -72,39 +72,104 @@ export class OrderDetailComponent {
     token: "",
     refreshToken: ""
   }
-  
+
+
   ngOnInit(): void {
     this.orderService.getOrderDetails().subscribe({
       next: (value: number) => {
-        this.handleGetOrderDetail(value)
+        this.handleGetOrderDetail(value);
+        // console.log("Status:", this.listCardOrderDetail.status);
+        // switch (this.listCardOrderDetail.status) {
+        //   case 'success':
+        //     this.setColors('#0E6F64');
+        //     break;
+        //   case 'fail':
+        //     this.setColors('#C7393C');
+        //     break;
+        //   case 'pending':
+        //     this.setColors('#1E5993');
+        //     break;
+        // }
       }
-    })
-    this.user = this.userService.getUser()
+    });
+    this.user = this.userService.getUser();
   }
 
-  handleGetOrderDetail(value: number) {
+  setColors(color: string): void {
+    document.documentElement.style.setProperty('--active-tab-color', color);
+    document.documentElement.style.setProperty('--ink-bar-color', color);
+  }
+
+  handleGetOrderDetail(value: number): void {
     this.orderDetailService.getOrderDetail(value).subscribe({
       next: (res) => {
-        this.listOrderAndDetail = res.content.list
-        this.listCardOrderDetail = res.content.list[0]
+        this.listOrderAndDetail = res.content.list;
+        this.listCardOrderDetail = res.content.list[0];
+        this.updateStatus(res.content.list[0].status); // Cập nhật status
       },
       error: (error) => {
-        this.isLoading = false
+        this.isLoading = false;
         if (error.status == 403) {
           this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
             next: value => {
-              this.userService.setUser(value)
-              localStorage.setItem("token", value.refreshToken)
+              this.userService.setUser(value);
+              localStorage.setItem("token", value.refreshToken);
             },
             error: error => {
               this.router.navigate([routerNames.signInPage]);
-              this.createNotification('error', "Phiên đăng nhập hết hạn")
+              this.createNotification('error', "Phiên đăng nhập hết hạn");
             }
-          })
+          });
         }
       }
-    })
+    });
   }
+
+  updateStatus(status: string): void {
+    this.listCardOrderDetail.status = status;
+    this.setColorsAccordingToStatus(status);
+  }
+
+  setColorsAccordingToStatus(status: string): void {
+    switch (status) {
+      case 'success':
+        this.setColors('#0E6F64');
+        break;
+      case 'fail':
+        this.setColors('#C7393C');
+        break;
+      case 'pending':
+        this.setColors('#1E5993');
+        break;
+      default:
+        break;
+    }
+  }
+
+
+  // handleGetOrderDetail(value: number) {
+  //   this.orderDetailService.getOrderDetail(value).subscribe({
+  //     next: (res) => {
+  //       this.listOrderAndDetail = res.content.list
+  //       this.listCardOrderDetail = res.content.list[0]
+  //     },
+  //     error: (error) => {
+  //       this.isLoading = false
+  //       if (error.status == 403) {
+  //         this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
+  //           next: value => {
+  //             this.userService.setUser(value)
+  //             localStorage.setItem("token", value.refreshToken)
+  //           },
+  //           error: error => {
+  //             this.router.navigate([routerNames.signInPage]);
+  //             this.createNotification('error', "Phiên đăng nhập hết hạn")
+  //           }
+  //         })
+  //       }
+  //     }
+  //   })
+  // }
 
   createNotification(type: string, content: string): void {
     this.notification.create(
