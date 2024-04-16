@@ -73,23 +73,10 @@ export class OrderDetailComponent {
     refreshToken: ""
   }
 
-
   ngOnInit(): void {
     this.orderService.getOrderDetails().subscribe({
       next: (value: number) => {
-        this.handleGetOrderDetail(value);
-        // console.log("Status:", this.listCardOrderDetail.status);
-        // switch (this.listCardOrderDetail.status) {
-        //   case 'success':
-        //     this.setColors('#0E6F64');
-        //     break;
-        //   case 'fail':
-        //     this.setColors('#C7393C');
-        //     break;
-        //   case 'pending':
-        //     this.setColors('#1E5993');
-        //     break;
-        // }
+        this.handleGetOrderDetail(value)
       }
     });
     this.user = this.userService.getUser();
@@ -103,17 +90,17 @@ export class OrderDetailComponent {
   handleGetOrderDetail(value: number): void {
     this.orderDetailService.getOrderDetail(value).subscribe({
       next: (res) => {
-        this.listOrderAndDetail = res.content.list;
-        this.listCardOrderDetail = res.content.list[0];
-        this.updateStatus(res.content.list[0].status); // Cập nhật status
+        this.listOrderAndDetail = res.content.list
+        this.listCardOrderDetail = res.content.list[0]
+        this.updateStatus(res.content.list[0].status)
       },
       error: (error) => {
-        this.isLoading = false;
+        this.isLoading = false
         if (error.status == 403) {
           this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
             next: value => {
               this.userService.setUser(value);
-              localStorage.setItem("token", value.refreshToken);
+              localStorage.setItem("token", value.refreshToken)
             },
             error: error => {
               this.router.navigate([routerNames.signInPage]);
@@ -145,31 +132,6 @@ export class OrderDetailComponent {
         break;
     }
   }
-
-
-  // handleGetOrderDetail(value: number) {
-  //   this.orderDetailService.getOrderDetail(value).subscribe({
-  //     next: (res) => {
-  //       this.listOrderAndDetail = res.content.list
-  //       this.listCardOrderDetail = res.content.list[0]
-  //     },
-  //     error: (error) => {
-  //       this.isLoading = false
-  //       if (error.status == 403) {
-  //         this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
-  //           next: value => {
-  //             this.userService.setUser(value)
-  //             localStorage.setItem("token", value.refreshToken)
-  //           },
-  //           error: error => {
-  //             this.router.navigate([routerNames.signInPage]);
-  //             this.createNotification('error', "Phiên đăng nhập hết hạn")
-  //           }
-  //         })
-  //       }
-  //     }
-  //   })
-  // }
 
   createNotification(type: string, content: string): void {
     this.notification.create(
