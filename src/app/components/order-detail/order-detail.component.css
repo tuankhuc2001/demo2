@@ -73,6 +73,8 @@
 }
 
 ::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    font-weight: 500;
+    transition: 0.1s;
     color: var(--active-tab-color);
 }
 
@@ -89,6 +91,10 @@
 
 .block-top-card {
     height: 16.5vw;
+}
+
+.block-bot-card {
+    height: 46vw;
 }
 
 .no-data {
@@ -169,7 +175,7 @@
     }
 
     .header_title {
-        font-size: 4.5vw;
+        font-size: 4vw;
         font-weight: 700;
     }
 
@@ -178,11 +184,15 @@
     }
 
     .block-tab {
-        height: 10vw;
+        height: 9.4vw;
     }
 
     .block-top-card {
-        height: 10vw;
+        height: 9.5vw;
+    }
+
+    .block-bot-card {
+        height: 36vw;
     }
 
     .no-data {
@@ -193,28 +203,24 @@
     .footer_orderDetail {
         position: fixed;
         bottom: 0;
-        padding: 3vw;
+        padding: 2.5vw;
         background-color: white;
     }
 
     .customer {
-        padding: 0 0 1vw 0;
+        padding: 0 0 2.5vw 0;
     }
 
     .price {
         padding: 0;
     }
 
-    ::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-        font-weight: 600;
+    ::ng-deep .ant-tabs-tab.ant-tabs-tab .ant-tabs-tab-btn {
         font-size: 3.5vw;
-        transition: 0.1s;
     }
-
-    ::ng-deep .ant-tabs-tab .ant-tabs-tab-btn {
-        font-weight: 600;
-        font-size: 3vw;
-        transition: 0.1s;
+    
+    ::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+        font-weight: 500;
     }
 
     .ship_price {
