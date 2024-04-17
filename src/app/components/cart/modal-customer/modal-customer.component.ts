@@ -157,7 +157,7 @@ export class ModalCustomerComponent implements OnInit{
   }
 
   heightModalNoData: {} = {
-    height: '200px'
+    height: '230px'
   }
 
   customerItem: ICustomer = {

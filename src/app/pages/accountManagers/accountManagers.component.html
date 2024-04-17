@@ -1,5 +1,5 @@
 <div class="account_container" >
   <app-card-account [listUser]="listUser"></app-card-account>
   <div class="account_add" (click)="handOpenModalAddAccount()">Thêm nhân viên</div>
-  <app-modal-add-account (getUser)="handleGetAllAccount()" [isVisible]="isVisibleModalAccount" (closeModal)="handleCloseModelAddAccount()"></app-modal-add-account>
+  <app-modal-add-account (getUser)="handleGetAllAccount()" [listAccount]="listUser" [isVisible]="isVisibleModalAccount" (closeModal)="handleCloseModelAddAccount()"></app-modal-add-account>
 </div>

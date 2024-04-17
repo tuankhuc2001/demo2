@@ -364,7 +364,7 @@ export class AddProductComponent {
                 },
               });
           } else {
-            this.createNotification('error', "Vui lòng chọn ảnh");
+            this.createNotification('error', 'Vui lòng thêm ảnh');
           }
         }
       );
