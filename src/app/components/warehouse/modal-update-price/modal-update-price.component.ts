@@ -70,7 +70,10 @@ export class ModalUpdatePriceComponent {
 
   handleUpdatePrice() {
     const priceFloorValue = this.getNumberValue(this.validateForm.value.priceFloor);
-
+    if(priceFloorValue == 0){
+      this.notification.create("error", ``, "Yêu cầu nhập giá");
+      return
+    }
     if (priceFloorValue !== undefined) {
       if (priceFloorValue === this.productItem.floorPrice) {
         this.handleSetIsVisisble();
