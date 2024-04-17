@@ -1,77 +1,77 @@
 .main-card {
-    display: flex;
+  display: flex;
 }
 
 ::ng-deep.ant-card-body {
-    padding: 6px !important;
+  padding: 6px !important;
 }
 
 .hidenText {
-    white-space: nowrap;
-    width: 50vw;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
+  white-space: nowrap;
+  width: 45vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .no-data {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-img {
-    padding-right: 3vw;
-    display: flex;
-    align-items: center;
-    aspect-ratio: 1/1;
-    width: 100%;
+  padding-right: 3vw;
+  display: flex;
+  align-items: center;
+  aspect-ratio: 1/1;
+  width: 100%;
 }
 
 .card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .nameProduct-card {
-    font-size: 5vw;
-    font-weight: 700;
-    color: #25403b;
+  font-size: 4.2vw;
+  font-weight: 700;
+  color: #25403b;
 }
 
 .textProduct-card {
-    font-size: 4vw;
-    color: #afafaf;
+  font-size: 3.9vw;
+  color: #afafaf;
 }
 
 .floorPrice-card {
-    font-size: 5vw;
-    font-weight: 700;
-    color: #C7393C;
+  font-size: 4.2vw;
+  font-weight: 700;
+  color: #c7393c;
 }
 
 .flex-end {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 @media (min-width: 768px) {
-    .main-card {
-        padding: 2vw;
-    }
+  .main-card {
+    padding: 2vw;
+  }
 
-    .nameProduct-card {
-        font-size: 4vw;
-    }
+  .nameProduct-card {
+    font-size: 4vw;
+  }
 
-    .textProduct-card {
-        font-size: 3.5vw;
-    }
+  .textProduct-card {
+    font-size: 3.5vw;
+  }
 
-    .floorPrice-card {
-        font-size: 4vw;
-    }
+  .floorPrice-card {
+    font-size: 4vw;
+  }
 }

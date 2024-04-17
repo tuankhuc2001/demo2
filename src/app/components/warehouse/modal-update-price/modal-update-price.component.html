@@ -5,7 +5,7 @@
                 <img nz-image nzSrc="http://{{productItem.imageUrl}}__{{token}}" class="img__modal-price" nzDisablePreview="true" width="100%">
             </div>
             <div nz-col nzSpan="12" class="content-modal">
-                <p class="text--bold text--size-4 ">{{productItem.nameProduct}}</p>
+                <p class="text--bold text--size-4">{{productItem.nameProduct}}</p>
                 <span class="text--grey text--size-3">Giá sàn:</span>
                 <span class="text--red text--bold text--size-3">{{productItem.floorPrice | number}}</span>
                 <span class="text--grey text--size-3">Giá sàn mới:</span>
@@ -22,7 +22,7 @@
                 </form>
                 <div class="d-flex jct-ct width-100 text--size-3 mg-t-3vw">
                     <button class="btn-control btn-cancel bg-cl-red text--size-3" (click)="handleSetIsVisisble()">Hủy</button>
-                    <button class="btn-control bg-cl-green text--size-3" (click)="handleUpdatePrice()">Xác nhận</button>
+                    <button class="btn-control bg-cl-green text--size-3" (click)="handleUpdatePrice()">Cập nhật</button>
                 </div>              
             </div>
         </div>
