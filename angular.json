@@ -33,6 +33,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/assets/fonts/Hiragino-Sans-GB-W6.otf",
               {
                 "glob": "**/*",
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",

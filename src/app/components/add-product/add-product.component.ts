@@ -176,7 +176,7 @@ export class AddProductComponent {
   nameProductValidator: ValidatorFn = (
     control: AbstractControl
   ): { [s: string]: boolean } | null => {
-    if (control.value.length > 250) {
+    if (control.value.length > 55) {
       return { confirm: true, error: true };
     } else if (control.value.length > 0 && control.value.length < 3) {
       return { confirm: true, error: true };
