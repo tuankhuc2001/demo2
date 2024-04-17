@@ -4,10 +4,9 @@
   box-sizing: border-box;
 }
 
-.content-img {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.img__modal-price{
+    height: 40vw;
+    object-fit: cover;
 }
 
 .img__modal-price {
@@ -30,8 +29,8 @@
   padding-left: 12px;
 }
 
-.mg-t-12 {
-  margin-top: 12px;
+.text--grey{
+    color: #5F5F5F;
 }
 
 .mg-t-3vw {
@@ -70,43 +69,40 @@
   width: 100%;
 }
 
-.btn-control {
-  padding: 1vw 3vw;
-  color: white;
-  border: none;
-  border-radius: 8vw;
+.btn-control{
+    padding: 1.5vw 3.5vw;
+    color: white;
+    border: none;
+    border-radius: 8vw;
+    font-size: 3.3vw;
 }
 
 .btn-cancel {
   margin-right: 8px;
 }
 
-.bg-cl-red {
-  background-color: #c7393c;
+.bg-cl-red{
+    background-color: #C7393C;
 }
 
-.bg-cl-red:hover {
-  background-color: #c7393c;
-  opacity: 0.6;
-  cursor: pointer;
+.bg-cl-red:hover{
+    background-color: #C7393C;
+    opacity: 0.6;
+    cursor: pointer;
 }
 
-.bg-cl-green {
-  background-color: #3d7165;
+.bg-cl-green{
+    background-color: #0E6F64;
 }
 
-.bg-cl-green:hover {
-  background-color: #3d7165;
-  opacity: 0.8;
-  cursor: pointer;
+.bg-cl-green:hover{
+    background-color: #0E6F64;
+    opacity: 0.8;
+    cursor: pointer;
 }
 
-.text-ct {
-  text-align: center;
-}
-
-.jct-ct {
-  justify-content: center;
+.text-ct{
+    text-align: center;
 }
 
 .input-control {
@@ -117,4 +113,28 @@
 
 ::ng-deep .ant-form-item-explain-error {
   font-size: 2vw;
+}
+
+.content-img {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.nameProduct {
+    width: 100%;
+}
+
+.nameProduct p {
+    line-height: 100%;
+    font-size: 4vw;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
 }

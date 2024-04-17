@@ -17,18 +17,18 @@
         </div>
         <div nz-row class="margin-bot">
           <div nz-col nzSpan="16">
-            <span class="editPrice">{{item.editPrice | number}}</span>
+            <span class="editPrice overflowHidden">{{item.editPrice | number}}</span>
           </div>
           <div nz-col nzSpan="8">
-            <span class="quantity">x {{item.quantity}}</span>
+            <span class="quantity overflowHidden">x {{item.quantity}}</span>
           </div>
         </div>
         <div nz-row>
-          <div nz-col nzSpan="8">
-            <span class="unit">{{item.productResponse.unit}}</span>
+          <div nz-col nzSpan="12">
+            <span class="unit overflowHidden">{{item.productResponse.unit}}</span>
           </div>
-          <div nz-col nzSpan="16">
-            <span class="totalPriceProduct">{{item.totalPriceProduct | number}}</span>
+          <div nz-col nzSpan="12">
+            <span class="totalPriceProduct overflowHidden">{{item.totalPriceProduct | number}}</span>
           </div>
         </div>
       </div>

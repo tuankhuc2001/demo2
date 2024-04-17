@@ -36,21 +36,31 @@
   object-fit: contain;
 }
 
+.card-info {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    padding: 2vw;
+}
+
 .nameProduct-card {
-  font-size: 4.2vw;
-  font-weight: 700;
-  color: #25403b;
+    font-size: 4vw;
+    font-weight: 700;
+    color: #333333;
+    line-height: 100%;
 }
 
 .textProduct-card {
-  font-size: 3.9vw;
-  color: #afafaf;
+    font-size: 3.5vw;
+    color: #AAAAAA;
+    line-height: 100%;
 }
 
 .floorPrice-card {
-  font-size: 4.2vw;
-  font-weight: 700;
-  color: #c7393c;
+    font-size: 5vw;
+    font-weight: 700;
+    color: #C7393C;
+    line-height: 100%;
 }
 
 .flex-end {

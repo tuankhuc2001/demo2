@@ -91,15 +91,17 @@
             <div nz-row nzJustify="space-between">
                 <div nz-col nzSpan="8">
                     <button nz-button class="detailButton" (click)="handleEnableDescription()">
-                         {{enableDescription === false ? 'Xem chi tiết' : 'Thu gọn '}}
-                         <span *ngIf="enableDescription === false" nz-icon nzType="down" nzTheme="outline"></span>
-                         <span *ngIf="enableDescription === true" nz-icon nzType="up" nzTheme="outline"></span>
+                        <span>{{enableDescription === false ? 'Xem chi tiết' : 'Thu gọn'}}</span>
+                         <span class="icon-container">
+                             <span *ngIf="enableDescription === true" nz-icon nzType="up" nzTheme="outline"></span>
+                             <span *ngIf="enableDescription === false" nz-icon nzType="down" nzTheme="outline"></span>
+                         </span>
                     </button>
                 </div>
                 <div nz-col nzSpan="6">
                     <button nz-button class="cancelButton" (click)="handleCloseModal()"> Hủy </button>
                 </div>
-                <div nz-col nzSpan="6">
+                <div nz-col nzSpan="7">
                     <button nz-button [class]="validateAddCartForm.invalid ? 'submitButton_disable':'submitButton'" (click)="!validateAddCartForm.invalid&&handleSubmit()">Thêm</button>
                 </div>
             </div>

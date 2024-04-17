@@ -41,12 +41,15 @@
 }
 
 .quantityProduct{
-    /* margin-bottom: 8px; */
+    margin-bottom: 18px;
     color: #707070;
     font-size: 3vw;
 }
 
 .detailButton {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     height: 9vw;
     font-size: 3.2vw;
     border-radius: 25px;
@@ -137,8 +140,9 @@
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.mg-l-8{
- margin-left: 8px;
+.icon-container {
+    width: 24px;
+    text-align: center;
 }
 
 .input-name{

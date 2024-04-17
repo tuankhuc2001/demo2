@@ -10,7 +10,7 @@
       <div nz-col nzSpan="7" class="card-img">
         <img nz-image nzSrc="http://{{item.imageUrl}}__{{token}}" alt="Picture" nzDisablePreview="true" />
       </div>
-      <div nz-col nzSpan="11" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div nz-col nzSpan="11" class="card-info">
         <div nz-row>
           <span class="nameProduct-card hidenText">{{item.nameProduct}}</span>
         </div>
@@ -24,7 +24,7 @@
           <span class="textProduct-card">{{item.codeProduct}}</span>
         </div>
       </div>
-      <div nz-col nzSpan="6" style="display: flex; flex-direction: column;justify-content: space-between;">
+      <div nz-col nzSpan="6" class="card-info">
         <div nz-row class="flex-end">
           <span class="floorPrice-card">{{item.floorPrice | number}}</span>
         </div>
