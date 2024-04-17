@@ -26,6 +26,7 @@
     height: 100%;
     object-fit: contain;
     border-radius: 10px;
+    aspect-ratio: 1;
 }
 
 .card_content {

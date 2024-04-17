@@ -23,8 +23,12 @@
       <span nz-icon nzType="warning" nzTheme="outline"></span>
       <p>Không có sản phẩm nào!</p> </div>
     <div >
-      <app-card-cart [listCard]="listCard" (onClickDeleteSingle)="handleOpenModalDeleteSingle($event)"
-        (totalPriceChanged)="handleTotalPriceChanged($event)" (getCart)="handleGetCart()"></app-card-cart>
+      <app-card-cart 
+        [listCard]="listCard" 
+        (onClickDeleteSingle)="handleOpenModalDeleteSingle($event)"
+        (totalPriceChanged)="handleTotalPriceChanged($event)" 
+        (getCart)="handleGetCart()">
+      </app-card-cart>
     </div>
 
     <div class="div__below"></div>
