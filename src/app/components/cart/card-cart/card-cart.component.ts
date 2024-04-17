@@ -263,14 +263,14 @@ export class CardCartComponent implements OnChanges {
         next: () => {
           item.originalQuantity = newValue;
           this.calculateTotalPrice();
-          // this.getCart.emit();
+          this.getCart.emit();
         },
         error: (error) => {
           event.target.value = item.originalQuantity;
           error.error.messageError.map((e: string) => {
             this.createNotification(notificationEnum.error, e)
           })
-          // this.getCart.emit();
+          this.getCart.emit();
         }
       });
     }

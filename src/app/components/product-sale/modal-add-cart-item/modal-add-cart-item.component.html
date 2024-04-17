@@ -35,7 +35,6 @@
                                 <nz-input-group [nzPrefix]="prefixTemplateRate" style="width: 100%; padding: 0; height: 7vw;; min-height: 20px;">
                                     <input type="number" nz-input formControlName="rate" class="input"/>
                                 </nz-input-group>
-
                                 <ng-template #prefixTemplateRate>
                                     <button
                                      *ngIf="plus === false" [class]="validateAddCartForm.value.rate === 0 || validateAddCartForm.value.rate == null ? 'minusRate_disable' : 'minusRate'" nz-button (click)="validateAddCartForm.value.rate !== 0 && validateAddCartForm.value.rate != null && handlePlusRate()">
