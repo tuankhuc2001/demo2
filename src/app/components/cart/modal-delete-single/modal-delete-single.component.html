@@ -1,11 +1,13 @@
 <cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" width="85vw" >
     <Content>
         <div class="delete_text" >
-            Xóa "{{cartItem.productResponse.nameProduct}} "?
+            Xóa 
+            <span class="color_nameProduct">"{{cartItem.productResponse.nameProduct}} "</span>?
+
         </div>
     </Content>
     <Footer>
-        <div>
+        <div class="btn_footer">
             <button class="delete_submit" (click)="handleDeleteCartItem(cartItem)" >Xóa</button>
             <button class="delete_cancel" (click)="handleCloseModal()">Hủy</button>
         </div>

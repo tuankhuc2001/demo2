@@ -37,6 +37,8 @@ export class AccountManagersComponent implements OnInit {
 
   handOpenModalAddAccount(){
     this.isVisibleModalAccount = true;
+    console.log(this.listUser);
+    
   }
 
   handleCloseModelAddAccount(){
