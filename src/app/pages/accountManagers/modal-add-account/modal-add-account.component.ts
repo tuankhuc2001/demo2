@@ -50,26 +50,29 @@ export class ModalAddAccountComponent implements OnInit {
       const isPhoneExist = this.listAccount.some(account => account.phone === this.validateFormAddUser.value.phone);
       if (isPhoneExist) {
         this.handleResetState();
+        this.notification.create('error', ``, 'Tài khoản đã tồn tại')
       }
-      const addAccount = {
-        phone: this.validateFormAddUser.value.phone ? this.validateFormAddUser.value.phone : "",
-        fullname: this.validateFormAddUser.value.fullname ? this.validateFormAddUser.value.fullname : "",
-        password: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
-        address: this.validateFormAddUser.value.address ? this.validateFormAddUser.value.address : "",
-        role: this.selectedValue
-      }
-      this.userService.addAccount(addAccount).subscribe({
-        next: (v) => {
-          if (v.status == false) {
-            this.notification.create('error', `${v.message}`, '')
-          } else {
-            this.notification.create('success', `${v.message}`, '')
-            this.handleResetState();
-            this.handleCloseModal();
-            this.getUser.emit();
-          }
+      else {
+        const addAccount = {
+          phone: this.validateFormAddUser.value.phone ? this.validateFormAddUser.value.phone : "",
+          fullname: this.validateFormAddUser.value.fullname ? this.validateFormAddUser.value.fullname : "",
+          password: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
+          address: this.validateFormAddUser.value.address ? this.validateFormAddUser.value.address : "",
+          role: this.selectedValue
         }
-      })
+        this.userService.addAccount(addAccount).subscribe({
+          next: (v) => {
+            if (v.status == false) {
+              this.notification.create('error', `${v.message}`, '')
+            } else {
+              this.notification.create('success', `${v.message}`, '')
+              this.handleResetState();
+              this.handleCloseModal();
+              this.getUser.emit();
+            }
+          }
+        })
+      }
     } else {
       Object.values(this.validateFormAddUser.controls).forEach(control => {
         if (control.invalid) {
@@ -99,16 +102,18 @@ export class ModalAddAccountComponent implements OnInit {
     }
   }
 
-  phoneValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
-    if (control.value.length > 11) {
-      return { confirm: true, error: true };
+  phoneValidator: ValidatorFn = (
+    control: AbstractControl
+  ): { [s: string]: boolean } | null => {
+    const phonePattern = /^(0\d{9})$/;
+    if (!phonePattern.test(control.value)) {
+      return { required: true, error: true };
     } else if (control.value === null) {
-      return { required: true };
+      return { confirm: true };
+    } else {
+      return {};
     }
-    else {
-      return {}
-    }
-  }
+  };
   addressValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
     if (control.value.length > 255) {
       return { confirm: true, error: true };

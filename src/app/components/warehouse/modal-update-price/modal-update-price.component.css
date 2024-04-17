@@ -59,6 +59,7 @@
 
 .d-flex {
   display: flex;
+  justify-content: center;
 }
 
 .jct-bw {
@@ -119,10 +120,13 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    aspect-ratio: 1;
 }
 
 .nameProduct {
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .nameProduct p {
