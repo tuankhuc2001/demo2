@@ -329,7 +329,7 @@ export class AddProductComponent {
               this.handleNavigate();
             },
             error: (error) => {
-              this.createNotification(notificationEnum.error, "Tải ảnh thất bại");
+              this.createNotification(notificationEnum.error, error.message);
               if (error.status === 403) {
                 this.user = this.userService.getUser();
                 this.userService
@@ -364,7 +364,7 @@ export class AddProductComponent {
                 },
               });
           } else {
-            this.createNotification('error', error);
+            this.createNotification('error', "Vui lòng chọn ảnh");
           }
         }
       );
