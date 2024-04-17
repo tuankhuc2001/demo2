@@ -402,9 +402,7 @@ export class AddProductComponent {
           : '',
         description: this.product.description,
         imageUrl: this.product.imageUrl,
-      };
-      console.log(addProduct,"ffffff");
-      
+      };      
     } else {
       Object.values(this.validateAddProductForm.controls).forEach((control) => {
         if (control.invalid) {
