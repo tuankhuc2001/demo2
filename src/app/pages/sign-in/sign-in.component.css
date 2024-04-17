@@ -34,8 +34,31 @@
   margin-top: 2%;
 }
 
-.input-login {
+.border-input {
   height: 40px;
+  border: none;
+  border-bottom: 1px solid #D9D9D9;
+}
+
+.border-input:hover{
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #D9D9D9;
+  box-shadow: 0 0 0 0px rgba(255, 255, 255, 0);
+}
+
+.border-input:focus {
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #D9D9D9;
+  box-shadow: 0 0 0 0px rgba(255, 255, 255, 0);
+}
+
+::ng-deep .ant-input-affix-wrapper-focused, .ant-input-affix-wrapper:focus {
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #D9D9D9;
+  box-shadow: 0 0 0 0px rgba(255, 255, 255, 0);
 }
 
 .title-bonbon {
@@ -102,7 +125,7 @@
   }
 
   .note {
-    font-size: 4.5vw;
+    font-size: 4vw;
   }
 
   .input-login {

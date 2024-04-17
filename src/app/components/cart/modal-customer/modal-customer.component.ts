@@ -144,6 +144,10 @@ export class ModalCustomerComponent implements OnInit{
     });
   }
 
+  displayFlex: {} = {
+    display: 'flex',
+  }
+
   displayNone: {} = {
     display: 'none',
   }
@@ -194,6 +198,10 @@ export class ModalCustomerComponent implements OnInit{
     this.textSearch = "";
     this.closeModal.emit();
     this.handleGetCustomer()
+  }
+
+  handleResetSearch() {
+    this.textSearch ="";
   }
 }
 

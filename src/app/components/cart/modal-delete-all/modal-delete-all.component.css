@@ -1,6 +1,9 @@
+::ng-deep .ant-modal-centered .ant-modal {
+    width: 80%;
+}
+
 .delete_text {
-    font-size: 4vw;
-    font-weight: 600;
+    font-size: 3.5vw;
     padding: 4vw 4vw 1vw;
 }
 
