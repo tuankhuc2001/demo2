@@ -27,7 +27,7 @@
       <form nz-form [formGroup]="validateAddProductForm">
         <nz-form-item>
           <nz-form-control [nzSpan]="24" class="margin-tb-quantity">
-            <nz-input-group [nzPrefix]="prefixTemplateCodeProduct" class="pading-1">
+            <nz-input-group [nzPrefix]="prefixTemplateCodeProduct">
               <input class="input" nz-input formControlName="codeProduct" placeholder="Mã sản phẩm" readonly />
             </nz-input-group>
             <ng-template #prefixTemplateCodeProduct let-control>Mã:</ng-template>
@@ -36,7 +36,7 @@
         <nz-form-item>
           <nz-form-control [nzSpan]="24" [nzErrorTip]="floorPriceValidate" class="margin-tb-quantity">
             <nz-input-group [nzPrefix]="prefixTemplate">
-              <input class="input color-red" type="number" nz-input formControlName="floorPrice" width="100px" />
+              <input class="input color-floorPrice" type="number" nz-input formControlName="floorPrice" width="100px" />
             </nz-input-group>
             <ng-template #prefixTemplate>Giá sàn:</ng-template>
             <ng-template #floorPriceValidate let-control>

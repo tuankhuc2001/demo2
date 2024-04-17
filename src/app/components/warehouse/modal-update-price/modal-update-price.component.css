@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 .img__modal-price{
     height: 40vw;
     object-fit: cover;
@@ -27,7 +26,7 @@
 }
 
 .text--grey{
-    opacity: 0.6;
+    color: #5F5F5F;
 }
 
 .text--red{
@@ -59,10 +58,11 @@
 }
 
 .btn-control{
-    padding: 1vw 3vw;
+    padding: 1.5vw 3.5vw;
     color: white;
     border: none;
     border-radius: 8vw;
+    font-size: 3.3vw;
 }
 
 .btn-cancel{
@@ -70,29 +70,24 @@
 }
 
 .bg-cl-red{
-    background-color: red;
-}
-
-.bg-cl-red{
-    background-color: red;
+    background-color: #C7393C;
 }
 
 .bg-cl-red:hover{
-    background-color: red;
+    background-color: #C7393C;
     opacity: 0.6;
     cursor: pointer;
 }
 
 .bg-cl-green{
-    background-color: #3d7165;
+    background-color: #0E6F64;
 }
 
 .bg-cl-green:hover{
-    background-color: #3d7165;
+    background-color: #0E6F64;
     opacity: 0.8;
     cursor: pointer;
 }
-
 
 .text-ct{
     text-align: center;
@@ -110,4 +105,26 @@
 
 ::ng-deep .ant-form-item-explain-error{
     font-size: 2vw;
+}
+
+.content-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nameProduct {
+    width: 100%;
+}
+
+.nameProduct p {
+    line-height: 100%;
+    font-size: 4vw;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
 }

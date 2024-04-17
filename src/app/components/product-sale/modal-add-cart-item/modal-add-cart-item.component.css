@@ -47,6 +47,9 @@
 }
 
 .detailButton {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     height: 9vw;
     font-size: 3.2vw;
     border-radius: 25px;
@@ -134,14 +137,18 @@
     margin-top: 4px;
     margin-bottom: 20px;
     font-size: 4vw;
+    max-height: 30vw;
+    overflow-y: scroll;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.mg-l-8{
- margin-left: 8px;
+.icon-container {
+    width: 24px;
+    text-align: center;
 }
 
 .input-name{
+    color: #8f8f8f;
     padding-left: 5px;
 }
 
