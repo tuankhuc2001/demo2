@@ -24,6 +24,8 @@
     background: #555;
 }
 
+::ng-deep
+
 .pd-4 {
     padding: 20px;
 }

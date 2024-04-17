@@ -7,9 +7,14 @@
                 <div class="d-flex jct-bw al-item-ct container-input">
                     <span (click)="handleSearch(textSearch)" nz-icon nzType="search" nzTheme="outline"
                         class="font-size-3vw" style="padding-right: 8px;"></span>
-                    <input (ngModelChange)="handleSearch($event)" (keyup.enter)="handleSearch(textSearch)" type="text"
-                        placeholder="Tìm kiếm ..." class="input-search" nz-input style="border: none;"
-                        [(ngModel)]="textSearch">
+                    <div class="d-flex" style="width: 80%;" [style]="textSearch.length == 0 ? displayBlock:displayFlex">
+                        <input (ngModelChange)="handleSearch($event)" (keyup.enter)="handleSearch(textSearch)"
+                            type="text" placeholder="Tìm kiếm ..." class="input-search" nz-input style="border: none;"
+                            [(ngModel)]="textSearch">
+                        <div style="display: flex; align-items: center;" *ngIf="textSearch.length > 0">
+                            <span (click)="handleResetSearch()" nz-icon nzType="close-circle" style="color: rgb(207, 203, 203);"  nzTheme="fill"></span>
+                        </div>
+                    </div>
                     <span nz-icon nzType="close" nzTheme="outline" class="font-size-3vw  icon-search"
                         style="cursor: pointer; color: #3c7265;" (click)="handleCloseModalCustomer()"></span>
                 </div>
