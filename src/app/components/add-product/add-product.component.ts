@@ -329,7 +329,7 @@ export class AddProductComponent {
               this.handleNavigate();
             },
             error: (error) => {
-              this.createNotification(notificationEnum.error, error.message);
+              this.createNotification(notificationEnum.error, "Tải ảnh thất bại");
               if (error.status === 403) {
                 this.user = this.userService.getUser();
                 this.userService
