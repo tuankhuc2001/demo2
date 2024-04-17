@@ -4,6 +4,10 @@
     padding: 4vw 4vw 1vw;
 }
 
+.btn_footer {
+    display: flex;
+    justify-content: flex-end;
+}
 
 .add_submit {
     font-size: 4.5vw;
@@ -14,6 +18,9 @@
     border: none;
     color: white;
     background-color: #c7393c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .add_cancel {
@@ -23,4 +30,7 @@
     border-radius: 5vw;
     border: 1px solid #afafaf;
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

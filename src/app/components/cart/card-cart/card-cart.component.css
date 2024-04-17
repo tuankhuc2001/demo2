@@ -42,9 +42,9 @@
 
 .content_nameProduct {
     font-size: 4.5vw;
-    font-weight: 500;
+    font-weight: 400;
+    color:#333333;
     white-space: nowrap;
-    width: 50vw;
     overflow: hidden; 
     text-overflow: ellipsis;
 }

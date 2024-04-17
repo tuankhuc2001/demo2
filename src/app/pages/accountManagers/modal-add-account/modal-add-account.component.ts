@@ -4,7 +4,7 @@ import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, Valida
 import { Router } from '@angular/router';
 
 import { UserService } from '../../../services/user.service';
-import { IUserRequest } from '../../../types/user';
+import { IUser, IUserRequest, ItemUser } from '../../../types/user';
 
 
 @Component({
@@ -21,6 +21,8 @@ export class ModalAddAccountComponent implements OnInit {
   ) { }
 
   @Input() isVisible: boolean = false;
+  @Input() listAccount: ItemUser [] = [];
+
   @Output() getUser: EventEmitter<void> = new EventEmitter();
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
     handleCloseModal() {
@@ -45,6 +47,10 @@ export class ModalAddAccountComponent implements OnInit {
 
   handleAddAccount(){
     if (this.validateFormAddUser.valid) {
+      const isPhoneExist = this.listAccount.some(account => account.phone === this.validateFormAddUser.value.phone);
+      if (isPhoneExist) {
+        this.handleResetState();
+      }
       const addAccount = {
         phone: this.validateFormAddUser.value.phone ? this.validateFormAddUser.value.phone : "",
         fullname: this.validateFormAddUser.value.fullname ? this.validateFormAddUser.value.fullname : "",
@@ -79,6 +85,7 @@ export class ModalAddAccountComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   userValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
