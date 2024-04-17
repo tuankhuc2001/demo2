@@ -17,7 +17,7 @@
                                 <nz-input-group [nzPrefix]="prefixTemplate" style="width: 100%;">
                                     <input class="input" type="number" nz-input formControlName="editPrice"/>
                                 </nz-input-group>
-                                <ng-template #prefixTemplate [nzAutofocus]="false">
+                                <ng-template #prefixTemplate>
                                     <div class="input-name">Sửa giá:</div>
                                 </ng-template>
                                 <ng-template #editPriceValidate let-control>
@@ -32,7 +32,7 @@
                         </nz-form-item>
                         <nz-form-item>
                             <nz-form-control nzRequired [nzErrorTip]="rateValidator">
-                                <nz-input-group [nzPrefix]="prefixTemplateRate" style="width: 100%; padding: 0;">
+                                <nz-input-group [nzPrefix]="prefixTemplateRate" style="width: 100%; padding: 0; height: 7vw;; min-height: 20px;">
                                     <input type="number" nz-input formControlName="rate" class="input"/>
                                 </nz-input-group>
 
@@ -92,15 +92,17 @@
             <div nz-row nzJustify="space-between">
                 <div nz-col nzSpan="8">
                     <button nz-button class="detailButton" (click)="handleEnableDescription()">
-                         {{enableDescription === false ? 'Xem chi tiết' : 'Thu gọn '}}
-                         <span *ngIf="enableDescription === false" nz-icon nzType="down" nzTheme="outline"></span>
-                         <span *ngIf="enableDescription === true" nz-icon nzType="up" nzTheme="outline"></span>
+                        <span>{{enableDescription === false ? 'Xem chi tiết' : 'Thu gọn'}}</span>
+                        <span class="icon-container">
+                             <span *ngIf="enableDescription === true" nz-icon nzType="up" nzTheme="outline"></span>
+                             <span *ngIf="enableDescription === false" nz-icon nzType="down" nzTheme="outline"></span>
+                        </span>
                     </button>
                 </div>
                 <div nz-col nzSpan="6">
                     <button nz-button class="cancelButton" (click)="handleCloseModal()"> Hủy </button>
                 </div>
-                <div nz-col nzSpan="6">
+                <div nz-col nzSpan="7">
                     <button nz-button [class]="validateAddCartForm.invalid ? 'submitButton_disable':'submitButton'" (click)="!validateAddCartForm.invalid&&handleSubmit()">Thêm</button>
                 </div>
             </div>
