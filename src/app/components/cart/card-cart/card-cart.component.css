@@ -19,14 +19,13 @@
 
 .card_img {
     padding: 1vw 0;
-    align-self: center;
 }
 
-.card_img>img {
+.card_img img {
     width: 100%;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
     border-radius: 5%;
-    aspect-ratio: 1/1;
 }
 
 .card_content {
