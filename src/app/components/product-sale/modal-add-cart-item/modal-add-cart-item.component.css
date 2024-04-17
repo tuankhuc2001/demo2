@@ -137,6 +137,8 @@
     margin-top: 4px;
     margin-bottom: 20px;
     font-size: 4vw;
+    max-height: 30vw;
+    overflow-y: scroll;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -146,6 +148,7 @@
 }
 
 .input-name{
+    color: #8f8f8f;
     padding-left: 5px;
 }
 
