@@ -71,7 +71,7 @@ export class ModalUpdatePriceComponent {
   handleUpdatePrice() {
     const priceFloorValue = this.getNumberValue(this.validateForm.value.priceFloor);
     if(priceFloorValue == 0){
-      this.notification.create("error", ``, "Yêu cầu nhập giá");
+      this.notification.create("error", ``, "Giá sàn không được bằng 0");
       return
     }
     if (priceFloorValue !== undefined) {
@@ -90,7 +90,7 @@ export class ModalUpdatePriceComponent {
           error: (error) => {
             if(error.status == 403){
               this.router.navigate([routerNames.signInPage]);
-              this.notification.create("error", `Hết hạn đăng nhập!`, "Mời đăng nhập lại");
+              this.notification.create("error", `Phiên đăng nhập hết hạn`, "Vui lòng đăng nhập lại");
             } else{
               error.error.messageError.map((e: string) => {
                 this.notification.create("error", `${e}`, "");
