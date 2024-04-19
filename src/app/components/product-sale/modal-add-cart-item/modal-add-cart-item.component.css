@@ -179,23 +179,13 @@
     }
 
     ::ng-deep .ant-input-affix-wrapper {
-        padding: 1vw;
-        font-size: 3vw;
-        margin-top: 1vw
-    }
-
-    .minusRate {
-        min-width: 70px;
-        min-height: 60px;
-    }
-    
-    .plusRate {
-        min-width: 70px;
-        min-height: 60px;
+        padding: 0.5vw;
+        font-size: 2.5vw;
+        margin-top: 1vw !important;
     }
 
     .input {
-        font-size: 3vw;
+        font-size: 2.5vw;
     }
 
     .detailButton {
@@ -218,5 +208,15 @@
 
     .descriptionContent {
         font-size: 3vw;
+    }
+
+    .minusRate {
+        min-width: 70px;
+        min-height: 60px;
+    }
+    
+    .plusRate {
+        min-width: 70px;
+        min-height: 60px;
     }
 }
