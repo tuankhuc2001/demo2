@@ -1,10 +1,10 @@
 <div class="content_orderDetail" [@slideInLeft]>
     <div class="header_direction" nz-row>
-        <div nz-col nzSpan="2" class="header_backButton" (click)="handleBackOrder()">
+        <div nz-col nzSpan="2" (click)="handleBackOrder()">
             <span nz-icon nzType="left" nzTheme="outline" class="font_size_5vw"></span>
         </div>
         <div nz-col nzSpan="20" class="header_title">
-            <span class="codeOrder" 
+            <span
                 [class.green]="listCardOrderDetail.status === 'success'"
                 [class.red]="listCardOrderDetail.status === 'fail'"
                 [class.blue]="listCardOrderDetail.status === 'pending'">{{listCardOrderDetail.codeOrder}} - </span>
@@ -23,12 +23,12 @@
                     <Span>Không có dữ liệu</Span>
                 </div>
             </nz-tab>
-            <nz-tab nzTitle="Liên giao" class="tab">
+            <nz-tab nzTitle="Liên giao">
                 <div class="block-top-card"></div>
                 <app-card-order-detail [listCardOrderDetail]="listCardOrderDetail"></app-card-order-detail>
                 <div class="block-bot-card"></div>
             </nz-tab>
-            <nz-tab nzTitle="Liên nhận" class="tab">
+            <nz-tab nzTitle="Liên nhận">
                 <div class="no-data">
                     <Span>Không có dữ liệu</Span>
                 </div>
@@ -53,8 +53,8 @@
                 <Span>50,000</Span>
             </div>
             <div nz-col nzSpan="24" class="total_price">
-                <span class="totalPrice blue">Tổng tạm tính:</span>
-                <span class="totalPrice red">{{listCardOrderDetail.totalPrice + 50000 | number}}</span>
+                <span class="blue">Tổng tạm tính:</span>
+                <span class="red">{{listCardOrderDetail.totalPrice + 50000 | number}}</span>
             </div>
         </div>
     </div>
