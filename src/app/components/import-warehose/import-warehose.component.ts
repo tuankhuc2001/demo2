@@ -102,6 +102,8 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
+    this.searchService.setSearchInput("")
+
     this.user = this.userService.getUser();
     this.searchService
       .getSearchInput()

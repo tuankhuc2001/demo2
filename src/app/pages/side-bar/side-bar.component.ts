@@ -34,12 +34,14 @@ export class SideBarComponent implements OnInit {
     this.searchService.setSearchInput(this.textSearch)
   }
 
-  handleSideDrawerClose(routerLinkName?: string): void {
+  handleSideDrawerClose(): void {
     this.sideDrawerVisible = false;
     this.currentSubMenu = null;
-    if(routerLinkName)
-    this.textSearch = "";
-    this.handleSearch("")
+    this.searchService.getSearchInput().subscribe({
+      next: res => {
+        this.textSearch = res
+      }
+    })
   }
 
   handleLogOut(): void {

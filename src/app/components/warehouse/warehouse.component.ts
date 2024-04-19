@@ -61,6 +61,8 @@ export class WarehouseComponent implements OnInit, OnDestroy {
   isVisibleModalUpdatePrice: boolean = false;
 
   ngOnInit(): void {
+    this.searchService.setSearchInput("")
+
     this.searchService
       .getSearchInput()
       .pipe(takeUntil(this.$destroy), debounceTime(1000))

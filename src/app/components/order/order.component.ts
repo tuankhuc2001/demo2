@@ -40,6 +40,8 @@ export class OrderComponent implements OnInit, OnDestroy {
   isLoading: boolean = true
 
   ngOnInit(): void {
+    this.searchService.setSearchInput("")
+
     this.searchService.getSearchInput().pipe(takeUntil(this.$destroy), debounceTime(1000)).subscribe({
       next: value => {
         this.handleSearch(value)

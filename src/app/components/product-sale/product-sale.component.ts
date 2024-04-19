@@ -60,6 +60,7 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
+    this.searchService.setSearchInput("")
     this.searchService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
       next: value => {
         this.handleSearch(value)
