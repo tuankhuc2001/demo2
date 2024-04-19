@@ -29,7 +29,7 @@
 }
 
 .card-info {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1.5vw 0;
@@ -41,7 +41,7 @@
     color: #25403b;
     white-space: nowrap;
     width: 50vw;
-    overflow: hidden; 
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
@@ -68,23 +68,22 @@
 
     .card-img {
         padding-right: 3vw;
-        aspect-ratio: 1/0.8;
+        aspect-ratio: 1/0.7;
+        height: 80%;
     }
-    
-    /* .card-img img {
-        aspect-ratio: 1/1;
-        width: 100%;
-        height: 100%;
-    } */
+
+    .card-info {
+        padding: 0;
+    }
 
     .nameProduct-card {
         font-size: 3.5vw;
     }
-    
+
     .textProduct-card {
-        font-size: 3vw;
+        font-size: 2.5vw;
     }
-    
+
     .floorPrice-card {
         font-size: 3.5vw;
     }

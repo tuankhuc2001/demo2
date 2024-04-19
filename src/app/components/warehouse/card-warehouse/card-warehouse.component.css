@@ -1,10 +1,10 @@
 .main-card {
-    display: flex;
-    padding: 1.5vw;
+  display: flex;
+  padding: 1.5vw;
 }
 
 ::ng-deep.ant-card-body {
-    padding: 0;
+  padding: 0;
 }
 
 .hidenText {
@@ -25,10 +25,7 @@
 
 .card-img {
   padding-right: 3vw;
-  display: flex;
-  align-items: center;
   aspect-ratio: 1/1;
-  width: 100%;
 }
 
 .card-img img {
@@ -38,30 +35,30 @@
 }
 
 .card-info {
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between;
-    padding: 2vw 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2vw 0;
 }
 
 .nameProduct-card {
-    font-size: 4vw;
-    font-weight: 700;
-    color: #333333;
-    line-height: 100%;
+  font-size: 4vw;
+  font-weight: 700;
+  color: #333333;
+  line-height: 100%;
 }
 
 .textProduct-card {
-    font-size: 3.5vw;
-    color: #AAAAAA;
-    line-height: 100%;
+  font-size: 3.5vw;
+  color: #AAAAAA;
+  line-height: 100%;
 }
 
 .floorPrice-card {
-    font-size: 4vw;
-    font-weight: 700;
-    color: #C7393C;
-    line-height: 100%;
+  font-size: 4vw;
+  font-weight: 700;
+  color: #C7393C;
+  line-height: 100%;
 }
 
 .flex-end {
@@ -74,25 +71,21 @@
     padding: 2vw;
   }
 
-    .card-img {
-        height: 80%;
-    }
+  .card-img {
+    padding-right: 3vw;
+    aspect-ratio: 1/0.7;
+    height: 80%;
+  }
 
-    .card-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
+  .nameProduct-card {
+    font-size: 3.5vw;
+  }
 
-    .nameProduct-card {
-        font-size: 3.5vw;
-    }
+  .textProduct-card {
+    font-size: 2.5vw;
+  }
 
-    .textProduct-card {
-        font-size: 3vw;
-    }
-
-    .floorPrice-card {
-        font-size: 3.5vw;
-    }
+  .floorPrice-card {
+    font-size: 3.5vw;
+  }
 }

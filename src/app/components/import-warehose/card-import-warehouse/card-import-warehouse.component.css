@@ -16,10 +16,7 @@
 
 .card-img {
   padding-right: 3vw;
-  display: flex;
-  align-items: center;
   aspect-ratio: 1/1;
-  width: 100%;
 }
 
 .card-img img {
@@ -65,12 +62,9 @@
   }
 
   .card-img {
-    align-items: center;
-    padding: 0;
-  }
-
-  .card-img img {
-    width: 80%;
+    padding-right: 3vw;
+    aspect-ratio: 1/0.7;
+    height: 80%;
   }
 
   .nameProduct-card {

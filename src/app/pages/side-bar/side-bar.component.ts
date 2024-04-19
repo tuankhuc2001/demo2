@@ -50,4 +50,21 @@ export class SideBarComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.userService.getUser()
   }
+
+  handleResetSearch(){
+    this.textSearch ="";
+    this.handleSearch("")
+  }
+
+  displayFlex: {} = {
+    display: 'flex',
+  }
+
+  displayNone: {} = {
+    display: 'none',
+  }
+
+  displayBlock: {} = {
+    display: 'block',
+  }
 }

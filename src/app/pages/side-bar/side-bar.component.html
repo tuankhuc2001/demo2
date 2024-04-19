@@ -7,7 +7,7 @@
             <span nz-icon [nzType]="'menu'" class="icon-menu"></span>
           </a>
         </div>
-        <div nz-col nzSpan="21" class="input">
+        <div nz-col nzSpan="21" class="input" [style]="textSearch.length == 0 ? displayBlock:displayFlex">
           <nz-input-group [nzSuffix]="suffixIconSearch" class="input-group">
             <input
               nz-input
@@ -17,6 +17,9 @@
               [(ngModel)]="textSearch"
               (ngModelChange)="handleSearch($event)"
             />
+            <div *ngIf="textSearch.length > 0">
+              <span (click)="handleResetSearch()" nz-icon nzType="close-circle" style="color: rgb(207, 203, 203);"  nzTheme="fill"></span>
+            </div>
           </nz-input-group>
           <ng-template #suffixIconSearch>
             <span nz-icon nzType="search" class="icon-search"></span>

@@ -57,6 +57,10 @@
     justify-content: end;
 }
 
+.div__above {
+    height: 11.3vw;
+}
+
 .div__below {
     height: 46vw;
 }
@@ -157,7 +161,7 @@
 }
 
 .totalPrice_number {
-    width: 33.6vw;
+    width: 30vw;
     font-size: 4.5vw;
     font-weight: 500;
     color: #c7393c;
