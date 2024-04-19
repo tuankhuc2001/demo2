@@ -42,7 +42,7 @@
             <ng-template #floorPriceValidate let-control>
               @if (control.errors?.['required']) { Vui lòng nhập giá sàn! } @if
               (control.errors?.['confirm']) { Giá sàn phải lớn hơn 0 và bé hơn
-              1000000000! }
+              1 tỷ! }
             </ng-template>
           </nz-form-control>
         </nz-form-item>
@@ -112,14 +112,12 @@
             </nz-form-item>
             <nz-form-item nz-col [nzSpan]="7">
               <nz-form-control [nzErrorTip]="providePriceValidator">
-                <nz-input-group [nzPrefix]="prefixTemplateProvidePrice">
+                <nz-input-group>
                   <input type="number" class="input" nz-input formControlName="providePrice" placeholder="Giá cung:" />
                 </nz-input-group>
-                <ng-template #prefixTemplateProvidePrice></ng-template>
                 <ng-template #providePriceValidator let-control>
                   @if (control.errors?.['required']) { Vui lòng nhập giá cung! }
-                  @if (control.errors?.['confirm']) { Giá cung phải lớn hơn 0 và
-                  bé hơn 1000000000! }
+                  @if (control.errors?.['confirm']) { Lớn hơn 0 và bé hơn 1 tỷ! }
                 </ng-template>
               </nz-form-control>
             </nz-form-item>
