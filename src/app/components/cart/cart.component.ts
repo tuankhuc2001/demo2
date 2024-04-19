@@ -139,7 +139,7 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   handleGetCart(): void {
-    this.isLoading = true
+    // this.isLoading = true
     this.customerService.getCustomer("").subscribe({
       next: res => {
         this.listCustomerProps = res.content.list
