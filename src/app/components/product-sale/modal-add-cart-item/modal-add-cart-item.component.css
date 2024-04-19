@@ -26,7 +26,7 @@
 .productName {
     color: #333333;
     font-size: 4.8vw;
-    font-weight: bold;
+    font-weight: 400;
     line-height: normal;
     font-family: 'Hiragino Sans GB W6', sans-serif;
 }
@@ -134,7 +134,7 @@
     font-size: 4vw;
     max-height: 30vw;
     overflow-y: scroll;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'Hiragino Sans GB W6', sans-serif;
 }
 
 .icon-container {
