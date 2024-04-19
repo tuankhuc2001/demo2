@@ -37,17 +37,6 @@
   color: #fff;
 }
 
-@media only screen and (max-width: 400px) {
-  .icon-menu {
-    font-size: 24px;
-    margin-top: 5%;
-  }
-  .header-trigger {
-    cursor: pointer;
-    color: #fff;
-  }
-}
-
 nz-badge {
   margin-right: 20px;
 }
