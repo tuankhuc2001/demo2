@@ -21,8 +21,8 @@ export class SignInComponent {
     password: FormControl<string>;
     remember: FormControl<boolean>;
   }> = this.fb.group({
-    userName: ['', [Validators.required]],
-    password: ['', [Validators.required]],
+    userName: ['0396179411', [Validators.required]],
+    password: ['admin', [Validators.required]],
     remember: [true]
   });
 
@@ -53,8 +53,8 @@ export class SignInComponent {
   handleLogin(): void {
     this.isLoading = true
     this.userService.login(
-      this.validateForm.value.userName ? this.validateForm.value.userName : "0396179411",
-      this.validateForm.value.password ? this.validateForm.value.password : "admin"
+      this.validateForm.value.userName ? this.validateForm.value.userName : "",
+      this.validateForm.value.password ? this.validateForm.value.password : ""
     ).subscribe({
       next: (res: ILoginResponse) => {
         this.userService.setUser(res)

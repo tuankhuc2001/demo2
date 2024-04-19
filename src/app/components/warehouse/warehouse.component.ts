@@ -85,16 +85,21 @@ export class WarehouseComponent implements OnInit, OnDestroy {
         this.isLoading = false
       },
       error: (error) => {
-        if (error.status == 403) {
-          this.router.navigate([routerNames.signInPage]);
-          this.notification.create("error", `Hết hạn đăng nhập!`, "Mời đăng nhập lại");
-        } else {
-          error.error.messageError.map((e: string) => {
-            this.notification.create("error", `${e}`, "");
-            this.isLoading = false
-          })
+        if (error.status === 403) {
+          this.user = this.userService.getUser();
+          this.userService
+            .loginRefreshToken(this.user.refreshToken)
+            .subscribe({
+              next: (value) => {
+                this.userService.setUser(value);
+                localStorage.setItem('token', value.refreshToken);
+              },
+              error: (error) => {
+                this.router.navigate([routerNames.signInPage]);
+              },
+            });
         }
-      }
+      },
     })
   }
 

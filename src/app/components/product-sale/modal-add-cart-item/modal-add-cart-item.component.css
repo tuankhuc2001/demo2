@@ -26,7 +26,7 @@
 .productName {
     color: #333333;
     font-size: 4.8vw;
-    font-weight: bold;
+    font-weight: 400;
     line-height: normal;
     font-family: 'Hiragino Sans GB W6', sans-serif;
 }
@@ -91,44 +91,40 @@
 
 .minusRate {
     background-color: #C7393C;
-    min-width: 40px;
-    min-height: 20px;
-    width: 100%;
-    height: 100%;
-    margin-right: 20px;
     font-size: 3.0vw;
+    width: 15vw;
+    height: 6.4vw;
+    margin: -0.5vw;
+    margin-right: 1vw;
 }
 
 .minusRate_disable{
     opacity: 0.5;
     background-color: #C7393C;
-    min-width: 40px;
-    min-height: 20px;
-    width: 100%;
-    height: 100%;
-    margin-right: 20px;
     font-size: 3.0vw;
+    width: 15vw;
+    height: 6.4vw;
+    margin: -0.5vw;
+    margin-right: 1vw;
 }
 
 .plusRate {
     background-color: #0E6F64;
-    min-width: 40px;
-    min-height: 20px;
-    width: 100%;
-    height: 100%;
-    margin-right: 20px;
     font-size: 3.0vw;
+    width: 15vw;
+    height: 6.4vw;
+    margin: -0.5vw;
+    margin-right: 1vw;
 }
 
 .plusRate_disable {
     opacity: 0.5;
     background-color: #0E6F64;
-    min-width: 40px;
-    min-height: 20px;
-    width: 100%;
-    height: 100%;
-    margin-right: 20px;
     font-size: 3.0vw;
+    width: 15vw;
+    height: 6.4vw;
+    margin: -0.5vw;
+    margin-right: 1vw;
 }
 
 .descriptionContent {
@@ -138,7 +134,7 @@
     font-size: 4vw;
     max-height: 30vw;
     overflow-y: scroll;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'Hiragino Sans GB W6', sans-serif;
 }
 
 .icon-container {
@@ -179,23 +175,13 @@
     }
 
     ::ng-deep .ant-input-affix-wrapper {
-        padding: 1vw;
-        font-size: 3vw;
-        margin-top: 1vw
-    }
-
-    .minusRate {
-        min-width: 70px;
-        min-height: 60px;
-    }
-    
-    .plusRate {
-        min-width: 70px;
-        min-height: 60px;
+        padding: 0.5vw;
+        font-size: 2.5vw;
+        margin-top: 1vw !important;
     }
 
     .input {
-        font-size: 3vw;
+        font-size: 2.5vw;
     }
 
     .detailButton {
@@ -219,4 +205,43 @@
     .descriptionContent {
         font-size: 3vw;
     }
+
+    .minusRate {
+        background-color: #C7393C;
+        font-size: 3.0vw;
+        width: 11vw;
+        height: 5vw;
+        margin: -0.5vw;
+        margin-right: 0.5vw;
+    }
+    
+    .minusRate_disable{
+        opacity: 0.5;
+        background-color: #C7393C;
+        font-size: 3.0vw;
+        width: 11vw;
+        height: 5vw;
+        margin: -0.5vw;
+        margin-right: 0.5vw;
+    }
+    
+    .plusRate {
+        background-color: #0E6F64;
+        font-size: 3.0vw;
+        width: 11vw;
+        height: 5vw;
+        margin: -0.5vw;
+        margin-right: 0.5vw;
+    }
+    
+    .plusRate_disable {
+        opacity: 0.5;
+        background-color: #0E6F64;
+        font-size: 3.0vw;
+        width: 11vw;
+        height: 5vw;
+        margin: -0.5vw;
+        margin-right: 0.5vw;
+    }
+
 }
