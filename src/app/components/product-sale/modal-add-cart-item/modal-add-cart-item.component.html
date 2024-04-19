@@ -1,13 +1,13 @@
-<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" width="90%" [isCentered]="true" [footer]="false">
+<cModal [isVisible]="isVisible" (closeModal)="handleCloseModal()" width="93%" [isCentered]="true" [footer]="false">
     <Content>
         <div class="content">
             <div nz-row style="padding-bottom: 3vw;">
                 <div nz-col nzSpan="12" class="image-container">
                     <img nz-image width="100%" height="100%"
                         nzSrc="http://{{ProductDetail.imageUrl}}__{{token}}"
-                        alt="No Image or Image is broken" />
+                        alt="No Image or Image is broken"/>
                 </div>
-                <div nz-col nzSpan="12">
+                <div nz-col nzSpan="12" class="info-container">
                     <div class="productName">{{ProductDetail.nameProduct}}</div>
                     <div class="floorPrice">{{ProductDetail.floorPrice | number}}</div>
                     <div class="quantityProduct">Tồn kho: {{ProductDetail.quantityProduct}}</div>
@@ -89,7 +89,7 @@
                 </div>
             </div>
             <div nz-row nzJustify="space-between">
-                <div nz-col nzSpan="8">
+                <div nz-col nzSpan="9">
                     <button nz-button class="detailButton" (click)="handleEnableDescription()">
                         <span>{{enableDescription === false ? 'Xem chi tiết' : 'Thu gọn'}}</span>
                         <span class="icon-container">

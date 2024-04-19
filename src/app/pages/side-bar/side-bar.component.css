@@ -206,6 +206,10 @@ nz-drawer {
     margin-top: 11vw;
   }
 
+  ::ng-deep .ant-input-affix-wrapper {
+    margin-top: 0 !important;
+  }
+
   .header-menu {
     padding: 2vw;
     align-items: center;
