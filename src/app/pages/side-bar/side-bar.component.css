@@ -43,6 +43,7 @@
 nz-header {
   padding: 0;
   width: 100%;
+  height: 67px;
   position: fixed;
   z-index: 2;
   background-color: #0E6F64;
@@ -88,7 +89,7 @@ nz-header {
 }
 
 nz-content {
-  margin-top: 64px;
+  margin-top: 67px;
 }
 
 .inner-content {
@@ -206,8 +207,8 @@ nz-drawer {
     margin-top: 11vw;
   }
 
-  ::ng-deep .ant-input-affix-wrapper {
-    margin-top: 0 !important;
+  :host ::ng-deep .ant-input-affix-wrapper {
+    margin-top: 0;
   }
 
   .header-menu {
