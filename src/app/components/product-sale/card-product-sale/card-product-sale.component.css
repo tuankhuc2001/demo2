@@ -1,5 +1,6 @@
 .main-card {
     display: flex;
+    padding: 2vw 0
 }
 
 .no-data {
