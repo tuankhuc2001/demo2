@@ -1,14 +1,14 @@
 <section class="container" [@slideInLeft]>
-  <div class="header">
+  <section class="header">
     <div class="icon-back">
       <span routerLink="/home/importWarehouse" nz-icon nzType="left" nzTheme="outline"></span>
     </div>
     <div class="title">
       <span class="title-text">Thêm sản phẩm</span>
     </div>
-  </div>
+  </section>
   <section class="dflex" style="margin-top: 8vw">
-    <div nz-col nzSpan="10">
+    <section nz-col nzSpan="10">
       <nz-upload nzName="avatar" nzAction="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
         nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1"
         [nzPreview]="handlePreview" style="display: flex; margin-top: 0px">
@@ -22,8 +22,8 @@
           </ng-template>
         </nz-modal>
       </nz-upload>
-    </div>
-    <div nz-col nzSpan="14" class="center">
+    </section>
+    <section nz-col nzSpan="14" class="center">
       <form nz-form [formGroup]="validateAddProductForm">
         <nz-form-item>
           <nz-form-control [nzSpan]="24" class="margin-tb-quantity">
@@ -68,7 +68,7 @@
           Chụp ảnh
         </button>
       </div>
-    </div>
+    </section>
   </section>
   <section class="container">
     <div>
