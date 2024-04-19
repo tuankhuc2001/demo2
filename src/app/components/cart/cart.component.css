@@ -57,6 +57,10 @@
     justify-content: end;
 }
 
+.div__above {
+    height: 11.3vw;
+}
+
 .div__below {
     height: 46vw;
 }
