@@ -190,6 +190,4 @@ export class ModalAddCartItemComponent implements OnChanges {
     this.plus = true
     this.closeModal.emit()
   }
-
-  token = localStorage.getItem('token')
 }
