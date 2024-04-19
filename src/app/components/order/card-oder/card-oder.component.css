@@ -29,7 +29,7 @@
 }
 
 .padding-top-bot-1vw {
-  padding: 1vw 0;
+  padding: 1.5vw 0;
 }
 
 .no-data {
@@ -43,7 +43,7 @@
 
 .main-card {
   display: flex;
-  padding-right: 3vw;
+  padding-right: 2vw;
 }
 
 ::ng-deep.ant-card-body {
