@@ -1,6 +1,6 @@
 .main-card {
     display: flex;
-    padding: 2vw 0
+    padding: 1.5vw;
 }
 
 .no-data {
@@ -14,21 +14,25 @@
 }
 
 ::ng-deep.ant-card-body {
-    padding: 2vw;
+    padding: 0;
 }
 
 .card-img {
     padding-right: 3vw;
-    display: flex;
-    align-items: center;
     aspect-ratio: 1/1;
-    width: 100%;
 }
 
 .card-img img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+.card-info {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5vw 0;
 }
 
 .nameProduct-card {
@@ -47,7 +51,7 @@
 }
 
 .floorPrice-card {
-    font-size: 4vw;
+    font-size: 4.3vw;
     font-weight: 700;
     color: #B31312;
 }
@@ -61,10 +65,17 @@
     .main-card {
         padding: 2vw;
     }
-    
-    .card-img img {
-        width: 90%;
+
+    .card-img {
+        padding-right: 3vw;
+        aspect-ratio: 1/0.8;
     }
+    
+    /* .card-img img {
+        aspect-ratio: 1/1;
+        width: 100%;
+        height: 100%;
+    } */
 
     .nameProduct-card {
         font-size: 3.5vw;

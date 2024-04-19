@@ -1,6 +1,6 @@
 .main-card {
     display: flex;
-    padding: 2vw;
+    padding: 1.5vw;
 }
 
 ::ng-deep.ant-card-body {

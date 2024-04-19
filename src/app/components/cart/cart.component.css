@@ -147,6 +147,7 @@
     display: flex;
     justify-content: space-between;
     padding-left: 1vw;
+    width: 100%;
 }
 
 .totalPrice_text {
@@ -156,6 +157,7 @@
 }
 
 .totalPrice_number {
+    width: 33.6vw;
     font-size: 4.5vw;
     font-weight: 500;
     color: #c7393c;
@@ -245,9 +247,11 @@
         font-size: 4vw;
         font-weight: bold;
         color: #1E5993;
+        width: max-content;
     }
 
     .totalPrice_number {
+        width: 31vw;
         font-size: 4vw;
         font-weight: bold;
         color: #c7393c;

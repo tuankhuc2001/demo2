@@ -83,15 +83,11 @@
   font-size: 3vw;
   font-weight: 400;
   color: #646464;
-  padding: 4%;
+  padding: 1vw 4%;
 }
 
 .login-form {
   padding: 5%;
-}
-
-.login-form-margin {
-  margin-bottom: 20px;
 }
 
 .login-form-forgot {
@@ -104,7 +100,11 @@
   background-color: #0E6F64;
   font-size: 25px;
   border: none;
-  height: 25%;
+  height: 28%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6vw;
 }
 
 @media only screen and (max-width: 400px) {
@@ -132,11 +132,11 @@
     /* height: 20px; */
   /* } */
 
-  .login-form-button {
+  /* .login-form-button {
     height: 25%;
     font-size: 6vw;
     margin-top: 20px;
-  }
+  } */
 }
 
 .loading-overlay {

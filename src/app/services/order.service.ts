@@ -15,17 +15,22 @@ export class OrderService {
         this.idOrderDetail.next(value);
     }
 
-    getOrderDetails(){
+    getOrderDetails() {
         return this.idOrderDetail
     }
 
     getOrder(idUser: number, textSearch: string): Observable<IResponseOrder> {
         const headers = this.userService.header()
-        return this.http.get<IResponseOrder>(`${apiOrder.getOrder}${idUser}?textSearch=${textSearch}`, {headers})
-      }
+        return this.http.get<IResponseOrder>(`${apiOrder.getOrder}${idUser}?textSearch=${textSearch}`, { headers })
+    }
+
+    getOrderAll(idUser: number, textSearch: string): Observable<IResponseOrder> {
+        const headers = this.userService.header()
+        return this.http.get<IResponseOrder>(`${apiOrder.getOrderAll}${idUser}?textSearch=${textSearch}`, { headers })
+    }
 
     addOrder(idCart: number, orderRequest: IOrder): Observable<IOrderResponse> {
         const headers = this.userService.header()
-        return this.http.post<IOrderResponse>(`${apiOrder.addOrder}${idCart}`, orderRequest, {headers})
+        return this.http.post<IOrderResponse>(`${apiOrder.addOrder}${idCart}`, orderRequest, { headers })
     }
 }

@@ -29,7 +29,7 @@
 }
 
 .padding-top-bot-1vw {
-  padding: 1vw 0;
+  padding: 1.5vw 0;
 }
 
 .no-data {
@@ -43,7 +43,7 @@
 
 .main-card {
   display: flex;
-  padding-right: 3vw;
+  padding-right: 2vw;
 }
 
 ::ng-deep.ant-card-body {
@@ -56,18 +56,18 @@
 }
 
 .codeOder-card {
-  font-size: 5vw;
+  font-size: 4.5vw;
   font-weight: 700;
   color: #3d7165;
 }
 
 .nameCustomer-card {
-  font-size: 4.4vw;
+  font-size: 4vw;
   font-weight: 700;
 }
 
 .textOder-card {
-  font-size: 3.8vw;
+  font-size: 3.5vw;
   color: #afafaf;
 }
 
@@ -80,19 +80,19 @@
 }
 
 .totalPrice-card {
-  font-size: 5vw;
+  font-size: 4.5vw;
   font-weight: 700;
   margin-bottom: 1.5vw;
 }
 
 .totalDetail-card {
-  font-size: 4.4vw;
+  font-size: 4vw;
   font-weight: 700;
   margin-bottom: 1.5vw;
 }
 
 .status-card {
-  font-size: 3.8vw;
+  font-size: 3.5vw;
 }
 
 .flex-end {

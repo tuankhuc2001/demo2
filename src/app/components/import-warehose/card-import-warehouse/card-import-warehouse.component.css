@@ -1,9 +1,10 @@
 .main-card {
   display: flex;
+  padding: 1.5vw;
 }
 
 ::ng-deep.ant-card-body {
-  padding: 6px !important;
+  padding: 0;
 }
 
 .hidenText {

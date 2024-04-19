@@ -130,13 +130,9 @@
 }
 
 .nameProduct p {
-    line-height: 100%;
-    font-size: 4vw;
+     font-size: 4vw;
     font-weight: 600;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    /* white-space: nowrap; */
+    white-space: nowrap;
     overflow: hidden;
-    /* text-overflow: ellipsis; */
+    text-overflow: ellipsis;
 }

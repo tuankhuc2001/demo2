@@ -123,10 +123,16 @@
 
 .nameCustomer {
     font-weight: 600;
+    font-size: 4.5vw;
 }
 
 .phoneCustomer {
     margin: 1vw 0;
+    font-size: 4vw;
+}
+
+.addressCustomer {
+    font-size: 3.5vw;
 }
 
 .price {
