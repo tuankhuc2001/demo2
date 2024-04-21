@@ -56,7 +56,7 @@
 }
 
 .add_submit {
-    background-color: #3c7265;
+    background-color: #0E6F64;
     margin-right: 3vw;
     padding: 1vw 4vw;   
     border-radius: 2vw;
@@ -68,7 +68,7 @@
 }
 
 .add_cancel {
-    background-color: #d14444;
+    background-color: #C7393C;
     padding: 1vw 4vw;   
     border-radius: 2vw;
     font-size: 4vw;
