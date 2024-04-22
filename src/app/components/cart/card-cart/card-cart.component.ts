@@ -263,7 +263,8 @@ export class CardCartComponent implements OnChanges {
     this.notification.create(
       type,
       `${content}`,
-      ''
+      '',
+      { nzDuration: 3000 }
     );
   }
 }

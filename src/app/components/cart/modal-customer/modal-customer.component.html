@@ -6,7 +6,7 @@
             <div class="form-control">
                 <div class="d-flex jct-bw al-item-ct container-input">
                     <span (click)="handleSearch(textSearch)" nz-icon nzType="search" nzTheme="outline"
-                        class="font-size-3vw" style="padding-right: 8px;"></span>
+                        class="font-size-3vw" style="padding-right: 8px; color:#3c7265"></span>
                     <div class="d-flex" style="width: 80%;" [style]="textSearch.length == 0 ? displayBlock:displayFlex">
                         <input (ngModelChange)="handleSearch($event)" (keyup.enter)="handleSearch(textSearch)"
                             type="text" placeholder="Tìm kiếm ..." class="input-search" nz-input style="border: none;"
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <span nz-icon nzType="close" nzTheme="outline" class="font-size-3vw"
-                        style="cursor: pointer; color: #3c7265;" (click)="handleCloseModalCustomer()"></span>
+                        style="cursor: pointer; color: #0E6F64;" (click)="handleCloseModalCustomer()"></span>
                 </div>
             </div>
             <div style="padding-top: 7vw;">
@@ -53,5 +53,5 @@
     </Content>
 </cModal>
 
-<app-modal-add-customer [isVisible]="isVisibleAddCustomer" (closeModal)="handleCloseModalAddCustomer()">
+<app-modal-add-customer [isVisible]="isVisibleAddCustomer" (closeModal)="handleCloseModalAddCustomer()" (callBackGetCustomer)="handleResetSearch()">
 </app-modal-add-customer>

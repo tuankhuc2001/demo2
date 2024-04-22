@@ -74,7 +74,8 @@ export class AccountManagersComponent implements OnInit {
     this.notification.create(
       type,
       `${content}`,
-      ''
+      '',
+      { nzDuration: 3000 }
     );
   }
   ngOnInit() {

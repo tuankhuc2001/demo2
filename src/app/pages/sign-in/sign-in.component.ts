@@ -46,7 +46,8 @@ export class SignInComponent {
     this.notification.create(
       type,
       `${content}`,
-      ''
+      '',
+      { nzDuration: 3000 }
     );
   }
 

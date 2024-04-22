@@ -70,7 +70,9 @@ export class ModalDeleteSingleComponent implements OnChanges {
     this.notification.create(
       type,
       `${content}`,
-      ''
+      '',
+      { nzDuration: 3000 }
+
     );
   }
 }
