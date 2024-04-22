@@ -112,6 +112,7 @@ a:hover {
 a.router-link-active {
   font-weight: bold;
   background-color: rgb(224, 244, 242);
+  color: #0E6F64;
 }
 
 nz-drawer {
@@ -151,10 +152,15 @@ nz-drawer {
   color: #0E6F64;
 }
 
+.font-icon {
+  font-size: 5vw;
+}
+
 .ul-sideBar {
   border: none !important;
   padding: 0px !important;
-  color: #0E6F64 !important;
+  /* color: #0E6F64 !important; */
+  color: gray !important;
 }
 
 .ul-sideBar li {
@@ -164,8 +170,9 @@ nz-drawer {
 
 .title-menuItem {
   font-size: 10px !important;
-  font-weight: 300 !important;
-  color: #0E6F64 !important;
+  font-weight: bold !important;
+  color: gray !important;
+  /* color: #0E6F64 !important; */
 }
 
 .title-menuItem.router-link-active {
@@ -174,12 +181,17 @@ nz-drawer {
   font-weight: bold !important;
 }
 
+.ant-menu-inline .ant-menu-item:not(:last-child), .ant-menu-vertical .ant-menu-item:not(:last-child), .ant-menu-vertical-left .ant-menu-item:not(:last-child), .ant-menu-vertical-right .ant-menu-item:not(:last-child) {
+  margin-bottom: 4vw;
+}
+
 ::ng-deep .ant-menu-light .ant-menu-submenu-title:hover {
-  color: #0E6F64 !important;
+  /* color: #0E6F64 !important; */
+  color: gray !important;
 }
 
 ::ng-deep .ant-menu-submenu > .ant-menu-submenu-title > .ant-menu-submenu-arrow {
-  color: #0E6F64 !important;
+  color: gray !important;
 }
 
 ::ng-deep .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow {
@@ -200,6 +212,20 @@ nz-drawer {
 
 .logout {
   color: #C7393C;
+}
+
+::ng-deep .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background: #ffffff !important;
+  background-color: white !important;
+
+}
+
+::ng-deep .ant-menu-item:active {
+  opacity: 0.4;
+}
+
+::ng-deep .ant-menu-inline .ant-menu-item::after, .ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after{
+  border-right: none;
 }
 
 @media (min-width: 768px) {
