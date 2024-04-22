@@ -24,7 +24,6 @@ export class CardCartComponent implements OnChanges {
   @Output() getCart: EventEmitter<void> = new EventEmitter();
 
   totalPrice: number = 0;
-  quantity: number = 0;
   token = localStorage.getItem("token")
 
   cartItemRequest: ICartItem = {
@@ -158,33 +157,23 @@ export class CardCartComponent implements OnChanges {
         this.plusQuantitySubject.next(item);
       }, 5000);
     }
-    else{ item.quantity = item.quantity + 1;
+    else{ 
+      item.quantity = item.quantity + 1;
       this.plusQuantitySubject.next(item);
-      this.calculateTotalPrice();}
+      this.calculateTotalPrice();
+    }
   }
 
-  getTotalQuantityOfOtherItems(item: any): number {
+  getTotalQuantityOfOtherItems(item: ICartItem): number {
     let totalQuantity = 0;
     this.listCard.forEach((card: any) => {
-      card.cartItemResponseSet.forEach((cartItem: any) => {
+      card.cartItemResponseSet.forEach((cartItem: ICartItem) => {
         if (cartItem.productResponse.id === item.productResponse.id && cartItem !== item) {
           totalQuantity += cartItem.quantity;
         }
       });
     });
     return totalQuantity;
-  }
-
-  getMaxQuantityForItem(productId: number): number {
-    let maxQuantity = 0;
-    this.listCard.forEach((card: any) => {
-      card.cartItemResponseSet.forEach((item: any) => {
-        if (item.productResponse.id === productId) {
-          maxQuantity += item.quantity;
-        }
-      });
-    });
-    return maxQuantity;
   }
 
   handleMinusQuantity(item: any) {
@@ -198,7 +187,7 @@ export class CardCartComponent implements OnChanges {
     this.minusQuantitySubject.next(item);
   }
 
-  handlePlus(item: any) {
+  handlePlus(item: ICartItem) {
     if (!item || item.rate == 0) {
       return;
     }
@@ -226,9 +215,6 @@ export class CardCartComponent implements OnChanges {
         item.showRateExceed = false;
       }, 1000);
     } else {
-    if (!item) {
-      return;
-    }
     this.cartItemRequest.rate = newValue;
       this.cartItemService.updateRate(item.id, this.cartItemRequest).subscribe({
         next: () => {
@@ -255,9 +241,6 @@ export class CardCartComponent implements OnChanges {
         item.showErrorQuantityExceed = false;
       }, 1000);
     } else {
-      if (!item) {
-        return;
-      }
       this.cartItemRequest.quantity = newValue;
       this.cartItemService.updateQuantity(item.id, this.cartItemRequest).subscribe({
         next: () => {

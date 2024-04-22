@@ -10,9 +10,9 @@ import { UserService } from './user.service';
 export class CartItemService {
   constructor(private http: HttpClient, private userService: UserService) { }
   
-  deleteCartItem(cartItem: ICartItem): Observable<IResponseCartIem>{
+  deleteCartItem(idCartItem: number): Observable<IResponseCartIem>{
     const headers = this.userService.header()
-    return this.http.delete<IResponseCartIem>(`${apiCartItem.deleteCartItem}${cartItem.id}`, {headers})
+    return this.http.delete<IResponseCartIem>(`${apiCartItem.deleteCartItem}${idCartItem}`, {headers})
   }
   deleteAllCartItem(idCart: number): Observable<IResponseCartIem>{
     const headers = this.userService.header()

@@ -17,7 +17,7 @@
         [isVisible]="isVisibleDeleteAll" 
         (closeModal)="handleCloseModalDeleteAll()"
         (getCart)="handleGetCart()" 
-        [idCart]="idCartDelete">
+        [idCart]="idCart">
       </app-modal-delete-all>
     </div>
   </div>
@@ -51,19 +51,18 @@
       <div nz-col nzSpan="3" class="customer_img">
         <img nz-image width="80%" nzSrc="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" nzDisablePreview="true" />
       </div>
-      <div nz-col nzSpan="13" class="customer_info" *ngIf="listCustomer != null;"
-        style="display: flex; justify-content: center;">
-        <p>{{ listCustomer[0]?.customerResponse?.nameCustomer }}</p>
+      <div nz-col nzSpan="13" class="customer_info" *ngIf="listCard != null;">
+        <p>{{ listCard[0]?.customerResponse?.nameCustomer }}</p>
         <span class="info_phone">
-          {{ listCustomer[0]?.customerResponse?.phoneCustomer }}
+          {{ listCard[0]?.customerResponse?.phoneCustomer }}
         </span>
         <span class="info_address">
-          {{ listCustomer[0]?.customerResponse?.address }}
+          {{ listCard[0]?.customerResponse?.address }}
         </span>
         <p class="click_customer" *ngIf="listCard[0]?.customerResponse == null">Chọn khách hàng</p>
       </div>
       <div nz-col nzSpan="8" class="customer_click">
-        <button (click)="handleOpenModelCustomer()" style="width: 27vw;">
+        <button (click)="handleOpenModelCustomer()" >
           <ng-container *ngIf="listCard[0]?.customerResponse != null; else selectCustomer">
             Thay đổi
           </ng-container>
@@ -86,8 +85,8 @@
       </div>
       <div nz-col nzSpan="8" class="customer_submit">
         <button nz-button class="btn_submit" nzType="primary"
-          [disabled]="!(listCard[0]?.cartItemResponseSet.length > 0 && listCustomer[0]?.customerResponse?.length !== null)"
-          (click)="handleOpenModelAddOrder()">
+          [disabled]="!(listCard[0]?.cartItemResponseSet.length > 0 && listCard[0]?.customerResponse?.length !== null)"
+          (click)="handleOpenModelAddOrder(listCard[0]?.id)">
           Tạo đơn
         </button>
         <app-modal-add-order 
@@ -95,15 +94,14 @@
           (getProductSale)="handleBackProductSale()"
           (closeModal)="handleCloseModelAddOrder()" 
           (getCart)="handleGetCart()" 
-          [idCart]="idCartOrder"
+          [idCart]="idCart"
           [orderRequest]="addOrder">
         </app-modal-add-order>
         <app-modal-customer 
           [listCustomerProp]="listCustomerProps" 
           [isVisibleModalAddCustomer]="isVisibleModalCustomer"
-          [idCart]="idCartCustomer" 
+          [idCart]="idCart" 
           (closeModal)="handleCloseModelCustomer()">
-          (getCart)="handleGetCart()"
         </app-modal-customer>
       </div>
     </div>

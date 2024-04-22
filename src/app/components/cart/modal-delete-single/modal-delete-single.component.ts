@@ -52,7 +52,7 @@ export class ModalDeleteSingleComponent implements OnChanges {
   }
 
   handleDeleteCartItem(cartItem: ICartItem) {
-    this.cartItemService.deleteCartItem(cartItem).subscribe({
+    this.cartItemService.deleteCartItem(cartItem.id).subscribe({
       next: (res) => {
         this.createNotification('success', res.message)
         this.closeModal.emit();
