@@ -56,7 +56,6 @@ export class AddProductComponent {
     private userService: UserService
   ) {}
 
-  listProduct: IProduct[] = [];
   currentTime: Date = new Date();
 
   product: IProduct = {
@@ -105,13 +104,7 @@ export class AddProductComponent {
   disabledDate = (current: Date): boolean =>
     differenceInCalendarDays(current, this.today) < 0;
 
-  onChange(result: Date): void {
-    debugger;
-    console.log('onChange: ', result);
-    this.dataDate = result;
-    console.log(this.dataDate, 'dddddd');
-  }
-
+    
   handlePreview = async (file: NzUploadFile): Promise<void> => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj!);
