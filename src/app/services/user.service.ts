@@ -27,18 +27,10 @@ export class UserService {
         }));
     }
 
-    header(): HttpHeaders {
+    header(refreshToken?: string): HttpHeaders {
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem("token")}`
-        });
-        return headers
-    }
-
-    headerRefreshToken(refreshToken: string): HttpHeaders {
-        const headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${refreshToken}`
+            'Authorization': `Bearer ${refreshToken ? refreshToken : localStorage.getItem("token")}`
         });
         return headers
     }
@@ -71,7 +63,7 @@ export class UserService {
     }
 
     loginRefreshToken(refreshToken: string) : Observable<ILoginResponse> {
-        const headers = this.headerRefreshToken(refreshToken)
+        const headers = this.header(refreshToken)
         return this.http.post<ILoginResponse>(`${objectApi.loginRefreshToken}`,{token:refreshToken}, {headers})
     }
     

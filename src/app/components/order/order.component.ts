@@ -108,7 +108,8 @@ export class OrderComponent implements OnInit, OnDestroy {
     this.notification.create(
       type,
       `${content}`,
-      ''
+      '',
+      { nzDuration: 3000 }
     );
   }
 

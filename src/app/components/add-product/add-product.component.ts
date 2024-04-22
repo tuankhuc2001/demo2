@@ -427,6 +427,6 @@ export class AddProductComponent {
   }
 
   createNotification(type: string, content: string): void {
-    this.notification.create(type, `${content}`, '');
+    this.notification.create(type, `${content}`, '',{ nzDuration: 3000 });
   }
 }
