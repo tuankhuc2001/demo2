@@ -101,10 +101,6 @@
     border-bottom-left-radius: 5px !important;
 }
 
-.input-edit:hover {
-    border-color: #eeeeee;
-}
-
 .input-edit:focus {
     border-color: #eeeeee;
     box-shadow: 0 0 0 0.2vw rgba(16, 28, 40, 0.8);
