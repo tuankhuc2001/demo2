@@ -120,7 +120,7 @@ export class OrderDetailComponent {
   setColorsAccordingToStatus(status: string): void {
     switch (status) {
       case 'success':
-        this.setColors('#0E6F64');
+        this.setColors('#1A9804');
         break;
       case 'fail':
         this.setColors('#C7393C');
