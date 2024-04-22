@@ -90,6 +90,7 @@
 
 .customer_info {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     padding-left: 4vw;
 }
@@ -119,7 +120,7 @@
 .customer_click>button {
     background-color: #1E5993;
     color: white;
-    width: 30vw;
+    width: 27vw;
     height: 11vw;
     border-radius: 1vw;
     font-size: 4.5vw;
@@ -168,6 +169,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    text-align: end;
 }
 
 .customer_submit {

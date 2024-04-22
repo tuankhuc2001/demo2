@@ -24,9 +24,9 @@ export class ModalAddCustomerComponent {
 
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
-
-
-  user: IUser = {
+  @Output() callBackGetCustomer: EventEmitter<void> = new EventEmitter<void>()
+  
+   user: IUser = {
     id: 0,
     phone: "",
     email: "",
@@ -42,6 +42,8 @@ export class ModalAddCustomerComponent {
       phoneCustomer: "",
       address: "",
     })
+
+    this.user = this.userService.getUser()
   }
 
   handleResetState() {
@@ -65,7 +67,7 @@ export class ModalAddCustomerComponent {
           if (v.status == false) {
             this.notification.create('error', `${v.message}`, '')
           } else {
-            this.notification.create('success', `${v.message}`, '')
+            this.callBackGetCustomer.emit()
             this.handleResetState();
             this.handleCloseAddCustomer();
           }

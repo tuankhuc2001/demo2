@@ -54,6 +54,7 @@ export class ModalCustomerComponent implements OnInit{
 
   ngOnInit():void {
     this.listCustomer = this.listCustomerProp
+    this.user = this.userService.getUser()
   }
 
   createNotification(type: string, content: string): void {
@@ -198,6 +199,7 @@ export class ModalCustomerComponent implements OnInit{
   handleCloseModalCustomer() {
     this.textSearch = "";
     this.closeModal.emit();
+    this.handleGetCustomer()
   }
 
   handleResetSearch() {

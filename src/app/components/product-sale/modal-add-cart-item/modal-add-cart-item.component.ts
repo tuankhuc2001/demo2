@@ -143,6 +143,7 @@ export class ModalAddCartItemComponent implements OnChanges {
               next: value => {
                 this.userService.setUser(value)
                 localStorage.setItem("token", value.refreshToken)
+                this.handleSubmit()
               },
               error: () => {
                 this.router.navigate([routerNames.signInPage]);
@@ -171,7 +172,8 @@ export class ModalAddCartItemComponent implements OnChanges {
     this.notification.create(
       type,
       `${content}`,
-      ''
+      '',
+      { nzDuration: 3000 }
     );
   }
 

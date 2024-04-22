@@ -137,7 +137,8 @@ export class OrderDetailComponent {
     this.notification.create(
       type,
       `${content}`,
-      ''
+      '',
+      { nzDuration: 3000 }
     );
   }
 

@@ -108,7 +108,8 @@ export class ProductSaleComponent implements OnDestroy, OnInit {
     this.notification.create(
       type,
       `${content}`,
-      ''
+      '',
+      { nzDuration: 3000 }
     );
   }
 
