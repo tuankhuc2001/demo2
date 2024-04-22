@@ -54,6 +54,7 @@ export class ModalCustomerComponent implements OnInit{
 
   ngOnInit():void {
     this.listCustomer = this.listCustomerProp
+    this.user = this.userService.getUser()
   }
 
   createNotification(type: string, content: string): void {
