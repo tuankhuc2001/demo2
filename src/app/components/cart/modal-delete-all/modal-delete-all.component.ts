@@ -40,7 +40,8 @@ export class ModalDeleteAllComponent {
     this.notification.create(
       type,
       `${content}`,
-      ''
+      '',
+      { nzDuration: 3000 }
     );
   }
 }

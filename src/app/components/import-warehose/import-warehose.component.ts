@@ -89,7 +89,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
   }
   
   createNotification(type: string, content: string): void {
-    this.notification.create(type, `${content}`, '');
+    this.notification.create(type, `${content}`, '',{ nzDuration: 3000 });
   }
 
   handleOpenModalupdateProductQuantity(ItemProduct :IProduct) {
