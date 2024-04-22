@@ -53,7 +53,6 @@ export class ModalAddOrderComponent {
       next: (res) => {
         this.createNotification('success', res.message)
         this.closeModal.emit();
-        this.getCart.emit();
         if(res.status == true){
         this.getProductSale.emit();}
       },

@@ -29,16 +29,12 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   isVisibleModalCustomer: boolean = false;
-  isLoading: boolean = true;
+  isLoading: boolean = false;
   isVisibleDeleteAll: boolean = false;
   isVisibleDeleteSingle: boolean = false;
   isVisibleAddOrder: boolean = false;
-  reloadCustomer: boolean = false;
-
-  idCartDelete: number = 0; 
-  idCartOrder: number = 0;
-  idCartCustomer: number = 0;
-
+  
+  idCart: number = 0; 
   listCard: any[] = [];
   itemCartItem: ICartItem = {
     id: 1,
@@ -64,7 +60,7 @@ export class CartComponent implements OnDestroy, OnInit {
     editPrice: 1,
     disable: false,
   };
-  listCustomer: any[] = [];
+
   addOrder: IOrder = {
     id: 1,
     totalPrice: 1,
@@ -113,7 +109,7 @@ export class CartComponent implements OnDestroy, OnInit {
 
   handleOpenModalDeleteAll(idCart: number) {
     this.isVisibleDeleteAll = true;
-    this.idCartDelete = idCart;
+    this.idCart = idCart;
   }
 
   handleCloseModalDeleteAll(): void {
@@ -129,9 +125,9 @@ export class CartComponent implements OnDestroy, OnInit {
     this.isVisibleDeleteSingle = false
   }
 
-  handleOpenModelAddOrder(): void {
+  handleOpenModelAddOrder(idCart: number): void {
     this.isVisibleAddOrder = true;
-    this.idCartOrder = this.user.id;
+    this.idCart = idCart;
   }
 
   handleCloseModelAddOrder(): void {
@@ -139,7 +135,6 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   handleGetCart(): void {
-    // this.isLoading = true
     this.customerService.getCustomer("").subscribe({
       next: res => {
         this.listCustomerProps = res.content.list
@@ -149,7 +144,6 @@ export class CartComponent implements OnDestroy, OnInit {
       next: (res) => {
         this.isLoading = false
         this.listCard = res.content.list
-        this.listCustomer = res?.content.list
       },
       error: (error) => {
         this.isLoading = false
@@ -172,7 +166,7 @@ export class CartComponent implements OnDestroy, OnInit {
   }
 
   handleOpenModelCustomer() {
-    this.idCartCustomer = this.listCard[0].id;
+    this.idCart = this.listCard[0].id;
     this.isVisibleModalCustomer = true;
   }
 
@@ -183,6 +177,7 @@ export class CartComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.getUser();
+    this.isLoading = true;
     this.handleGetCart();
   }
 

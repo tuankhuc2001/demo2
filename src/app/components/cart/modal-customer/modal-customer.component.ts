@@ -198,6 +198,7 @@ export class ModalCustomerComponent implements OnInit{
   handleCloseModalCustomer() {
     this.textSearch = "";
     this.closeModal.emit();
+    this.handleGetCustomer()
   }
 
   handleResetSearch() {
