@@ -125,6 +125,17 @@ export class ModalAddAccountComponent implements OnInit {
     }
   }
 
+  passwordValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
+      return { confirm: true, error: true };
+    } else if (control.value === null) {
+      return { required: true };
+    }
+    else {
+      return {}
+    }
+  }
+
   validateFormAddUser: FormGroup<{
     fullname: FormControl<string>;
     phone: FormControl<string>;
@@ -134,7 +145,7 @@ export class ModalAddAccountComponent implements OnInit {
     fullname: ["", [Validators.required, this.userValidator]],
     phone: ["", [Validators.required, this.phoneValidator]],
     address: ["", [Validators.required, this.addressValidator]],
-    password:[""]
+    password:["", [Validators.required, this.addressValidator]]
   })
 
 }

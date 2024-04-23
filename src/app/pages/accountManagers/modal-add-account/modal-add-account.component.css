@@ -1,5 +1,4 @@
 .modal_title{
-    color: #3c7265;
     padding: 2vw 5vw;
     font-size: 5vw;
     font-weight: 600;
@@ -10,28 +9,15 @@
     padding: 0 5vw 5vw;
 }
 
-.content_info {
+.form_item {
+    width: 100%;
     display: flex;
-    width: 100% ;
+    justify-content: space-between;
     margin-bottom: 2vw;
 }
 
-.content_info> label{
-    width: 100%;
-    font-size: 3.5vw;
-    font-weight: bold;
-}
-
-.inputs {
-    height: 6vw;
-    font-size: 3.5vw;
-}
-
-.input {
-    height: 5vw;
-    border: 1px solid gray;
-    font-size: 3.5vw;
-    width: 100%;
+.label {
+    padding-bottom: 0 !important;
 }
 
 .add_submit {

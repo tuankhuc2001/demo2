@@ -1,5 +1,4 @@
 .modal_title{
-    color: #dd8706;
     padding: 2vw 5vw;
     font-size: 5vw;
     font-weight: 600;
@@ -18,7 +17,7 @@
 
 }
 
-.content_info> label{
+/* .content_info> label{
     width: 100%;
     font-size: 3.5vw;
     font-weight: bold;
@@ -27,7 +26,7 @@
 .input {
     height: 5vw;
     font-size: 3.5vw;
-}
+} */
 
 /* ::ng-deep .ant-select-selector {
     height: 6vw !important;

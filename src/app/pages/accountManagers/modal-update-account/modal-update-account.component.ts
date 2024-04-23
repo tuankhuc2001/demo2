@@ -16,19 +16,20 @@ export class ModalUpdateAccountComponent implements OnChanges {
   constructor(
     private userService: UserService,
     private notification: NzNotificationService,
-    private fb: NonNullableFormBuilder, 
+    private fb: NonNullableFormBuilder,
     private router: Router,
   ) { }
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
   handleCloseModal() {
     this.closeModal.emit();
+    this.handleResetState();
   }
 
   @Input() itemUser: IUserRequestUpdate = {
     id: 1,
     password: "string",
-    role: "s"
+    role: "hihi"
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -55,12 +56,16 @@ export class ModalUpdateAccountComponent implements OnChanges {
   }
 
   handleUpdateAccount() {
-
-      if(this.validateFormAddUser.value.password != this.validateFormAddUser.value.newPassword) {
-        this.handleResetState();
-      }else{
-        if (this.validateFormAddUser.valid) {
-          this.itemUser.password = this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
+    if (this.validateFormAddUser.value.password == "") {
+      this.notification.create('error', ``, 'Cập nhật mật khẩu thất bại!')
+      return
+    }
+    if (this.validateFormAddUser.value.password != this.validateFormAddUser.value.newPassword) {
+      this.handleResetState();
+      this.notification.create('error', ``, 'Cập nhật mật khẩu thất bại!')
+    } else {
+      if (this.validateFormAddUser.valid) {
+        this.itemUser.password = this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
           this.itemUser.role = this.selectedValue
         this.userService.updateAccount(this.itemUser.id, this.itemUser).subscribe({
           next: (v: any) => {
@@ -81,12 +86,14 @@ export class ModalUpdateAccountComponent implements OnChanges {
           }
         });
       }
-      }
+    }
 
   }
 
   handleResetState() {
-    this.validateFormAddUser.reset()
+    this.validateFormAddUser.reset(),
+      this.selectedValue = this.itemUser.role
+
   }
 
   validateFormAddUser: FormGroup<{
