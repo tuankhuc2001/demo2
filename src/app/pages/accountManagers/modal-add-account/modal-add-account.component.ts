@@ -58,7 +58,7 @@ export class ModalAddAccountComponent implements OnInit {
           fullname: this.validateFormAddUser.value.fullname ? this.validateFormAddUser.value.fullname : "",
           password: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
           address: this.validateFormAddUser.value.address ? this.validateFormAddUser.value.address : "",
-          role: this.selectedValue
+          role: this.validateFormAddUser.value.role ? this.validateFormAddUser.value.role : "",
         }
         this.userService.addAccount(addAccount).subscribe({
           next: (v) => {
@@ -141,11 +141,13 @@ export class ModalAddAccountComponent implements OnInit {
     phone: FormControl<string>;
     address: FormControl<string>;
     password: FormControl<string>;
+    role: FormControl<string>;
   }> = this.fb.group({
     fullname: ["", [Validators.required, this.userValidator]],
     phone: ["", [Validators.required, this.phoneValidator]],
     address: ["", [Validators.required, this.addressValidator]],
-    password:["", [Validators.required, this.addressValidator]]
+    password:["", [Validators.required, this.passwordValidator]],
+    role:["ROLE_SALE"]
   })
 
 }

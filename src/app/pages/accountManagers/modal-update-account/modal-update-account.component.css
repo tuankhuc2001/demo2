@@ -6,52 +6,27 @@
 
 .modal_content{
     width: 90vw;
-    padding: 0 5vw 5vw;
+    padding: 0 5vw 5vw 5vw;
 }
 
-.content_info {
-    display: flex;
-    width: 100% ;
-    margin-bottom: 4vw;
-    align-items: center;
-
-}
-
-/* .content_info> label{
+.form_item {
     width: 100%;
-    font-size: 3.5vw;
-    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vw !important;
 }
 
-.input {
-    height: 5vw;
-    font-size: 3.5vw;
-} */
-
-/* ::ng-deep .ant-select-selector {
-    height: 6vw !important;
-    font-size: 3.5vw;
-} */
-
-::ng-deep .ant-select-selector{
-    height: fit-content !important;
-    padding: 0px 4px !important;
+.form_select {
+    margin-top: 0vw;
 }
 
-::ng-deep .ant-select-item{
-    font-size: 3vw !important;
+.label {
+    padding-bottom: 0 !important;
 }
 
-.content_select{
-    /* height: 6vw !important; */
-    font-size: 3.5vw;
-    height: fit-content;
-}
-
-.select_option {
-    height: 5vw;
-    font-size: 3.5vw;
-    background-color: #d14444;
+.footer {
+    margin-right: 1vw; 
+    padding-bottom: 3vw;
 }
 
 .add_submit {

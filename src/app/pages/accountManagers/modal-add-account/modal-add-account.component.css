@@ -6,7 +6,7 @@
 
 .modal_content{
     width: 90vw;
-    padding: 0 5vw 5vw;
+    padding: 0vw 5vw 0vw 5vw;
 }
 
 .form_item {
@@ -16,8 +16,17 @@
     margin-bottom: 2vw;
 }
 
+.form_select {
+    margin-top: -4vw;
+}
+
 .label {
     padding-bottom: 0 !important;
+}
+
+.footer {
+    margin-right: 1vw; 
+    padding-bottom: 3vw;
 }
 
 .add_submit {

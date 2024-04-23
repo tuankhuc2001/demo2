@@ -34,7 +34,7 @@
           </nz-form-item>
           
           <nz-form-item class="form_item" >
-            <nz-form-control [formGroup]="validateFormAddUser" [nzErrorTip]="phoneValidator">
+            <nz-form-control [nzErrorTip]="phoneValidator">
               <nz-form-label class="label" nzRequired >Số điện thoại:</nz-form-label>
               <input class="input" nz-input formControlName="phone" />
               <ng-template #phoneValidator let-control>
@@ -69,23 +69,33 @@
               </ng-template>
             </nz-form-control>
           </nz-form-item>
-
-          <nz-form-item class="form_item" >
-            <nz-form-label nz-col nzSpan="24" class="label" nzRequired >Chức vụ:</nz-form-label>
-              <nz-select class="input" nz-col nzSpan="24"
-               [ngModel]="selectedValue"
-               (ngModelChange)="handleChangeRole($event)"
+          <nz-form-item class="form_select">
+            <nz-form-label nz-col nzSpan="24" class="label"
+              >Chức vụ:</nz-form-label
+            >
+            <nz-form-control>
+              <nz-select
+                class="input"
+                nz-col
+                nzSpan="24"
+                formControlName="role"
+                (ngModelChange)="handleChangeRole($event)"
               >
                 <nz-option nzValue="ROLE_SALE" nzLabel="Sale"></nz-option>
-                <nz-option nzValue="ROLE_WAREHOUSE" nzLabel="WareHouse"></nz-option>
+                <nz-option
+                  nzValue="ROLE_WAREHOUSE"
+                  nzLabel="WareHouse"
+                ></nz-option>
               </nz-select>
+            </nz-form-control>
           </nz-form-item>
+  
         </form>
     </div>
 
   </Content>
   <Footer>
-    <div style="margin-right: 2vw;">
+    <div class="footer">
       <button class="add_submit" (click)="handleAddAccount()">Xác nhận</button>
       <button class="add_cancel" (click)="handleCloseModal(); handleResetState()">Hủy</button>
     </div>
