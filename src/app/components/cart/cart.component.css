@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+:host ::ng-deep html {
+    top: 0 !important;
+    display: none !important;
+}
+
 .cart_container {
     position: relative;
 }
@@ -22,7 +27,7 @@
 }
 
 .warning>p {
-    font-size: 3.5vw;
+    font-size: 4vw;
 }
 
 .header__cart {

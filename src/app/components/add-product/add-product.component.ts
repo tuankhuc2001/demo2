@@ -56,7 +56,6 @@ export class AddProductComponent {
     private userService: UserService
   ) {}
 
-  listProduct: IProduct[] = [];
   currentTime: Date = new Date();
 
   product: IProduct = {
@@ -105,13 +104,7 @@ export class AddProductComponent {
   disabledDate = (current: Date): boolean =>
     differenceInCalendarDays(current, this.today) < 0;
 
-  onChange(result: Date): void {
-    debugger;
-    console.log('onChange: ', result);
-    this.dataDate = result;
-    console.log(this.dataDate, 'dddddd');
-  }
-
+    
   handlePreview = async (file: NzUploadFile): Promise<void> => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj!);
@@ -277,9 +270,9 @@ export class AddProductComponent {
     codeProduct: FormControl<string>;
   }> = this.fb.group({
     nameProduct: ['', [Validators.required, this.nameProductValidator]],
-    floorPrice: [1, [Validators.required, this.floorPriceValidator]],
-    quantityProduct: [1, [Validators.required, this.quantityValidator]],
-    providePrice: [1, [Validators.required, this.providePriceValidator]],
+    floorPrice: [0, [Validators.required, this.floorPriceValidator]],
+    quantityProduct: [0, [Validators.required, this.quantityValidator]],
+    providePrice: [0, [Validators.required, this.providePriceValidator]],
     provider: ['', [Validators.required, this.providerValidator]],
     origin: ['', [Validators.required, this.originValidator]],
     unit: ['', [Validators.required, this.unitValidator]],

@@ -177,7 +177,6 @@
     ::ng-deep .ant-input-affix-wrapper {
         padding: 0.5vw;
         font-size: 2.5vw;
-        margin-top: 1vw !important;
     }
 
     .input {
