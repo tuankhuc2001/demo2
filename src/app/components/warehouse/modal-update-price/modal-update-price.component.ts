@@ -115,12 +115,7 @@ export class ModalUpdatePriceComponent {
   }
 
   formatCurrencyValue(value: number | null): string {
-    console.log(value,"value");
-    console.log(value== 0,"value1");
-    
-    if(value == 0) {
-      console.log();
-      
+    if(value == 0) {      
       return ''
     }
     if (value !== null) {
