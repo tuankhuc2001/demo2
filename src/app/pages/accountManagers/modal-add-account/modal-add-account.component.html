@@ -4,7 +4,7 @@
     <div class="modal_content">
       <div class="content_info" nz-row>
         <label nz-col [nzSpan]="8" for="">Họ và tên:</label>
-        <form nz-col [nzSpan]="16" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
+        <form nz-col [nzSpan]="16" class="input-control" nz-form [formGroup]="validateFormAddUser">
           <nz-form-item>
             <nz-form-control [nzErrorTip]="userValidator">
               <nz-input-group>
@@ -44,7 +44,7 @@
       </div>
       <div class="content_info" nz-row>
         <label nz-col [nzSpan]="8" for="">Số điện thoại:</label>
-        <form nz-col [nzSpan]="16" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
+        <form nz-col [nzSpan]="16" class="input-control" nz-form [formGroup]="validateFormAddUser">
           <nz-form-item>
             <nz-form-control [nzSpan]="24" [nzErrorTip]="phoneValidator">
               <nz-input-group>
@@ -64,7 +64,7 @@
       </div>
       <div class="content_info" nz-row>
         <label nz-col [nzSpan]="8" for="">Mật khẩu</label>
-        <form nz-col [nzSpan]="16" class="input-control" nz-col nz-form [formGroup]="validateFormAddUser">
+        <form nz-col [nzSpan]="16" class="input-control" nz-form [formGroup]="validateFormAddUser">
         <nz-form-item class="form-item" >
           <nz-form-control nzErrorTip="Please input your Password!">
             <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate" nzErrorTip="Please input your Password!">
