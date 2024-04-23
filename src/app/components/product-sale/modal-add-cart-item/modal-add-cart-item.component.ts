@@ -9,6 +9,7 @@ import { notificationEnum } from '../../../utils/notificationEnum';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
 import { routerNames } from '../../../constant/router';
+import { NgxCurrencyInputMode } from 'ngx-currency';
 
 @Component({
   selector: 'app-modal-add-cart-item',

@@ -15,7 +15,7 @@
                         <nz-form-item>
                             <nz-form-control [nzErrorTip]="editPriceValidate">
                                 <nz-input-group [nzPrefix]="prefixTemplate" style="width: 100%;">
-                                    <input class="input" type="number" nz-input formControlName="editPrice"/>
+                                    <input currencyMask class="input" nz-input formControlName="editPrice"/>
                                 </nz-input-group>
                                 <ng-template #prefixTemplate>
                                     <div class="input-name">Sửa giá:</div>
@@ -33,7 +33,8 @@
                         <nz-form-item>
                             <nz-form-control nzRequired [nzErrorTip]="rateValidator">
                                 <nz-input-group [nzPrefix]="prefixTemplateRate">
-                                    <input type="number" nz-input formControlName="rate" class="input"/>
+                                    <input currencyMask 
+                                    nz-input formControlName="rate" class="input"/>
                                 </nz-input-group>
                                 <ng-template #prefixTemplateRate>
                                     <button
