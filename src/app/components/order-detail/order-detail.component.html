@@ -8,7 +8,7 @@
                 [class.green]="listCardOrderDetail.status === 'success'"
                 [class.red]="listCardOrderDetail.status === 'fail'"
                 [class.blue]="listCardOrderDetail.status === 'pending'">{{listCardOrderDetail.codeOrder}} - </span>
-            <span *ngIf="listCardOrderDetail.status === 'success'" style="margin-left: 2vw; color: #0E6F64">Thành công</span>
+            <span *ngIf="listCardOrderDetail.status === 'success'" style="margin-left: 2vw; color: #1A9804">Thành công</span>
             <span *ngIf="listCardOrderDetail.status === 'fail'" style="margin-left: 2vw; color: #C7393C">Đang giao</span>
             <span *ngIf="listCardOrderDetail.status === 'pending'" style="margin-left: 2vw; color: #1E5993">Đã xử lý</span>
         </div>
@@ -19,9 +19,6 @@
     <div class="header_tab">
         <nz-tabset nzCentered nzSize="large" [nzSelectedIndex]="1">
             <nz-tab nzTitle="Liên biến động">
-                <div class="no-data">
-                    <Span>Không có dữ liệu</Span>
-                </div>
             </nz-tab>
             <nz-tab nzTitle="Liên giao">
                 <div class="block-top-card"></div>
@@ -29,9 +26,6 @@
                 <div class="block-bot-card"></div>
             </nz-tab>
             <nz-tab nzTitle="Liên nhận">
-                <div class="no-data">
-                    <Span>Không có dữ liệu</Span>
-                </div>
             </nz-tab>
         </nz-tabset>
     </div>

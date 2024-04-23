@@ -1,14 +1,14 @@
 <cModal [isVisible]="isVisible" (closeModal)="handleSetIsVisisble()" [buttonX]="false" [width]="'100%'"
     [footer]="false">
     <Content>
-        <div style="padding: 12px;" nz-row=>
+        <div style="padding: 12px;" nz-row>
             <div nz-col nzSpan="12" class="content-img">
-                <img nz-image nzSrc="http://{{productItem.imageUrl}}" class="img__modal-price"
-                    nzDisablePreview="true" width="100%">
+                <img nz-image nzSrc="http://{{productItem.imageUrl}}" class="img__modal-price" nzDisablePreview="true"
+                    width="100%">
             </div>
             <div nz-col nzSpan="12" class="content-modal">
                 <div class="nameProduct">
-                    <p >{{productItem.nameProduct}}</p>
+                    <p>{{productItem.nameProduct}}</p>
                 </div>
                 <span class="text--grey text--size-3">Giá sàn:</span>
                 <span class="text--red text--bold text--size-3">{{productItem.floorPrice | number}}</span>

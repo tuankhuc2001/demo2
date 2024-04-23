@@ -74,9 +74,10 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
         this.isLoading = false
         if (error.status == 403) {
           this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
-            next: value => {
-              this.userService.setUser(value)
-              localStorage.setItem("token", value.refreshToken)
+            next: res => {
+              this.userService.setUser(res)
+              localStorage.setItem("token", res.refreshToken)
+              this.handleSearch(value)
             },
             error: error => {
               this.router.navigate([routerNames.signInPage]);
