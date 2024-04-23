@@ -62,12 +62,11 @@ export class SignInComponent {
         this.isLoading = false
         localStorage.setItem("token", res.token)
         this.createNotification("success", "Đăng nhập thành công")
-          this.handleNavigate(res.role)
+        this.handleNavigate(res.role)
       },
       error: (error: Error) => {
         this.isLoading = false
         console.log(error);
-
         this.createNotification("error", "Sai tài khoản hoặc mật khẩu")
       }
     })
