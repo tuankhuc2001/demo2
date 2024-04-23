@@ -1,5 +1,4 @@
 .modal_title{
-    color: #3c7265;
     padding: 2vw 5vw;
     font-size: 5vw;
     font-weight: 600;
@@ -7,31 +6,27 @@
 
 .modal_content{
     width: 90vw;
-    padding: 0 5vw 5vw;
+    padding: 0vw 5vw 0vw 5vw;
 }
 
-.content_info {
+.form_item {
+    width: 100%;
     display: flex;
-    width: 100% ;
+    justify-content: space-between;
     margin-bottom: 2vw;
 }
 
-.content_info> label{
-    width: 100%;
-    font-size: 3.5vw;
-    font-weight: bold;
+.form_select {
+    margin-top: -4vw;
 }
 
-.inputs {
-    height: 6vw;
-    font-size: 3.5vw;
+.label {
+    padding-bottom: 0 !important;
 }
 
-.input {
-    height: 5vw;
-    border: 1px solid gray;
-    font-size: 3.5vw;
-    width: 100%;
+.footer {
+    margin-right: 1vw; 
+    padding-bottom: 3vw;
 }
 
 .add_submit {
@@ -55,8 +50,4 @@
     cursor: pointer;
     color: white;
     border: none;
-}
-
-.content_select {
-    font-size: 3.5vw;
 }

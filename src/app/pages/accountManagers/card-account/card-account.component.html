@@ -1,3 +1,9 @@
+<div *ngIf="listUser.length == 0" class="no-data">
+  <div style="display: flex; flex-direction: column;">
+    <span nz-icon nzType="warning" nzTheme="outline" style="font-size: 16vw;color: #a3a3a3;"></span>
+    <span style="margin-top: 8%;color: #515151; font-size: 4vw;">Không tìm thấy dữ liệu</span>
+  </div>
+</div>
 <cCard *ngFor="let item of listUser" (click)="handleOpenUpdateAccount(item)" [ngClass]="{'disabled-card': item.role === 'ROLE_ADMIN'}">
   <Content>
     <div class="main_card" nz-row>

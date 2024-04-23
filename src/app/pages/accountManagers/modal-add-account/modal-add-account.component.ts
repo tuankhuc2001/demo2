@@ -58,7 +58,7 @@ export class ModalAddAccountComponent implements OnInit {
           fullname: this.validateFormAddUser.value.fullname ? this.validateFormAddUser.value.fullname : "",
           password: this.validateFormAddUser.value.password ? this.validateFormAddUser.value.password : "",
           address: this.validateFormAddUser.value.address ? this.validateFormAddUser.value.address : "",
-          role: this.selectedValue
+          role: this.validateFormAddUser.value.role ? this.validateFormAddUser.value.role : "",
         }
         this.userService.addAccount(addAccount).subscribe({
           next: (v) => {
@@ -125,16 +125,29 @@ export class ModalAddAccountComponent implements OnInit {
     }
   }
 
+  passwordValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
+    if (control.value.length > 255) {
+      return { confirm: true, error: true };
+    } else if (control.value === null) {
+      return { required: true };
+    }
+    else {
+      return {}
+    }
+  }
+
   validateFormAddUser: FormGroup<{
     fullname: FormControl<string>;
     phone: FormControl<string>;
     address: FormControl<string>;
     password: FormControl<string>;
+    role: FormControl<string>;
   }> = this.fb.group({
     fullname: ["", [Validators.required, this.userValidator]],
     phone: ["", [Validators.required, this.phoneValidator]],
     address: ["", [Validators.required, this.addressValidator]],
-    password:[""]
+    password:["", [Validators.required, this.passwordValidator]],
+    role:["ROLE_SALE"]
   })
 
 }

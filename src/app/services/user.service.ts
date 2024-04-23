@@ -47,9 +47,9 @@ export class UserService {
         return this.http.post<ILoginResponse>(`http://localhost:8080/api/v1/auth/signin`, { phone: userName, password })
     }
 
-    getAllAccount(): Observable<IGetUser> {
+    getAllAccount(textSearch: string): Observable<IGetUser> {
         const headers = this.header()
-        return this.http.get<IGetUser>(`${apiUser.getAllAccount}`, {headers})
+        return this.http.get<IGetUser>(`${apiUser.getAllAccount}?textSearch=${textSearch}`, {headers})
     }
 
     addAccount(accountRequest: IUserRequest): Observable<IAddUser> {
