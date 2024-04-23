@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { Subject, debounceTime, takeUntil } from 'rxjs';
 
 import { UserService } from '../../services/user.service';
 import { IUser } from '../../types/user';
 import { Router } from '@angular/router';
 import { routerNames } from '../../constant/router';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-accountManagers',
@@ -16,8 +18,10 @@ export class AccountManagersComponent implements OnInit {
   constructor(
     private userService: UserService,
     private notification: NzNotificationService,
-    private router: Router
+    private router: Router,
+    private searchService: SearchService,
   ) { }
+  private destroyed$ = new Subject();
   
 
   isLoading: boolean = false;
@@ -34,10 +38,10 @@ export class AccountManagersComponent implements OnInit {
   }
 
   listUser: any;
+  textSearch: string = ""
 
   handOpenModalAddAccount(){
     this.isVisibleModalAccount = true;
-    console.log(this.listUser);
     
   }
 
@@ -45,9 +49,14 @@ export class AccountManagersComponent implements OnInit {
     this.isVisibleModalAccount = false;
   }
 
-  handleGetAllAccount(): void {
+  handleSearch(value: string) {
+    this.textSearch = value
+    this.handleGetAllAccount(value)
+  }
+
+  handleGetAllAccount(textSearch: string): void {
     this.isLoading = true
-    this.userService.getAllAccount().subscribe({
+    this.userService.getAllAccount(textSearch).subscribe({
       next: (res) => {
         this.isLoading = false  
         this.listUser = res.content.list
@@ -80,7 +89,12 @@ export class AccountManagersComponent implements OnInit {
   }
   ngOnInit() {
     this.user = this.userService.getUser()
-    this.handleGetAllAccount();
+    this.searchService.setSearchInput("")
+    this.searchService.getSearchInput().pipe(takeUntil(this.destroyed$), debounceTime(1000)).subscribe({
+      next: value => {
+        this.handleSearch(value)
+      }
+    })
   }
 
 }
