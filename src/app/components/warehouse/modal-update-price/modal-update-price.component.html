@@ -17,16 +17,16 @@
                     <nz-form-item>
                         <nz-form-control style="text-align: center;" nzErrorTip="Làm ơn hãy nhập giá sàn!">
                             <nz-input-group class="d-flex jct-ct">
-                                <input nz-input nz type="text" class="text-ct input-control text--size-3"
-                                    formControlName="priceFloor" placeholder="Nhập giá sàn mới"
-                                    (input)="formatPrice($event)" />
+                                <input currencyMask nz-input nz type="text" class="text-ct input-control text--size-3"
+                                    formControlName="priceFloor" placeholder="Nhập giá sàn mới"/>
                             </nz-input-group>
                         </nz-form-control>
                     </nz-form-item>
                 </form>
                 <div class="d-flex jct-ct width-100 text--size-3 mg-t-3vw">
                     <button class="btn-control btn-cancel bg-cl-red" (click)="handleSetIsVisisble()">Hủy</button>
-                    <button class="btn-control bg-cl-green" (click)="handleUpdatePrice()">Cập nhật</button>
+                    <button [disabled]="productItem.quantityProduct == 0" class="btn-control bg-cl-green"
+                        (click)="handleUpdatePrice()">Cập nhật</button>
                 </div>
             </div>
         </div>

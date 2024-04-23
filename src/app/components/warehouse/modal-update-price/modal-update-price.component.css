@@ -82,7 +82,7 @@
 }
 
 .text-ct{
-    text-align: center;
+    text-align: center !important;
 }
 
 .input-control {

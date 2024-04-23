@@ -270,9 +270,9 @@ export class AddProductComponent {
     codeProduct: FormControl<string>;
   }> = this.fb.group({
     nameProduct: ['', [Validators.required, this.nameProductValidator]],
-    floorPrice: [1, [Validators.required, this.floorPriceValidator]],
-    quantityProduct: [1, [Validators.required, this.quantityValidator]],
-    providePrice: [1, [Validators.required, this.providePriceValidator]],
+    floorPrice: [0, [Validators.required, this.floorPriceValidator]],
+    quantityProduct: [0, [Validators.required, this.quantityValidator]],
+    providePrice: [0, [Validators.required, this.providePriceValidator]],
     provider: ['', [Validators.required, this.providerValidator]],
     origin: ['', [Validators.required, this.originValidator]],
     unit: ['', [Validators.required, this.unitValidator]],
