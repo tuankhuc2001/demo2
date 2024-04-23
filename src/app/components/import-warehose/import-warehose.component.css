@@ -12,8 +12,8 @@
 .btn-Add {
   width: 15vw;
   height: 15vw;
-  position: sticky;
-  bottom: 15vw;
+  position: absolute;
+  top: 135vw;
   left: 80vw;
   border-radius: 50%;
   border: 1px solid #ccc;
@@ -74,7 +74,7 @@
   .btn-Add {
     width: 13vw;
     height: 13vw;
-    position: sticky;
+    position: absolute;
     bottom: 10vw;
     right: 5vw;
   }
