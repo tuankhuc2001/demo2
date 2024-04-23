@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+:host ::ng-deep html {
+    top: 0 !important;
+    display: none !important;
+}
+
 .cart_container {
     position: relative;
 }

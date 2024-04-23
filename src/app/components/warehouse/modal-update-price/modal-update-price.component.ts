@@ -69,6 +69,11 @@ export class ModalUpdatePriceComponent {
   });
 
   handleUpdatePrice() {
+    console.log(this.validateForm.value.priceFloor ,"floorPrice");
+    
+    if(this.validateForm.value.priceFloor == "") {
+      return
+    }
     const priceFloorValue = this.getNumberValue(this.validateForm.value.priceFloor);
     if(priceFloorValue == 0){
       this.notification.create("error", ``, "Giá sàn không được bằng 0");
@@ -110,6 +115,14 @@ export class ModalUpdatePriceComponent {
   }
 
   formatCurrencyValue(value: number | null): string {
+    console.log(value,"value");
+    console.log(value== 0,"value1");
+    
+    if(value == 0) {
+      console.log();
+      
+      return ''
+    }
     if (value !== null) {
       let formattedValue = value.toLocaleString('en-US', { maximumFractionDigits: 2 });
       formattedValue = formattedValue.replace(/\$/g, '').replace(/\.00$/, '');
@@ -121,7 +134,7 @@ export class ModalUpdatePriceComponent {
 
   formatPrice(event: any) {
     let value: string | null = event.target.value;
-    value = value || '1';
+    value = value || '';
     value = value.replace(/\D/g, '');
     if (!isNaN(Number(value))) {
       const numericValue = Number(value)

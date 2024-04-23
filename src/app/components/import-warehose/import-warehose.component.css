@@ -74,7 +74,7 @@
   .btn-Add {
     width: 13vw;
     height: 13vw;
-    position: fixed;
+    position: sticky;
     bottom: 10vw;
     right: 5vw;
   }
