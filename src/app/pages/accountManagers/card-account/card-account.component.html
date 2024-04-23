@@ -4,9 +4,9 @@
     <span style="margin-top: 8%;color: #515151; font-size: 4vw;">Không tìm thấy dữ liệu</span>
   </div>
 </div>
-<cCard *ngFor="let item of listUser" (click)="handleOpenUpdateAccount(item)" [ngClass]="{'disabled-card': item.role === 'ROLE_ADMIN'}">
+<cCard *ngFor="let item of listUser"  [ngClass]="{'disabled-card': item.role === 'ROLE_ADMIN'}">
   <Content>
-    <div class="main_card" nz-row>
+    <div (click)="handleOpenUpdateAccount(item)" class="main_card" nz-row>
       <div nz-col nzSpan="8" class="card_img">
         <img nz-image 
         nzSrc="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
@@ -31,5 +31,5 @@
       </div>
     </div>
   </Content>
-  <app-modal-update-account [itemUser]="itemAccount" [isVisible]="isVisibleModalUpdateAccount" (closeModal)="handleCloseModelUpdateAccount()" *ngIf="item.role !== 'ROLE_ADMIN'"></app-modal-update-account>
 </cCard>
+<app-modal-update-account [itemUser]="itemAccount" [isVisible]="isVisibleModalUpdateAccount" (closeModal)="handleCloseModelUpdateAccount()" *ngIf="itemAccount.role !== 'ROLE_ADMIN'"></app-modal-update-account>

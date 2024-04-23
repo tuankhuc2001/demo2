@@ -20,7 +20,6 @@ export class CardAccountComponent implements OnChanges {
   }
   isVisibleModalUpdateAccount: boolean = false;
 
-
   formatRole(role: string): string {
     switch (role) {
       case 'ROLE_ADMIN':
