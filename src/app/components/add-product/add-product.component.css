@@ -82,8 +82,13 @@
   font-size: 3.5vw;
   border-radius: 5px;
 }
+
+.input::placeholder{
+  font-size: 3vw;
+}
+
 .datePicker {
-  font-size: 5.5vw;
+  font-size: 3vw;
 }
 ::ng-deep .ant-picker-input > input {
   font-size: 3.2vw;
@@ -177,7 +182,7 @@
 }
 
 .description {
-  font-size: 4vw;
+  font-size: 3vw;
   height: 25vw;
   width: 100%;
   padding: 3vw;
@@ -255,7 +260,7 @@
   }
 
   .description {
-    font-size: 4vw;
+    font-size: 3vw;
     height: 15vw;
     width: 100%;
     border-radius: 5px;
