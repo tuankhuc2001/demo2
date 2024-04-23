@@ -36,7 +36,7 @@
         <nz-form-item>
           <nz-form-control [nzSpan]="24" [nzErrorTip]="floorPriceValidate" class="margin-tb-quantity">
             <nz-input-group [nzPrefix]="prefixTemplate">
-              <input class="input color-floorPrice" type="number" nz-input formControlName="floorPrice" width="100px" />
+              <input currencyMask class="input color-floorPrice" type="text" nz-input formControlName="floorPrice" width="100px" />
             </nz-input-group>
             <ng-template #prefixTemplate>Giá sàn:</ng-template>
             <ng-template #floorPriceValidate let-control>
@@ -49,7 +49,7 @@
         <nz-form-item>
           <nz-form-control [nzSpan]="24" [nzErrorTip]="quantityValidator" class="margin-tb-quantity">
             <nz-input-group [nzPrefix]="prefixTemplateQuantity">
-              <input class="input" type="number" nz-input formControlName="quantityProduct" />
+              <input currencyMask class="input" type="text" nz-input formControlName="quantityProduct" />
             </nz-input-group>
             <ng-template #prefixTemplateQuantity> SL tồn:(*) </ng-template>
             <ng-template #quantityValidator let-control>
@@ -113,7 +113,7 @@
             <nz-form-item nz-col [nzSpan]="7">
               <nz-form-control [nzErrorTip]="providePriceValidator">
                 <nz-input-group>
-                  <input type="number" class="input" nz-input formControlName="providePrice" placeholder="Giá cung:" />
+                  <input type="text" currencyMask class="input" nz-input formControlName="providePrice" placeholder="Giá cung:" />
                 </nz-input-group>
                 <ng-template #providePriceValidator let-control>
                   @if (control.errors?.['required']) { Vui lòng nhập giá cung! }
