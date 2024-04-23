@@ -23,7 +23,7 @@
   width: 24.5vw;
   height: 24.5vw;
   margin-left: 8vw;
-  margin-top: 5vh;
+  margin-top: 10vw;
   text-align: center;
   vertical-align: top;
   background-color: #fff;
@@ -261,5 +261,9 @@
     border-radius: 5px;
     padding: 1vw;
     border-color: #d9d9d9;
+  }
+
+  ::ng-deep .ant-upload.ant-upload-select-picture-card {
+    margin-top: 7vw;
   }
 }
