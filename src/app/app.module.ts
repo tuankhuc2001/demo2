@@ -72,6 +72,9 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { CurrencyPipe } from '@angular/common';
 
+//ngx-currency
+import { NgxCurrencyDirective, NgxCurrencyInputMode, provideEnvironmentNgxCurrency } from "ngx-currency";
+
 
 @NgModule({
   declarations: [
@@ -145,8 +148,23 @@ import { CurrencyPipe } from '@angular/common';
     NzDatePickerModule,
     NzInputNumberModule,
     NzTabsModule,
+    NgxCurrencyDirective,
   ],
   providers: [
+    provideEnvironmentNgxCurrency({
+      prefix: '',
+      suffix:'',
+      thousands: ',',
+      decimal: '.',
+      align: 'left',
+      precision: 0,
+      allowNegative: false,
+      inputMode: NgxCurrencyInputMode.Natural,
+      allowZero: true,
+      nullable: true,
+      min: null,
+      max: null,
+    }),
     { provide: NZ_I18N, useValue: en_US },
     CurrencyPipe,
   ],
