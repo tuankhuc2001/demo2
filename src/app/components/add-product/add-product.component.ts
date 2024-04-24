@@ -300,7 +300,7 @@ export class AddProductComponent {
   });
 
   handleNavigate(): void {
-    this.location.back();
+    this.router.navigate([routerNames.homePage + "/" + routerNames.importWarehousePage]);
   }
 
   handleAddProduct() {
