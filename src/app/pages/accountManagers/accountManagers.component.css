@@ -32,3 +32,11 @@
     color: white;
     cursor: pointer;
 }
+
+@media (min-width: 768px) {
+    .account_add {
+        width: 30vw;
+        height: 9vw;
+        font-size: 3vw;
+    }
+}
