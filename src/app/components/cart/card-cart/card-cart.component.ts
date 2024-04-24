@@ -66,12 +66,11 @@ export class CardCartComponent implements OnChanges {
   }
 
   onInputRate(item: any, event: any) {
-    const value = event.target.value;
     item.showRateError = false;
     item.showRateExceed = false;
-    if (!value || value < 0) {
+    if (!event || event < 0) {
       item.showRateError = true;
-    } else if (value > (item.editPrice*0.1)) {
+    } else if (event > (item.editPrice*0.1)) {
       item.showRateExceed = true;
     }
   }
@@ -99,7 +98,6 @@ export class CardCartComponent implements OnChanges {
   handleOpenDeleteSingle(item: ICartItem) {
     this.onClickDeleteSingle.emit(item)
   }
-
 
   private plusQuantitySubject = new Subject<any>();
   private minusQuantitySubject = new Subject<any>();
@@ -207,7 +205,7 @@ export class CardCartComponent implements OnChanges {
   }
 
   handleRateBlur(item: any, event: any) {
-    const newValue = event.target.value;
+    const newValue = parseInt(event.target.value.replace(/,/g, ''));
     if (item.showRateError || item.showRateExceed) {
       event.target.value = item.rate;
       setTimeout(() => {
