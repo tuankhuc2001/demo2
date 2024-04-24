@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { notificationEnum } from '../../../utils/notificationEnum';
-
 import { ICartItem } from '../../../types/cart-item';
 import { CartItemService } from '../../../services/cart-item.service';
 import { debounceTime, takeUntil } from 'rxjs/operators';

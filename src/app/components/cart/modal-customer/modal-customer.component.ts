@@ -4,7 +4,7 @@ import { CartService } from '../../../services/cart.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { ICustomer } from '../../../types/customer';
-import { ICart, IUpdateCart } from '../../../types/cart';
+import { IUpdateCart } from '../../../types/cart';
 import { routerNames } from '../../../constant/router';
 import { Router } from '@angular/router';
 import { IUser } from '../../../types/user';
@@ -23,8 +23,8 @@ export class ModalCustomerComponent implements OnInit{
   @Input() listCustomerProp: ICustomer[] = []
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
   @Output() getCart: EventEmitter<void> = new EventEmitter();
+  
   listCustomer: ICustomer[] = [];
-
   customer: IUpdateCart = {
     idCustomer: 0,
   }
@@ -87,7 +87,6 @@ export class ModalCustomerComponent implements OnInit{
         }
       })
     }, 1000)
-    
   }
 
   getCustomer(): void {
@@ -207,5 +206,3 @@ export class ModalCustomerComponent implements OnInit{
     this.handleGetCustomer()
   }
 }
-
-

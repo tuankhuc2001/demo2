@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { IUser } from '../../types/user';
 import { UserService } from '../../services/user.service';
 import { ILoginResponse } from '../../types/login';
 @Component({
@@ -10,10 +9,16 @@ import { ILoginResponse } from '../../types/login';
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
+
 export class SignInComponent {
+  constructor(
+    private fb: NonNullableFormBuilder,
+    private router: Router,
+    private userService: UserService,
+    private notification: NzNotificationService
+  ) { }
 
   isLoading: boolean = false
-
   passwordVisible = false;
 
   validateForm: FormGroup<{
@@ -21,12 +26,10 @@ export class SignInComponent {
     password: FormControl<string>;
     remember: FormControl<boolean>;
   }> = this.fb.group({
-    userName: ['0396179411', [Validators.required]],
-    password: ['admin', [Validators.required]],
+    userName: ['', [Validators.required]],
+    password: ['', [Validators.required]],
     remember: [true]
   });
-
-
 
   submitForm(): void {
     if (this.validateForm.valid) {
@@ -40,7 +43,6 @@ export class SignInComponent {
       });
     }
   }
-
 
   createNotification(type: string, content: string): void {
     this.notification.create(
@@ -74,17 +76,10 @@ export class SignInComponent {
 
   handleNavigate(role: string): void {
     this.isLoading = false
-    if(role === 'ROLE_WAREHOUSE'){
+    if (role === 'ROLE_WAREHOUSE') {
       this.router.navigate(['/home/warehouse']);
-    }else{
+    } else {
       this.router.navigate(['/home']);
     }
   }
-
-  constructor(
-    private fb: NonNullableFormBuilder,
-    private router: Router,
-    private userService: UserService,
-    private notification: NzNotificationService
-  ) { }
 }

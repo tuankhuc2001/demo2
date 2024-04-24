@@ -7,7 +7,6 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { IUser } from '../../types/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { ILoginResponse } from '../../types/login';
 import { routerNames } from '../../constant/router';
 
 @Component({

@@ -13,6 +13,7 @@ export class ModalDeleteSingleComponent implements OnChanges {
     private cartItemService: CartItemService,
     private notification: NzNotificationService,
   ) { }
+  
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
   @Output() getCart: EventEmitter<void> = new EventEmitter();

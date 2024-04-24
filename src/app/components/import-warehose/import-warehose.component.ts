@@ -29,7 +29,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     private productService: ProductService,
     private router: Router,
     private userService: UserService
-  ) {}
+  ) { }
 
   private $destroy = new Subject()
 
@@ -52,16 +52,16 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
     quantityProduct: 0,
     expiredDate: new Date,
     provider: '',
-    unit: '', 
+    unit: '',
     origin: '',
     codeProduct: '',
     description: '',
-    providePrice: 0,  
+    providePrice: 0,
     floorPrice: 0,
     phoneProvider: "01234567",
     imageUrl: ""
   }
-  textSearch :string = ""
+  textSearch: string = ""
 
   handleSearch(value: string) {
     this.isLoading = true
@@ -70,7 +70,7 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
         this.listProduct = res.content.list;
         this.isLoading = false
       },
-      error: (error) => {  
+      error: (error) => {
         this.isLoading = false
         if (error.status == 403) {
           this.userService.loginRefreshToken(this.user.refreshToken).subscribe({
@@ -88,12 +88,12 @@ export class ImportWarehoseComponent implements OnDestroy, OnInit {
       },
     });
   }
-  
+
   createNotification(type: string, content: string): void {
-    this.notification.create(type, `${content}`, '',{ nzDuration: 3000 });
+    this.notification.create(type, `${content}`, '', { nzDuration: 3000 });
   }
 
-  handleOpenModalupdateProductQuantity(ItemProduct :IProduct) {
+  handleOpenModalupdateProductQuantity(ItemProduct: IProduct) {
     this.isVisibleModalupdateProductQuantity = true;
     this.productDetail = ItemProduct;
   }

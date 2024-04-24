@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { routerNames } from '../../constant/router';
 import { SearchService } from '../../services/search.service';
 import { UserService } from '../../services/user.service';
@@ -11,7 +10,11 @@ import { IUser } from '../../types/user';
   styleUrl: './side-bar.component.css',
 })
 export class SideBarComponent implements OnInit {
-  constructor(private router: Router, private searchService: SearchService, private userService: UserService) { }
+  constructor(
+    private router: Router,
+    private searchService: SearchService,
+    private userService: UserService
+  ) { }
 
   routerNames = routerNames
   user: IUser = {
@@ -53,8 +56,8 @@ export class SideBarComponent implements OnInit {
     this.user = this.userService.getUser()
   }
 
-  handleResetSearch(){
-    this.textSearch ="";
+  handleResetSearch() {
+    this.textSearch = "";
     this.handleSearch("")
   }
 

@@ -1,12 +1,11 @@
-import { Component, Input, Output, SimpleChanges, OnChanges, EventEmitter } from '@angular/core';
-import { IUserRequestUpdate, ItemUser } from '../../../types/user';
+import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { IUserRequestUpdate } from '../../../types/user';
 
 @Component({
   selector: 'app-card-account',
   templateUrl: './card-account.component.html',
   styleUrls: ['./card-account.component.css']
 })
-
 
 export class CardAccountComponent implements OnChanges {
 
