@@ -50,7 +50,7 @@
         </div>
         <div class="mf-right">
           <span>Giá nhập:</span>
-          <input [disabled]="true" [ngModel]="ProductDetail.providePrice" />
+          <input [disabled]="true" [ngModel]="ProductDetail.providePrice | number" />
         </div>
       </div>
       <div class="mf3">

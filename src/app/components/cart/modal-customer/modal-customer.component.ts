@@ -123,7 +123,6 @@ export class ModalCustomerComponent implements OnInit{
           this.notification.create('error', `${v.message}`, '') 
           this.getCart.emit()
         } else {
-          this.notification.create('success', `${v.message}`, '')
           this.handleCloseModalCustomer()
           this.getCart.emit()
         }
