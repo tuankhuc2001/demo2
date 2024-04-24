@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
-
 import { UserService } from '../../services/user.service';
 import { IUser } from '../../types/user';
 import { Router } from '@angular/router';
@@ -21,10 +20,12 @@ export class AccountManagersComponent implements OnInit {
     private router: Router,
     private searchService: SearchService,
   ) { }
+
   private destroyed$ = new Subject();
   
-
   isLoading: boolean = false;
+  listUser: any;
+  textSearch: string = ""
   isVisibleModalAccount: boolean = false;
   user: IUser = {
     id: 0,
@@ -37,12 +38,8 @@ export class AccountManagersComponent implements OnInit {
     refreshToken: ""
   }
 
-  listUser: any;
-  textSearch: string = ""
-
   handOpenModalAddAccount(){
     this.isVisibleModalAccount = true;
-    
   }
 
   handleCloseModelAddAccount(){
@@ -87,6 +84,7 @@ export class AccountManagersComponent implements OnInit {
       { nzDuration: 3000 }
     );
   }
+
   ngOnInit() {
     this.user = this.userService.getUser()
     this.searchService.setSearchInput("")
@@ -96,5 +94,4 @@ export class AccountManagersComponent implements OnInit {
       }
     })
   }
-
 }

@@ -3,7 +3,6 @@ import { IProduct } from '../../../types/product';
 import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { CurrencyPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { routerNames } from '../../../constant/router';
 
