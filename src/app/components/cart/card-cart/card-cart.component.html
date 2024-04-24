@@ -42,13 +42,14 @@
               </div>
               <div nz-col nzSpan="9">
                 <input 
-                  nz-input  
-                  type="number" 
+                  nz-input
+                  currencyMask
+                  type="text" 
                   class="rate" 
                   [disabled]="item.disable === false ? false : true"
                   [ngModel]="item?.rate" 
                   (blur)="handleRateBlur(item, $event)" 
-                  (input)="onInputRate(item, $event)" />
+                  (ngModelChange)="onInputRate(item, $event)" />
               </div>
               <div nz-col nzSpan="10" class="finalPrice">
                 <p class="finalPrice_text">{{(item.plus ? (item.editPrice + item.rate) * item.quantity : (item.editPrice

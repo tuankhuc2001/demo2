@@ -292,7 +292,7 @@ export class AddProductComponent {
   });
 
   handleNavigate(): void {
-    this.location.back();
+    this.router.navigate([routerNames.homePage + "/" + routerNames.importWarehousePage]);
   }
 
   handleAddProduct() {
@@ -306,7 +306,7 @@ export class AddProductComponent {
       this.productService.uploadImage(formData, header).subscribe(
         (v) => {
           this.fileList = [];
-          this.msg.success('Tải ảnh lên thành công');
+          // this.msg.success('Tải ảnh lên thành công');
           addProduct.imageUrl = v.body.message;
           this.productService.addProduct(addProduct).subscribe({
             next: (res) => {
