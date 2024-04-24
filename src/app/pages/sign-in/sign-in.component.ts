@@ -20,14 +20,14 @@ export class SignInComponent {
 
   isLoading: boolean = false
   passwordVisible = false;
-  
+
   validateForm: FormGroup<{
     userName: FormControl<string>;
     password: FormControl<string>;
     remember: FormControl<boolean>;
   }> = this.fb.group({
-    userName: ['0396179411', [Validators.required]],
-    password: ['admin', [Validators.required]],
+    userName: ['', [Validators.required]],
+    password: ['', [Validators.required]],
     remember: [true]
   });
 
