@@ -12,9 +12,9 @@
 .btn-Add {
   width: 15vw;
   height: 15vw;
-  position: absolute;
-  top: 135vw;
-  left: 80vw;
+  position: fixed;
+  top: 150vw;
+  right: 5vw;
   border-radius: 50%;
   border: 1px solid #ccc;
   background-color: #0F6F64;
@@ -74,8 +74,37 @@
   .btn-Add {
     width: 13vw;
     height: 13vw;
-    position: absolute;
-    bottom: 10vw;
+    top: 100vw;
     right: 5vw;
+  }
+}
+
+@media (width: 800px) {
+  .btn-Add {
+    top: 120vw;
+  }
+}
+
+@media (min-width: 820px) {
+  .btn-Add {
+    top: 110vw;
+  }
+}
+
+@media (min-width: 884px) {
+  .btn-Add {
+    top: 90vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .btn-Add {
+    top: 120vw;
+  }
+}
+
+@media (width: 360px) {
+  .btn-Add {
+    top: 170vw;
   }
 }

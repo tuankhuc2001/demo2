@@ -33,7 +33,7 @@ export class ModalUpdatePriceComponent {
 
   handleSetIsVisisble() {
     this.isVisibleChange.emit();
-    this.validateForm.setValue({priceFloor: this.formatCurrencyValue(this.productItem.floorPrice)});
+    this.validateForm.setValue({priceFloor: this.productItem.floorPrice});
   }
 
   handleCloseModal(){
@@ -59,22 +59,20 @@ export class ModalUpdatePriceComponent {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['productItem'] && !changes['productItem'].firstChange) {
       this.validateForm.setValue({
-        priceFloor: this.formatCurrencyValue(this.productItem.floorPrice),
+        priceFloor: this.productItem.floorPrice,
       })      
     }
   }
 
   validateForm: FormGroup = this.fb.group({
-    priceFloor: [this.formatCurrencyValue(this.productItem.floorPrice), [Validators.required]],
+    priceFloor: [this.productItem.floorPrice, [Validators.required]],
   });
 
-  handleUpdatePrice() {
-    console.log(this.validateForm.value.priceFloor ,"floorPrice");
-    
-    if(this.validateForm.value.priceFloor == "") {
+  handleUpdatePrice() {  
+    if(this.validateForm.value.priceFloor == null) {
       return
     }
-    const priceFloorValue = this.getNumberValue(this.validateForm.value.priceFloor);
+    const priceFloorValue = this.validateForm.value.priceFloor;
     if(priceFloorValue == 0){
       this.notification.create("error", ``, "Giá sàn không được bằng 0");
       return
@@ -107,35 +105,35 @@ export class ModalUpdatePriceComponent {
     }
   }
 
-  getNumberValue(value: string | null): number | undefined {
-    if (value !== undefined && value !== null && value !== '') {
-      return parseFloat(value.replace(/\D/g, ''));
-    }
-    return undefined;
-  }
+  // getNumberValue(value: string | null): number | undefined {
+  //   if (value !== undefined && value !== null && value !== '') {
+  //     return parseFloat(value.replace(/\D/g, ''));
+  //   }
+  //   return undefined;
+  // }
 
-  formatCurrencyValue(value: number | null): string {
-    if(value == 0) {      
-      return ''
-    }
-    if (value !== null) {
-      let formattedValue = value.toLocaleString('en-US', { maximumFractionDigits: 2 });
-      formattedValue = formattedValue.replace(/\$/g, '').replace(/\.00$/, '');
-      return formattedValue;
-    } else {
-      return '';
-    }
-  }
+  // formatCurrencyValue(value: number | null): string {
+  //   if(value == 0) {      
+  //     return ''
+  //   }
+  //   if (value !== null) {
+  //     let formattedValue = value.toLocaleString('en-US', { maximumFractionDigits: 2 });
+  //     formattedValue = formattedValue.replace(/\$/g, '').replace(/\.00$/, '');
+  //     return formattedValue;
+  //   } else {
+  //     return '';
+  //   }
+  // }
 
-  formatPrice(event: any) {
-    let value: string | null = event.target.value;
-    value = value || '';
-    value = value.replace(/\D/g, '');
-    if (!isNaN(Number(value))) {
-      const numericValue = Number(value)
-      const formattedValue = numericValue.toLocaleString('en-US', { maximumFractionDigits: 0 });
-      event.target.value = value.endsWith('.') ? value : formattedValue;
-    }
-    return event.target.value;
-  }
+  // formatPrice(event: any) {
+  //   let value: string | null = event.target.value;
+  //   value = value || '';
+  //   value = value.replace(/\D/g, '');
+  //   if (!isNaN(Number(value))) {
+  //     const numericValue = Number(value)
+  //     const formattedValue = numericValue.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  //     event.target.value = value.endsWith('.') ? value : formattedValue;
+  //   }
+  //   return event.target.value;
+  // }
 }

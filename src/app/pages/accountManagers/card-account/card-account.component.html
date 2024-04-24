@@ -31,5 +31,5 @@
       </div>
     </div>
   </Content>
-  
 </cCard>
+<app-modal-update-account [itemUser]="itemAccount" [isVisible]="isVisibleModalUpdateAccount" (closeModal)="handleCloseModelUpdateAccount()" *ngIf="itemAccount.role !== 'ROLE_ADMIN'"></app-modal-update-account>
