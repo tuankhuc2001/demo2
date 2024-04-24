@@ -1,10 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, OnChanges, Output } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { UserService } from '../../../services/user.service';
-import { IUser, IUserRequest, ItemUser } from '../../../types/user';
+import { IUserRequest, ItemUser } from '../../../types/user';
 
 
 @Component({

@@ -23,8 +23,13 @@
                 <span nz-icon nzType="close" nzTheme="outline"></span>
               </div>
               <div nz-col nzSpan="9">
-                <input nz-input type="number" class="quantity" [disabled]="item.disable === false ? false : true"
-                  [ngModel]="item?.quantity" (blur)="handleQuantityBlur(item, $event)"
+                <input 
+                  nz-input 
+                  type="number" 
+                  class="quantity" 
+                  [disabled]="item.disable === false ? false : true"
+                  [ngModel]="item?.quantity" 
+                  (blur)="handleQuantityBlur(item, $event)"
                   (input)="onInputQuantity(item, $event)" />
               </div>
             </div>
@@ -36,8 +41,15 @@
                   (click)="!item.disable && handlePlus(item)"></span>
               </div>
               <div nz-col nzSpan="9">
-                <input nz-input type="number" class="rate" [disabled]="item.disable === false ? false : true"
-                  [ngModel]="item?.rate" (blur)="handleRateBlur(item, $event)" (input)="onInputRate(item, $event)" />
+                <input 
+                  nz-input
+                  currencyMask
+                  type="text" 
+                  class="rate" 
+                  [disabled]="item.disable === false ? false : true"
+                  [ngModel]="item?.rate" 
+                  (blur)="handleRateBlur(item, $event)" 
+                  (ngModelChange)="onInputRate(item, $event)" />
               </div>
               <div nz-col nzSpan="10" class="finalPrice">
                 <p class="finalPrice_text">{{(item.plus ? (item.editPrice + item.rate) * item.quantity : (item.editPrice
@@ -47,13 +59,19 @@
           </div>
           <div class="content_editQuantity" nz-col nzSpan="4">
             <div>
-              <span [class]="item.disable === true ? 'editQuantity_up_disable' : 'editQuantity_up'" nz-icon
-                nzType="caret-up" nzTheme="outline" (click)="!item.disable && handlePlusQuantity(item)"></span>
+              <span 
+                [class]="item.disable === true ? 'editQuantity_up_disable' : 'editQuantity_up'" 
+                nz-icon
+                nzType="caret-up" 
+                nzTheme="outline" 
+                (click)="!item.disable && handlePlusQuantity(item)"></span>
             </div>
             <div>
               <span
                 [class]="item.disable === true || item.quantity == 1? 'editQuantity_down_disable':'editQuantity_down'"
-                nz-icon nzType="caret-down" nzTheme="outline"
+                nz-icon 
+                nzType="caret-down" 
+                nzTheme="outline"
                 (click)="!item.disable && handleMinusQuantity(item)"></span>
             </div>
           </div>

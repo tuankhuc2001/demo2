@@ -271,4 +271,8 @@
   ::ng-deep .ant-upload.ant-upload-select-picture-card {
     margin-top: 7vw;
   }
+
+  ::ng-deep .ant-upload-list-picture-card .ant-upload-list-item-error{
+    height: 40vw;
+  }
 }

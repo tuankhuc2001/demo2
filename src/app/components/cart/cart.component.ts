@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { Subject } from 'rxjs';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { CartService } from '../../services/cart.service';
-
 import { Router } from '@angular/router';
 import { routerNames } from '../../constant/router';
 import { ICartItem } from '../../types/cart-item';

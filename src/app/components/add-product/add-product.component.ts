@@ -1,18 +1,11 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../services/product.service';
 import { HttpClient } from '@angular/common/http';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  NonNullableFormBuilder,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { trigger, transition, animate, style } from '@angular/animations';
-import { differenceInCalendarDays, setHours } from 'date-fns';
+import { differenceInCalendarDays } from 'date-fns';
 import { IProduct } from '../../types/product';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { notificationEnum } from '../../utils/notificationEnum';
@@ -48,7 +41,6 @@ export class AddProductComponent {
   constructor(
     private productService: ProductService,
     private msg: NzMessageService,
-    private http: HttpClient,
     private fb: NonNullableFormBuilder,
     private notification: NzNotificationService,
     private location: Location,
@@ -300,7 +292,7 @@ export class AddProductComponent {
   });
 
   handleNavigate(): void {
-    this.location.back();
+    this.router.navigate([routerNames.homePage + "/" + routerNames.importWarehousePage]);
   }
 
   handleAddProduct() {
@@ -314,7 +306,7 @@ export class AddProductComponent {
       this.productService.uploadImage(formData, header).subscribe(
         (v) => {
           this.fileList = [];
-          this.msg.success('Tải ảnh lên thành công');
+          // this.msg.success('Tải ảnh lên thành công');
           addProduct.imageUrl = v.body.message;
           this.productService.addProduct(addProduct).subscribe({
             next: (res) => {
