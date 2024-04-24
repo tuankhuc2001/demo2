@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { __values } from 'tslib';
-
 import { IProduct } from '../../types/product';
 import { ProductService } from '../../services/product.service';
 import { SearchService } from '../../services/search.service';
