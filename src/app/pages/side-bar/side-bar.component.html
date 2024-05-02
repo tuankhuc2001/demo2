@@ -45,7 +45,7 @@
           </div>
           <div class="information-User">
             <span class="name-User">{{ user.fullname }}</span>
-            <div>
+            <div style="padding-right: 1vw;">
               <span class="role-Phone" *ngIf="user.role === 'ROLE_ADMIN'">Admin</span>
               <span class="role-Phone" *ngIf="user.role === 'ROLE_SALE'">Sale</span>
               <span class="role-Phone" *ngIf="user.role === 'ROLE_WAREHOUSE'">Warehouse</span>

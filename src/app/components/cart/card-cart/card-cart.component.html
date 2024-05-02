@@ -60,11 +60,11 @@
           <div class="content_editQuantity" nz-col nzSpan="4">
             <div>
               <span 
-                [class]="item.disable === true ? 'editQuantity_up_disable' : 'editQuantity_up'" 
+                [class]="item.disable === true || ((item.productResponse.quantityProduct - getTotalQuantityOfOtherItems(item))=== item.quantity) ? 'editQuantity_up_disable' : 'editQuantity_up'" 
                 nz-icon
                 nzType="caret-up" 
                 nzTheme="outline" 
-                (click)="!item.disable && handlePlusQuantity(item)"></span>
+                (click)="!item.disable && !((item.productResponse.quantityProduct - getTotalQuantityOfOtherItems(item))=== item.quantity) && handlePlusQuantity(item)"></span>
             </div>
             <div>
               <span
