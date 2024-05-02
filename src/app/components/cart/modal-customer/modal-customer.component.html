@@ -1,8 +1,12 @@
 <cModal [width]="'90%'" [isVisible]="isVisibleModalAddCustomer" (closeModal)="handleCloseModalCustomer()"
     [footer]="false">
     <Content>
+
         <div class="pd-4 modal-custom" style="height: 100%;"
             [style]="listCustomer.length > 0 ? heightModalData : heightModalNoData">
+            <div *ngIf="isLoading" class="loading-overlay">
+                <div class="spinner"></div>
+              </div>
             <div class="form-control">
                 <div class="d-flex jct-bw al-item-ct container-input">
                     <span (click)="handleSearch(textSearch)" nz-icon nzType="search" nzTheme="outline"

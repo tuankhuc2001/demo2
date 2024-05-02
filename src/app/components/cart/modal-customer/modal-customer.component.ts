@@ -40,6 +40,7 @@ export class ModalCustomerComponent implements OnInit{
   private destroyed$ = new Subject();
   textSearch: string = "";
   isVisibleAddCustomer: boolean = false;
+  isLoading: boolean = false;
 
   user: IUser = {
     id: 0,
@@ -66,10 +67,12 @@ export class ModalCustomerComponent implements OnInit{
   }
 
   handleSearch(value: string) {
+    this.isLoading = true
     setTimeout(() => {
       this.customerService.getCustomer(value).subscribe({
         next: (res) => {
           this.listCustomer = res.content.list
+          this.isLoading = false
         },
         error: (v) => {
           if (v.status === 403) {
@@ -188,6 +191,8 @@ export class ModalCustomerComponent implements OnInit{
             this.notification.create('error', `${v.message}`, '')
           } else {
             this.listCustomer = v.content.list
+    this.isLoading = false
+
           }
         },
       }
