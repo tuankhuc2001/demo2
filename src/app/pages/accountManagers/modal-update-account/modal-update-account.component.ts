@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnChanges, Output,  SimpleChanges, } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators, } from '@angular/forms';
-import { Router } from '@angular/router';
-
 import { UserService } from '../../../services/user.service';
 import { IUserRequestUpdate } from '../../../types/user';
 
@@ -11,16 +9,16 @@ import { IUserRequestUpdate } from '../../../types/user';
   templateUrl: './modal-update-account.component.html',
   styleUrls: ['./modal-update-account.component.css'],
 })
+
 export class ModalUpdateAccountComponent implements OnChanges {
   constructor(
     private userService: UserService,
     private notification: NzNotificationService,
     private fb: NonNullableFormBuilder,
-    private router: Router
   ) {}
+
   @Input() isVisible: boolean = false;
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
-
   @Input() itemUser: IUserRequestUpdate = {
     id: 1,
     password: 'string',
@@ -31,6 +29,7 @@ export class ModalUpdateAccountComponent implements OnChanges {
     this.closeModal.emit();
     this.validateFormAddUser.reset();
   }
+  
   ngOnChanges(changes: SimpleChanges) {
     if (changes.isVisible) {
       this.listRole = this.itemUser.role;
