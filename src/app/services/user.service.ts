@@ -49,22 +49,22 @@ export class UserService {
 
     getAllAccount(textSearch: string): Observable<IGetUser> {
         const headers = this.header()
-        return this.http.get<IGetUser>(`${apiUser.getAllAccount}?textSearch=${textSearch}`, {headers})
+        return this.http.get<IGetUser>(`${apiUser.getAllAccount}?textSearch=${textSearch}`, { headers })
     }
 
     addAccount(accountRequest: IUserRequest): Observable<IAddUser> {
         const headers = this.header()
-        return this.http.post<IAddUser>(`${apiUser.addAccount}`, accountRequest, {headers})
+        return this.http.post<IAddUser>(`${apiUser.addAccount}`, accountRequest, { headers })
     }
 
     updateAccount(idUser: number, accountRequest: IUserRequestUpdate): Observable<IUpdateUser> {
-        const headers = this.header()   
-        return this.http.put<IUpdateUser>(`${apiUser.updateAccount}${idUser}`, accountRequest, {headers})
+        const headers = this.header()
+        return this.http.put<IUpdateUser>(`${apiUser.updateAccount}${idUser}`, accountRequest, { headers })
     }
 
-    loginRefreshToken(refreshToken: string) : Observable<ILoginResponse> {
+    loginRefreshToken(refreshToken: string): Observable<ILoginResponse> {
         const headers = this.header(refreshToken)
-        return this.http.post<ILoginResponse>(`${objectApi.loginRefreshToken}`,{token:refreshToken}, {headers})
+        return this.http.post<ILoginResponse>(`${objectApi.loginRefreshToken}`, { token: refreshToken }, { headers })
     }
-    
+
 }

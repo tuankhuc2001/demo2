@@ -1,41 +1,40 @@
-import { Component, EventEmitter, Input, OnInit, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { IUserRequest, ItemUser } from '../../../types/user';
-
 
 @Component({
   selector: 'app-modal-add-account',
   templateUrl: './modal-add-account.component.html',
   styleUrls: ['./modal-add-account.component.css']
 })
+
 export class ModalAddAccountComponent implements OnInit {
 
   constructor(
     private userService: UserService,
     private notification: NzNotificationService,
-    private fb: NonNullableFormBuilder, private router: Router,
+    private fb: NonNullableFormBuilder,
   ) { }
 
   @Input() isVisible: boolean = false;
-  @Input() listAccount: ItemUser [] = [];
+  @Input() listAccount: ItemUser[] = [];
 
   @Output() getUser: EventEmitter<void> = new EventEmitter();
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
-    handleCloseModal() {
+  handleCloseModal() {
     this.closeModal.emit();
   }
 
   selectedValue = 'ROLE_SALE';
 
-  IUserRequest: IUserRequest ={
+  IUserRequest: IUserRequest = {
     phone: "string",
     password: "string",
-    address:"string",
+    address: "string",
     fullname: "string",
-    role:"s"
+    role: "s"
   }
 
   passwordVisible = false;
@@ -44,7 +43,7 @@ export class ModalAddAccountComponent implements OnInit {
     this.selectedValue = event
   }
 
-  handleAddAccount(){
+  handleAddAccount() {
     if (this.validateFormAddUser.valid) {
       const isPhoneExist = this.listAccount.some(account => account.phone === this.validateFormAddUser.value.phone);
       if (isPhoneExist) {
@@ -86,9 +85,7 @@ export class ModalAddAccountComponent implements OnInit {
     this.validateFormAddUser.reset()
   }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() { }
 
   userValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
     if (control.value.length > 255) {
@@ -112,7 +109,8 @@ export class ModalAddAccountComponent implements OnInit {
     } else {
       return {};
     }
-  };
+  }
+
   addressValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } | null => {
     if (control.value.length > 255) {
       return { confirm: true, error: true };
@@ -145,8 +143,7 @@ export class ModalAddAccountComponent implements OnInit {
     fullname: ["", [Validators.required, this.userValidator]],
     phone: ["", [Validators.required, this.phoneValidator]],
     address: ["", [Validators.required, this.addressValidator]],
-    password:["", [Validators.required, this.passwordValidator]],
-    role:["ROLE_SALE"]
+    password: ["", [Validators.required, this.passwordValidator]],
+    role: ["ROLE_SALE"]
   })
-
 }

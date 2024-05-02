@@ -11,11 +11,11 @@ export class CartService {
 
   getCart(idUser: number): Observable<IResponseCart> {
     const headers = this.userService.header()
-    return this.http.get<IResponseCart>(`${apiCart.getCart}${idUser}`, {headers})
+    return this.http.get<IResponseCart>(`${apiCart.getCart}${idUser}`, { headers })
   }
 
   updateCartCustomer(idCart: number, customerRequest: IUpdateCart): Observable<IResponseCart> {
     const headers = this.userService.header()
-    return this.http.put<IResponseCart>(`${apiCart.updateCart}${idCart}`, customerRequest, {headers})
+    return this.http.put<IResponseCart>(`${apiCart.updateCart}${idCart}`, customerRequest, { headers })
   }
 }

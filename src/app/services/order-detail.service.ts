@@ -11,6 +11,6 @@ export class OrderDetailService {
 
     getOrderDetail(idOrder: number): Observable<IResponseOrderAndOrderDetails> {
         const headers = this.userService.header()
-        return this.http.get<IResponseOrderAndOrderDetails>(`${apiOrderDetail.getOrderDetail}${idOrder}`, {headers})
+        return this.http.get<IResponseOrderAndOrderDetails>(`${apiOrderDetail.getOrderDetail}${idOrder}`, { headers })
     }
 }
