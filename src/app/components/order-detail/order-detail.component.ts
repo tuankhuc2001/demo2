@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
 import { trigger, transition, animate, style } from '@angular/animations';
-import { IOrderAndOrderDetail } from '../../types/order';
+import { IOrderAndOrderDetail } from '../../types/order-detail';
 import { OrderService } from '../../services/order.service';
 import { OrderDetailService } from '../../services/order-detail.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
