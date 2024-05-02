@@ -18,10 +18,10 @@ export class CustomerService {
 
     getCustomer(textSearch: string): Observable<IResponseCustomer> {
     const headers = this.userService.header()
-    return this.http.get<IResponseCustomer>(`${apiCustomer.getCustomer}?textSearch=${textSearch}`,{headers})
+    return this.http.get<IResponseCustomer>(`${apiCustomer.getCustomer}?textSearch=${textSearch}`,{ headers })
     }
 
     addCustomer(customerRequest: ICustomerRequest): Observable<IResponseCustomer> {
     const headers = this.userService.header()
-    return this.http.post<IResponseCustomer>(`${apiCustomer.addCustomer}`, customerRequest, {headers})}
+    return this.http.post<IResponseCustomer>(`${apiCustomer.addCustomer}`, customerRequest, { headers })}
 }
