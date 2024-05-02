@@ -5,7 +5,7 @@
         <form nz-form [formGroup]="validateFormAddUser">
           <nz-form-item class="form_item" >
             <nz-form-control [nzErrorTip]="userValidator">
-              <nz-form-label class="label" nzRequired  >Họ và tên:</nz-form-label>
+              <nz-form-label class="label" nzRequired>Họ và tên:</nz-form-label>
               <input class="input" nz-input formControlName="fullname"/>
               <ng-template #userValidator let-control>
                 @if (control.errors?.['required']) {
@@ -20,7 +20,7 @@
           
           <nz-form-item class="form_item" >
             <nz-form-control [nzErrorTip]="addressValidator" >
-              <nz-form-label class="label" nzRequired >Địa chỉ:</nz-form-label>
+              <nz-form-label class="label" nzRequired>Địa chỉ:</nz-form-label>
               <input class="input" nz-input formControlName="address"/>
               <ng-template #addressValidator let-control>
                 @if (control.errors?.['required']) {
@@ -35,7 +35,7 @@
           
           <nz-form-item class="form_item" >
             <nz-form-control [nzErrorTip]="phoneValidator">
-              <nz-form-label class="label" nzRequired >Số điện thoại:</nz-form-label>
+              <nz-form-label class="label" nzRequired>Số điện thoại:</nz-form-label>
               <input class="input" nz-input formControlName="phone" />
               <ng-template #phoneValidator let-control>
                 @if (control.errors?.['required']) {
@@ -50,7 +50,7 @@
 
           <nz-form-item >
             <nz-form-control nzErrorTip="Vui lòng nhập mật khẩu!">
-              <nz-form-label class="label" nzRequired >Mật khẩu:</nz-form-label>
+              <nz-form-label class="label" nzRequired>Mật khẩu:</nz-form-label>
               <nz-input-group nzPrefixIcon="lock" [nzSuffix]="passwordValidator" nzErrorTip="Please input your Password!">
                 <input
                   class="input"
