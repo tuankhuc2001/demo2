@@ -1,25 +1,26 @@
 import { ICartItem } from "./cart-item";
 import { ICustomer } from "./customer";
+
 export interface ICart {
-  id: number;
-  idUser: number;
-  Customer: ICustomer;
-  CartItem: ICartItem;
+  id: number
+  idUser: number
+  Customer: ICustomer
+  CartItem: ICartItem
 }
 
 export interface IResponseCart {
-  message: string,
-  status: boolean,
+  message: string
+  status: boolean
   content: {
-    list: ICart[],
-    totalCartItem: number,
+    list: ICart[]
+    totalCartItem: number
   }
 }
 
 export interface IUpdateCart {
-  idCustomer: number;
+  idCustomer: number
 }
 
 export interface ICartCustomer {
-  Customer: ICustomer;
+  Customer: ICustomer
 }

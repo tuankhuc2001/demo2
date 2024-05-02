@@ -1,20 +1,20 @@
 export interface ICustomer {
-    id: number,
-    nameCustomer: string,
-    phoneCustomer: string,
-    address: string,
+    id: number
+    nameCustomer: string
+    phoneCustomer: string
+    address: string
 }
 
 export interface IResponseCustomer {
-    message: string,
-    status: boolean,
+    message: string
+    status: boolean
     content: {
-        list: ICustomer[],
+        list: ICustomer[]
     }
 }
 
 export interface ICustomerRequest {
-    nameCustomer: string,
-    phoneCustomer: string,
-    address: string,
+    nameCustomer: string
+    phoneCustomer: string
+    address: string
 }

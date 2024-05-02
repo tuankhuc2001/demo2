@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IResponseOrderAndOrderDetails } from '../types/order';
+import { IResponseOrderAndOrderDetails } from '../types/order-detail';
 import { apiOrderDetail } from '../constant/api';
 import { UserService } from './user.service';
 

@@ -1,6 +1,5 @@
 import { ICustomer } from './customer';
 import { IUser } from './user';
-import { IOrderDetail } from './order-detail';
 
 export interface IOrder {
   id: number
@@ -20,19 +19,7 @@ export interface IAddOder {
 export interface IOrderResponse {
   message: string,
   status: boolean,
-  content: {
-  }
-}
-export interface IOrderAndOrderDetail {
-  id: number
-  totalPrice: number
-  status: string
-  createdAt?: Date
-  totalCartItem: number
-  codeOrder: string
-  userResponse: IUser
-  customerResponse: ICustomer
-  orderDetailResponseList: IOrderDetail[],
+  content: {}
 }
 
 export interface IResponseOrder {
@@ -40,13 +27,5 @@ export interface IResponseOrder {
   status: boolean,
   content: {
     list: IOrder[],
-  }
-}
-
-export interface IResponseOrderAndOrderDetails {
-  message: string,
-  status: boolean,
-  content: {
-    list: IOrderAndOrderDetail[],
   }
 }
