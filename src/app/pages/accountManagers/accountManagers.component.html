@@ -1,9 +1,0 @@
-<div *ngIf="isLoading" class="loading-overlay">
-  <div class="spinner"></div>
-</div>
-
-<div *ngIf="!isLoading" class="account_container" >
-  <app-card-account [listUser]="listUser"></app-card-account>
-  <app-modal-add-account (getUser)="handleGetAllAccount(textSearch)" [listAccount]="listUser" [isVisible]="isVisibleModalAccount" (closeModal)="handleCloseModelAddAccount()"></app-modal-add-account>
-  <div class="account_add" (click)="handOpenModalAddAccount()">Thêm nhân viên</div>
-</div>

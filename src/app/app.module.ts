@@ -11,41 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 registerLocaleData(en);
-import { SideBarComponent } from './pages/side-bar/side-bar.component';
-import { ImportWarehoseComponent } from './components/import-warehose/import-warehose.component';
-import { CardComponent } from './common/card/card.component';
-import { ButtonComponent } from './common/button/button.component';
-import { ModalComponent } from './common/modal/modal.component';
-import { NotificationComponent } from './common/notification/notification.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { CartComponent } from './components/cart/cart.component';
-import { OrderComponent } from './components/order/order.component';
-import { OrderDetailComponent } from './components/order-detail/order-detail.component';
-import { WarehouseComponent } from './components/warehouse/warehouse.component';
-import { ModalUpdateQuantityComponent } from './components/import-warehose/modal-update-quantity/modal-update-quantity.component';
-import { AddProductComponent } from './components/add-product/add-product.component';
-import { ProductSaleComponent } from './components/product-sale/product-sale.component';
-import { ModalAddCartItemComponent } from './components/product-sale/modal-add-cart-item/modal-add-cart-item.component';
-import { ModalCustomerComponent } from './components/cart/modal-customer/modal-customer.component';
-import { ModalAddCustomerComponent } from './components/cart/modal-add-customer/modal-add-customer.component';
-import { ModalAddOrderComponent } from './components/cart/modal-add-order/modal-add-order.component';
-import { ModalDeleteSingleComponent } from './components/cart/modal-delete-single/modal-delete-single.component';
-import { ModalDeleteAllComponent } from './components/cart/modal-delete-all/modal-delete-all.component';
-import { CardProductSaleComponent } from './components/product-sale/card-product-sale/card-product-sale.component';
-import { CardOderComponent } from './components/order/card-oder/card-oder.component';
-import { CardCustomerComponent } from './components/cart/card-customer/card-customer.component';
-import { CardCartComponent } from './components/cart/card-cart/card-cart.component';
-import { CardWarehouseComponent } from './components/warehouse/card-warehouse/card-warehouse.component';
-import { InputComponent } from './common/inputValidate/input.component';
-import { CardOrderDetailComponent } from './components/order-detail/card-order-detail/card-order-detail.component'
-import { CardImportWarehouseComponent } from './components/import-warehose/card-import-warehouse/card-import-warehouse.component';
-import { ModalUpdatePriceComponent } from './components/warehouse/modal-update-price/modal-update-price.component';
-
-import { AccountManagersComponent } from './pages/accountManagers/accountManagers.component';
-import { CardAccountComponent } from './pages/accountManagers/card-account/card-account.component';
-import { ModalAddAccountComponent } from './pages/accountManagers/modal-add-account/modal-add-account.component';
-import { ModalUpdateAccountComponent } from './pages/accountManagers/modal-update-account/modal-update-account.component';
-
 
 //UI
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -71,57 +36,23 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { CurrencyPipe } from '@angular/common';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 //ngx-currency
 import { NgxCurrencyDirective, NgxCurrencyInputMode, provideEnvironmentNgxCurrency } from "ngx-currency";
+import { LoginComponent } from './pages/login/login.component';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SideBarComponent,
-    ImportWarehoseComponent,
-    CardComponent,
-    ButtonComponent,
-    ModalComponent,
-    NotificationComponent,
-    SignInComponent,
-    CartComponent,
-    OrderComponent,
-    OrderDetailComponent,
-    WarehouseComponent,
-    ModalUpdateQuantityComponent,
-    AddProductComponent,
-    ProductSaleComponent,
-    ModalAddCartItemComponent,
-    ModalCustomerComponent,
-    ModalAddCustomerComponent,
-    ModalAddOrderComponent,
-    ModalDeleteSingleComponent,
-    ModalDeleteAllComponent,
-    CardProductSaleComponent,
-    CardOderComponent,
-    CardCustomerComponent,
-    CardCartComponent,
-    InputComponent,
-    CardOrderDetailComponent,
-    CardWarehouseComponent,
-    CardImportWarehouseComponent,
-    WarehouseComponent,
-    CardWarehouseComponent,
-    ModalUpdatePriceComponent,
-    WarehouseComponent,
-    CardWarehouseComponent,
-    ModalUpdatePriceComponent,
-    CardImportWarehouseComponent,
-    AccountManagersComponent,
-    CardAccountComponent,
-    ModalAddAccountComponent,
-    ModalUpdateAccountComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DashboardModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -149,6 +80,9 @@ import { NgxCurrencyDirective, NgxCurrencyInputMode, provideEnvironmentNgxCurren
     NzInputNumberModule,
     NzTabsModule,
     NgxCurrencyDirective,
+    NzToolTipModule,  // Thêm module này
+
+
   ],
   providers: [
     provideEnvironmentNgxCurrency({

@@ -1,6 +1,0 @@
-<div *ngIf="isLoading" class="loading-overlay">
-  <div class="spinner"></div>
-</div>
-
-<app-card-warehouse [loading]="isLoading" [listProduct]="listProduct" (productIdEmit)="handleOpenModalUpdatePrice($event)"></app-card-warehouse>
-<app-modal-update-price [isVisible]="isVisibleModalUpdatePrice" (closeModal)="handleCloseModalUpdatePrice()" [productItem]="productItem" (isVisibleChange)="handleSetIsVisibleClose()"></app-modal-update-price>
